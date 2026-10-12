@@ -173,6 +173,7 @@
   @media (prefers-reduced-motion: reduce) {
     * { scroll-behavior: auto !important; }
   }
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -211,7 +212,7 @@
         <div class="side-info">
           <h3>Readouts</h3>
           <div class="readouts" id="readouts"></div>
-          <div class="formula-box">
+          <div class="formula-box" id="formulaBox">
             <div class="f-label">Formula</div>
             <div class="f-body mono" id="formula"></div>
           </div>
@@ -440,10 +441,16 @@
   var subjectChipEl = document.getElementById("subjectChip");
   var simTitleEl = document.getElementById("simTitle");
   var sidebarEl = document.getElementById("sidebar");
+  var formulaBoxEl = document.getElementById("formulaBox");
 
   var SUBJECT_COLOR = { Math: "var(--math)", Physics: "var(--physics)", Chemistry: "var(--chem)", Biology: "var(--bio)", Geography: "var(--geo)", History: "var(--history)" };
 
-  function setFormula(html) { formulaEl.innerHTML = html; }
+  // setFormula() is the ONLY thing that reveals the Formula panel — it starts
+  // hidden on every mount (see mountSim) so a topic with no real formula
+  // (most History/Geography explorers, classification keys, etc.) simply
+  // shows no Formula panel at all, instead of leaking the previous
+  // simulation's leftover formula text.
+  function setFormula(html) { formulaEl.innerHTML = html; formulaBoxEl.classList.remove("hidden"); }
   function setConcept(html) { conceptEl.innerHTML = html; }
   function clearPanel(el) { el.innerHTML = ""; }
 
@@ -4822,7 +4829,17 @@
     subjectChipEl.style.color = SUBJECT_COLOR[sim.subject];
     subjectChipEl.style.borderColor = SUBJECT_COLOR[sim.subject];
     simTitleEl.textContent = sim.title;
+    // Reset every shared panel centrally before mounting, so a simulation
+    // that doesn't use a given panel (most History/Geography explorers have
+    // no numeric formula, for instance) can never leak the PREVIOUS
+    // simulation's leftover content into it. Individual mount() functions
+    // still repopulate whichever panels actually apply to them.
     clearPanel(globalControlsEl);
+    clearPanel(controlsEl);
+    clearPanel(readoutsEl);
+    clearPanel(conceptEl);
+    formulaEl.innerHTML = "";
+    formulaBoxEl.classList.add("hidden");
     activeDispose = sim.mount();
     renderSidebar();
   }
