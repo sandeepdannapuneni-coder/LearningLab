@@ -1,0 +1,1554 @@
+{
+  "title": "Adaptability & Cognitive Agility",
+  "questionPool": {
+    "lat_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the name of the mental model that involves breaking a large, complicated problem down into smaller, more manageable parts?", "answer": "Decomposition" },
+        { "question": "What is the name of the mental model that involves imagining how a situation looks from someone else's point of view?", "answer": "Perspective-taking" },
+        { "question": "What is the name of the mental model that involves solving a new problem by comparing it to a similar problem you've solved before?", "answer": "Analogical thinking" },
+        { "question": "What is the name of the mental model that involves restating a problem in a different way to reveal solutions that weren't obvious at first?", "answer": "Reframing" }
+      ],
+      "distractorPool": ["Decomposition", "Perspective-taking", "Analogical thinking", "Reframing"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each mental model offers a different lens for approaching a problem — breaking it apart, viewing it from another angle, borrowing a solution from a similar past problem, or restating it entirely — and skilled problem-solvers often try several of these lenses before settling on an approach.",
+      "realPurpose": "Having a toolkit of named mental models makes it much easier to deliberately switch strategies when stuck, instead of just repeating the same approach and hoping for a different result."
+    },
+    "lat_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "When a student stuck on a maze tries starting from the exit and working backward toward the start, which style of thinking is being used?",
+          "answer": "Lateral thinking",
+          "distractors": ["Linear (step-by-step) thinking", "Neither lateral nor linear thinking", "Both lateral and linear thinking equally"]
+        },
+        {
+          "question": "When a student solves a maze by simply trying each path one at a time, in order, from the start, which style of thinking is being used?",
+          "answer": "Linear (step-by-step) thinking",
+          "distractors": ["Lateral thinking", "Neither lateral nor linear thinking", "Both lateral and linear thinking equally"]
+        },
+        {
+          "question": "When a team brainstorms ten different possible solutions before picking the best one, which style of thinking is being used?",
+          "answer": "Lateral thinking",
+          "distractors": ["Linear (step-by-step) thinking", "Neither lateral nor linear thinking", "Both lateral and linear thinking equally"]
+        },
+        {
+          "question": "When a team picks the very first solution anyone suggests without considering any alternatives, which style of thinking is being used?",
+          "answer": "Linear (step-by-step) thinking",
+          "distractors": ["Lateral thinking", "Neither lateral nor linear thinking", "Both lateral and linear thinking equally"]
+        }
+      ],
+      "technicalIntricacy": "Linear thinking follows a predictable, step-by-step sequence, while lateral thinking deliberately explores unconventional starting points, orders, or perspectives — both are useful, but lateral thinking often uncovers solutions that a strictly linear approach would miss.",
+      "realPurpose": "Recognising which style of thinking you're using helps you deliberately switch to a lateral approach when a linear one isn't making progress."
+    },
+    "lat_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the name of the mental model that involves deliberately imagining the worst possible outcome of a plan in advance, in order to spot and avoid weaknesses before they happen?", "answer": "Pre-mortem thinking (inversion)" },
+        { "question": "What is the name of the mental model that involves working backward from a desired end goal to figure out the steps needed to reach it?", "answer": "Working backward" },
+        { "question": "What is the name of the mental model that involves simplifying a complicated problem by removing minor details to focus on its most essential, core structure?", "answer": "Abstraction" }
+      ],
+      "distractorPool": ["Pre-mortem thinking (inversion)", "Working backward", "Abstraction", "Brainstorming"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of these mental models restructures how a problem is approached — imagining failure in advance, starting from the goal instead of the start, or stripping away non-essential detail — offering a different angle than simply moving forward step by step.",
+      "realPurpose": "Having several distinct mental models available means a stuck problem-solver has genuine alternatives to try, rather than just repeating the same forward-moving approach."
+    },
+    "lat_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "During a brainstorming session, why is it usually best to avoid criticising ideas immediately as they're suggested?", "answer": "Early criticism discourages people from sharing more unusual or creative ideas that might turn out to be valuable" },
+        { "question": "Why can setting a strict time limit sometimes help a brainstorming session produce better ideas?", "answer": "A time limit encourages quick, unfiltered idea generation rather than overthinking or hesitating on each idea" }
+      ],
+      "distractorPool": [
+        "Criticising ideas immediately always improves the overall quality of a brainstorming session",
+        "Time limits are used only to make a session feel more formal, with no effect on the ideas generated",
+        "Both practices exist purely as tradition, with no real effect on how many or how creative the resulting ideas are"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Effective brainstorming techniques are designed around how people actually think creatively — delaying judgment prevents good ideas from being dismissed too early, and time pressure encourages rapid idea generation instead of premature self-editing.",
+      "realPurpose": "Understanding why these brainstorming rules work makes it possible to run a genuinely more productive group problem-solving session."
+    },
+    "lat_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes the idea that working within limits or rules can sometimes boost creative thinking rather than restrict it?", "answer": "Constraint-driven creativity" },
+        { "question": "What term describes generating as many different ideas as possible before judging or narrowing any of them down?", "answer": "Divergent thinking" },
+        { "question": "What term describes narrowing a wide range of ideas down to select the single most promising one?", "answer": "Convergent thinking" }
+      ],
+      "distractorPool": ["Constraint-driven creativity", "Divergent thinking", "Convergent thinking", "Linear (step-by-step) thinking"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Divergent thinking widens the pool of possible ideas, convergent thinking narrows that pool down to the strongest option, and constraint-driven creativity shows that limits can actually sharpen creative thinking rather than only restrict it — three distinct forces at work in creative problem-solving.",
+      "realPurpose": "Recognising these separate phases of the creative process helps a student notice which stage they're in, rather than trying to generate ideas and judge them at the exact same time, which tends to shut creativity down."
+    },
+    "lat_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student breaks a big science-fair project into smaller tasks — choosing a topic, doing research, building the model, and writing the report — before starting on any of them. Which mental model is being used?",
+          "answer": "Decomposition",
+          "distractors": ["Perspective-taking", "Analogical thinking", "Working backward"]
+        },
+        {
+          "question": "A student tries to complete an entire science-fair project in one single sitting without ever splitting it into smaller tasks, and quickly feels overwhelmed. Which mental model is missing from this approach?",
+          "answer": "Decomposition",
+          "distractors": ["Perspective-taking", "Analogical thinking", "Working backward"]
+        }
+      ],
+      "technicalIntricacy": "Decomposition works by turning one large, intimidating task into several smaller, clearly defined ones, each of which is easier to plan, start, and track progress on than the intimidating whole.",
+      "realPurpose": "Breaking big projects into smaller pieces is one of the most widely used productivity techniques, since it turns a vague, overwhelming goal into a concrete list of manageable next steps."
+    },
+    "lat_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Before proposing a new class rule, a student imagines how a classmate who might dislike the rule would react to it, and adjusts the proposal accordingly. Which mental model is being used?",
+          "answer": "Perspective-taking",
+          "distractors": ["Decomposition", "Abstraction", "Pre-mortem thinking (inversion)"]
+        },
+        {
+          "question": "A student writes a persuasive essay by only ever considering their own opinion, without imagining how someone who disagrees might respond to their argument. Which mental model is missing from this approach?",
+          "answer": "Perspective-taking",
+          "distractors": ["Decomposition", "Abstraction", "Pre-mortem thinking (inversion)"]
+        }
+      ],
+      "technicalIntricacy": "Perspective-taking means deliberately imagining a situation through someone else's knowledge, priorities and reactions, rather than assuming everyone sees a situation exactly the way you do.",
+      "realPurpose": "Actively considering other viewpoints leads to proposals, arguments and solutions that hold up better once other people actually react to them, since likely objections have already been anticipated."
+    },
+    "lat_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student solves a new coding problem by remembering how they solved a similar problem last month, and adapting that same strategy to the new situation. Which mental model is being used?",
+          "answer": "Analogical thinking",
+          "distractors": ["Decomposition", "Reframing", "Working backward"]
+        },
+        {
+          "question": "A student refuses to consider any problem they've solved before, even when a very similar one comes up again, and insists on starting completely from scratch every single time. Which mental model is being ignored here?",
+          "answer": "Analogical thinking",
+          "distractors": ["Decomposition", "Reframing", "Working backward"]
+        }
+      ],
+      "technicalIntricacy": "Analogical thinking works by identifying the underlying structure shared between a new problem and a previously solved one, then transferring the successful strategy across, even though the surface details of the two problems may look quite different.",
+      "realPurpose": "Recognising when a new problem resembles one you've already handled saves significant time and effort, instead of reinventing a solution from nothing every time a challenge appears."
+    },
+    "lat_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student stuck on the question 'How do I get my classmates to stop talking during group work?' restates it as 'How do I make group work interesting enough that no one wants to talk about anything else?' Which mental model is being used?",
+          "answer": "Reframing",
+          "distractors": ["Decomposition", "Analogical thinking", "Abstraction"]
+        },
+        {
+          "question": "A student stuck on a difficult question keeps repeating the exact same original wording of the problem to themselves over and over, without ever trying to state it differently. Which mental model is missing from this approach?",
+          "answer": "Reframing",
+          "distractors": ["Decomposition", "Analogical thinking", "Abstraction"]
+        }
+      ],
+      "technicalIntricacy": "Reframing works by changing the words or angle used to state a problem, which can shift attention away from an unproductive detail and toward a more solvable version of the same underlying challenge.",
+      "realPurpose": "Many problems that feel impossible are actually just phrased in an unhelpful way, so restating them is often enough to reveal a solution that was there all along."
+    },
+    "lat_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student is told a poster design must use no more than two colours and no photographs, and this restriction pushes them to come up with a bold, unusual design they wouldn't have considered otherwise. What does this illustrate?",
+          "answer": "Constraint-driven creativity — a limit that pushes creative thinking in new directions rather than only restricting it",
+          "distractors": [
+            "Limits always reduce the quality of creative work, with no possible upside",
+            "The design would have been better if there had been absolutely no restrictions at all",
+            "Constraints only ever apply to art projects, never to any other kind of problem-solving"
+          ]
+        },
+        {
+          "question": "A team is given completely unlimited resources, unlimited time, and no rules at all for a class project, and ends up struggling to even choose a starting direction. What does this illustrate about constraints?",
+          "answer": "A total absence of constraints can sometimes make creative decisions harder, since limits often help focus and direct creative effort",
+          "distractors": [
+            "Having no constraints at all is always the ideal condition for creative work",
+            "Struggling with unlimited options proves the team lacks any creative ability",
+            "Constraints are only ever unhelpful and have no realistic benefit in any situation"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A total lack of constraints can leave so many directions open that choosing becomes difficult, while a well-chosen limit narrows the space of options enough to focus creative effort productively — this is why designers, writers and engineers sometimes add artificial constraints on purpose.",
+      "realPurpose": "Understanding that limits can help (not just hinder) creativity changes how a student reacts to a restriction, from feeling purely frustrated to actively using it as a creative tool."
+    },
+    "lat_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Look at this number pattern: {{start}}, {{seq2}}, {{seq3}}, {{seq4}}, ___. What number comes next?",
+          "answer": "{{next}}",
+          "distractors": ["{{distractorA}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "start": { "type": "int", "min": 2, "max": 20 },
+            "step": { "type": "int", "min": 2, "max": 10 },
+            "seq2": { "type": "computed", "formulaId": "add", "args": ["start", "step"] },
+            "seq3": { "type": "computed", "formulaId": "add", "args": ["seq2", "step"] },
+            "seq4": { "type": "computed", "formulaId": "add", "args": ["seq3", "step"] },
+            "next": { "type": "computed", "formulaId": "add", "args": ["seq4", "step"] },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["next", "step"] },
+            "rawB": { "type": "computed", "formulaId": "subtract", "args": ["next", "step"] },
+            "distractorB": { "type": "computed", "formulaId": "clampMin1", "args": ["rawB", 0] },
+            "stepHalf": { "type": "computed", "formulaId": "intDiv", "args": ["step", 2] },
+            "stepHalfClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["stepHalf", 0] },
+            "distractorC": { "type": "computed", "formulaId": "add", "args": ["next", "stepHalfClamped"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Recognising a pattern means identifying the consistent rule connecting each term to the next — here, each number increases by the same fixed amount — and then applying that same rule one more time to predict what comes next.",
+      "realPurpose": "Pattern recognition is a foundational lateral and logical thinking skill used everywhere from puzzles and coding to spotting trends in real-world data."
+    },
+    "lat_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "{{n}} friends want to split {{total}} stickers equally among themselves. How many stickers will each friend receive?",
+          "answer": "{{perPerson}}",
+          "distractors": ["{{total}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "n": { "type": "int", "min": 2, "max": 8 },
+            "perPerson": { "type": "int", "min": 2, "max": 15 },
+            "total": { "type": "computed", "formulaId": "multiply", "args": ["n", "perPerson"] },
+            "bump1": { "type": "int", "min": 1, "max": 4 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["perPerson", "bump1"] },
+            "bump2": { "type": "int", "min": 1, "max": 4 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["perPerson", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Splitting a total amount equally among a group means dividing the total by the number of people, which is a simple but essential building block for fair resource-allocation puzzles.",
+      "realPurpose": "Fair-sharing logic like this comes up constantly in everyday decisions, from splitting a bill to dividing tasks evenly among a team."
+    },
+    "lat_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student has {{shirts}} different shirts and {{pants}} different pairs of pants. How many different shirt-and-pants outfit combinations can they make, pairing any shirt with any pair of pants?",
+          "answer": "{{combos}}",
+          "distractors": ["{{distractorA}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "shirts": { "type": "int", "min": 2, "max": 6 },
+            "pants": { "type": "int", "min": 2, "max": 6 },
+            "combos": { "type": "computed", "formulaId": "multiply", "args": ["shirts", "pants"] },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["shirts", "pants"] },
+            "bump": { "type": "int", "min": 2, "max": 8 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["combos", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 8 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["combos", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "When choosing one item from each of two independent groups, the total number of possible combinations is found by multiplying the size of each group together, since every item in one group can be paired with every item in the other.",
+      "realPurpose": "This basic combinatorial counting principle underlies far more complex logic puzzles, probability problems, and even password-strength calculations."
+    },
+    "lat_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Look at this number pattern: {{start}}, {{seq2}}, {{seq3}}, {{seq4}}, ___. What number comes next?",
+          "answer": "{{next}}",
+          "distractors": ["{{distractorA}}", "{{seq4}}", "{{distractorC}}"],
+          "vars": {
+            "start": { "type": "int", "min": 2, "max": 10 },
+            "multiplier": { "type": "int", "min": 2, "max": 3 },
+            "seq2": { "type": "computed", "formulaId": "multiply", "args": ["start", "multiplier"] },
+            "seq3": { "type": "computed", "formulaId": "multiply", "args": ["seq2", "multiplier"] },
+            "seq4": { "type": "computed", "formulaId": "multiply", "args": ["seq3", "multiplier"] },
+            "next": { "type": "computed", "formulaId": "multiply", "args": ["seq4", "multiplier"] },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["next", "start"] },
+            "distractorC": { "type": "computed", "formulaId": "multiply", "args": ["next", "multiplier"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "In this pattern, each number is found by multiplying the previous one by the same fixed factor, rather than adding a fixed amount — recognising a multiplying (geometric) pattern rather than an adding (arithmetic) one is key to predicting the next term correctly.",
+      "realPurpose": "Distinguishing between additive and multiplicative patterns is essential in mathematics and appears in real growth patterns, from compound interest to population growth."
+    },
+    "lat_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student is assigned a research project on a topic they know nothing about, with no similar past project to copy from and only a few days before the deadline. Which combination of mental models would most likely help them make quick, effective progress?",
+          "answer": "Decomposition (splitting the project into smaller steps) combined with working backward from the deadline to build a realistic schedule",
+          "distractors": [
+            "Waiting until closer to the deadline, since more useful information will naturally appear on its own",
+            "Relying only on analogical thinking, since an unfamiliar topic guarantees a similar past project must exist somewhere",
+            "Skipping any planning and starting immediately without ever splitting the work into smaller steps"
+          ]
+        },
+        {
+          "question": "A team's brainstorming session for a new class poster produces exactly one idea in the first thirty seconds, and everyone immediately agrees to use it without discussing any alternatives. What is the most likely risk in this situation?",
+          "answer": "Committing to the very first idea too quickly risks missing a stronger solution that further brainstorming might have uncovered",
+          "distractors": [
+            "There is no risk at all, since the very first idea generated in any brainstorm is always the strongest one",
+            "The risk is that the team spent too much time thinking, since thirty seconds is already far too long for a decision",
+            "Group agreement always guarantees an idea is the best possible option, regardless of how quickly it was reached"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Combining mental models — like decomposition to break work into steps and working backward from a deadline to sequence them — is often more effective than relying on just one strategy alone, since each model compensates for a different limitation of the others.",
+      "realPurpose": "Real projects with unfamiliar topics and real deadlines are exactly where combining multiple lateral-thinking strategies pays off most, rather than in simple practice problems where only one strategy is needed."
+    },
+    "lat_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student is stuck trying to solve a puzzle using only one approach, and keeps getting the same wrong answer. A friend suggests trying to look at the problem 'upside down' or from a completely different angle instead of repeating the same method again. What is the benefit of this advice?",
+          "answer": "Repeating the exact same approach that already failed rarely produces a different result; deliberately switching to a new mental model or perspective (lateral thinking) increases the chance of noticing a detail or approach the original method was blind to",
+          "distractors": [
+            "The friend's advice is unhelpful — sticking with the exact same method and trying it more times is always the fastest way to eventually succeed",
+            "Switching approaches should only ever be considered after at least twenty failed attempts with the original method",
+            "Looking at a problem differently is only useful for art and creative subjects, not for logic puzzles"
+          ]
+        }
+      ],
+      "technicalIntricacy": "When a specific approach isn't working, it often means that approach has a blind spot — some assumption or detail it isn't accounting for; switching to a genuinely different mental model changes which details become visible, often revealing exactly the piece that was missing.",
+      "realPurpose": "This is why experienced problem-solvers deliberately keep a variety of strategies on hand, rather than relying on a single 'default' method for every situation."
+    },
+    "lat_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because their teacher's suggested method works well for most problems, it must be the only valid method that could possibly work for this new, unusual problem. What is the flaw in this assumption?",
+          "answer": "Most problems can be approached using more than one valid strategy or mental model; even a generally reliable method might not be the most efficient or effective for every specific situation, so staying open to alternative approaches usually leads to more flexible, creative problem-solving",
+          "distractors": [
+            "The student is correct — once a method is proven reliable for most problems, it is guaranteed to work for absolutely every new problem too",
+            "Trying an alternative method to a teacher's suggested approach is never appropriate, even if the original method clearly isn't working",
+            "Every problem has exactly one single correct method, and all other approaches are automatically wrong"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A method being reliable across many typical problems doesn't guarantee it's optimal (or even applicable) for every unusual edge case; genuinely flexible problem-solving involves recognising when a situation calls for a different tool, rather than forcing every problem through the same familiar process.",
+      "realPurpose": "This flexible mindset helps students adapt confidently when they encounter unfamiliar problems that don't fit the patterns they've been taught to expect."
+    },
+    "lat_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student always solves problems by immediately trying to recall a memorised formula, and gets stuck completely on a new problem that doesn't match any formula they've memorised. What is the flaw in this approach?",
+          "answer": "Relying solely on memorised formulas works only for problems that closely match previously seen patterns; genuinely novel problems often require reasoning from first principles or trying a different mental model altogether, rather than searching for a matching formula that may not exist",
+          "distractors": [
+            "The student is correct — every possible problem can always be solved by recalling the right memorised formula, if the student simply thinks hard enough",
+            "Getting stuck like this proves the student needs to memorise even more formulas before attempting any new problem",
+            "Novel problems that don't match a memorised formula are, by definition, unsolvable"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Memorised formulas are shortcuts derived from deeper underlying reasoning, and they only apply directly to problems shaped like the ones they were derived for; a truly novel problem may require returning to that deeper reasoning (first principles) or applying a different mental model entirely, rather than searching indefinitely for a matching memorised shortcut.",
+      "realPurpose": "Recognising when memorised formulas run out is what separates flexible problem-solvers from those who can only handle familiar problem types."
+    },
+    "lat_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student dismisses a classmate's unusual suggested solution immediately, assuming that because it 'sounds strange,' it must be wrong. What is the flaw in this reasoning?",
+          "answer": "Many genuinely effective creative solutions initially sound unusual or counterintuitive, precisely because they don't follow the most obvious, conventional path; dismissing an idea purely because it sounds strange (without actually evaluating whether it would work) risks discarding a valuable, creative solution before it's ever properly considered",
+          "distractors": [
+            "The student is correct — any solution that sounds unusual or strange can be safely assumed to be incorrect without further evaluation",
+            "Unusual-sounding ideas should always be adopted immediately, without any evaluation, simply because they sound different",
+            "The strangeness of an idea is always a perfectly reliable measure of whether or not it will actually work"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Lateral thinking specifically works by exploring unconventional angles, which means genuinely useful lateral solutions often sound odd at first, precisely because they diverge from the expected, obvious path; the actual test of an idea's value is whether it logically works when examined, not how conventional or familiar it initially sounds.",
+      "realPurpose": "This is why productive brainstorming and problem-solving requires briefly suspending judgment long enough to properly evaluate unusual ideas before rejecting them."
+    },
+    "amb_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a situation that is unclear or open to more than one interpretation?", "answer": "Ambiguity" },
+        { "question": "What term describes giving up one benefit in order to gain another when choosing between options?", "answer": "A trade-off" },
+        { "question": "What is it called when you list the advantages and disadvantages of each option to help compare them?", "answer": "A pros and cons list" },
+        { "question": "What term describes the different possible results that could happen after a decision is made?", "answer": "Outcomes" }
+      ],
+      "distractorPool": ["Ambiguity", "A trade-off", "A pros and cons list", "Outcomes"],
+      "distractorCount": 3,
+      "technicalIntricacy": "These terms form the basic vocabulary of thoughtful decision-making: recognising ambiguity, identifying trade-offs, organising a comparison, and anticipating possible outcomes are each distinct steps in reasoning through a complex choice.",
+      "realPurpose": "Having precise language for these ideas makes it easier to talk through a difficult decision clearly, whether alone or with someone helping you think it through."
+    },
+    "amb_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which is the most helpful strategy when facing a decision with incomplete information?",
+          "answer": "Gathering the most important available information, then making a reasonable choice despite some remaining uncertainty",
+          "distractors": [
+            "Waiting indefinitely until every single possible piece of information is known before deciding anything",
+            "Choosing whichever option requires the least effort to think about",
+            "Flipping a coin, since incomplete information makes any reasoning pointless"
+          ]
+        },
+        {
+          "question": "Which is the most helpful strategy for comparing two very different options fairly?",
+          "answer": "Listing the specific trade-offs and priorities that matter most for the decision",
+          "distractors": [
+            "Assuming the more expensive or more popular option is automatically the better choice",
+            "Choosing based only on which option was suggested first",
+            "Avoiding any comparison at all, since the options are too different to compare"
+          ]
+        },
+        {
+          "question": "Which is the most helpful mindset when a well-reasoned decision doesn't lead to the best outcome?",
+          "answer": "Recognising that some factors were outside anyone's knowledge or control, and learning from the experience",
+          "distractors": [
+            "Assuming a bad outcome always means the decision-making process itself must have been careless",
+            "Deciding to never make an important decision independently again",
+            "Concluding that careful thinking is generally a waste of time"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Good decision-making under uncertainty balances gathering enough information to be reasonably confident against the reality that waiting for perfect certainty is often impossible or too costly in time.",
+      "realPurpose": "These strategies are used by professionals in every field — from doctors to engineers to business leaders — who regularly have to make sound decisions without having every possible piece of information."
+    },
+    "amb_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes making a judgment based on limited information, using reasonable assumptions to fill the gaps?", "answer": "An educated guess (informed estimate)" },
+        { "question": "What term describes intentionally delaying a decision specifically to gather more relevant information first?", "answer": "Deliberate information-gathering" },
+        { "question": "What term describes a decision-making approach that considers several different possible future scenarios before choosing a path?", "answer": "Scenario planning" }
+      ],
+      "distractorPool": ["An educated guess (informed estimate)", "Deliberate information-gathering", "Scenario planning", "A random guess"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of these strategies manages uncertainty differently — an educated guess fills a gap with reasonable assumptions, deliberate information-gathering reduces the gap before deciding, and scenario planning prepares for several different possible futures at once.",
+      "realPurpose": "Knowing multiple named strategies for handling uncertainty means a person facing ambiguity has real options, rather than only guessing or freezing indecisively."
+    },
+    "amb_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes choosing a guaranteed smaller benefit over a larger but uncertain one?", "answer": "A risk-averse choice" },
+        { "question": "What term describes choosing a larger but uncertain potential benefit over a smaller guaranteed one?", "answer": "A risk-tolerant (risk-seeking) choice" }
+      ],
+      "distractorPool": ["A completely random choice, unrelated to risk or benefit", "A choice that ignores all potential benefits entirely", "A choice that is always objectively the correct one to make"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Risk tolerance describes a consistent pattern in how someone weighs a guaranteed smaller outcome against a larger but uncertain one, and reasonable people can have very different risk tolerances without either approach being universally 'correct.'",
+      "realPurpose": "Understanding your own risk tolerance helps explain why you might make different choices than someone else facing the exact same decision with the exact same information."
+    },
+    "amb_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes preparing a backup plan in case your first choice doesn't work out as expected?", "answer": "A contingency plan (backup plan)" },
+        { "question": "What term describes the benefit you give up from the next-best alternative when you choose one option over another?", "answer": "Opportunity cost" },
+        { "question": "What term describes choosing an option that is 'good enough' rather than continuing to search endlessly for the single best possible option?", "answer": "Satisficing" }
+      ],
+      "distractorPool": ["A contingency plan (backup plan)", "Opportunity cost", "Satisficing", "The sunk cost fallacy"],
+      "distractorCount": 3,
+      "technicalIntricacy": "These three ideas each manage a different part of decision-making under ambiguity: preparing for an unfavourable outcome in advance, recognising what's given up by choosing one option, and knowing when 'good enough' is the sensible stopping point.",
+      "realPurpose": "Naming these strategies precisely makes it possible to actually use them on purpose during a real decision, rather than only vaguely sensing that a choice involves some kind of trade-off or risk."
+    },
+    "amb_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes relying too heavily on the first piece of information encountered when making a decision, even when it isn't especially relevant?", "answer": "Anchoring (anchoring bias)" },
+        { "question": "What term describes continuing to invest in a decision mainly because of what has already been spent, rather than because it's still the best choice going forward?", "answer": "The sunk cost fallacy" },
+        { "question": "What term describes paying attention mainly to information that confirms what you already believed, while overlooking information that contradicts it?", "answer": "Confirmation bias" }
+      ],
+      "distractorPool": ["Anchoring (anchoring bias)", "The sunk cost fallacy", "Confirmation bias", "Satisficing"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of these is a common thinking pattern that can quietly distort an otherwise reasonable decision — being overly influenced by an early number, continuing something purely because of past investment, or noticing only the evidence that already matches your expectations.",
+      "realPurpose": "Recognising these patterns by name is the first step toward catching yourself using them, which leads to clearer, more balanced decisions under uncertainty."
+    },
+    "amb_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student spends so long searching for the single 'perfect' book for a report that they run out of time to read anything at all. What decision-making lesson does this best illustrate?",
+          "answer": "Sometimes it's more effective to choose a reasonably good option quickly (satisficing) than to keep searching endlessly for a perfect one",
+          "distractors": [
+            "Searching as long as possible always leads to the best possible outcome, no matter the cost in time",
+            "The student should have picked randomly from the very beginning, since thinking about options is never useful",
+            "There is no lesson here, since reading any book at all is equally acceptable regardless of the deadline"
+          ]
+        },
+        {
+          "question": "A student keeps attending a club they no longer enjoy, reasoning 'I've already spent six months on it, so I can't quit now.' What decision-making mistake does this illustrate?",
+          "answer": "The sunk cost fallacy — letting past investment that can't be recovered drive a decision, instead of focusing on what's genuinely best going forward",
+          "distractors": [
+            "The student is reasoning correctly — past time invested should always be the main factor in any future decision",
+            "There is no mistake here, since staying in any activity indefinitely is always the responsible choice",
+            "The mistake is only that six months wasn't quite long enough to justify staying"
+          ]
+        },
+        {
+          "question": "A student is deciding whether to join a new activity and asks only friends who already love that activity for their opinion, while ignoring anyone who might feel differently. What decision-making mistake does this illustrate?",
+          "answer": "Confirmation bias — seeking out only opinions that confirm an existing preference, rather than a balanced range of views",
+          "distractors": [
+            "This is the correct approach, since only enthusiastic opinions are ever useful for making a decision",
+            "There is no mistake here, since friends' opinions are always completely unbiased no matter who is asked",
+            "The mistake is only that the student didn't ask enough enthusiastic friends"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Satisficing, the sunk cost fallacy, and confirmation bias each shape a decision in a different way — settling for 'good enough,' being swayed by unrecoverable past investment, or unconsciously filtering out inconvenient information — and recognising them in a real scenario is more useful than only knowing their dictionary definitions.",
+      "realPurpose": "Spotting these patterns in everyday situations, like choosing a book, a club, or gathering opinions, builds the practical skill of catching these mistakes in your own decisions before they lead you astray."
+    },
+    "amb_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student planning an outdoor birthday party also books an indoor backup venue in case it rains. What decision-making strategy is being demonstrated?",
+          "answer": "Contingency planning (having a backup plan)",
+          "distractors": ["Satisficing", "Anchoring (anchoring bias)", "The sunk cost fallacy"]
+        },
+        {
+          "question": "A student plans a single outdoor party with absolutely no backup option, and has no idea what they would do if it rained on the day. What is missing from this plan?",
+          "answer": "A contingency plan for handling an unfavourable outcome",
+          "distractors": ["Satisficing", "Anchoring (anchoring bias)", "The sunk cost fallacy"]
+        }
+      ],
+      "technicalIntricacy": "A contingency plan doesn't try to predict exactly what will happen; instead, it prepares a reasonable response in advance for one of the ways things could go wrong, which reduces stress and wasted time if that scenario actually occurs.",
+      "realPurpose": "Preparing a backup plan is one of the simplest, most practical ways to make a decision more resilient to genuine uncertainty, without needing to know exactly what the future holds."
+    },
+    "amb_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student can only choose one after-school activity: chess club or art club. By choosing chess club, what have they given up?",
+          "answer": "The opportunity cost of choosing chess club — the benefit they would have gained from art club instead",
+          "distractors": [
+            "Nothing at all, since choosing one option never involves giving up anything else",
+            "The entire value of both clubs combined, since choosing either one cancels out all benefit",
+            "Only the membership fee, since opportunity cost refers exclusively to money"
+          ]
+        },
+        {
+          "question": "A student assumes that choosing one option means literally nothing is given up, as long as the chosen option itself turns out well. What is the flaw in this thinking?",
+          "answer": "Choosing one option, even a good one, still means giving up whatever benefit the next-best alternative would have provided; that giving-up is the opportunity cost, and it exists regardless of how well the chosen option turns out",
+          "distractors": [
+            "The student is correct — a good outcome from the chosen option always means nothing was ever given up",
+            "Opportunity cost only applies when the chosen option turns out badly",
+            "Opportunity cost is not a real consideration in any decision involving only two options"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Opportunity cost isn't about money lost directly; it's about the value of the next-best alternative that becomes unavailable the moment you commit to a different choice, and it applies even when the option you picked turns out to be a good one.",
+      "realPurpose": "Thinking in terms of opportunity cost helps make trade-offs explicit, which leads to more honest comparisons between options instead of only evaluating the chosen option in isolation."
+    },
+    "amb_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A shop first displays a very high original price for a jacket, then reveals a 'discounted' price that is still more than the student intended to spend, yet it now feels like a great bargain. What decision-making effect is happening here?",
+          "answer": "Anchoring — the initial high price shifted the student's sense of what counts as a reasonable price",
+          "distractors": [
+            "Satisficing — the student is settling for a good enough price rather than seeking the best one",
+            "The sunk cost fallacy — the student has already spent money and cannot back out now",
+            "Contingency planning — the student prepared a backup plan in case the price changed"
+          ]
+        },
+        {
+          "question": "In a group discussion, the very first opinion someone shares ends up strongly shaping how the whole group judges every opinion suggested afterward, even ones with equally strong reasoning. What decision-making effect is happening here?",
+          "answer": "Anchoring — the first opinion shared became a reference point that influenced how later opinions were judged",
+          "distractors": [
+            "Satisficing — the group settled for whichever opinion required the least discussion",
+            "The sunk cost fallacy — the group felt they had already invested too much time to consider new opinions",
+            "Contingency planning — the group prepared an alternative opinion in case the first one failed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Anchoring happens because the first number or opinion encountered becomes an unconscious reference point, and every option considered afterward tends to be judged relative to that starting point rather than on its own independent merits.",
+      "realPurpose": "Recognising anchoring helps you evaluate prices, opinions and options more independently, rather than being unknowingly swayed by whatever happened to be presented first."
+    },
+    "amb_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student is comparing two clubs to join. Club A scores {{scoreA1}} out of 10 for \"fun\" and {{scoreA2}} out of 10 for \"skill-building.\" Club B scores {{scoreB1}} out of 10 for \"fun\" and {{scoreB2}} out of 10 for \"skill-building.\" If both factors are weighted equally, which club has the higher total score?",
+          "answer": "{{winner}}, with a total score of {{winnerTotal}} (compared to the other club's {{loserTotal}})",
+          "distractors": [
+            "{{otherClub}}, with a total score of {{loserTotal}} (compared to the other club's {{winnerTotal}})",
+            "Both clubs are tied with equal total scores",
+            "Neither club can be compared without more information"
+          ],
+          "vars": {
+            "scenario": {
+              "type": "pick",
+              "options": [
+                { "scoreA1": 8, "scoreA2": 6, "scoreB1": 5, "scoreB2": 7 },
+                { "scoreA1": 9, "scoreA2": 4, "scoreB1": 6, "scoreB2": 9 },
+                { "scoreA1": 5, "scoreA2": 5, "scoreB1": 8, "scoreB2": 6 },
+                { "scoreA1": 10, "scoreA2": 7, "scoreB1": 4, "scoreB2": 5 },
+                { "scoreA1": 6, "scoreA2": 3, "scoreB1": 9, "scoreB2": 8 },
+                { "scoreA1": 7, "scoreA2": 9, "scoreB1": 5, "scoreB2": 4 },
+                { "scoreA1": 4, "scoreA2": 6, "scoreB1": 9, "scoreB2": 10 },
+                { "scoreA1": 9, "scoreA2": 9, "scoreB1": 3, "scoreB2": 5 },
+                { "scoreA1": 3, "scoreA2": 4, "scoreB1": 6, "scoreB2": 7 },
+                { "scoreA1": 8, "scoreA2": 10, "scoreB1": 6, "scoreB2": 4 },
+                { "scoreA1": 7, "scoreA2": 5, "scoreB1": 9, "scoreB2": 6 },
+                { "scoreA1": 10, "scoreA2": 10, "scoreB1": 3, "scoreB2": 3 }
+              ]
+            },
+            "scoreA1": { "type": "field", "of": "scenario", "key": "scoreA1" },
+            "scoreA2": { "type": "field", "of": "scenario", "key": "scoreA2" },
+            "scoreB1": { "type": "field", "of": "scenario", "key": "scoreB1" },
+            "scoreB2": { "type": "field", "of": "scenario", "key": "scoreB2" },
+            "totalA": { "type": "computed", "formulaId": "add", "args": ["scoreA1", "scoreA2"] },
+            "totalB": { "type": "computed", "formulaId": "add", "args": ["scoreB1", "scoreB2"] },
+            "clubALabel": { "type": "pick", "options": ["Club A"] },
+            "clubBLabel": { "type": "pick", "options": ["Club B"] },
+            "winner": { "type": "computed", "formulaId": "greaterOf", "args": ["totalA", "totalB", "clubALabel", "clubBLabel"] },
+            "otherClub": { "type": "computed", "formulaId": "greaterOf", "args": ["totalA", "totalB", "clubBLabel", "clubALabel"] },
+            "winnerTotal": { "type": "computed", "formulaId": "max2", "args": ["totalA", "totalB"] },
+            "loserTotal": { "type": "computed", "formulaId": "min2", "args": ["totalA", "totalB"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "When comparing options across multiple factors weighted equally, adding up the scores for each option gives a simple, fair way to compare them directly, even though real decisions often involve weighting some factors more heavily than others.",
+      "realPurpose": "This kind of simple scoring method is a practical way to organise a decision that initially feels complicated, by turning vague impressions into a clearer, comparable format."
+    },
+    "amb_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student is deciding whether to bring an umbrella. The weather forecast says there is a {{percent}}% chance of rain. Out of {{trials}} similar days with this same forecast, approximately how many would you expect to actually have rain?",
+          "answer": "{{expected}}",
+          "distractors": ["{{distractorA}}", "{{percent}}", "{{distractorC}}"],
+          "vars": {
+            "percent": { "type": "pick", "options": [10, 20, 25, 30, 40, 50, 60, 75] },
+            "trials": { "type": "pick", "options": [20, 40, 50, 100] },
+            "expected": { "type": "computed", "formulaId": "multiplyDivide", "args": ["trials", "percent", 100] },
+            "distractorA": { "type": "computed", "formulaId": "subtract", "args": ["trials", "expected"] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "distractorC": { "type": "computed", "formulaId": "add", "args": ["expected", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "A percentage chance describes how often an outcome is expected to happen across many similar situations, so multiplying the percentage by the number of trials estimates how many of those situations would actually see that outcome.",
+      "realPurpose": "Understanding probability this way helps turn a vague-sounding forecast into a concrete expectation, making it easier to decide reasonably despite genuine uncertainty about any single day."
+    },
+    "amb_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student refuses to make any decision at all until they have 100% certainty about the outcome, and as a result misses the deadline for both options they were considering. What is the flaw in this approach?",
+          "answer": "Waiting for complete certainty is often unrealistic, since many real decisions must be made with some remaining uncertainty; refusing to decide is itself a decision (often the worst one, since it can forfeit every option), so learning to act reasonably despite incomplete information is an important skill",
+          "distractors": [
+            "The student made the right call — it is always better to miss every opportunity than to decide with any uncertainty remaining",
+            "The mistake was only in choosing the wrong deadline, not in the decision to wait for full certainty",
+            "There is no flaw here — total certainty is usually achievable if a person simply waits long enough"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Complete certainty about the future is rarely available for any meaningful decision, since it would require knowing every relevant factor in advance; treating 'not deciding' as a safe, neutral choice ignores that it actually forecloses every option once a deadline passes.",
+      "realPurpose": "Recognising this helps build the confidence to make reasonable, well-considered decisions under realistic conditions, rather than becoming stuck (a pattern sometimes called 'analysis paralysis')."
+    },
+    "amb_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After making a well-reasoned decision that didn't turn out well, a student concludes that 'careful decision-making is pointless since things can go wrong anyway.' What is the flaw in this reasoning?",
+          "answer": "Even a well-reasoned decision can have a disappointing outcome due to factors outside anyone's control, but that doesn't mean the decision-making process was flawed; careful reasoning consistently improves the ODDS of good outcomes over many decisions, even if any single decision can still turn out poorly by chance",
+          "distractors": [
+            "The student is correct — since the outcome was disappointing, the decision-making process must have been careless or flawed",
+            "Careful decision-making only matters for decisions that are guaranteed to work out well in advance",
+            "The only way to guarantee a good outcome is to avoid making decisions altogether"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Decision quality and outcome quality are related but not identical: a good decision-making process accounts for the information available at the time and reasonably weighs the likely outcomes, while the actual result can still be influenced by chance or unknown factors beyond anyone's control.",
+      "realPurpose": "Separating 'good decision' from 'good outcome' helps people keep making thoughtful choices consistently, rather than abandoning careful reasoning after a single unlucky result."
+    },
+    "amb_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A game offers a reward of {{reward}} points with a {{probability}}% chance of winning. What is the expected value of playing this game (Reward × Probability of winning)?",
+          "answer": "{{expectedValue}}",
+          "distractors": ["{{reward}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "probability": { "type": "pick", "options": [10, 20, 25, 50] },
+            "reward": { "type": "int", "min": 10, "max": 100 },
+            "expectedValue": { "type": "computed", "formulaId": "multiplyDivide", "args": ["reward", "probability", 100] },
+            "bumpA": { "type": "int", "min": 2, "max": 10 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["expectedValue", "bumpA"] },
+            "bumpC": { "type": "int", "min": 2, "max": 10 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["expectedValue", "bumpC"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Expected value combines a potential reward with its likelihood into a single number, calculated by multiplying the reward by the probability of winning (expressed as a decimal fraction), giving a useful average outcome if the game were played many times.",
+      "realPurpose": "Expected value is used to compare different uncertain options fairly, from evaluating simple games of chance to making informed real-world financial and business decisions."
+    },
+    "amb_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "An option costs {{cost}} points to choose but offers an expected benefit of {{benefit}} points. What is the benefit-to-cost ratio for this option (Benefit ÷ Cost)?",
+      "vars": {
+        "cost": { "type": "int", "min": 10, "max": 100 },
+        "benefit": { "type": "int", "min": 20, "max": 300 }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["benefit", "cost"],
+      "decimals": 2,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "divide", "args": ["cost", "benefit"] }],
+        "perturb": { "min": -4, "max": 4, "decimals": 2, "minValue": 0.1 }
+      },
+      "technicalIntricacy": "A benefit-to-cost ratio is found by dividing the expected benefit by the cost, giving a single number that shows how much benefit is gained per unit of cost spent — a higher ratio generally indicates a more efficient option.",
+      "realPurpose": "Benefit-to-cost ratios are used throughout economics, business and public policy to compare very different options on a single, consistent efficiency scale."
+    },
+    "amb_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student choosing between two summer camps lists the pros and cons of each, asks a few specific questions to fill in missing details, and prepares a backup plan in case their first-choice camp is full. Which combination of strategies for handling ambiguity is being used here?",
+          "answer": "Organising a pros-and-cons comparison, gathering targeted information to reduce uncertainty, and preparing a contingency plan",
+          "distractors": [
+            "Relying purely on random guessing, since no amount of comparison or information can ever reduce genuine uncertainty",
+            "Waiting indefinitely for complete certainty before making any decision at all",
+            "Choosing based only on which camp was mentioned first, without any comparison or further information"
+          ]
+        },
+        {
+          "question": "A student facing a decision with several unknowns refuses to gather any further information, refuses to compare pros and cons, and refuses to prepare any backup plan, insisting on simply 'going with their gut' for a choice that will meaningfully affect their year. What is the main risk of skipping every one of these strategies?",
+          "answer": "Skipping structured information-gathering, comparison and contingency planning increases the chance of overlooking an important trade-off or being unprepared if the decision doesn't work out",
+          "distractors": [
+            "There is no real risk, since gut instinct is always at least as reliable as careful comparison for any decision",
+            "The only risk is wasting time, since skipping these strategies always leads to a faster (and equally good) decision",
+            "The risk applies only to small, unimportant decisions, never to ones that meaningfully affect a person's year"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Real ambiguous decisions are rarely resolved by a single trick; combining several strategies at once — comparing trade-offs, gathering the most relevant missing information, and preparing for an unfavourable outcome — covers more of what can go wrong than relying on just one strategy alone.",
+      "realPurpose": "Recognising when several ambiguity-navigating strategies are being used together (or skipped together) helps a student evaluate whether a real decision-making process was actually thorough, rather than just checking off one single step."
+    },
+    "amb_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student refuses to ever take any risk, no matter how small the downside or how large the potential benefit, always choosing 'the safest option' by default. What is the flaw in this approach?",
+          "answer": "Reasonable decision-making means weighing the actual size of the potential risk against the actual size of the potential benefit case-by-case, not applying a blanket 'never take any risk' rule; sometimes a very small, well-understood risk is clearly worth taking for a much larger potential benefit",
+          "distractors": [
+            "The student is correct — the truly safest strategy in every situation, without exception, is to always avoid any risk whatsoever",
+            "Risk should always be accepted, regardless of its size, if there is any potential benefit at all",
+            "The size of a potential benefit is completely irrelevant when any risk, however small, is involved"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Good decision-making weighs the actual magnitude of a risk against the actual magnitude of a potential benefit in each specific situation; a blanket rule of always avoiding any risk ignores cases where the downside is genuinely tiny or easily recoverable, while the potential upside is substantial, meaning the 'safe' choice can sometimes be the less sensible one.",
+      "realPurpose": "This case-by-case evaluation is exactly how experienced decision-makers in business, medicine and everyday life choose when a risk is clearly worth taking."
+    },
+    "amb_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After one instance where taking a risk paid off well, a student decides that taking risks always leads to good outcomes, and begins taking increasingly large risks without carefully weighing trade-offs. What is the flaw in this reasoning?",
+          "answer": "One successful risky outcome doesn't prove that taking risks always pays off — it may have simply been a matter of luck in that specific case; sound decision-making requires evaluating each situation's actual likely trade-offs and probabilities every time, rather than assuming a pattern based on a single previous result",
+          "distractors": [
+            "The student is correct — once a risky choice pays off one time, taking similarly large risks will reliably keep paying off in the future",
+            "The single successful outcome proves the student has developed a special skill at correctly predicting risky outcomes",
+            "Past outcomes, whether good or bad, should always be completely ignored when making any future decision"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A single successful outcome from a risky decision doesn't change the actual underlying probability of success for future, different decisions; treating one lucky result as proof of a reliable pattern (rather than re-evaluating each new situation's specific risks and rewards) is a reasoning error that can lead to increasingly poor decisions over time.",
+      "realPurpose": "Recognising the difference between a good decision-making process and a lucky one-time outcome is essential for making consistently sound choices, rather than being misled by a single result."
+    },
+    "res_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the belief that abilities can be developed through effort and practice, rather than being fixed traits, called?", "answer": "A growth mindset" },
+        { "question": "What term describes making repeated small improvements over multiple attempts rather than expecting perfection on the first try?", "answer": "Iteration" },
+        { "question": "What term describes the useful mental effort of working through a genuinely challenging problem?", "answer": "Productive struggle" },
+        { "question": "What is it called when you specifically examine what went wrong (and why) after a setback, in order to improve?", "answer": "Reflection" }
+      ],
+      "distractorPool": ["A growth mindset", "Iteration", "Productive struggle", "Reflection"],
+      "distractorCount": 3,
+      "technicalIntricacy": "These terms describe the internal skills behind resilience: believing ability can grow, expecting to improve gradually rather than instantly, embracing challenge as useful effort, and deliberately learning from setbacks rather than just feeling upset by them.",
+      "realPurpose": "Having clear names for these ideas makes it easier to notice and practice them deliberately, rather than only experiencing resilience as a vague feeling of 'toughing it out.'"
+    },
+    "res_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After a setback, carefully reviewing which specific steps didn't work, and trying a slightly different approach next time. What type of response is this?",
+          "answer": "A constructive, growth-oriented response",
+          "distractors": ["An unhelpful, fixed-mindset response", "Neither a helpful nor an unhelpful response — it has no effect either way", "A response that is only helpful for sports, not academic subjects"]
+        },
+        {
+          "question": "After a setback, deciding never to attempt the task again because the first attempt didn't succeed. What type of response is this?",
+          "answer": "An unhelpful, fixed-mindset response",
+          "distractors": ["A constructive, growth-oriented response", "Neither a helpful nor an unhelpful response — it has no effect either way", "A response that is only helpful for sports, not academic subjects"]
+        },
+        {
+          "question": "After a setback, treating a mistake as useful information about what to adjust, rather than as proof of a lack of ability. What type of response is this?",
+          "answer": "A constructive, growth-oriented response",
+          "distractors": ["An unhelpful, fixed-mindset response", "Neither a helpful nor an unhelpful response — it has no effect either way", "A response that is only helpful for sports, not academic subjects"]
+        },
+        {
+          "question": "After a setback, assuming that needing more than one attempt at something proves you're simply 'not good' at it. What type of response is this?",
+          "answer": "An unhelpful, fixed-mindset response",
+          "distractors": ["A constructive, growth-oriented response", "Neither a helpful nor an unhelpful response — it has no effect either way", "A response that is only helpful for sports, not academic subjects"]
+        }
+      ],
+      "technicalIntricacy": "A growth-oriented response treats a setback as specific, useful feedback to adjust future attempts, while a fixed-mindset response treats it as final proof of a permanent limitation — the difference in how someone interprets the same event can lead to very different outcomes over time.",
+      "realPurpose": "Learning to recognise these response patterns in yourself makes it easier to deliberately choose the constructive response, even when the unhelpful one feels more automatic in the moment."
+    },
+    "res_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes bouncing back and adapting well after a difficult setback or challenge?", "answer": "Resilience" },
+        { "question": "What term describes the specific, actionable lesson learned from analysing why an attempt failed?", "answer": "A takeaway (lesson learned)" },
+        { "question": "What term describes trying a new approach specifically because a previous one didn't work, rather than giving up entirely?", "answer": "Adapting one's approach" }
+      ],
+      "distractorPool": ["Resilience", "A takeaway (lesson learned)", "Adapting one's approach", "Avoidance"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Resilience, extracting takeaways, and adapting one's approach are all connected skills for handling setbacks productively: bouncing back overall, learning something specific from what went wrong, and then actually changing behaviour based on that lesson.",
+      "realPurpose": "Naming these skills precisely makes it easier to practice them deliberately after a setback, rather than only experiencing 'resilience' as a vague feeling."
+    },
+    "res_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Is the thought 'This is hard right now, but I can improve with practice.' an example of growth-oriented or fixed-mindset self-talk?",
+          "answer": "Growth-oriented self-talk",
+          "distractors": ["Fixed-mindset self-talk", "Neutral self-talk with no effect on motivation either way", "Self-talk that only affects physical tasks, not mental ones"]
+        },
+        {
+          "question": "Is the thought 'I'll never be able to do this, so there's no point trying.' an example of growth-oriented or fixed-mindset self-talk?",
+          "answer": "Fixed-mindset self-talk",
+          "distractors": ["Growth-oriented self-talk", "Neutral self-talk with no effect on motivation either way", "Self-talk that only affects physical tasks, not mental ones"]
+        },
+        {
+          "question": "Is the thought 'Let me figure out specifically what went wrong so I can adjust.' an example of growth-oriented or fixed-mindset self-talk?",
+          "answer": "Growth-oriented self-talk",
+          "distractors": ["Fixed-mindset self-talk", "Neutral self-talk with no effect on motivation either way", "Self-talk that only affects physical tasks, not mental ones"]
+        },
+        {
+          "question": "Is the thought 'Only naturally talented people can succeed at this, and I'm clearly not one of them.' an example of growth-oriented or fixed-mindset self-talk?",
+          "answer": "Fixed-mindset self-talk",
+          "distractors": ["Growth-oriented self-talk", "Neutral self-talk with no effect on motivation either way", "Self-talk that only affects physical tasks, not mental ones"]
+        }
+      ],
+      "technicalIntricacy": "Growth-oriented self-talk frames a setback as a specific, improvable situation, while fixed-mindset self-talk frames it as a permanent, unchangeable limitation — and the internal language someone uses can meaningfully shape whether they keep trying or give up.",
+      "realPurpose": "Noticing the difference between these two internal voices makes it possible to deliberately shift toward growth-oriented thinking during a difficult moment."
+    },
+    "res_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a mix of long-term perseverance and passion for a goal that keeps someone working toward it despite setbacks?", "answer": "Grit" },
+        { "question": "What term describes a person's belief in their own ability to succeed at a specific task or challenge?", "answer": "Self-efficacy" },
+        { "question": "What term describes praise that focuses on someone's effort and strategy, rather than on fixed, innate talent?", "answer": "Process praise" }
+      ],
+      "distractorPool": ["Grit", "Self-efficacy", "Process praise", "A fixed mindset"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Grit describes sustained motivation over time, self-efficacy describes confidence in handling a specific challenge, and process praise reinforces effort and strategy rather than a fixed trait — three related but distinct ingredients that support resilience.",
+      "realPurpose": "Knowing these terms precisely helps a student notice which ingredient of resilience they might be missing in a tough moment, rather than only feeling generally 'unmotivated.'"
+    },
+    "res_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Many well-known inventions, artworks and discoveries reached their final, successful form only after going through what?",
+          "answer": "Many earlier failed or imperfect versions and drafts",
+          "distractors": [
+            "A single flawless first attempt, with no earlier versions at all",
+            "Pure luck, with no prior attempts, drafts or practice involved",
+            "A secret shortcut that skips the need for any practice or revision"
+          ]
+        },
+        {
+          "question": "A student assumes that a finished, polished project must have been perfect from the very first attempt, with no earlier failed drafts along the way. What does this assumption overlook?",
+          "answer": "Most finished, polished work is actually the result of many earlier attempts, drafts and corrections that simply aren't visible in the final version",
+          "distractors": [
+            "The assumption is correct — polished final work is almost always the result of a single perfect first attempt",
+            "Nothing is overlooked, since early drafts have no real effect on a final result",
+            "Only low-quality, unfinished projects ever involve multiple drafts or attempts"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The version of a project that eventually gets shown to the world is usually the last in a long, mostly invisible line of earlier drafts, prototypes and failed attempts, each of which contributed something toward the final result.",
+      "realPurpose": "Knowing this helps a student expect (and accept) an imperfect first draft as a normal part of the process, rather than mistaking it for proof the whole project has failed."
+    },
+    "res_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After a disappointing test result, a teacher simply tells a student 'do better next time' without explaining what to change. Is this specific or vague feedback?",
+          "answer": "Vague feedback",
+          "distractors": ["Specific feedback", "Neither specific nor vague — it counts as no feedback at all", "Both specific and vague feedback at the same time"]
+        },
+        {
+          "question": "After a disappointing test result, a teacher tells a student exactly which two topics they missed and suggests one practice strategy for each. Is this specific or vague feedback?",
+          "answer": "Specific feedback",
+          "distractors": ["Vague feedback", "Neither specific nor vague — it counts as no feedback at all", "Both specific and vague feedback at the same time"]
+        }
+      ],
+      "technicalIntricacy": "Specific feedback names the exact topic, step or habit to adjust, giving a clear starting point for the next attempt, while vague feedback only signals that something should change without saying what — making it much harder to actually act on.",
+      "realPurpose": "Learning to ask for (or give) specific feedback turns a discouraging result into a concrete, usable plan for improvement."
+    },
+    "res_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student who isn't improving with one study method switches to a different method that suits how they learn, while still working toward the same overall goal. Is this quitting or a strategic pivot?",
+          "answer": "A strategic pivot",
+          "distractors": ["Quitting", "Neither — this counts as abandoning the goal entirely", "Both quitting and a strategic pivot at the same time"]
+        },
+        {
+          "question": "A student gives up on a goal completely after a single setback, without ever adjusting their approach or trying an alternative method. Is this quitting or a strategic pivot?",
+          "answer": "Quitting",
+          "distractors": ["A strategic pivot", "Neither — this counts as improving the original approach", "Both quitting and a strategic pivot at the same time"]
+        }
+      ],
+      "technicalIntricacy": "A strategic pivot keeps the original goal in place while changing the method used to reach it, whereas quitting abandons the goal itself — the two can look similar in the moment (both involve stopping something), but they lead to very different outcomes.",
+      "realPurpose": "Telling these two apart helps a student choose a genuinely more effective approach when one isn't working, instead of mistakenly treating every setback as a reason to give up entirely."
+    },
+    "res_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Is struggling with a genuinely difficult, unfamiliar task a normal, expected part of learning, or proof that someone lacks the ability to ever succeed at it?",
+          "answer": "A normal, expected part of learning",
+          "distractors": [
+            "Proof that someone lacks the ability to ever succeed at it",
+            "Proof that the task itself is impossible for anyone to learn",
+            "A sign that the person should switch to an entirely easier subject permanently"
+          ]
+        },
+        {
+          "question": "A student assumes that if a new skill feels difficult at first, it must mean they simply aren't cut out for it. What is the flaw in this assumption?",
+          "answer": "Feeling difficulty with a new, unfamiliar skill is a normal early stage of learning it, not reliable evidence about long-term ability; most skills feel hard before they start to feel manageable with practice",
+          "distractors": [
+            "The assumption is correct — a skill that feels hard at first will always continue to feel equally hard, no matter how much practice follows",
+            "Difficulty at the start of learning something new is extremely rare and usually signals a genuine lack of ability",
+            "There is no connection at all between early difficulty and how much practice a skill typically requires"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Early difficulty with a new skill mostly reflects unfamiliarity rather than a fixed ceiling on ability, since almost every skill requires an uncomfortable early stage before repeated practice makes it feel more natural.",
+      "realPurpose": "Expecting some early struggle as normal helps a student stay with a new challenge long enough to actually improve, instead of quitting during the hardest and most temporary part of the learning curve."
+    },
+    "res_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes reaching out to a teacher, friend, or family member for guidance when stuck on a difficult challenge?", "answer": "Seeking support (asking for help)" },
+        { "question": "What term describes continuing to struggle with a problem completely alone, even when a hint or explanation from someone else could unblock progress much faster?", "answer": "Avoiding seeking support" }
+      ],
+      "distractorPool": ["Seeking support (asking for help)", "Avoiding seeking support", "The sunk cost fallacy", "A fixed mindset"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Seeking support means recognising that continuing to struggle completely alone isn't the only (or always the best) option, and that asking for a hint, explanation or guidance can unblock progress far faster than repeated solo attempts.",
+      "realPurpose": "Treating asking for help as a legitimate resilience strategy, rather than as a sign of weakness, makes students more likely to actually use it when they're genuinely stuck."
+    },
+    "res_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student practices a skill and improves their score by {{improvementPerSession}} points after each practice session. If they start with a score of {{startScore}}, what will their score be after {{sessions}} practice sessions?",
+          "answer": "{{finalScore}}",
+          "distractors": ["{{distractorA}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "startScore": { "type": "int", "min": 20, "max": 60 },
+            "improvementPerSession": { "type": "int", "min": 2, "max": 10 },
+            "sessions": { "type": "int", "min": 2, "max": 8 },
+            "gain": { "type": "computed", "formulaId": "multiply", "args": ["improvementPerSession", "sessions"] },
+            "finalScore": { "type": "computed", "formulaId": "add", "args": ["startScore", "gain"] },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["startScore", "improvementPerSession"] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["finalScore", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 10 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["finalScore", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Steady, repeated improvement is calculated by multiplying the improvement made per attempt by the number of attempts, then adding that total gain to the starting point — a simple model of how consistent practice compounds over time.",
+      "realPurpose": "This kind of calculation illustrates why small, consistent gains from regular practice can add up to a large overall improvement, even when no single session feels like a huge leap forward."
+    },
+    "res_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "An inventor's first attempt at a new design scored {{firstScore}} out of 100. Undiscouraged, they kept improving, with their score increasing by exactly {{perAttempt}} points on each attempt after that. If they made {{attempts}} attempts in total, what score did their final attempt achieve?",
+          "answer": "{{finalScore}} out of 100",
+          "distractors": ["{{firstScore}} out of 100", "{{distractorB}} out of 100", "{{distractorC}} out of 100"],
+          "vars": {
+            "attempts": { "type": "int", "min": 3, "max": 8 },
+            "firstScore": { "type": "int", "min": 20, "max": 50 },
+            "perAttempt": { "type": "int", "min": 3, "max": 10 },
+            "attemptsMinus1": { "type": "computed", "formulaId": "subtract", "args": ["attempts", 1] },
+            "gain": { "type": "computed", "formulaId": "multiply", "args": ["perAttempt", "attemptsMinus1"] },
+            "finalScore": { "type": "computed", "formulaId": "add", "args": ["firstScore", "gain"] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["finalScore", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 10 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["finalScore", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Since the score increases by the same fixed amount after each attempt following the first, the final score is found by adding that per-attempt improvement to the first score, once for every attempt after the first.",
+      "realPurpose": "This models a very common real pattern behind inventions and creative work: steady, iterative improvement over many attempts rather than instant success on the first try."
+    },
+    "res_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After getting a low score on a first attempt at a difficult task, a student concludes 'I am just bad at this and will never improve,' and gives up immediately. What is the flaw in this thinking?",
+          "answer": "A single early attempt, especially at something new or difficult, is not a reliable measure of long-term ability; skills typically improve significantly with practice and iteration, and giving up after just one attempt prevents the very practice that would lead to improvement — this reflects a 'fixed mindset' rather than an accurate assessment of ability",
+          "distractors": [
+            "The student is correct — a low score on a first attempt reliably proves a person will never improve at that task",
+            "The flaw is only that the student should have asked for help immediately, not that they gave up",
+            "There is no flaw here — giving up immediately after one attempt is always the most efficient use of time"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Performance on a first attempt mostly reflects unfamiliarity with a new task, not a fixed ceiling on ability; nearly all measurable skills show substantial improvement over multiple practice attempts, which is precisely why coaches, teachers and trainers structure learning around repeated practice rather than judging ability from a single try.",
+      "realPurpose": "Recognising this pattern helps students push through the discouraging first attempt at something new, since that attempt is rarely representative of what they're capable of with practice."
+    },
+    "res_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student believes that truly skilled people never make mistakes, and interprets their own mistake as proof they'll never become skilled. What is a more accurate way to think about the role of mistakes in developing real skill?",
+          "answer": "Even highly skilled people make mistakes regularly, especially while learning something new or pushing their abilities further; making mistakes is a normal, expected part of developing genuine skill, and how someone responds to a mistake matters far more than the fact that it happened",
+          "distractors": [
+            "The student is correct — genuinely skilled people never make mistakes once they have mastered a task",
+            "Mistakes are only acceptable for beginners; skilled people who make mistakes are proof they were never actually skilled",
+            "The number of mistakes someone makes is always a perfectly accurate measure of how skilled they are"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Even experts continue to make mistakes, particularly when practising at the edge of their current ability, since that is precisely where meaningful learning happens; the presence of mistakes says far less about someone's potential than how thoughtfully they analyse and learn from them.",
+      "realPurpose": "This more accurate mindset helps students keep taking on appropriately challenging tasks instead of avoiding anything where a mistake feels possible."
+    },
+    "res_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student starts with a skill score of {{startScore}}. If their score improves by {{improvementPercent}}% after each of {{sessions}} practice sessions (compounding each time), what is their approximate final score, rounded to the nearest whole number?",
+          "answer": "{{finalScore}}",
+          "distractors": ["{{distractorA}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "startScore": { "type": "int", "min": 20, "max": 50 },
+            "improvementPercent": { "type": "pick", "options": [5, 10, 15, 20] },
+            "sessions": { "type": "pick", "options": [2, 3, 4] },
+            "finalScore": { "type": "computed", "formulaId": "compoundGrowth", "args": ["startScore", "improvementPercent", "sessions"] },
+            "linGain": { "type": "computed", "formulaId": "multiply", "args": ["improvementPercent", "sessions"] },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["startScore", "linGain"] },
+            "bump": { "type": "int", "min": 2, "max": 8 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["finalScore", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 8 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["finalScore", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Compounding growth means each new improvement is calculated as a percentage of the current (already-improved) score rather than the original starting score, so repeated percentage gains build on top of each other and accelerate over multiple sessions.",
+      "realPurpose": "This compounding pattern explains why consistent, repeated practice can lead to increasingly rapid improvement over time, rather than the same fixed gain every session."
+    },
+    "res_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student practices a new skill for {{hoursPerWeek}} hours per week. How many total hours will they have practiced after {{weeks}} weeks?",
+          "answer": "{{totalHours}} hours",
+          "distractors": ["{{hoursPerWeek}} hours", "{{distractorB}} hours", "{{distractorC}} hours"],
+          "vars": {
+            "hoursPerWeek": { "type": "int", "min": 2, "max": 10 },
+            "weeks": { "type": "int", "min": 4, "max": 20 },
+            "totalHours": { "type": "computed", "formulaId": "multiply", "args": ["hoursPerWeek", "weeks"] },
+            "bump": { "type": "int", "min": 5, "max": 20 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["totalHours", "bump"] },
+            "bump2": { "type": "int", "min": 5, "max": 20 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["totalHours", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Total practice time over multiple weeks is found by multiplying the weekly practice rate by the number of weeks, the same scaling calculation used for any consistent, repeated commitment.",
+      "realPurpose": "Seeing the large total that builds up from modest weekly practice helps illustrate how consistent small efforts accumulate into significant skill development over time."
+    },
+    "res_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After failing an audition, a student identifies the one specific skill that let them down, practices deliberately on just that skill for a few weeks, and then tries out again. Which combination of resilience strategies is being demonstrated?",
+          "answer": "Reflecting on specific feedback, then iterating through deliberate practice before trying again — rather than either giving up or repeating the exact same preparation unchanged",
+          "distractors": [
+            "Avoiding the audition entirely next time, since one failed attempt reliably predicts every future attempt will fail too",
+            "Repeating the exact same preparation without any change, since specific feedback is never useful for improvement",
+            "Blaming the failed audition entirely on bad luck, without examining which skill actually needed work"
+          ]
+        },
+        {
+          "question": "A student who didn't make a sports team decides never to consider that sport again, without ever asking a coach what specific skills to improve. What resilience strategy is missing from this reaction?",
+          "answer": "Seeking specific feedback and iterating through practice, instead of treating a single setback as a final, permanent verdict",
+          "distractors": [
+            "Nothing is missing — permanently avoiding the sport is the most effective response to any single setback",
+            "The only strategy missing is trying out for a completely different, unrelated sport instead",
+            "The student should have blamed the coaches instead of considering their own next steps"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Real resilience after a specific setback usually combines several skills at once — pinpointing exactly what to improve, deliberately practising that particular gap, and trying again — rather than relying on just one of these skills in isolation.",
+      "realPurpose": "Real setbacks, like a missed audition or tryout, are exactly where combining reflection, iteration and a growth mindset together makes the biggest difference, more than any one strategy alone."
+    },
+    "res_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student who fails at a task blames the failure entirely on 'bad luck' every single time, without ever considering whether a different approach or more practice might have changed the outcome. What is the flaw in this reasoning?",
+          "answer": "While luck can genuinely play a role in some outcomes, consistently blaming every failure on luck alone (without ever examining one's own approach or effort) prevents any real learning or improvement from taking place; a growth-oriented response considers BOTH external factors and one's own controllable choices",
+          "distractors": [
+            "The student is correct — since luck is unpredictable, there is never any value in examining one's own approach after a failure",
+            "Blaming failure on luck is always accurate, since a person's own choices have no real effect on the outcome of any task",
+            "Examining one's own approach after a failure is only useful for tasks that involve no luck whatsoever"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Most real outcomes are influenced by a mix of controllable factors (skill, preparation, strategy) and uncontrollable factors (luck, chance); consistently attributing every failure only to the uncontrollable factors removes any incentive to examine or improve the controllable ones, effectively blocking the reflection needed for genuine growth.",
+      "realPurpose": "Balancing an honest acknowledgment of luck with genuine self-reflection is what allows someone to keep improving, rather than staying stuck by attributing every outcome to forces outside their control."
+    },
+    "res_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a talented friend seems to succeed 'effortlessly' at something, that friend must not have needed any practice or struggled at all to get there. What is the flaw in this reasoning?",
+          "answer": "Visible effortless-looking success very often hides a great deal of unseen practice, past struggle and failed attempts that simply aren't visible in the moment; assuming visible ease means no real effort was required overlooks the far more common reality that skill typically comes from extensive practice, even when that practice isn't witnessed directly",
+          "distractors": [
+            "The student is correct — if a friend's success looks effortless, it reliably proves that no real practice or struggle was ever needed",
+            "Effortless-looking success can only come from natural talent, and is never the result of hidden practice or effort",
+            "Everyone who appears skilled without visible effort must have been born with that skill already fully formed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "What's visible in a single moment of success is rarely the full story; countless hours of practice, earlier mistakes, and gradual improvement typically happen out of view long before a skill appears effortless in front of an audience, a phenomenon sometimes described as only seeing someone's 'highlight reel' rather than their full process.",
+      "realPurpose": "Recognising the hidden effort behind visible skill helps set more realistic expectations for one's own learning process, rather than assuming others simply have an unfair natural advantage."
+    },
+    "sys_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a set of interconnected parts that work together and influence one another?", "answer": "A system" },
+        { "question": "What term describes a situation where the output of a system affects its own future behaviour?", "answer": "A feedback loop" },
+        { "question": "What term describes usefully applying ideas or methods from one subject to a completely different subject?", "answer": "An interdisciplinary connection" },
+        { "question": "What term describes a feedback loop that reinforces and amplifies a trend, making it grow larger over time?", "answer": "Positive feedback" }
+      ],
+      "distractorPool": ["A system", "A feedback loop", "An interdisciplinary connection", "Positive feedback"],
+      "distractorCount": 3,
+      "technicalIntricacy": "These terms describe how complex systems behave: parts that interconnect, loops where effects circle back to influence their own cause, connections that bridge separate fields of knowledge, and feedback that can amplify (or stabilise) a trend over time.",
+      "realPurpose": "Understanding this vocabulary makes it possible to describe and analyse complex situations — like ecosystems, economies, or even a busy school schedule — with much more precision than treating them as a collection of unrelated events."
+    },
+    "sys_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "When a student studying a pond notices that a small increase in one type of fish affects the amount of algae, which then affects the other fish, and considers how all these parts connect together, which approach is being demonstrated?", "answer": "Systems thinking" },
+        { "question": "When a student studying a pond only looks at one single fish species, without considering how it interacts with anything else in the pond, which approach is being demonstrated?", "answer": "Isolated (single-part) thinking" },
+        { "question": "When a student uses a math technique learned in class to help understand patterns in a piece of music, which approach is being demonstrated?", "answer": "An interdisciplinary connection" },
+        { "question": "When a student assumes math skills are only useful in math class and have nothing to do with any other subject, which approach is being demonstrated?", "answer": "A narrow, single-subject mindset" }
+      ],
+      "distractorPool": ["Systems thinking", "Isolated (single-part) thinking", "An interdisciplinary connection", "A narrow, single-subject mindset"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Systems thinking and interdisciplinary connections both involve looking beyond a single isolated piece of information — either by tracing how parts of one system affect each other, or by carrying a useful idea from one subject over into another.",
+      "realPurpose": "Recognising these approaches (and their narrower opposites) helps students notice when they're missing a bigger, more connected picture of a problem."
+    },
+    "sys_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a small initial change that leads to much larger, magnified effects elsewhere in a system, sometimes called 'the butterfly effect'?", "answer": "Sensitivity to initial conditions" },
+        { "question": "What term describes the boundary separating what is considered 'inside' a system from its surrounding environment?", "answer": "A system boundary" },
+        { "question": "What term describes a stable state that a system tends to return to after being disturbed?", "answer": "Equilibrium" }
+      ],
+      "distractorPool": ["Sensitivity to initial conditions", "A system boundary", "Equilibrium", "A feedback loop"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Complex systems have properties beyond just their individual parts — sensitivity to initial conditions describes how small changes can cascade into large effects, a boundary defines what counts as part of the system, and equilibrium describes the stable state the system tends to settle back into.",
+      "realPurpose": "This vocabulary is essential for analysing anything from weather patterns and ecosystems to economies and social networks as genuine interconnected systems."
+    },
+    "sys_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Is a thermostat turning off a heater once a room reaches the target temperature an example of positive or negative feedback?",
+          "answer": "Negative feedback (stabilising)",
+          "distractors": ["Positive feedback (amplifying)", "Neither type of feedback — this scenario involves no feedback at all", "Both types of feedback occurring simultaneously"]
+        },
+        {
+          "question": "Is a savings account's interest earning even more interest over time, growing faster and faster, an example of positive or negative feedback?",
+          "answer": "Positive feedback (amplifying)",
+          "distractors": ["Negative feedback (stabilising)", "Neither type of feedback — this scenario involves no feedback at all", "Both types of feedback occurring simultaneously"]
+        },
+        {
+          "question": "Is the human body sweating to cool down when it becomes too hot an example of positive or negative feedback?",
+          "answer": "Negative feedback (stabilising)",
+          "distractors": ["Positive feedback (amplifying)", "Neither type of feedback — this scenario involves no feedback at all", "Both types of feedback occurring simultaneously"]
+        },
+        {
+          "question": "Is a small crack in a dam growing larger under pressure, causing it to grow even faster, an example of positive or negative feedback?",
+          "answer": "Positive feedback (amplifying)",
+          "distractors": ["Negative feedback (stabilising)", "Neither type of feedback — this scenario involves no feedback at all", "Both types of feedback occurring simultaneously"]
+        }
+      ],
+      "technicalIntricacy": "Negative feedback corrects a system back toward a stable target (like a thermostat maintaining temperature), while positive feedback amplifies a trend further in the same direction (like a growing crack or compounding interest), which is why positive feedback loops can spiral out of control if left unchecked.",
+      "realPurpose": "Recognising which type of feedback is at play helps predict whether a system will stay stable over time or accelerate toward an extreme outcome."
+    },
+    "sys_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a property or behaviour that arises from the interactions between the parts of a system, but isn't present in any single part alone?", "answer": "An emergent property" },
+        { "question": "What term describes the accumulated amount of something within a system at a given moment, like the total water currently sitting in a bathtub?", "answer": "A stock" },
+        { "question": "What term describes the rate at which something enters or leaves a system, like water flowing into or out of a bathtub?", "answer": "A flow" }
+      ],
+      "distractorPool": ["An emergent property", "A stock", "A flow", "A feedback loop"],
+      "distractorCount": 3,
+      "technicalIntricacy": "A stock is the current accumulated quantity in a system, a flow is the rate that changes that quantity over time, and an emergent property is a pattern or behaviour that only appears once enough parts are interacting together — none of these show up from studying a single frozen part in isolation.",
+      "realPurpose": "This vocabulary lets you describe how quantities build up and change within a system (like water in a tank, or money in an account), and why some system behaviours only appear at the level of the whole, not any one piece."
+    },
+    "sys_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Solving many real-world problems, such as protecting the environment or improving a community, typically requires combining knowledge from what?",
+          "answer": "Multiple subjects at once, such as science, economics and social studies",
+          "distractors": [
+            "Only a single subject, since real-world problems always fit neatly into one academic subject",
+            "No formal academic knowledge at all, since real-world problems rely purely on common sense",
+            "Whichever single subject the problem happens to be labelled under, and no others"
+          ]
+        },
+        {
+          "question": "A town council trying to reduce traffic pollution brings in a scientist, an economist and a city planner to work on the problem together, instead of relying on just one type of expert. What does this best illustrate?",
+          "answer": "That real-world problems often require combining knowledge from multiple subjects at once",
+          "distractors": [
+            "That only scientists ever have useful input on environmental problems",
+            "That combining experts from different subjects always slows down problem-solving with no benefit",
+            "That traffic pollution is caused by a single simple factor that any one expert could solve alone"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Real-world problems rarely respect the boundaries between school subjects; a single issue like pollution can involve scientific causes, economic trade-offs, and social effects all at once, so understanding it fully means drawing on more than one discipline.",
+      "realPurpose": "Recognising this prepares students to combine what they've learned across different subjects when facing a genuinely complex, real-world problem, rather than assuming only one subject's toolkit applies."
+    },
+    "sys_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "An engineer trying to speed up a slow, unreliable factory process discovers that adjusting one small bottleneck step dramatically improves the entire production line, more than any other single change tried. What does this bottleneck step represent?",
+          "answer": "A leverage point — a place in the system where a small, targeted change produces a disproportionately large effect",
+          "distractors": ["A system boundary", "Equilibrium", "Sensitivity to initial conditions"]
+        },
+        {
+          "question": "A team trying to improve a system spreads their effort evenly across every single part, instead of first identifying which specific part would produce the biggest improvement if changed. What useful systems-thinking idea are they overlooking?",
+          "answer": "The idea of a leverage point — some specific parts of a system matter far more than others for producing a large overall effect",
+          "distractors": [
+            "The idea that every part of a system always matters exactly equally, with no part more influential than any other",
+            "The idea that systems cannot be improved through any kind of targeted change",
+            "The idea that spreading effort evenly is always the fastest way to improve any system"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Not every part of a system has an equal effect on the whole; a leverage point is a specific spot where the system is especially sensitive, so a small, well-chosen adjustment there ripples out into a much larger overall improvement than changing an unrelated part would.",
+      "realPurpose": "Finding leverage points is why some fixes to a complex system (like a single road, habit or policy) produce outsized results, while other seemingly larger efforts barely move the needle."
+    },
+    "sys_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A school removes recess to add more class time, but then notices students becoming restless and less focused during those extra classes. What does this best illustrate?",
+          "answer": "An unintended consequence — an unexpected side effect that appeared elsewhere in the system after one part of it was changed",
+          "distractors": ["A system boundary", "Equilibrium", "An interdisciplinary connection"]
+        },
+        {
+          "question": "A student assumes that changing just one part of a system (like one class rule) can never possibly affect any other part of that system. What is the flaw in this assumption?",
+          "answer": "Because the parts of a system are interconnected, a change to one part often produces unintended consequences elsewhere in the system, even if those effects weren't the original goal of the change",
+          "distractors": [
+            "The assumption is correct — changing one part of an interconnected system never has any effect on any other part",
+            "Unintended consequences only ever occur in natural ecosystems, never in schools, workplaces or other human systems",
+            "A change only affects other parts of a system if it was specifically intended to do so"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Because the parts of a system influence one another, changing one part — even with a clear, reasonable goal in mind — can trigger effects elsewhere that weren't anticipated or intended, precisely because those parts were connected all along.",
+      "realPurpose": "Anticipating possible unintended consequences before making a change is a core systems-thinking habit, used by policymakers, engineers and planners to avoid solving one problem while accidentally creating another."
+    },
+    "sys_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student trying to understand why a lake's fish population dropped looks only at a single recent event (one storm), without considering longer-term patterns like feeding relationships or water temperature trends. What is this narrower approach called?",
+          "answer": "Event-focused thinking — explaining a situation using only a single isolated event",
+          "distractors": ["Systems thinking", "An interdisciplinary connection", "Positive feedback"]
+        },
+        {
+          "question": "A student trying to understand the same drop in fish population instead studies the ongoing relationships between the fish, their food supply, water temperature, and other species over time. What approach is being demonstrated?",
+          "answer": "Systems thinking — explaining a situation using the ongoing pattern of relationships between its parts",
+          "distractors": ["Event-focused thinking", "A narrow, single-subject mindset", "A system boundary"]
+        }
+      ],
+      "technicalIntricacy": "Event-focused thinking explains an outcome using a single recent trigger, while systems thinking looks at the ongoing web of relationships and patterns building up over time — the second approach usually explains a complex outcome (like a population change) far more completely than any single event can.",
+      "realPurpose": "Looking past the most recent single event, toward the longer-term pattern of relationships behind it, is what allows systems thinkers to predict and explain complex outcomes rather than being surprised by them."
+    },
+    "sys_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a system that exchanges energy, matter or information with its surrounding environment across its boundary?", "answer": "An open system" },
+        { "question": "What term describes a system treated as isolated, with little or no exchange of energy, matter or information across its boundary?", "answer": "A closed system" },
+        { "question": "What term describes a smaller system that exists within, and is part of, a larger overall system?", "answer": "A subsystem" }
+      ],
+      "distractorPool": ["An open system", "A closed system", "A subsystem", "A system boundary"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Open systems constantly exchange resources or information with their environment (like a living ecosystem), closed systems are treated as if nothing crosses their boundary (a useful simplification, even if rarely perfectly true), and a subsystem is simply a smaller system nested inside a larger one, such as a single classroom within an entire school.",
+      "realPurpose": "These distinctions make it possible to describe exactly how a system relates to its surroundings and to the smaller systems nested within it, rather than treating 'system' as one vague, undifferentiated idea."
+    },
+    "sys_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A small system starts with {{start}} units. If positive feedback causes it to grow by {{percent}}% in one cycle, how many units will there be after that cycle?",
+          "answer": "{{total}}",
+          "distractors": ["{{increase}}", "{{distractorB}}", "{{distractorC}}"],
+          "vars": {
+            "start": { "type": "int", "min": 20, "max": 200 },
+            "percent": { "type": "pick", "options": [10, 20, 25, 50] },
+            "increase": { "type": "computed", "formulaId": "multiplyDivide", "args": ["start", "percent", 100] },
+            "total": { "type": "computed", "formulaId": "add", "args": ["start", "increase"] },
+            "bump": { "type": "int", "min": 2, "max": 20 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["total", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 20 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["total", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Positive feedback adds a percentage of the current amount back onto itself, so the new total is found by calculating that percentage increase and adding it to the original starting amount.",
+      "realPurpose": "This simple growth calculation models real feedback loops, such as how a population, a savings account, or a trending idea can grow faster and faster once positive feedback kicks in."
+    },
+    "sys_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student uses a ratio learned in math class — for every {{partA}} parts of ingredient A, use {{partB}} parts of ingredient B — to scale up a recipe. If they want to use {{scaledA}} parts of ingredient A, how many parts of ingredient B should they use to keep the same ratio?",
+          "answer": "{{scaledB}} parts",
+          "distractors": ["{{partB}} parts", "{{distractorB}} parts", "{{distractorC}} parts"],
+          "vars": {
+            "partA": { "type": "int", "min": 2, "max": 6 },
+            "partB": { "type": "int", "min": 2, "max": 8 },
+            "multiplier": { "type": "int", "min": 2, "max": 6 },
+            "scaledA": { "type": "computed", "formulaId": "multiply", "args": ["partA", "multiplier"] },
+            "scaledB": { "type": "computed", "formulaId": "multiply", "args": ["partB", "multiplier"] },
+            "bump": { "type": "int", "min": 2, "max": 8 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["scaledB", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 8 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["scaledB", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Keeping a ratio constant while scaling up means multiplying both original quantities by the same scaling factor, so if ingredient A is scaled up by a certain multiple, ingredient B must be scaled up by that exact same multiple.",
+      "realPurpose": "This is a clear example of an interdisciplinary connection — a math concept (ratios) being directly and practically applied to a completely different subject, like cooking."
+    },
+    "sys_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student tries to solve a problem about a whole ecosystem by focusing on just one single animal species and ignoring how it interacts with plants, weather, and other animals. What is the limitation of this approach?",
+          "answer": "Ecosystems (and most complex systems) are made up of many interacting parts, and focusing on just one isolated part often misses important cause-and-effect relationships between parts; a systems-thinking approach that considers how the parts influence each other usually gives a much more accurate and complete understanding",
+          "distractors": [
+            "The student's approach is correct — understanding just one species is always sufficient to fully understand an entire ecosystem",
+            "The limitation is only that the student chose the wrong species to study, not that they focused on just one",
+            "Ecosystems don't actually have interconnected parts, so focusing on one species has no real downside"
+          ]
+        }
+      ],
+      "technicalIntricacy": "In an interconnected system, changes to one part often ripple outward and affect other parts in ways that aren't obvious from studying that one part alone; understanding a system usually requires tracing at least some of these connections, not just examining a single component in isolation.",
+      "realPurpose": "This is exactly why ecologists, economists and other systems-focused experts study relationships and interactions, not just individual parts, to understand and predict how complex systems actually behave."
+    },
+    "sys_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that {{skill}} could never possibly be useful for something like {{otherSubject}}. What is the flaw in this assumption?",
+          "answer": "Many skills and ways of thinking are genuinely transferable across subjects; techniques like graphing, pattern recognition and structured reasoning show up constantly in science, art, sports statistics and more, so assuming a skill is 'locked' to the subject it was first taught in overlooks powerful cross-disciplinary connections that can make learning easier everywhere",
+          "distractors": [
+            "The student is correct — skills learned in one subject can only ever be used within that exact same subject",
+            "Cross-subject connections are rare exceptions that only apply to a small handful of especially gifted students",
+            "Only teachers are able to notice connections between subjects; students cannot discover these connections on their own"
+          ],
+          "vars": {
+            "skill": { "type": "pick", "options": ["a graphing technique from math class", "a pattern-recognition skill from science class", "a persuasive-writing technique from language class"] },
+            "otherSubject": { "type": "pick", "options": ["tracking scores in a favorite sport", "analysing trends in a science project", "planning a class event's budget"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Underlying skills like organising data, spotting patterns, or structuring an argument are general-purpose tools rather than subject-specific tricks, which is why they reappear in recognisable forms across science, art, sports, and everyday problem-solving once you know to look for them.",
+      "realPurpose": "Actively looking for these cross-disciplinary connections turns every subject into a resource for every other subject, making the whole of a student's education more interconnected and useful."
+    },
+    "sys_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A thermostat system reduces the temperature gap from its target by half with each correction cycle. If the initial gap is {{initialGap}}°, what will the gap be after {{cycles}} correction cycles?",
+          "answer": "{{gap}}°",
+          "distractors": ["{{initialGap}}°", "{{distractorB}}°", "{{distractorC}}°"],
+          "vars": {
+            "initialGap": { "type": "pick", "options": [16, 32, 64, 80, 96] },
+            "cycles": { "type": "pick", "options": [2, 3, 4] },
+            "gap": { "type": "computed", "formulaId": "divideByPower", "args": ["initialGap", 2, "cycles"] },
+            "distractorB": { "type": "computed", "formulaId": "multiply", "args": ["gap", 2] },
+            "bump": { "type": "int", "min": 1, "max": 5 },
+            "distractorC": { "type": "computed", "formulaId": "add", "args": ["gap", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Repeated halving means dividing by 2 once for every cycle, so after several cycles the remaining gap is the original gap divided by 2 raised to the power of the number of cycles — a rapidly shrinking pattern typical of negative feedback correction.",
+      "realPurpose": "This kind of repeated-correction pattern models how many real stabilising systems, from thermostats to the body's own temperature regulation, gradually close the gap toward a target state."
+    },
+    "sys_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In a water recycling system, for every {{a}} litres of water used, {{b}} litres are recycled back for reuse. If the system processes {{scaledA}} litres of water today, how many litres would be recycled, keeping the same ratio?",
+          "answer": "{{scaledB}} litres",
+          "distractors": ["{{b}} litres", "{{distractorB}} litres", "{{distractorC}} litres"],
+          "vars": {
+            "a": { "type": "int", "min": 2, "max": 6 },
+            "b": { "type": "int", "min": 1, "max": 5 },
+            "multiplier": { "type": "int", "min": 2, "max": 8 },
+            "scaledA": { "type": "computed", "formulaId": "multiply", "args": ["a", "multiplier"] },
+            "scaledB": { "type": "computed", "formulaId": "multiply", "args": ["b", "multiplier"] },
+            "bump": { "type": "int", "min": 2, "max": 8 },
+            "distractorB": { "type": "computed", "formulaId": "add", "args": ["scaledB", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 8 },
+            "rawC": { "type": "computed", "formulaId": "subtract", "args": ["scaledB", "bump2"] },
+            "distractorC": { "type": "computed", "formulaId": "clampMin1", "args": ["rawC", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Keeping a ratio constant while scaling up a system's input means multiplying both the used and recycled quantities by the same scaling factor, since the underlying proportion between them stays fixed regardless of overall scale.",
+      "realPurpose": "This ratio-based reasoning is exactly how real recycling and resource systems are scaled up from small pilot programs to full city-wide or industrial operations."
+    },
+    "sys_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A city planner trying to reduce flooding studies how rainwater moves across the whole city — through streets, parks, and existing drains — before deciding where to act, instead of only building a bigger drain in one flooded neighbourhood. Why is this systems-thinking approach likely to work better than fixing just one isolated spot?",
+          "answer": "Because the parts of the drainage system are interconnected, fixing only one isolated spot risks simply pushing the flooding problem elsewhere, while understanding the whole system helps identify a genuine leverage point",
+          "distractors": [
+            "It isn't likely to work better — fixing the single most visibly flooded spot always solves the entire city's flooding problem",
+            "Studying the whole system is only useful for information-gathering, and has no effect on which action would actually work best",
+            "Water moving through a city has no real connections between its parts, so studying the whole system provides no advantage"
+          ]
+        },
+        {
+          "question": "A school administrator addressing frequent hallway crowding studies student movement patterns across the entire building's schedule and layout, rather than only widening the single most crowded hallway. What is the main advantage of this approach?",
+          "answer": "It can reveal an unintended consequence or a more effective leverage point elsewhere in the system, such as a scheduling change, rather than just shifting the crowding problem to a different hallway",
+          "distractors": [
+            "There is no advantage — widening the single most crowded hallway always eliminates crowding everywhere else in the building too",
+            "Studying the whole schedule and layout takes time but has no realistic effect on which solution would actually work",
+            "Crowding in one hallway is always completely unrelated to scheduling or crowding anywhere else in the building"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Because the parts of a system are interconnected, a fix aimed at only the most visible symptom can simply shift the underlying problem elsewhere instead of resolving it; studying the whole system first makes it possible to find a genuine leverage point rather than a temporary, local patch.",
+      "realPurpose": "This is exactly how real urban planners, school administrators and engineers approach persistent system-wide problems — by looking at the whole interconnected picture rather than only patching the most visible symptom."
+    },
+    "sys_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student tries to fix a persistent problem in a system (like traffic congestion in a city) by only addressing the most visible symptom (adding more lanes to one road), without considering how drivers' behaviour across the WHOLE system might adapt in response. What is the limitation of this approach?",
+          "answer": "In interconnected systems, fixing one visible part in isolation can trigger unexpected adaptive responses elsewhere in the system — for example, adding more lanes can attract more drivers overall (a phenomenon called 'induced demand'), eventually recreating similar congestion; truly effective systems-thinking solutions consider how the whole system might respond and adapt to a change",
+          "distractors": [
+            "The student's approach is correct — addressing the single most visible symptom of a problem always resolves the underlying system-wide issue completely",
+            "Traffic congestion is caused by a single isolated factor, so widening one road is always guaranteed to permanently fix it",
+            "Drivers never change their behaviour in response to new roads or lanes, so induced demand is not a real effect"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Complex systems often adapt to a change in ways that undo or reduce its intended effect; widening a road can make driving more attractive, drawing in additional traffic from elsewhere in the network until congestion returns to a similar level, a well-documented systems phenomenon known as induced demand.",
+      "realPurpose": "This is exactly why urban planners increasingly favour systems-level solutions (like improving public transport) rather than only ever widening roads, since single-part fixes can be undone by system-wide adaptation."
+    },
+    "sys_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a system has remained stable and unchanged for a very long time, it must be completely immune to ever being disrupted by any change, no matter how large. What is the flaw in this reasoning?",
+          "answer": "Long-term stability in a system usually comes from negative feedback loops actively correcting small disturbances back toward equilibrium, not from total immunity to change; sufficiently large disturbances can still overwhelm a system's stabilising feedback and push it into a genuinely different state",
+          "distractors": [
+            "The student is correct — any system that has remained stable for a long period of time can never be disrupted by any change, regardless of its size",
+            "Stability only ever comes from a complete absence of any feedback within the system",
+            "Systems that appear stable are actually not changing or being corrected at all; they are simply frozen and inactive"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A system's apparent long-term stability is usually the visible result of active negative feedback continuously correcting small disturbances, not evidence that the system is somehow immune to disruption; sufficiently large or unusual shocks can exceed what those stabilising mechanisms can handle, pushing the system past a tipping point into a new, different state.",
+      "realPurpose": "This distinction matters enormously in real systems like ecosystems and economies, where long periods of apparent stability can sometimes mask a growing vulnerability to a large enough disturbance."
+    }
+  },
+  "chapters": {
+    "lateral": {
+      "title": "Lateral Thinking & Mental Models",
+      "overview": "Lateral thinking is the skill of approaching a problem from an unexpected angle instead of following the most obvious, linear path. This unit introduces mental models — simple frameworks for thinking, like breaking a big problem into smaller parts or looking at a situation from someone else's point of view — that help generate more creative and effective solutions.",
+      "deepDivePurpose": "Building lateral thinking skills and a toolkit of mental models helps students solve unfamiliar problems more creatively, avoid getting stuck on the first obvious answer, and develop flexible, resourceful thinking that transfers across school subjects and real life.",
+      "recap": [
+        "Lateral thinking means solving a problem by looking at it from a fresh, unexpected angle rather than following the most obvious step-by-step path.",
+        "A mental model is a simplified framework for thinking about a problem, such as breaking it into smaller parts (decomposition) or imagining how someone else would view it (perspective-taking).",
+        "Brainstorming multiple possible solutions before choosing one often leads to better outcomes than committing to the very first idea that comes to mind.",
+        "Constraints (limits or rules) can sometimes boost creativity, because working within limits forces you to think of solutions you might not have considered otherwise.",
+        "Analogical thinking means solving a new problem by comparing it to a similar problem you've already solved in a different context.",
+        "Reframing a problem — restating it in a different way — can reveal solutions that were hidden by the original wording."
+      ],
+      "questionBank": {
+        "1": ["lat_l1_t1", "lat_l1_t2", "lat_l1_t3", "lat_l1_t4", "lat_l1_t5", "lat_l1_t6", "lat_l1_t7", "lat_l1_t8", "lat_l1_t9", "lat_l1_t10"],
+        "2": ["lat_l2_t1", "lat_l2_t2", "lat_l2_t3", "lat_l2_t4", "lat_l2_t5"],
+        "3": ["lat_l3_t1", "lat_l3_t2", "lat_l3_t3", "lat_l3_t4"]
+      }
+    },
+    "ambiguity": {
+      "title": "Navigating Ambiguity & Complex Decisions",
+      "overview": "This unit builds skills for handling situations where the 'right answer' isn't immediately clear — weighing incomplete information, comparing trade-offs between options, and making reasonable decisions even when some uncertainty remains.",
+      "deepDivePurpose": "Real-world problems rarely come with a single obvious correct answer. Learning to make thoughtful decisions under uncertainty, and to compare trade-offs fairly, prepares students to handle complex, real-life situations with confidence rather than being paralysed by not having 'the' perfect answer.",
+      "recap": [
+        "Ambiguity means a situation is unclear or open to more than one interpretation, often because some information is missing or uncertain.",
+        "A trade-off is when choosing one option means giving up some benefit of another option; most complex decisions involve weighing trade-offs rather than finding one 'perfect' choice.",
+        "Gathering more information before deciding can reduce uncertainty, but sometimes a reasonable decision must be made even without complete information.",
+        "Listing the pros and cons of each option is a simple, effective way to organise complex decisions and compare choices fairly.",
+        "A good decision-making process considers multiple possible outcomes, not just the most likely one, including how to handle things if a choice doesn't work out as expected.",
+        "It's possible to make a well-reasoned, thoughtful decision that still doesn't lead to the best outcome, since some factors are simply outside anyone's control or knowledge at the time."
+      ],
+      "questionBank": {
+        "1": ["amb_l1_t1", "amb_l1_t2", "amb_l1_t3", "amb_l1_t4", "amb_l1_t5", "amb_l1_t6", "amb_l1_t7", "amb_l1_t8", "amb_l1_t9", "amb_l1_t10"],
+        "2": ["amb_l2_t1", "amb_l2_t2", "amb_l2_t3", "amb_l2_t4", "amb_l2_t5"],
+        "3": ["amb_l3_t1", "amb_l3_t2", "amb_l3_t3", "amb_l3_t4"]
+      }
+    },
+    "resilience": {
+      "title": "Failure Recovery & Iterative Growth",
+      "overview": "This unit builds a growth-oriented mindset toward setbacks and mistakes, treating failure as useful feedback rather than a final verdict, and introduces the idea of iteration — improving something gradually through repeated cycles of trying, learning, and adjusting.",
+      "deepDivePurpose": "Learning to recover constructively from failure and to improve through repeated iteration is one of the most valuable life skills a student can build, since nearly every meaningful achievement — in school, sports, art, or careers — comes after multiple attempts, mistakes, and adjustments along the way.",
+      "recap": [
+        "A growth mindset is the belief that abilities and intelligence can be developed and improved through effort, practice and learning, rather than being fixed traits.",
+        "Failure can provide useful, specific feedback about what didn't work, which is valuable information for improving on the next attempt.",
+        "Iteration means making repeated small improvements over multiple attempts, rather than expecting to get something perfect on the very first try.",
+        "A 'productive struggle' is the useful mental effort involved in working through a genuinely challenging problem, which builds skill and understanding over time.",
+        "Reflecting specifically on what went wrong (and why) after a setback is more useful for improvement than simply feeling upset about the outcome.",
+        "Many successful inventions, artworks and discoveries went through many failed versions or drafts before reaching their final, successful form."
+      ],
+      "questionBank": {
+        "1": ["res_l1_t1", "res_l1_t2", "res_l1_t3", "res_l1_t4", "res_l1_t5", "res_l1_t6", "res_l1_t7", "res_l1_t8", "res_l1_t9", "res_l1_t10"],
+        "2": ["res_l2_t1", "res_l2_t2", "res_l2_t3", "res_l2_t4", "res_l2_t5"],
+        "3": ["res_l3_t1", "res_l3_t2", "res_l3_t3", "res_l3_t4"]
+      }
+    },
+    "systems": {
+      "title": "Systems Thinking & Cross-Disciplinary Connections",
+      "overview": "This unit introduces systems thinking — understanding how different parts of a system influence each other and produce results that a single isolated part can't explain — and encourages making connections between different subjects, since real-world problems rarely fit neatly into just one academic subject.",
+      "deepDivePurpose": "Systems thinking and cross-disciplinary connections help students understand complex, real-world situations (like ecosystems, economies, or even a school schedule) as networks of interacting parts, and build the flexible thinking needed to apply knowledge from one subject to solve problems in a completely different one.",
+      "recap": [
+        "A system is a set of interconnected parts that work together and influence one another, producing outcomes that can't be fully understood by looking at just one part alone.",
+        "A feedback loop occurs when the output of a system affects its own future behaviour, either reinforcing a trend (positive feedback) or balancing it back toward stability (negative feedback).",
+        "An interdisciplinary connection is when ideas or methods from one subject (like math) are usefully applied to a completely different subject (like art, music, or biology).",
+        "Small changes in one part of a complex system can sometimes lead to surprisingly large effects elsewhere in the system, especially if that part is deeply interconnected with many others.",
+        "Systems thinking involves looking for patterns and relationships between parts, rather than only focusing on individual events in isolation.",
+        "Many real-world problems, like protecting the environment or improving a community, require combining knowledge from multiple subjects, such as science, economics and social studies, at the same time."
+      ],
+      "questionBank": {
+        "1": ["sys_l1_t1", "sys_l1_t2", "sys_l1_t3", "sys_l1_t4", "sys_l1_t5", "sys_l1_t6", "sys_l1_t7", "sys_l1_t8", "sys_l1_t9", "sys_l1_t10"],
+        "2": ["sys_l2_t1", "sys_l2_t2", "sys_l2_t3", "sys_l2_t4", "sys_l2_t5"],
+        "3": ["sys_l3_t1", "sys_l3_t2", "sys_l3_t3", "sys_l3_t4"]
+      }
+    }
+  }
+}

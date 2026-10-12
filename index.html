@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AV's ICSE Arena</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2310b981'/%3E%3Ctext x='50' y='68' font-size='55' font-family='Arial,sans-serif' font-weight='900' fill='%230f172a' text-anchor='middle'%3EIC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+  .glass {
+    background: rgba(30, 41, 59, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glow-correct {
+    box-shadow: 0 0 12px 2px rgba(16, 185, 129, 0.9), 0 0 30px 6px rgba(16, 185, 129, 0.5);
+    border-color: rgb(16, 185, 129) !important;
+  }
+
+  .glow-wrong {
+    box-shadow: 0 0 12px 2px rgba(244, 63, 94, 0.9), 0 0 30px 6px rgba(244, 63, 94, 0.5);
+    border-color: rgb(244, 63, 94) !important;
+  }
+
+  /* Grid-based expand (rather than a fixed max-height guess) so the reveal
+     speed always matches the actual content height instead of racing through
+     a hardcoded 600px in a fraction of the transition's duration. */
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.35s ease;
+  }
+  .accordion-body > * {
+    overflow: hidden;
+  }
+  .accordion-body.open {
+    grid-template-rows: 1fr;
+  }
+
+  #deepDiveArrow.open {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+
+  .tab-btn {
+    padding-top: .5rem;
+  }
+  .tab-btn:hover:not(.active) {
+    color: rgb(203, 213, 225);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .tab-btn.active {
+    color: rgb(52, 211, 153);
+    border-color: rgb(52, 211, 153);
+  }
+
+  .stash-toggle-btn {
+    color: rgb(148, 163, 184);
+  }
+  .stash-toggle-btn.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: rgb(110, 231, 183);
+  }
+
+  .stash-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .25rem;
+  }
+  .stash-btn:active {
+    transform: scale(0.9);
+  }
+
+  .level-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .level-btn.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: rgb(110, 231, 183);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+
+  /* Branded keyboard-focus ring for the custom interactive elements below —
+     inputs/selects already get one via the focus:ring-* utility classes in
+     styles.css, this extends the same treatment to elements built from plain
+     <button>s that only had the browser's unstyled default outline. */
+  .tab-btn:focus-visible,
+  .level-btn:focus-visible,
+  .stash-toggle-btn:focus-visible,
+  .option-btn:focus-visible,
+  .stash-btn:focus-visible,
+  #modeDeepDiveBtn:focus-visible,
+  #modeSpeedRunBtn:focus-visible,
+  #modeTriviaHuntBtn:focus-visible,
+  #deepDiveToggle:focus-visible {
+    outline: 2px solid rgb(16, 185, 129);
+    outline-offset: 2px;
+  }
+
+  #analyticsBody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    animation: fadeIn 0.25s ease;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.3); border-radius: 4px; }
+
+  /* ---------- Flashcards ---------- */
+  .flip-card {
+    position: relative;
+    width: 100%;
+    min-height: 22rem;
+    cursor: pointer;
+    perspective: 1400px;
+  }
+  .flip-card:focus-visible {
+    outline: 2px solid rgb(16, 185, 129);
+    outline-offset: 4px;
+    border-radius: 1rem;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 22rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0.15, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+  .flip-card-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .flip-card-diagram {
+    width: 100%;
+    max-width: 15rem;
+    margin: 0 auto 0.75rem;
+  }
+  .flip-card-diagram:empty {
+    display: none;
+    margin: 0;
+  }
+  .flip-card-question {
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+  .flip-card-answer {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  #flashcardPrevBtn:disabled,
+  #flashcardNextBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+<div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.12),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.12),transparent_40%),radial-gradient(circle_at_50%_100%,rgba(244,63,94,0.08),transparent_40%)]"></div>
+
+<!-- ==================== LOGIN SCREEN ==================== -->
+<div id="loginScreen" class="min-h-screen flex items-center justify-center p-4">
+  <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl text-center">
+    <div class="mx-auto mb-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-900 font-black text-2xl">IC</div>
+    <h1 class="text-2xl font-bold tracking-tight">Student Login</h1>
+    <p class="text-slate-400 text-sm mt-1 mb-6">Enter your name to enter AV's ICSE Arena</p>
+
+    <div class="space-y-4">
+      <input
+        id="studentNameInput"
+        type="text"
+        placeholder="Enter Student Name"
+        aria-label="Student name"
+        class="w-full rounded-lg bg-slate-800/60 border border-white/10 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition"
+      />
+      <button
+        id="launchArenaBtn"
+        disabled
+        class="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold py-3 hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] active:scale-[0.99] transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+      >
+        Launch Arena
+      </button>
+      <p id="loginError" class="hidden text-rose-400 text-xs pt-1">Please enter your name to continue.</p>
+      <p id="loadStatus" class="text-slate-400 text-xs pt-1">Loading curriculum data…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DASHBOARD ==================== -->
+<div id="dashboard" class="hidden min-h-screen">
+
+  <!-- Top Nav -->
+  <nav class="glass sticky top-0 z-30 px-4 md:px-8 py-3 flex flex-wrap items-center gap-4 justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-900 font-black">IC</div>
+      <div>
+        <h1 class="text-lg font-bold leading-tight">AV's ICSE Arena</h1>
+        <p id="welcomeText" class="text-xs text-slate-400">Welcome</p>
+      </div>
+      <span id="streakBadge" class="hidden text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30"></span>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <select id="gradeSelect" aria-label="Select grade" class="hidden bg-slate-800/70 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed"></select>
+      <select id="subjectSelect" aria-label="Select subject" class="bg-slate-800/70 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed">
+        <option value="">Select Subject</option>
+      </select>
+      <select id="lessonSelect" aria-label="Select lesson" class="bg-slate-800/70 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed">
+        <option value="">Select Lesson</option>
+      </select>
+      <button id="logoutBtn" class="text-xs text-slate-400 hover:text-rose-400 border border-white/10 hover:border-rose-400/40 rounded-lg px-3 py-2 transition">Logout</button>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 md:px-8 py-6">
+
+    <!-- Tabs -->
+    <div class="flex gap-6 border-b border-white/10 mb-6" role="tablist">
+      <button data-tab="overview" role="tab" aria-selected="true" aria-controls="panel-overview" class="tab-btn active border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Lesson Overview</button>
+      <button data-tab="quiz" role="tab" aria-selected="false" aria-controls="panel-quiz" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Live Arena Quiz</button>
+      <button data-tab="flashcards" role="tab" aria-selected="false" aria-controls="panel-flashcards" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Flashcards</button>
+      <button data-tab="stash" role="tab" aria-selected="false" aria-controls="panel-stash" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Idea Stash Feed</button>
+      <button data-tab="memoryboost" role="tab" aria-selected="false" aria-controls="panel-memoryboost" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Memory Boost</button>
+      <button data-tab="analytics" role="tab" aria-selected="false" aria-controls="panel-analytics" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Parent Analytics</button>
+    </div>
+
+    <!-- ---- Lesson Overview ---- -->
+    <section id="panel-overview" class="tab-panel" role="tabpanel">
+      <div id="continueQuestBanner" class="hidden glass rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 flex-wrap border border-emerald-500">
+        <div>
+          <p class="text-xs uppercase tracking-wide text-emerald-400 font-semibold mb-1">Continue Quest</p>
+          <p id="continueQuestText" class="text-sm text-slate-300"></p>
+        </div>
+        <button id="continueQuestBtn" class="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold py-3 px-5 hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition shrink-0">Resume →</button>
+      </div>
+
+      <div class="glass rounded-2xl p-6 mb-4">
+        <p class="text-xs uppercase tracking-wide text-cyan-400 font-semibold mb-3">Choose Your Path</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <button id="modeDeepDiveBtn" class="text-left rounded-xl border border-white/10 bg-slate-800/50 p-4 transition hover:border-white/20">
+            <div class="text-2xl mb-2">🧠</div>
+            <div class="font-semibold text-sm mb-1">Deep Dive Puzzle Mode</div>
+            <div class="text-xs text-slate-400">Take your time and explore the reasoning behind every answer.</div>
+          </button>
+          <button id="modeSpeedRunBtn" class="text-left rounded-xl border border-white/10 bg-slate-800/50 p-4 transition hover:border-white/20">
+            <div class="text-2xl mb-2">⚡</div>
+            <div class="font-semibold text-sm mb-1">Speed Run Mode</div>
+            <div class="text-xs text-slate-400">Race the clock — answer as many as you can before time runs out.</div>
+          </button>
+          <button id="modeTriviaHuntBtn" class="text-left rounded-xl border border-white/10 bg-slate-800/50 p-4 transition hover:border-white/20">
+            <div class="text-2xl mb-2">💡</div>
+            <div class="font-semibold text-sm mb-1">Trivia Hunt</div>
+            <div class="text-xs text-slate-400">Browse bite-sized facts and practice explaining them out loud.</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-6">
+        <h2 id="overviewTitle" class="text-xl font-bold mb-2">No lesson selected</h2>
+        <p id="overviewSubject" class="text-xs uppercase tracking-wide text-emerald-400 font-semibold mb-4"></p>
+        <p id="overviewText" class="text-slate-300 leading-relaxed text-sm">Choose a subject and lesson from the dropdowns above to see an overview here.</p>
+      </div>
+
+      <div id="overviewExtras" class="hidden mt-4 space-y-4">
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs uppercase tracking-wide text-cyan-400 font-semibold mb-2">Why It Matters</p>
+          <p id="overviewDeepDive" class="text-slate-300 text-sm leading-relaxed"></p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs uppercase tracking-wide text-cyan-400 font-semibold mb-2">Quick Recap</p>
+          <ul id="overviewRecap" class="list-disc list-inside space-y-1.5 text-slate-300 text-sm leading-relaxed"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Live Arena Quiz ---- -->
+    <section id="panel-quiz" class="tab-panel hidden" role="tabpanel">
+
+      <div class="flex items-center gap-2 mb-4 flex-wrap">
+        <span class="text-xs text-slate-400 font-semibold uppercase tracking-wide">Difficulty:</span>
+        <button data-level="1" class="level-btn active px-3 py-2 rounded-lg text-xs font-semibold border border-white/10 bg-slate-800/60 transition">Level 1 · Conceptual</button>
+        <button data-level="2" class="level-btn px-3 py-2 rounded-lg text-xs font-semibold border border-white/10 bg-slate-800/60 transition">Level 2 · Computational</button>
+        <button data-level="3" class="level-btn px-3 py-2 rounded-lg text-xs font-semibold border border-white/10 bg-slate-800/60 transition">Level 3 · Troubleshooting</button>
+        <span id="modeIndicator" class="ml-2 text-xs font-semibold px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">🧠 Deep Dive</span>
+        <span id="speedRunTimer" class="hidden ml-2 text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/30"></span>
+      </div>
+
+      <div id="quizEmptyState" class="glass rounded-2xl p-8 text-center text-slate-400 text-sm">
+        Select a subject and lesson to start the quiz.
+      </div>
+
+      <div id="quizArea" class="hidden">
+        <div class="flex items-center justify-between mb-4 text-sm">
+          <span id="quizProgress" class="text-slate-400">Question 1 of 1</span>
+          <span id="quizScore" class="font-semibold text-emerald-400">Score: 0</span>
+        </div>
+
+        <div id="questionCard" class="glass rounded-2xl p-6">
+          <h3 id="questionText" class="text-lg font-semibold mb-5"></h3>
+
+          <div id="optionsList" class="space-y-3"></div>
+
+          <!-- Deep Dive Accordion -->
+          <div id="deepDive" class="hidden mt-6 border-t border-white/10 pt-4">
+            <button id="deepDiveToggle" aria-expanded="false" aria-controls="deepDiveBody" class="w-full flex items-center justify-between text-left text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+              <span>🔍 Deep Dive</span>
+              <span id="deepDiveArrow" class="transition-transform">▸</span>
+            </button>
+            <div id="deepDiveBody" class="accordion-body">
+              <div class="pt-4 space-y-4 text-sm">
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-slate-400 font-semibold mb-1">Technical Intricacy</p>
+                  <p id="deepDiveIntricacy" class="text-slate-300 leading-relaxed"></p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-slate-400 font-semibold mb-1">Real Purpose</p>
+                  <p id="deepDivePurpose" class="text-slate-300 leading-relaxed"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button id="nextQuestionBtn" class="hidden mt-6 w-full rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold py-3 hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition">
+            Next Question
+          </button>
+        </div>
+      </div>
+
+      <div id="quizSummary" class="hidden glass rounded-2xl p-8 text-center">
+        <h3 class="text-2xl font-bold mb-1">Quiz Complete!</h3>
+        <p class="text-slate-400 text-sm mb-6">Great work in the arena.</p>
+        <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
+          <div class="glass rounded-2xl p-5">
+            <p class="text-xs text-slate-400">Final Score</p>
+            <p id="summaryScore" class="text-2xl font-bold text-emerald-400">0</p>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <p class="text-xs text-slate-400">Level Cleared</p>
+            <p id="summaryLevel" class="text-2xl font-bold text-cyan-400">-</p>
+          </div>
+        </div>
+        <button id="restartQuizBtn" class="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold py-3 px-6 hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition">
+          Retry Lesson
+        </button>
+
+        <div id="missedReviewWrap" class="hidden mt-8 text-left max-w-xl mx-auto">
+          <p class="text-xs uppercase tracking-wide text-amber-400 font-semibold mb-3">Review What You Missed</p>
+          <div id="missedReviewList" class="space-y-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Flashcards ---- -->
+    <section id="panel-flashcards" class="tab-panel hidden" role="tabpanel">
+      <div id="flashcardsEmptyState" class="glass rounded-2xl p-8 text-center text-slate-400 text-sm">
+        Select a subject and lesson to start flashcards.
+      </div>
+
+      <div id="flashcardsArea" class="hidden max-w-xl mx-auto">
+        <div class="flex items-center justify-between mb-4 text-sm flex-wrap gap-2">
+          <span id="flashcardProgress" class="text-slate-400">Card 1 of 1</span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-500">Tap the card to flip</span>
+            <button id="flashcardShuffleBtn" title="Shuffle in a fresh set of cards" class="text-xs font-semibold px-3 py-2 rounded-lg border border-white/10 bg-slate-800/60 hover:border-white/20 transition">🔀 Shuffle</button>
+          </div>
+        </div>
+
+        <div id="flashcard" class="flip-card" tabindex="0" role="button" aria-label="Flashcard, tap to flip">
+          <div id="flashcardInner" class="flip-card-inner">
+            <div class="flip-card-face flip-card-front glass rounded-2xl p-6">
+              <div id="flashcardFrontIcon" class="flip-card-icon"></div>
+              <div id="flashcardFrontDiagram" class="flip-card-diagram"></div>
+              <p id="flashcardQuestion" class="flip-card-question text-slate-100 font-semibold text-center"></p>
+              <p class="flip-card-hint text-slate-500 text-xs text-center mt-3">Tap to reveal answer</p>
+            </div>
+            <div class="flip-card-face flip-card-back glass rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-wide text-emerald-400 font-semibold mb-2 text-center">Answer</p>
+              <p id="flashcardAnswer" class="flip-card-answer text-slate-100 font-semibold text-center mb-3"></p>
+              <p id="flashcardWhy" class="text-slate-300 text-xs leading-relaxed text-center"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 mt-5">
+          <button id="flashcardPrevBtn" class="rounded-lg border border-white/10 bg-slate-800/60 px-4 py-2 text-sm font-semibold hover:border-white/20 transition">◂ Prev</button>
+          <button id="flashcardFlipBtn" class="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold px-5 py-2 text-sm hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition">Flip</button>
+          <button id="flashcardNextBtn" class="rounded-lg border border-white/10 bg-slate-800/60 px-4 py-2 text-sm font-semibold hover:border-white/20 transition">Next ▸</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Idea Stash Feed ---- -->
+    <section id="panel-stash" class="tab-panel hidden" role="tabpanel">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <div class="inline-flex rounded-lg bg-slate-800/60 border border-white/10 p-1 gap-1">
+          <button id="streamToggleBtn" class="stash-toggle-btn active px-4 py-2 rounded-md text-sm font-semibold transition">Discovery Stream</button>
+          <button id="savedToggleBtn" class="stash-toggle-btn px-4 py-2 rounded-md text-sm font-semibold transition">Saved Stash</button>
+        </div>
+        <div class="text-right">
+          <p id="stashCount" class="text-xs text-slate-400">0 ideas stashed</p>
+          <p id="discoveryRefreshHint" class="text-xs text-slate-400"></p>
+        </div>
+      </div>
+
+      <div id="featuredDiscovery" class="hidden max-w-2xl mx-auto mb-6">
+        <p class="text-xs uppercase tracking-wide text-amber-400 font-semibold mb-2">🌟 Today's Discovery</p>
+        <div id="featuredCardSlot"></div>
+      </div>
+
+      <div id="feedList" class="space-y-4 max-w-2xl mx-auto"></div>
+      <div id="feedEmptyState" class="hidden glass rounded-2xl p-8 text-center text-slate-400 text-sm max-w-2xl mx-auto"></div>
+    </section>
+
+    <!-- ---- Memory Boost (spaced repetition) ---- -->
+    <section id="panel-memoryboost" class="tab-panel hidden" role="tabpanel">
+      <div class="glass rounded-2xl p-6 mb-6 max-w-2xl mx-auto">
+        <h2 class="text-xl font-bold mb-2">🧠 Memory Boost</h2>
+        <p class="text-slate-300 text-sm leading-relaxed">Lessons you haven't practiced in a couple of weeks show up here, so concepts you learned a while ago don't quietly fade — a few minutes of review now keeps them locked in long-term.</p>
+      </div>
+      <div id="memoryBoostList" class="space-y-4 max-w-2xl mx-auto"></div>
+      <div id="memoryBoostEmptyState" class="hidden glass rounded-2xl p-8 text-center text-slate-400 text-sm max-w-2xl mx-auto"></div>
+    </section>
+
+    <!-- ---- Parent Analytics ---- -->
+    <section id="panel-analytics" class="tab-panel hidden" role="tabpanel">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="glass rounded-2xl p-5">
+          <p class="text-xs text-slate-400 mb-1">Total Attempts</p>
+          <p id="statAttempts" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <p class="text-xs text-slate-400 mb-1">Average Score</p>
+          <p id="statAverage" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <p class="text-xs text-slate-400 mb-1">Best Level Cleared</p>
+          <p id="statBestLevel" class="text-2xl font-bold">-</p>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-6 overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead>
+            <tr class="text-slate-400 border-b border-white/10">
+              <th scope="col" class="py-2 pr-4 font-semibold">Name</th>
+              <th scope="col" class="py-2 pr-4 font-semibold">Subject</th>
+              <th scope="col" class="py-2 pr-4 font-semibold">Lesson</th>
+              <th scope="col" class="py-2 pr-4 font-semibold">Score</th>
+              <th scope="col" class="py-2 pr-4 font-semibold">Level Cleared</th>
+              <th scope="col" class="py-2 pr-4 font-semibold">Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="analyticsBody">
+            <tr>
+              <td colspan="6" class="py-6 text-center text-slate-400">No quiz attempts recorded yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="diagrams.js"></script>
+<script src="generator.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  const STORAGE_NAME_KEY = "icse_student_name";
+  const STORAGE_HISTORY_KEY = "icse_quiz_history";
+  const STORAGE_STASH_KEY = "icse_my_stash";
+  const STORAGE_GRADE_KEY = "icse_current_grade";
+
+  const engine = window.icseEngine || {};
+
+  const el = (id) => document.getElementById(id);
+
+  // ---------- Backend Sync (best-effort, silent-fail) ----------
+
+  const SERVER_SAVE_ENDPOINT = "/save";
+
+  async function sendActivityToServer(actionType, payload) {
+    try {
+      await fetch(SERVER_SAVE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: localStorage.getItem(STORAGE_NAME_KEY) || "Unknown",
+          timestamp: new Date().toISOString(),
+          action: actionType,
+          payload: payload,
+        }),
+      });
+    } catch (err) {
+      // Local Python server is offline or unreachable — fail silently.
+      // localStorage already holds the authoritative record, so no user-facing impact.
+    }
+  }
+
+  // Screens
+  const loginScreen = el("loginScreen");
+  const dashboard = el("dashboard");
+  const studentNameInput = el("studentNameInput");
+  const launchArenaBtn = el("launchArenaBtn");
+  const loginError = el("loginError");
+  const loadStatus = el("loadStatus");
+  const welcomeText = el("welcomeText");
+  const logoutBtn = el("logoutBtn");
+
+  // Nav / tabs
+  const gradeSelect = el("gradeSelect");
+  const subjectSelect = el("subjectSelect");
+  const lessonSelect = el("lessonSelect");
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const panels = {
+    overview: el("panel-overview"),
+    quiz: el("panel-quiz"),
+    flashcards: el("panel-flashcards"),
+    stash: el("panel-stash"),
+    memoryboost: el("panel-memoryboost"),
+    analytics: el("panel-analytics"),
+  };
+  const streakBadge = el("streakBadge");
+  const continueQuestBanner = el("continueQuestBanner");
+  const continueQuestText = el("continueQuestText");
+  const continueQuestBtn = el("continueQuestBtn");
+
+  // Overview
+  const overviewTitle = el("overviewTitle");
+  const overviewSubject = el("overviewSubject");
+  const overviewText = el("overviewText");
+  const overviewExtras = el("overviewExtras");
+  const overviewDeepDive = el("overviewDeepDive");
+  const overviewRecap = el("overviewRecap");
+
+  // Quiz
+  const levelButtons = document.querySelectorAll(".level-btn");
+  let quizLevel = 1;
+  let quizMode = "deepdive"; // "deepdive" | "speedrun"
+  const modeIndicator = el("modeIndicator");
+  const speedRunTimerEl = el("speedRunTimer");
+  const SPEED_RUN_TOTAL_SECONDS = 90;
+  let speedRunIntervalId = null;
+  let speedRunSecondsLeft = 0;
+  const quizEmptyState = el("quizEmptyState");
+  const quizArea = el("quizArea");
+  const quizProgress = el("quizProgress");
+  const quizScore = el("quizScore");
+  const questionText = el("questionText");
+  const optionsList = el("optionsList");
+  const deepDive = el("deepDive");
+  const deepDiveToggle = el("deepDiveToggle");
+  const deepDiveArrow = el("deepDiveArrow");
+  const deepDiveBody = el("deepDiveBody");
+  const deepDiveIntricacy = el("deepDiveIntricacy");
+  const deepDivePurpose = el("deepDivePurpose");
+  const nextQuestionBtn = el("nextQuestionBtn");
+  const quizSummary = el("quizSummary");
+  const summaryScore = el("summaryScore");
+  const summaryLevel = el("summaryLevel");
+  const restartQuizBtn = el("restartQuizBtn");
+
+  // Flashcards
+  const flashcardsEmptyState = el("flashcardsEmptyState");
+  const flashcardsArea = el("flashcardsArea");
+  const flashcardProgress = el("flashcardProgress");
+  const flashcardEl = el("flashcard");
+  const flashcardFrontIcon = el("flashcardFrontIcon");
+  const flashcardFrontDiagram = el("flashcardFrontDiagram");
+  const flashcardQuestion = el("flashcardQuestion");
+  const flashcardAnswer = el("flashcardAnswer");
+  const flashcardWhy = el("flashcardWhy");
+  const flashcardPrevBtn = el("flashcardPrevBtn");
+  const flashcardFlipBtn = el("flashcardFlipBtn");
+  const flashcardNextBtn = el("flashcardNextBtn");
+  const flashcardShuffleBtn = el("flashcardShuffleBtn");
+  const diagramsLib = window.icseDiagrams || { getIcon: () => "📘", getDiagram: () => null };
+
+  let flashDeck = { subject: "", lesson: "", cards: [], index: 0 };
+
+  // Draws repeated fresh quizzes from the lesson's own (already-curated) question
+  // pool across all three difficulty levels and flattens them into flashcard
+  // {question, answer, why} triples, deduping on question text. This reuses
+  // content that's already been through accuracy review rather than inventing
+  // new facts, and — since numeric questions re-roll random values each draw —
+  // repeated shuffles keep surfacing new cards instead of looping the same set.
+  function buildFlashDeck(lessonData) {
+    const cards = [];
+    const seen = new Set();
+
+    if (Array.isArray(lessonData.recap)) {
+      lessonData.recap.forEach((point, i) => {
+        const plain = String(point).replace(/<[^>]+>/g, "");
+        if (seen.has(plain)) return;
+        seen.add(plain);
+        cards.push({ question: "Key Fact #" + (i + 1) + " — " + (lessonData.title || ""), answer: point, why: "" });
+      });
+    }
+
+    const PASSES = 4;
+    [1, 2, 3].forEach((level) => {
+      for (let pass = 0; pass < PASSES; pass++) {
+        let batch = [];
+        try {
+          batch = lessonData.generateQuiz(level) || [];
+        } catch (err) {
+          batch = [];
+        }
+        batch.forEach((q) => {
+          if (!q || typeof q.answer !== "number" || !Array.isArray(q.options)) return;
+          const key = q.question;
+          if (seen.has(key)) return;
+          seen.add(key);
+          cards.push({
+            question: q.question,
+            answer: q.options[q.answer],
+            why: q.realPurpose || q.technicalIntricacy || "",
+          });
+        });
+      }
+    });
+
+    return cards;
+  }
+
+  function shuffleArray(arr) {
+    const out = arr.slice();
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [out[i], out[j]] = [out[j], out[i]];
+    }
+    return out;
+  }
+
+  function renderFlashcard() {
+    const card = flashDeck.cards[flashDeck.index];
+    if (!card) return;
+    flashcardEl.classList.remove("flipped");
+    flashcardQuestion.innerHTML = card.question;
+    flashcardAnswer.innerHTML = card.answer;
+    flashcardWhy.innerHTML = card.why || "";
+    flashcardProgress.textContent = "Card " + (flashDeck.index + 1) + " of " + flashDeck.cards.length;
+    flashcardPrevBtn.disabled = flashDeck.index === 0;
+    flashcardNextBtn.disabled = flashDeck.index === flashDeck.cards.length - 1;
+  }
+
+  function renderFlashcardsForLesson(freshDraw) {
+    const lessonData = getCurrentLesson();
+    const subjectKey = subjectSelect.value;
+    const lessonKey = lessonSelect.value;
+
+    if (!lessonData || typeof lessonData.generateQuiz !== "function") {
+      flashcardsArea.classList.add("hidden");
+      flashcardsEmptyState.classList.remove("hidden");
+      flashDeck = { subject: "", lesson: "", cards: [], index: 0 };
+      return;
+    }
+
+    const sameLesson = flashDeck.subject === subjectKey && flashDeck.lesson === lessonKey;
+    if (!sameLesson || freshDraw || flashDeck.cards.length === 0) {
+      flashDeck = {
+        subject: subjectKey,
+        lesson: lessonKey,
+        cards: shuffleArray(buildFlashDeck(lessonData)),
+        index: 0,
+      };
+    }
+
+    flashcardFrontIcon.textContent = diagramsLib.getIcon(lessonKey);
+    flashcardFrontDiagram.innerHTML = diagramsLib.getDiagram(lessonKey) || "";
+
+    if (flashDeck.cards.length === 0) {
+      flashcardsArea.classList.add("hidden");
+      flashcardsEmptyState.classList.remove("hidden");
+      flashcardsEmptyState.textContent = "No flashcards available for this lesson yet.";
+      return;
+    }
+
+    flashcardsEmptyState.classList.add("hidden");
+    flashcardsArea.classList.remove("hidden");
+    renderFlashcard();
+  }
+
+  flashcardEl.addEventListener("click", () => flashcardEl.classList.toggle("flipped"));
+  flashcardEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      flashcardEl.classList.toggle("flipped");
+    }
+  });
+  flashcardFlipBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    flashcardEl.classList.toggle("flipped");
+  });
+  flashcardPrevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (flashDeck.index > 0) {
+      flashDeck.index--;
+      renderFlashcard();
+    }
+  });
+  flashcardNextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (flashDeck.index < flashDeck.cards.length - 1) {
+      flashDeck.index++;
+      renderFlashcard();
+    }
+  });
+  flashcardShuffleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    renderFlashcardsForLesson(true);
+  });
+
+  // Analytics
+  const statAttempts = el("statAttempts");
+  const statAverage = el("statAverage");
+  const statBestLevel = el("statBestLevel");
+  const analyticsBody = el("analyticsBody");
+
+  // Idea Stash Feed
+  const streamToggleBtn = el("streamToggleBtn");
+  const savedToggleBtn = el("savedToggleBtn");
+  const stashCountEl = el("stashCount");
+  const discoveryRefreshHint = el("discoveryRefreshHint");
+  const feedList = el("feedList");
+  const feedEmptyState = el("feedEmptyState");
+  const featuredDiscovery = el("featuredDiscovery");
+  const featuredCardSlot = el("featuredCardSlot");
+  const microFeed = typeof engine.getMicroFeed === "function" ? engine.getMicroFeed() : [];
+  let stashView = "stream";
+
+  let quiz = {
+    subject: "",
+    lesson: "",
+    mode: "deepdive",
+    questions: [],
+    index: 0,
+    score: 0,
+    answered: false,
+    finished: false,
+    missed: [],
+  };
+
+  // ---------- Auth ----------
+
+  function checkLogin() {
+    const savedName = localStorage.getItem(STORAGE_NAME_KEY);
+    if (savedName) {
+      showDashboard(savedName);
+    } else {
+      loginScreen.classList.remove("hidden");
+      dashboard.classList.add("hidden");
+    }
+  }
+
+  function showDashboard(name) {
+    welcomeText.textContent = "Welcome, " + name;
+    loginScreen.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+    populateSubjects();
+    populateLessons("");
+    sendActivityToServer("session_start", {});
+    fetchProgress(name);
+  }
+
+  // ---------- Progress / Streak (recognition over recall) ----------
+  // Derived entirely from the local activity log server.py already writes —
+  // no separate state file, no external service, nothing beyond this machine.
+
+  let pendingResume = null;
+
+  async function fetchProgress(name) {
+    try {
+      const res = await fetch("/progress?name=" + encodeURIComponent(name));
+      if (!res.ok) throw new Error("progress fetch failed: " + res.status);
+      const progress = await res.json();
+      renderStreakBadge(progress);
+      renderContinueQuest(progress);
+    } catch (err) {
+      // Local server offline, or this is a brand-new student with no history yet —
+      // both cases just mean these two enhancements stay hidden; core app still works.
+      streakBadge.classList.add("hidden");
+      continueQuestBanner.classList.add("hidden");
+      pendingResume = null;
+    }
+  }
+
+  function renderStreakBadge(progress) {
+    if (!progress || !progress.currentStreak) {
+      streakBadge.classList.add("hidden");
+      return;
+    }
+    const tokens = progress.freezeTokensAvailable || 0;
+    const tokenNote = tokens > 0 ? " · " + tokens + " freeze token" + (tokens === 1 ? "" : "s") : "";
+    streakBadge.textContent = "🔥 " + progress.currentStreak + "-day streak" + tokenNote;
+    streakBadge.classList.remove("hidden");
+  }
+
+  function renderContinueQuest(progress) {
+    const lastQuiz = progress && progress.lastQuiz;
+    if (!lastQuiz || !lastQuiz.subjectKey || !lastQuiz.lessonKey) {
+      continueQuestBanner.classList.add("hidden");
+      pendingResume = null;
+      return;
+    }
+    pendingResume = lastQuiz;
+    continueQuestText.textContent =
+      "Pick up where you left off: " + (lastQuiz.subject || lastQuiz.subjectKey) + " — " + (lastQuiz.lesson || lastQuiz.lessonKey);
+    continueQuestBanner.classList.remove("hidden");
+  }
+
+  // ---------- Memory Boost (spaced repetition) ----------
+  // Surfaces lessons not practiced in a while, using the /memory-boost endpoint
+  // (server-side, derived from the same local activity log as streaks) plus the
+  // existing content-driven question pools — no new content, just a scheduler.
+
+  async function renderMemoryBoost() {
+    const name = localStorage.getItem(STORAGE_NAME_KEY);
+    const list = el("memoryBoostList");
+    const emptyState = el("memoryBoostEmptyState");
+    emptyState.classList.add("hidden");
+    list.innerHTML = '<p class="text-slate-400 text-sm text-center py-6">Loading…</p>';
+
+    if (!name) {
+      list.innerHTML = "";
+      emptyState.textContent = "Log in to see lessons due for review.";
+      emptyState.classList.remove("hidden");
+      return;
+    }
+
+    try {
+      const res = await fetch("/memory-boost?name=" + encodeURIComponent(name));
+      if (!res.ok) throw new Error("memory-boost fetch failed: " + res.status);
+      const data = await res.json();
+      const candidates = data.candidates || [];
+
+      list.innerHTML = "";
+
+      if (candidates.length === 0) {
+        emptyState.textContent = "Nothing due for review yet — keep learning, and lessons will show up here once it's been a couple of weeks since you last practiced them.";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      candidates.forEach((c) => {
+        const card = document.createElement("div");
+        card.className = "glass rounded-2xl p-5 flex items-center justify-between gap-4 flex-wrap";
+
+        const info = document.createElement("div");
+        info.innerHTML =
+          '<p class="font-semibold text-sm mb-1">' + escapeHtml(c.subject) + " — " + escapeHtml(c.lesson) + "</p>" +
+          '<p class="text-xs text-slate-400">Last practiced ' + escapeHtml(c.daysSinceLastPractice) + " days ago</p>";
+
+        const btn = document.createElement("button");
+        btn.className = "rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-900 font-semibold py-3 px-5 hover:shadow-[0_0_25px_rgba(16,185,129,0.55)] transition shrink-0";
+        btn.textContent = "Practice Again →";
+        btn.addEventListener("click", () => {
+          const subjectData = engine[c.subjectKey];
+          if (!isSubjectEntry(subjectData) || !subjectData.lessons[c.lessonKey]) return;
+          subjectSelect.value = c.subjectKey;
+          populateLessons(c.subjectKey);
+          lessonSelect.value = c.lessonKey;
+          quizMode = "deepdive";
+          modeIndicator.textContent = "🧠 Deep Dive";
+          renderOverview();
+          resetQuiz();
+          switchTab("quiz");
+        });
+
+        card.appendChild(info);
+        card.appendChild(btn);
+        list.appendChild(card);
+      });
+    } catch (err) {
+      list.innerHTML = "";
+      emptyState.textContent = "Could not load Memory Boost right now (is the local server running?).";
+      emptyState.classList.remove("hidden");
+    }
+  }
+
+  continueQuestBtn.addEventListener("click", () => {
+    if (!pendingResume) return;
+    const { subjectKey, lessonKey, difficultyLevel } = pendingResume;
+    const subjectData = engine[subjectKey];
+    if (!isSubjectEntry(subjectData) || !subjectData.lessons[lessonKey]) return;
+
+    subjectSelect.value = subjectKey;
+    populateLessons(subjectKey);
+    lessonSelect.value = lessonKey;
+
+    if (difficultyLevel) {
+      quizLevel = difficultyLevel;
+      levelButtons.forEach((b) => b.classList.toggle("active", parseInt(b.dataset.level, 10) === difficultyLevel));
+    }
+
+    quizMode = "deepdive";
+    modeIndicator.textContent = "🧠 Deep Dive";
+    renderOverview();
+    resetQuiz();
+    switchTab("quiz");
+  });
+
+  launchArenaBtn.addEventListener("click", () => {
+    const name = studentNameInput.value.trim();
+    if (!name) {
+      loginError.classList.remove("hidden");
+      return;
+    }
+    loginError.classList.add("hidden");
+    localStorage.setItem(STORAGE_NAME_KEY, name);
+    showDashboard(name);
+  });
+
+  studentNameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") launchArenaBtn.click();
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    stopSpeedRunTimer();
+    localStorage.removeItem(STORAGE_NAME_KEY);
+    studentNameInput.value = "";
+    checkLogin();
+  });
+
+  // ---------- Tabs ----------
+
+  function switchTab(tabName) {
+    tabButtons.forEach((b) => {
+      const isActive = b.dataset.tab === tabName;
+      b.classList.toggle("active", isActive);
+      b.setAttribute("aria-selected", String(isActive));
+    });
+    Object.values(panels).forEach((p) => p.classList.add("hidden"));
+    const activePanel = panels[tabName];
+    activePanel.classList.remove("hidden");
+    activePanel.classList.remove("fade-in");
+    void activePanel.offsetWidth; // restart the animation even if this tab was already shown before
+    activePanel.classList.add("fade-in");
+    if (tabName === "analytics") renderAnalytics();
+    if (tabName === "stash") renderFeed();
+    if (tabName === "memoryboost") renderMemoryBoost();
+    if (tabName === "flashcards") renderFlashcardsForLesson(false);
+  }
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  });
+
+  // ---------- Subject / Lesson dropdowns ----------
+
+  function isSubjectEntry(value) {
+    return !!value && typeof value === "object" && value.lessons && typeof value.lessons === "object";
+  }
+
+  // ---------- Grade selection ----------
+  // Populated from engine.availableGrades (read from content/manifest.json), so
+  // adding next year's Grade 8 curriculum needs zero changes here — just new
+  // content files and a manifest entry. The selector itself only appears once a
+  // second grade actually exists; with one grade it stays out of the way.
+
+  function clearLoadedSubjects() {
+    Object.keys(engine).forEach((key) => {
+      if (isSubjectEntry(engine[key])) delete engine[key];
+    });
+  }
+
+  function populateGrades() {
+    const grades = engine.availableGrades || [];
+    gradeSelect.innerHTML = grades.map((g) => `<option value="${g.grade}">${escapeHtml(g.label)}</option>`).join("");
+    gradeSelect.value = String(engine.currentGrade);
+    gradeSelect.classList.toggle("hidden", grades.length <= 1);
+  }
+
+  async function switchGrade(grade) {
+    clearLoadedSubjects();
+    loadStatus.textContent = "Loading curriculum data…";
+    loadStatus.classList.remove("hidden");
+    try {
+      await engine.loadContent(grade);
+      localStorage.setItem(STORAGE_GRADE_KEY, String(engine.currentGrade));
+      loadStatus.classList.add("hidden");
+    } catch (err) {
+      console.warn("Could not load curriculum for grade " + grade, err);
+      loadStatus.textContent = "Could not load curriculum for this grade (is the local server running?).";
+    }
+    populateGrades();
+    populateSubjects();
+    subjectSelect.value = "";
+    populateLessons("");
+    renderOverview();
+    resetQuiz();
+    renderFlashcardsForLesson(false);
+  }
+
+  gradeSelect.addEventListener("change", () => switchGrade(parseInt(gradeSelect.value, 10)));
+
+  function populateSubjects() {
+    subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+    Object.keys(engine).forEach((subjectKey) => {
+      const subjectData = engine[subjectKey];
+      if (!isSubjectEntry(subjectData)) return; // skips getMicroFeed() and any non-subject entries
+      const opt = document.createElement("option");
+      opt.value = subjectKey;
+      opt.textContent = subjectData.title || subjectKey;
+      subjectSelect.appendChild(opt);
+    });
+  }
+
+  function populateLessons(subjectKey) {
+    lessonSelect.innerHTML = '<option value="">Select Lesson</option>';
+    lessonSelect.disabled = !subjectKey;
+    const subjectData = engine[subjectKey];
+    if (!subjectKey || !isSubjectEntry(subjectData)) return;
+    Object.keys(subjectData.lessons).forEach((lessonKey) => {
+      const opt = document.createElement("option");
+      opt.value = lessonKey;
+      opt.textContent = subjectData.lessons[lessonKey].title || lessonKey;
+      lessonSelect.appendChild(opt);
+    });
+  }
+
+  subjectSelect.addEventListener("change", () => {
+    populateLessons(subjectSelect.value);
+    lessonSelect.value = "";
+    renderOverview();
+    resetQuiz();
+    renderFlashcardsForLesson(false);
+  });
+
+  lessonSelect.addEventListener("change", () => {
+    renderOverview();
+    resetQuiz();
+    renderFlashcardsForLesson(false);
+  });
+
+  levelButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      quizLevel = parseInt(btn.dataset.level, 10);
+      levelButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      resetQuiz();
+    });
+  });
+
+  // ---------- Mode chooser (Deep Dive / Speed Run / Trivia Hunt) ----------
+
+  function setQuizMode(mode) {
+    quizMode = mode;
+    modeIndicator.textContent = mode === "speedrun" ? "⚡ Speed Run" : "🧠 Deep Dive";
+    resetQuiz();
+  }
+
+  el("modeDeepDiveBtn").addEventListener("click", () => {
+    setQuizMode("deepdive");
+    switchTab("quiz");
+  });
+
+  el("modeSpeedRunBtn").addEventListener("click", () => {
+    setQuizMode("speedrun");
+    switchTab("quiz");
+  });
+
+  el("modeTriviaHuntBtn").addEventListener("click", () => switchTab("stash"));
+
+  function getCurrentLesson() {
+    const subjectKey = subjectSelect.value;
+    const lessonKey = lessonSelect.value;
+    const subjectData = engine[subjectKey];
+    if (!subjectKey || !lessonKey || !isSubjectEntry(subjectData) || !subjectData.lessons[lessonKey]) return null;
+    return subjectData.lessons[lessonKey];
+  }
+
+  // ---------- Lesson Overview ----------
+
+  function renderOverview() {
+    const lessonData = getCurrentLesson();
+    if (!lessonData) {
+      overviewTitle.textContent = "No lesson selected";
+      overviewSubject.textContent = "";
+      overviewText.textContent = "Choose a subject and lesson from the dropdowns above to see an overview here.";
+      overviewExtras.classList.add("hidden");
+      return;
+    }
+    const subjectData = engine[subjectSelect.value];
+    overviewTitle.textContent = lessonData.title || lessonSelect.value;
+    overviewSubject.textContent = (subjectData && subjectData.title) || subjectSelect.value;
+    overviewText.innerHTML = lessonData.overview || "No overview available for this lesson yet.";
+
+    overviewDeepDive.innerHTML = lessonData.deepDivePurpose || "No additional context available for this lesson yet.";
+    overviewRecap.innerHTML = "";
+    if (Array.isArray(lessonData.recap)) {
+      lessonData.recap.forEach((point) => {
+        const li = document.createElement("li");
+        li.innerHTML = point;
+        overviewRecap.appendChild(li);
+      });
+    }
+    overviewExtras.classList.remove("hidden");
+  }
+
+  // ---------- Live Arena Quiz ----------
+
+  function stopSpeedRunTimer() {
+    if (speedRunIntervalId !== null) {
+      clearInterval(speedRunIntervalId);
+      speedRunIntervalId = null;
+    }
+    speedRunTimerEl.classList.add("hidden");
+  }
+
+  function startSpeedRunTimer() {
+    speedRunSecondsLeft = SPEED_RUN_TOTAL_SECONDS;
+    speedRunTimerEl.classList.remove("hidden");
+    speedRunTimerEl.textContent = "⏱ " + speedRunSecondsLeft + "s";
+    speedRunIntervalId = setInterval(() => {
+      speedRunSecondsLeft--;
+      speedRunTimerEl.textContent = "⏱ " + Math.max(0, speedRunSecondsLeft) + "s";
+      if (speedRunSecondsLeft <= 0) {
+        stopSpeedRunTimer();
+        finishQuiz();
+      }
+    }, 1000);
+  }
+
+  function resetQuiz() {
+    stopSpeedRunTimer();
+    const lessonData = getCurrentLesson();
+    quizSummary.classList.add("hidden");
+
+    if (!lessonData || typeof lessonData.generateQuiz !== "function") {
+      quizArea.classList.add("hidden");
+      quizEmptyState.classList.remove("hidden");
+      return;
+    }
+
+    const subjectData = engine[subjectSelect.value];
+    let questions = [];
+    try {
+      // generateQuiz() already returns a full-length set per level (10/5/3) —
+      // Speed Run reuses the exact same set, just with the timer/auto-advance
+      // pacing layered on top; no need to concatenate multiple calls anymore.
+      questions = lessonData.generateQuiz(quizLevel) || [];
+    } catch (err) {
+      questions = [];
+    }
+
+    if (!Array.isArray(questions) || questions.length === 0) {
+      quizArea.classList.add("hidden");
+      quizEmptyState.classList.remove("hidden");
+      return;
+    }
+
+    quiz = {
+      subject: (subjectData && subjectData.title) || subjectSelect.value,
+      lesson: lessonData.title || lessonSelect.value,
+      level: quizLevel,
+      mode: quizMode,
+      questions: questions,
+      index: 0,
+      score: 0,
+      answered: false,
+      finished: false,
+      missed: [],
+    };
+
+    quizEmptyState.classList.add("hidden");
+    quizArea.classList.remove("hidden");
+    if (quizMode === "speedrun") startSpeedRunTimer();
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = quiz.questions[quiz.index];
+    quiz.answered = false;
+
+    quizProgress.textContent = "Question " + (quiz.index + 1) + " of " + quiz.questions.length;
+    quizScore.textContent = "Score: " + quiz.score;
+    questionText.innerHTML = q.question;
+
+    optionsList.innerHTML = "";
+    q.options.forEach((optionText, i) => {
+      const wrapper = document.createElement("div");
+
+      const btn = document.createElement("button");
+      btn.className = "option-btn w-full text-left px-4 py-3 rounded-lg border border-white/10 bg-slate-800/50 hover:bg-slate-800 transition text-sm";
+      btn.innerHTML = optionText;
+      btn.addEventListener("click", () => handleAnswer(i, btn));
+      wrapper.appendChild(btn);
+
+      const explanation = document.createElement("div");
+      explanation.className = "option-explanation hidden mt-1 px-4 py-2 rounded-lg bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs";
+      wrapper.appendChild(explanation);
+
+      optionsList.appendChild(wrapper);
+    });
+
+    const questionCard = el("questionCard");
+    questionCard.classList.remove("fade-in");
+    void questionCard.offsetWidth;
+    questionCard.classList.add("fade-in");
+
+    deepDive.classList.add("hidden");
+    deepDiveBody.classList.remove("open");
+    deepDiveArrow.classList.remove("open");
+    deepDiveToggle.setAttribute("aria-expanded", "false");
+    nextQuestionBtn.classList.add("hidden");
+  }
+
+  function handleAnswer(selectedIndex, btnEl) {
+    if (quiz.answered) return;
+    quiz.answered = true;
+
+    const q = quiz.questions[quiz.index];
+    const isCorrect = selectedIndex === q.answer;
+    if (isCorrect) quiz.score++;
+    if (!isCorrect) quiz.missed.push(q);
+
+    const allOptionButtons = optionsList.querySelectorAll(".option-btn");
+    allOptionButtons.forEach((b, i) => {
+      b.classList.add("pointer-events-none", "opacity-70");
+      if (i === q.answer) b.classList.add("glow-correct");
+      if (i === selectedIndex && !isCorrect) b.classList.add("glow-wrong");
+      if (i === selectedIndex) b.classList.remove("opacity-70");
+    });
+
+    if (!isCorrect && q.optionExplanations && q.optionExplanations[selectedIndex]) {
+      const explanationEl = btnEl.nextElementSibling;
+      explanationEl.textContent = q.optionExplanations[selectedIndex];
+      explanationEl.classList.remove("hidden");
+    }
+
+    quizScore.textContent = "Score: " + quiz.score;
+
+    if (quiz.mode === "speedrun") {
+      // Keep pace: no manual "Next Question" click, no mid-run Deep Dive detour —
+      // missed questions are reviewable afterward from the summary screen instead.
+      const runRef = quiz;
+      setTimeout(() => {
+        // The countdown may have ended (and already finished this run) while this
+        // auto-advance was pending — don't resurrect a run that's already over.
+        if (quiz !== runRef || quiz.finished) return;
+        if (quiz.index < quiz.questions.length - 1) {
+          quiz.index++;
+          renderQuestion();
+        } else {
+          finishQuiz();
+        }
+      }, 900);
+      return;
+    }
+
+    deepDiveIntricacy.innerHTML = q.technicalIntricacy || "No deep dive available.";
+    deepDivePurpose.innerHTML = q.realPurpose || "No deep dive available.";
+    deepDive.classList.remove("hidden");
+
+    nextQuestionBtn.classList.remove("hidden");
+    nextQuestionBtn.textContent = quiz.index === quiz.questions.length - 1 ? "Finish Quiz" : "Next Question";
+  }
+
+  deepDiveToggle.addEventListener("click", () => {
+    const isOpen = deepDiveBody.classList.toggle("open");
+    deepDiveArrow.classList.toggle("open", isOpen);
+    deepDiveToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  nextQuestionBtn.addEventListener("click", () => {
+    if (quiz.index < quiz.questions.length - 1) {
+      quiz.index++;
+      renderQuestion();
+    } else {
+      finishQuiz();
+    }
+  });
+
+  restartQuizBtn.addEventListener("click", resetQuiz);
+
+  function computeLevel(score, total) {
+    const pct = total ? score / total : 0;
+    if (pct >= 0.8) return "Gold";
+    if (pct >= 0.5) return "Silver";
+    return "Bronze";
+  }
+
+  function finishQuiz() {
+    if (quiz.finished) return;
+    quiz.finished = true;
+    stopSpeedRunTimer();
+    const answeredCount = quiz.index + (quiz.answered ? 1 : 0);
+    const level = computeLevel(quiz.score, answeredCount || quiz.questions.length);
+
+    quizArea.classList.add("hidden");
+    quizSummary.classList.remove("hidden");
+    summaryScore.textContent = quiz.score + " / " + (answeredCount || quiz.questions.length);
+    summaryLevel.textContent = level;
+
+    const missedReviewWrap = el("missedReviewWrap");
+    const missedReviewList = el("missedReviewList");
+    if (quiz.mode === "speedrun" && quiz.missed.length > 0) {
+      missedReviewList.innerHTML = "";
+      quiz.missed.forEach((q) => {
+        const card = document.createElement("div");
+        card.className = "rounded-xl bg-slate-800/50 border border-white/10 p-4";
+        const qEl = document.createElement("p");
+        qEl.className = "text-sm font-semibold mb-2";
+        qEl.innerHTML = q.question;
+        const aEl = document.createElement("p");
+        aEl.className = "text-sm text-emerald-400 mb-2";
+        aEl.innerHTML = "Correct answer: " + (q.options[q.answer] || "");
+        const explainEl = document.createElement("p");
+        explainEl.className = "text-xs text-slate-400 leading-relaxed";
+        explainEl.innerHTML = q.realPurpose || q.technicalIntricacy || "";
+        card.appendChild(qEl);
+        card.appendChild(aEl);
+        card.appendChild(explainEl);
+        missedReviewList.appendChild(card);
+      });
+      missedReviewWrap.classList.remove("hidden");
+    } else {
+      missedReviewWrap.classList.add("hidden");
+    }
+
+    const record = {
+      name: localStorage.getItem(STORAGE_NAME_KEY) || "Unknown",
+      subject: quiz.subject,
+      subjectKey: subjectSelect.value,
+      lesson: quiz.lesson,
+      lessonKey: lessonSelect.value,
+      difficultyLevel: quiz.level,
+      mode: quiz.mode,
+      score: quiz.score + " / " + (answeredCount || quiz.questions.length),
+      levelCleared: level,
+      timestamp: new Date().toLocaleString(),
+    };
+
+    saveResult(record);
+    sendActivityToServer("quiz_completed", record);
+  }
+
+  function saveResult(record) {
+    const history = JSON.parse(localStorage.getItem(STORAGE_HISTORY_KEY) || "[]");
+    history.push(record);
+    localStorage.setItem(STORAGE_HISTORY_KEY, JSON.stringify(history));
+  }
+
+  // ---------- Idea Stash Feed ----------
+
+  const CATEGORY_STYLES = {
+    "Space & Tech": "bg-indigo-500/15 text-indigo-300 border-indigo-400/30",
+    "Human Body": "bg-rose-500/15 text-rose-300 border-rose-400/30",
+    "Chemistry": "bg-cyan-500/15 text-cyan-300 border-cyan-400/30",
+    "Physics": "bg-sky-500/15 text-sky-300 border-sky-400/30",
+    "Geopolitics": "bg-amber-500/15 text-amber-300 border-amber-400/30",
+    "World Wonders": "bg-orange-500/15 text-orange-300 border-orange-400/30",
+    "Culture & Arts": "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-400/30",
+    "Governance": "bg-yellow-500/15 text-yellow-300 border-yellow-400/30",
+    "Lateral Thinking": "bg-violet-500/15 text-violet-300 border-violet-400/30",
+    "Growth Mindset": "bg-purple-500/15 text-purple-300 border-purple-400/30",
+    "Decision-Making": "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-400/30",
+    "Systems Thinking": "bg-violet-500/15 text-violet-300 border-violet-400/30",
+    "Probability & Reasoning": "bg-purple-500/15 text-purple-300 border-purple-400/30",
+    "SAT Vocabulary": "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
+    "SAT Grammar": "bg-teal-500/15 text-teal-300 border-teal-400/30",
+    "SAT Math": "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
+    "SAT Strategy": "bg-teal-500/15 text-teal-300 border-teal-400/30",
+    "Mathematics": "bg-indigo-500/15 text-indigo-300 border-indigo-400/30",
+    "Biology": "bg-rose-500/15 text-rose-300 border-rose-400/30",
+  };
+
+  function getCategoryStyle(category) {
+    return CATEGORY_STYLES[category] || "bg-slate-500/15 text-slate-300 border-slate-400/30";
+  }
+
+  function getStash() {
+    return JSON.parse(localStorage.getItem(STORAGE_STASH_KEY) || "[]");
+  }
+
+  function saveStash(stash) {
+    localStorage.setItem(STORAGE_STASH_KEY, JSON.stringify(stash));
+  }
+
+  function isCardStashed(id, stash) {
+    return stash.some((c) => c.id === id);
+  }
+
+  function toggleStash(card) {
+    const stash = getStash();
+    const idx = stash.findIndex((c) => c.id === card.id);
+    if (idx === -1) {
+      stash.push(card);
+      sendActivityToServer("card_stashed", card);
+    } else {
+      stash.splice(idx, 1);
+    }
+    saveStash(stash);
+    renderFeed();
+  }
+
+  // The Discovery Stream shows a rotating batch of the full card pool rather than
+  // every card at once, so the *stream itself* refreshes with new-to-the-user
+  // cards every 3 days (not just the single featured card below) — still fully
+  // deterministic and local, computed from today's date, no server involved.
+  const DISCOVERY_BATCH_SIZE = 15;
+  const DISCOVERY_ROTATION_DAYS = 3;
+
+  function getCurrentBatch(pool) {
+    if (pool.length === 0) return [];
+    const daysSinceEpoch = Math.floor(Date.now() / 86400000);
+    const numBatches = Math.ceil(pool.length / DISCOVERY_BATCH_SIZE);
+    const batchIndex = Math.floor(daysSinceEpoch / DISCOVERY_ROTATION_DAYS) % numBatches;
+    const start = batchIndex * DISCOVERY_BATCH_SIZE;
+    return pool.slice(start, start + DISCOVERY_BATCH_SIZE);
+  }
+
+  function getDaysUntilNextBatch() {
+    const daysSinceEpoch = Math.floor(Date.now() / 86400000);
+    const daysIntoBatch = daysSinceEpoch % DISCOVERY_ROTATION_DAYS;
+    return DISCOVERY_ROTATION_DAYS - daysIntoBatch;
+  }
+
+  // Deterministically rotates which card (within the current batch) is featured
+  // as "Today's Discovery," based on the calendar day — no external calls, no
+  // stored schedule, just today's date.
+  function getFeaturedIndex(poolLength) {
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((now - startOfYear) / 86400000);
+    return ((dayOfYear % poolLength) + poolLength) % poolLength;
+  }
+
+  function createFeedCard(card, stashed, isFeatured) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "glass rounded-2xl p-5 transition hover:border-white/20" + (isFeatured ? " border border-emerald-500" : "");
+
+    const topRow = document.createElement("div");
+    topRow.className = "flex items-start justify-between gap-3 mb-3";
+
+    const pill = document.createElement("span");
+    pill.className = "text-xs font-semibold px-3 py-1 rounded-full border " + getCategoryStyle(card.category);
+    pill.textContent = card.category;
+
+    const stashBtn = document.createElement("button");
+    stashBtn.className = "stash-btn shrink-0 text-2xl leading-none transition hover:scale-110 " + (stashed ? "text-rose-400" : "text-slate-500 hover:text-rose-400");
+    stashBtn.textContent = stashed ? "♥" : "♡";
+    stashBtn.setAttribute("aria-label", stashed ? "Remove from My Stash" : "Save to My Stash");
+    stashBtn.title = stashed ? "Remove from My Stash" : "Save to My Stash";
+    stashBtn.addEventListener("click", () => toggleStash(card));
+
+    topRow.appendChild(pill);
+    topRow.appendChild(stashBtn);
+
+    const headline = document.createElement("h3");
+    headline.className = "text-lg font-bold mb-2 leading-snug";
+    headline.innerHTML = card.headline;
+
+    const insight = document.createElement("p");
+    insight.className = "text-slate-300 text-sm leading-relaxed mb-4";
+    insight.innerHTML = card.insight;
+
+    const takeawayBox = document.createElement("div");
+    takeawayBox.className = "rounded-xl bg-slate-800/50 border border-white/10 p-3";
+
+    const takeawayLabel = document.createElement("p");
+    takeawayLabel.className = "text-[10px] uppercase tracking-wide text-emerald-400 font-semibold mb-1";
+    takeawayLabel.textContent = "Takeaway";
+
+    const takeawayText = document.createElement("p");
+    takeawayText.className = "text-slate-300 text-sm leading-relaxed";
+    takeawayText.innerHTML = card.takeaway;
+
+    takeawayBox.appendChild(takeawayLabel);
+    takeawayBox.appendChild(takeawayText);
+
+    wrapper.appendChild(topRow);
+    wrapper.appendChild(headline);
+    wrapper.appendChild(insight);
+    wrapper.appendChild(takeawayBox);
+
+    if (card.spokenStage) {
+      const spokenBox = document.createElement("div");
+      spokenBox.className = "rounded-xl bg-slate-800/50 border border-white/10 p-3 mt-4";
+
+      const spokenLabel = document.createElement("p");
+      spokenLabel.className = "text-[10px] uppercase tracking-wide text-cyan-400 font-semibold mb-1";
+      spokenLabel.textContent = "Try Saying This";
+
+      const spokenText = document.createElement("p");
+      spokenText.className = "text-slate-300 text-sm leading-relaxed";
+      spokenText.innerHTML = card.spokenStage;
+
+      spokenBox.appendChild(spokenLabel);
+      spokenBox.appendChild(spokenText);
+      wrapper.appendChild(spokenBox);
+    }
+
+    return wrapper;
+  }
+
+  function renderFeed() {
+    const stash = getStash();
+    stashCountEl.textContent = stash.length + (stash.length === 1 ? " idea stashed" : " ideas stashed");
+
+    const currentBatch = stashView === "stream" ? getCurrentBatch(microFeed) : [];
+    const sourceCards = stashView === "stream" ? currentBatch : stash;
+    feedList.innerHTML = "";
+
+    if (stashView === "stream" && microFeed.length > 0) {
+      const daysLeft = getDaysUntilNextBatch();
+      discoveryRefreshHint.textContent =
+        daysLeft === DISCOVERY_ROTATION_DAYS ? "Fresh batch today" : "New batch in " + daysLeft + (daysLeft === 1 ? " day" : " days");
+    } else {
+      discoveryRefreshHint.textContent = "";
+    }
+
+    // Skip the separate "Today's Discovery" spotlight when the current batch only has
+    // one card in it (the last, partial batch of an uneven pool) — with nothing else
+    // in the batch, featuring it separately just shows the exact same card twice.
+    featuredCardSlot.innerHTML = "";
+    if (stashView === "stream" && currentBatch.length > 1) {
+      const featured = currentBatch[getFeaturedIndex(currentBatch.length)];
+      featuredCardSlot.appendChild(createFeedCard(featured, isCardStashed(featured.id, stash), true));
+      featuredDiscovery.classList.remove("hidden");
+    } else {
+      featuredDiscovery.classList.add("hidden");
+    }
+
+    if (sourceCards.length === 0) {
+      feedList.classList.add("hidden");
+      feedEmptyState.classList.remove("hidden");
+      feedEmptyState.textContent =
+        stashView === "stream"
+          ? "No idea cards are available right now. Check back soon!"
+          : "You haven't stashed any ideas yet. Tap the heart on a card in the Discovery Stream to save it here.";
+      return;
+    }
+
+    feedList.classList.remove("hidden");
+    feedEmptyState.classList.add("hidden");
+    sourceCards.forEach((card) => {
+      feedList.appendChild(createFeedCard(card, isCardStashed(card.id, stash)));
+    });
+  }
+
+  streamToggleBtn.addEventListener("click", () => {
+    stashView = "stream";
+    streamToggleBtn.classList.add("active");
+    savedToggleBtn.classList.remove("active");
+    renderFeed();
+  });
+
+  savedToggleBtn.addEventListener("click", () => {
+    stashView = "saved";
+    savedToggleBtn.classList.add("active");
+    streamToggleBtn.classList.remove("active");
+    renderFeed();
+  });
+
+  // ---------- Parent Analytics ----------
+
+  function renderAnalytics() {
+    const history = JSON.parse(localStorage.getItem(STORAGE_HISTORY_KEY) || "[]");
+
+    statAttempts.textContent = history.length;
+
+    if (history.length === 0) {
+      statAverage.textContent = "0";
+      statBestLevel.textContent = "-";
+      analyticsBody.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-slate-400">No quiz attempts recorded yet.</td></tr>';
+      return;
+    }
+
+    let totalPct = 0;
+    const levelRank = { Bronze: 1, Silver: 2, Gold: 3 };
+    let bestLevel = "Bronze";
+
+    history.forEach((r) => {
+      const [num, denom] = String(r.score).split("/").map((n) => parseFloat(n));
+      if (denom) totalPct += num / denom;
+      if (levelRank[r.levelCleared] > levelRank[bestLevel]) bestLevel = r.levelCleared;
+    });
+
+    statAverage.textContent = Math.round((totalPct / history.length) * 100) + "%";
+    statBestLevel.textContent = bestLevel;
+
+    analyticsBody.innerHTML = "";
+    [...history].reverse().forEach((r) => {
+      const tr = document.createElement("tr");
+      tr.className = "border-b border-white/5";
+      tr.innerHTML =
+        "<td class=\"py-2 pr-4 font-medium\">" + escapeHtml(r.name) + "</td>" +
+        "<td class=\"py-2 pr-4\">" + escapeHtml(r.subject) + "</td>" +
+        "<td class=\"py-2 pr-4\">" + escapeHtml(r.lesson) + "</td>" +
+        "<td class=\"py-2 pr-4\">" + escapeHtml(r.score) + "</td>" +
+        "<td class=\"py-2 pr-4\">" + escapeHtml(r.levelCleared) + "</td>" +
+        "<td class=\"py-2 pr-4 text-slate-400\">" + escapeHtml(r.timestamp) + "</td>";
+      analyticsBody.appendChild(tr);
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = String(str ?? "");
+    return div.innerHTML;
+  }
+
+  // ---------- Init ----------
+
+  async function init() {
+    if (typeof engine.loadContent === "function") {
+      try {
+        const savedGrade = parseInt(localStorage.getItem(STORAGE_GRADE_KEY), 10);
+        await engine.loadContent(isNaN(savedGrade) ? undefined : savedGrade);
+        localStorage.setItem(STORAGE_GRADE_KEY, String(engine.currentGrade));
+        populateGrades();
+        loadStatus.classList.add("hidden");
+      } catch (err) {
+        console.warn("Could not load curriculum content — subjects will be unavailable until the local server is running.", err);
+        loadStatus.textContent = "Curriculum failed to load (is the local server running?).";
+      }
+    } else {
+      loadStatus.classList.add("hidden");
+    }
+    launchArenaBtn.disabled = false;
+    checkLogin();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

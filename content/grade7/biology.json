@@ -1,0 +1,4006 @@
+{
+  "title": "Biology",
+  "questionPool": {
+    "ts_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal tissue covers and protects body surfaces and lines internal organs?",
+          "answer": "Epithelial Tissue"
+        },
+        {
+          "question": "Which animal tissue binds and supports other tissues and organs together, such as bone and blood?",
+          "answer": "Connective Tissue"
+        },
+        {
+          "question": "Which animal tissue contracts and relaxes to produce movement?",
+          "answer": "Muscular Tissue"
+        },
+        {
+          "question": "Which animal tissue carries electrical impulses to control and coordinate body activities?",
+          "answer": "Nervous Tissue"
+        }
+      ],
+      "distractorPool": [
+        "Epithelial Tissue",
+        "Connective Tissue",
+        "Muscular Tissue",
+        "Nervous Tissue"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of the four major animal tissue types is built from cells specialised in shape and arrangement for one job: flattened, tightly packed cells for covering surfaces, cells embedded in a matrix for support, elongated contractile cells for movement, and long, signal-carrying cells for coordination.",
+      "realPurpose": "Recognising tissue types by function is the foundation of histology and helps explain how organs like skin, bone, muscle and the brain each do their specific job."
+    },
+    "ts_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which plant tissue consists of actively dividing cells found at root and shoot tips, responsible for growth?",
+          "answer": "Meristematic Tissue"
+        },
+        {
+          "question": "Which plant tissue transports water and minerals from the roots up to the leaves?",
+          "answer": "Xylem"
+        },
+        {
+          "question": "Which plant tissue transports prepared food from the leaves to other parts of the plant?",
+          "answer": "Phloem"
+        },
+        {
+          "question": "Which plant tissue provides rigid mechanical support to the plant using thick, hardened cell walls?",
+          "answer": "Sclerenchyma"
+        }
+      ],
+      "distractorPool": [
+        "Meristematic Tissue",
+        "Xylem",
+        "Phloem",
+        "Sclerenchyma",
+        "Parenchyma"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Plant tissues are broadly divided into meristematic tissue (dividing cells that drive growth) and permanent tissue (specialised, non-dividing cells such as xylem, phloem, parenchyma and sclerenchyma), each structurally adapted to its specific role.",
+      "realPurpose": "Understanding plant tissue types explains how a plant grows taller, transports water against gravity, and stays upright without a skeleton."
+    },
+    "ts_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What type of muscular tissue is found only in the heart and contracts involuntarily and rhythmically throughout life?",
+          "answer": "Cardiac muscle"
+        },
+        {
+          "question": "What type of muscular tissue is under voluntary control and attached to bones to produce movement?",
+          "answer": "Skeletal muscle"
+        },
+        {
+          "question": "What type of muscular tissue is found in the walls of internal organs like the stomach and intestines, and works involuntarily?",
+          "answer": "Smooth muscle"
+        }
+      ],
+      "distractorPool": [
+        "Cardiac muscle",
+        "Skeletal muscle",
+        "Smooth muscle",
+        "Epithelial muscle"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The three types of muscle tissue are specialised for very different jobs: skeletal muscle for controlled, voluntary movement, smooth muscle for slow involuntary processes like digestion, and cardiac muscle for the tireless, rhythmic contraction that keeps the heart beating continuously.",
+      "realPurpose": "Recognising the differences between muscle types explains why we can consciously control our arms but not our heartbeat or digestion."
+    },
+    "ts_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name of the basic functional cell that makes up nervous tissue and carries electrical impulses?",
+          "answer": "A neuron (nerve cell)"
+        },
+        {
+          "question": "What is the name of the long, thin fibre extending from a neuron that carries impulses away from the cell body?",
+          "answer": "An axon"
+        },
+        {
+          "question": "What is the general term for the gap between two neurons where a nerve impulse passes from one to the next?",
+          "answer": "A synapse"
+        }
+      ],
+      "distractorPool": [
+        "A neuron (nerve cell)",
+        "An axon",
+        "A synapse",
+        "A dendrite"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Nervous tissue is built from specialised cells (neurons) with long fibres (axons) that carry electrical impulses across small gaps (synapses) to the next neuron, forming continuous communication pathways throughout the body.",
+      "realPurpose": "Understanding this structure explains how a signal — like pulling your hand away from something hot — can travel almost instantly from a sensory receptor to the brain and back to a muscle."
+    },
+    "ts_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A student views a tissue sample under a microscope using an eyepiece lens of magnification {{eyepiece}}x and an objective lens of magnification {{objective}}x. What is the total magnification of the image seen?",
+      "vars": {
+        "eyepiece": {
+          "type": "pick",
+          "options": [
+            5,
+            10,
+            15
+          ]
+        },
+        "objective": {
+          "type": "pick",
+          "options": [
+            10,
+            20,
+            40,
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "eyepiece",
+        "objective"
+      ],
+      "decimals": 0,
+      "unit": "x",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "add",
+            "args": [
+              "eyepiece",
+              "objective"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -40,
+          "max": 40,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "A compound microscope magnifies an image in two stages — first through the objective lens, then further through the eyepiece lens — so the total magnification is found by multiplying the two individual magnifications together, not adding them.",
+      "realPurpose": "Calculating total magnification correctly is essential for accurately measuring the true size of cells and tissue structures observed under a microscope."
+    },
+    "ts_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "A sample of meristematic tissue contains {{cellCount}} actively dividing cells. If every cell divides exactly once, how many cells will be present afterward?",
+      "vars": {
+        "cellCount": {
+          "type": "int",
+          "min": 5,
+          "max": 100
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "cellCount",
+        2
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "cellCount"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Meristematic cells grow a plant by repeated cell division; each division splits one cell into two identical daughter cells, so a single round of division doubles the total number of cells present.",
+      "realPurpose": "This doubling pattern is the basis of how plants grow in length and thickness from small, localised meristematic regions at their tips."
+    },
+    "ts_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A student counts an average of {{cellsPerField}} cells in one microscope field of view. If they examine {{fields}} different fields of view with a similar density of cells, approximately how many cells have they counted in total?",
+      "vars": {
+        "cellsPerField": {
+          "type": "int",
+          "min": 5,
+          "max": 50
+        },
+        "fields": {
+          "type": "int",
+          "min": 2,
+          "max": 10
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "cellsPerField",
+        "fields"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "cellsPerField"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -15,
+          "max": 15,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Estimating a total count from a sample means multiplying the average count per sample by the number of samples examined, assuming the density stays roughly consistent across each field of view.",
+      "realPurpose": "This kind of estimation technique is used constantly in biology to count cells, organisms or particles that are too numerous to count one by one."
+    },
+    "ts_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A meristematic tissue sample starts with {{initialCells}} cells. If the cells divide and double in number {{doublings}} times in succession, how many cells will there be in total?",
+          "vars": {
+            "initialCells": {
+              "type": "int",
+              "min": 2,
+              "max": 10
+            },
+            "doublings": {
+              "type": "int",
+              "min": 2,
+              "max": 4
+            },
+            "multiplier": {
+              "type": "computed",
+              "formulaId": "twoToThePower",
+              "args": [
+                "doublings"
+              ]
+            },
+            "finalCells": {
+              "type": "computed",
+              "formulaId": "multiply",
+              "args": [
+                "initialCells",
+                "multiplier"
+              ]
+            },
+            "wrongProduct": {
+              "type": "computed",
+              "formulaId": "multiply",
+              "args": [
+                "initialCells",
+                "doublings"
+              ]
+            }
+          },
+          "answer": "{{finalCells}}",
+          "distractors": [
+            "{{wrongProduct}}",
+            "{{initialCells}}",
+            "{{doublings}}"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Repeated doubling means multiplying by 2 once for every round of division, so after several successive doublings, the total is the starting number multiplied by 2 raised to the power of the number of doublings.",
+      "realPurpose": "This doubling pattern explains why plant growth from a small meristematic region can accelerate rapidly, since each round of cell division doubles the growing tissue."
+    },
+    "ts_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A student examines a root tip and finds that its meristematic region is actively producing new cells at a rate of {{cellsPerHour}} cells per hour. How many new cells will be produced over {{hoursObserved}} hours of continuous growth?",
+      "vars": {
+        "cellsPerHour": {
+          "type": "int",
+          "min": 3,
+          "max": 15
+        },
+        "hoursObserved": {
+          "type": "int",
+          "min": 2,
+          "max": 8
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "cellsPerHour",
+        "hoursObserved"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "cellsPerHour"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Assuming a steady rate of cell production at a growing point, the total number of new cells generated over a period of continuous growth is found by multiplying the hourly rate by the number of hours, the same scaling logic used for any consistent rate.",
+      "realPurpose": "This kind of estimate reflects how meristematic tissue drives measurable, ongoing growth at root and shoot tips over time."
+    },
+    "ts_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student examines a plant stem's cross-section and notices water-conducting cells located toward the centre and food-conducting cells located toward the outside. The student assumes the centrally located cells must carry food, reasoning that 'important nutrients are always kept safest in the centre.' What is the flaw in this reasoning?",
+          "answer": "Xylem and phloem are identified by their specialised structure (xylem consists of dead, thick-walled tubes for water transport; phloem consists of living cells for food transport), not by whether they are positioned centrally or toward the outside",
+          "distractors": [
+            "The student is correct — tissues located more centrally in a stem always carry food, since important nutrients are kept safest in the centre",
+            "Position in the stem is the only reliable way to identify xylem and phloem, so the student's method is a valid shortcut",
+            "Xylem and phloem constantly swap positions and functions depending on the plant's needs at any given moment"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Xylem and phloem are two structurally distinct tissues, each built for a different transport job — xylem's dead, hollow, thick-walled cells are suited to pulling water upward under tension, while phloem's living cells actively move dissolved food; their typical arrangement in a stem is consistent, but it is their structure and cell type that defines their function, not simply their position.",
+      "realPurpose": "Correctly identifying xylem and phloem by structure (not assumed importance) is essential for understanding how plants transport water and food in opposite directions simultaneously."
+    },
+    "ts_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student compares a piece of bone and a sample of blood under a microscope and says they must be completely different tissue types, since one is hard and solid while the other is liquid. A classmate says both are actually the same broad tissue category. Who is correct, and why?",
+          "answer": "Both bone and blood are types of connective tissue, because connective tissue is defined by having cells embedded within a matrix that binds and supports the body — and that matrix can be solid (as in bone), jelly-like, or liquid (as in blood plasma)",
+          "distractors": [
+            "The student is correct — bone and blood must belong to completely different tissue categories because one is solid and the other is liquid",
+            "Blood is not a tissue at all, since it does not stay in a fixed shape like other tissues",
+            "Bone and blood are both types of muscular tissue, since both are involved in supporting body movement"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Connective tissue is classified by its defining feature — cells scattered within a surrounding matrix — rather than by the matrix's physical state; bone has a hard mineral matrix, cartilage has a flexible matrix, and blood has a liquid matrix (plasma), yet all three are connective tissues that bind, support or transport materials through the body.",
+      "realPurpose": "Recognising blood as a connective tissue explains its role in transporting nutrients, gases and immune cells throughout the body, linking it functionally to more obviously 'supportive' tissues like bone and cartilage."
+    },
+    "ts_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student examines a flexible tissue sample and assumes it must be muscular tissue, reasoning that 'only muscles can move or bend.' What is the flaw in this reasoning?",
+          "answer": "Many tissues that are not muscular can still be flexible, such as certain connective tissues (like cartilage) that bend without actively contracting; muscular tissue is specifically defined by its ability to actively CONTRACT and generate force or movement, not simply by being flexible or bendable",
+          "distractors": [
+            "The student is correct — any tissue capable of bending or flexing must, by definition, be muscular tissue",
+            "Flexibility can only occur in nervous tissue, never in connective or muscular tissue",
+            "Only bone tissue is capable of being flexible; every other flexible material in the body must be muscle"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Muscular tissue is defined by its unique ability to actively contract using specialised contractile proteins, generating real force and movement; flexibility alone (such as cartilage bending under pressure) is a passive mechanical property that many non-muscular tissues also share, without any active contraction taking place.",
+      "realPurpose": "Distinguishing active contraction from passive flexibility is essential for correctly identifying tissue types under a microscope, rather than relying on how a sample feels or bends."
+    },
+    "ts_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes nervous tissue is found only in the brain, and that impulses in the rest of the body somehow travel without any actual tissue involved. What is the mistake in this reasoning?",
+          "answer": "Nervous tissue extends throughout the entire body via nerves made of neurons carrying impulses, connecting the brain and spinal cord (the central nervous system) to every part of the body; there is no 'impulse without tissue' — every signal travels through a continuous, physical pathway of nervous tissue",
+          "distractors": [
+            "The student is correct — nerve impulses in the rest of the body travel instantly through empty space, without needing any physical tissue",
+            "Impulses outside the brain travel exclusively through the bloodstream instead of through nervous tissue",
+            "Nervous tissue exists only in the brain and spinal cord, and the rest of the body has no nervous tissue at all"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The nervous system forms one continuous network of nervous tissue, from the brain and spinal cord (the central nervous system) branching out through nerves (the peripheral nervous system) to reach every part of the body, so every nerve impulse, wherever it occurs, is always carried by physical nervous tissue.",
+      "realPurpose": "Understanding that nerves physically extend throughout the body explains why injuries to nerves outside the brain (such as in a limb) can still cause numbness or loss of movement in that specific area."
+    },
+    "ts_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which plant tissue is made of thin-walled, living cells that form the bulk of soft plant parts, such as the pulp of a fruit, and often stores food?",
+          "answer": "Parenchyma"
+        },
+        {
+          "question": "Which plant tissue is made of living, elongated cells with unevenly thickened corners, giving flexible support to young, growing parts of a plant like the stem of a soft herb?",
+          "answer": "Collenchyma"
+        },
+        {
+          "question": "Which type of plant tissue is classified as 'permanent tissue,' made of cells that have stopped dividing and taken on a specialised, fixed shape?",
+          "answer": "Parenchyma, collenchyma or sclerenchyma"
+        }
+      ],
+      "distractorPool": [
+        "Parenchyma",
+        "Collenchyma",
+        "Sclerenchyma",
+        "Parenchyma, collenchyma or sclerenchyma",
+        "Meristematic tissue"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Permanent plant tissues (parenchyma, collenchyma and sclerenchyma) are all made of cells that have stopped dividing, but they differ in wall thickness and cell arrangement: parenchyma has thin walls and stores food, collenchyma has unevenly thickened walls for flexible support, and sclerenchyma has thick, hardened walls for rigid support.",
+      "realPurpose": "Recognising these differences explains why a young stem can still bend in the wind while a mature woody stem stays rigid, and why soft fruit pulp feels so different from a hard nutshell."
+    },
+    "ts_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal tissue type is arranged in a single, flat layer of cells that allows easy diffusion, such as the lining of blood vessels and air sacs in the lungs?",
+          "answer": "Epithelial tissue (specifically squamous epithelium)"
+        },
+        {
+          "question": "Which animal tissue type includes cartilage, a flexible connective tissue found at the tip of the nose and inside the outer ear?",
+          "answer": "Connective tissue"
+        },
+        {
+          "question": "Which animal tissue type includes tendons and ligaments, both of which connect and support other body parts?",
+          "answer": "Connective tissue"
+        }
+      ],
+      "distractorPool": [
+        "Epithelial tissue (specifically squamous epithelium)",
+        "Connective tissue",
+        "Muscular tissue",
+        "Nervous tissue"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Epithelial tissue can be a single thin layer of flattened cells (ideal for fast diffusion, as in the lungs) or thicker layers for protection (as in skin), while connective tissue includes very different-feeling materials — cartilage, tendons and ligaments — all unified by having cells embedded in a supporting matrix.",
+      "realPurpose": "Recognising these tissue sub-types explains why the lining of an air sac can be thin enough for gas exchange, while a tendon can be tough enough to anchor a muscle to a bone."
+    },
+    "ts_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name for a group of different tissues working together to perform a more complex function, such as the stomach or the heart?",
+          "answer": "An organ"
+        },
+        {
+          "question": "What is the correct order of increasing organisation in a multicellular organism: cell, tissue, organ, and which structure comes next?",
+          "answer": "An organ system"
+        },
+        {
+          "question": "What term describes a group of similar cells performing one specific function, the basic building block used to construct organs?",
+          "answer": "A tissue"
+        }
+      ],
+      "distractorPool": [
+        "An organ",
+        "An organ system",
+        "A tissue",
+        "An organism"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Biological organisation follows a clear hierarchy: cells group into tissues, tissues combine to form organs, and organs work together as organ systems, with organ systems together making up a complete organism.",
+      "realPurpose": "Understanding this hierarchy explains why tissues are studied as the essential middle step between individual cells and fully functioning organs like the heart or stomach."
+    },
+    "ts_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which plant tissue type is found only at specific growing points, such as root tips and shoot tips, rather than spread throughout the whole plant?",
+          "answer": "Meristematic tissue"
+        },
+        {
+          "question": "Which plant tissue type makes up most of the plant body once growth in that particular region has finished?",
+          "answer": "Permanent tissue"
+        },
+        {
+          "question": "What key feature distinguishes meristematic tissue from permanent tissue?",
+          "answer": "Meristematic cells actively and repeatedly divide, while permanent tissue cells have stopped dividing"
+        }
+      ],
+      "distractorPool": [
+        "Meristematic tissue",
+        "Permanent tissue",
+        "Meristematic cells actively and repeatedly divide, while permanent tissue cells have stopped dividing",
+        "Vascular tissue"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Meristematic tissue is restricted to localised growing regions where cells keep dividing, while permanent tissue makes up the rest of the plant body, composed of cells that have differentiated into a fixed, specialised form and no longer divide.",
+      "realPurpose": "This distinction explains why a plant only grows taller from its tips (where meristematic tissue is located) rather than from the middle of an already-formed stem."
+    },
+    "ts_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal tissue type can be found in glands, where cells are specialised to produce and release substances like sweat or digestive juices?",
+          "answer": "Epithelial tissue (glandular epithelium)"
+        },
+        {
+          "question": "Which type of muscle tissue has cells that appear striped, or 'striated,' under a microscope, and is attached to the skeleton?",
+          "answer": "Skeletal muscle"
+        },
+        {
+          "question": "Which type of muscle tissue does NOT appear striped under a microscope and is found in the walls of organs like the intestines?",
+          "answer": "Smooth muscle"
+        }
+      ],
+      "distractorPool": [
+        "Epithelial tissue (glandular epithelium)",
+        "Skeletal muscle",
+        "Smooth muscle",
+        "Cardiac muscle"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Epithelial tissue is versatile enough to form glands that secrete substances, not just surfaces that cover or line, while the three muscle types can be told apart under a microscope by their appearance: skeletal muscle shows clear stripes, smooth muscle appears unstriped, and cardiac muscle shows a distinct branching, striped pattern.",
+      "realPurpose": "Recognising these microscopic differences is how histologists distinguish and identify tissue types when examining a sample, rather than relying on the tissue's location alone."
+    },
+    "ts_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which plant tissue type consists of dead cells at maturity, with thick, hardened walls made of a substance called lignin, providing rigid mechanical support?",
+          "answer": "Sclerenchyma"
+        },
+        {
+          "question": "Which plant conducting tissue is made of dead, hollow, tube-like cells, an unusual feature for a tissue that still performs an active transport role?",
+          "answer": "Xylem"
+        },
+        {
+          "question": "Which plant conducting tissue is made of living cells that actively transport prepared food, unlike its water-transporting counterpart?",
+          "answer": "Phloem"
+        }
+      ],
+      "distractorPool": [
+        "Sclerenchyma",
+        "Xylem",
+        "Phloem",
+        "Parenchyma"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Some plant tissues, like sclerenchyma and xylem, are made of dead cells at maturity, since their thick, hardened or lignified walls only need to provide structural support or a hollow channel for water, while phloem remains living because actively moving food requires functioning cells.",
+      "realPurpose": "Recognising that 'dead' cells can still serve an essential function (support or water transport) clarifies a detail that often confuses students who assume all functioning tissue must be made of living cells."
+    },
+    "cp_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which plant group includes simple plants like algae that lack true roots, stems and leaves?",
+          "answer": "Thallophyta"
+        },
+        {
+          "question": "Which plant group includes mosses, which have simple stem-and-leaf-like structures but depend heavily on moisture to reproduce?",
+          "answer": "Bryophyta"
+        },
+        {
+          "question": "Which plant group includes ferns, which have true vascular tissue but reproduce using spores instead of seeds?",
+          "answer": "Pteridophyta"
+        },
+        {
+          "question": "Which plant group includes all seed-bearing plants?",
+          "answer": "Spermatophyta"
+        }
+      ],
+      "distractorPool": [
+        "Thallophyta",
+        "Bryophyta",
+        "Pteridophyta",
+        "Spermatophyta"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Plant groups are ordered by increasing structural complexity and decreasing dependence on water for reproduction, from simple Thallophyta up to fully seed-bearing Spermatophyta.",
+      "realPurpose": "This classification reveals how plant life evolved from simple, water-dependent forms toward the complex, seed-bearing plants that dominate today's land ecosystems."
+    },
+    "cp_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which term describes seed-bearing plants whose seeds are 'naked,' not enclosed within a fruit, such as pine trees?",
+          "answer": "Gymnosperms"
+        },
+        {
+          "question": "Which term describes seed-bearing plants whose seeds are enclosed within a fruit?",
+          "answer": "Angiosperms"
+        },
+        {
+          "question": "Which term describes an angiosperm with only one seed leaf (cotyledon), such as wheat or grass?",
+          "answer": "A monocotyledon (monocot)"
+        },
+        {
+          "question": "Which term describes an angiosperm with two seed leaves (cotyledons), such as a bean or a rose?",
+          "answer": "A dicotyledon (dicot)"
+        }
+      ],
+      "distractorPool": [
+        "Gymnosperms",
+        "Angiosperms",
+        "A monocotyledon (monocot)",
+        "A dicotyledon (dicot)"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Spermatophyta splits into gymnosperms (naked seeds) and angiosperms (seeds enclosed in fruit), and angiosperms split further into monocots and dicots based on the number of seed leaves in the embryo.",
+      "realPurpose": "These finer distinctions explain visible differences between plants, such as why grass leaves have parallel veins (typical of monocots) while bean leaves have branching veins (typical of dicots)."
+    },
+    "cp_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which simple plant group includes liverworts as well as mosses, and typically grows in damp, shaded places?",
+          "answer": "Bryophyta"
+        },
+        {
+          "question": "Why do Bryophyta (mosses and liverworts) depend so heavily on moisture in their surroundings to reproduce?",
+          "answer": "Their sperm cells must swim through a film of water to reach and fertilise the egg cell"
+        },
+        {
+          "question": "What root-like structures do mosses use to anchor themselves to soil or rock, since they lack true roots?",
+          "answer": "Rhizoids"
+        }
+      ],
+      "distractorPool": [
+        "Bryophyta",
+        "Their sperm cells must swim through a film of water to reach and fertilise the egg cell",
+        "Rhizoids",
+        "Pteridophyta",
+        "True roots"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Bryophyta (mosses and liverworts) lack true roots, so they anchor themselves using simple rhizoids, and their reproduction depends on a film of surface moisture through which swimming sperm cells travel to reach an egg cell.",
+      "realPurpose": "This dependence on external water explains why mosses and liverworts are almost always found growing in damp, shaded habitats rather than dry, exposed ones."
+    },
+    "cp_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What key feature is present in Bryophyta (mosses) but completely absent in Thallophyta (algae)?",
+          "answer": "Simple stem-and-leaf-like structures"
+        },
+        {
+          "question": "What is the main feature Thallophyta (like algae) lack that prevents them from being classified into any of the more advanced plant groups?",
+          "answer": "True roots, stems and leaves"
+        },
+        {
+          "question": "Which plant group is generally considered the simplest, forming the very first step in this plant classification scheme?",
+          "answer": "Thallophyta"
+        }
+      ],
+      "distractorPool": [
+        "Simple stem-and-leaf-like structures",
+        "True roots, stems and leaves",
+        "Thallophyta",
+        "Vascular tissue",
+        "Bryophyta"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Thallophyta (like algae) have a simple, undifferentiated plant body called a thallus, with no true roots, stems or leaves at all, while Bryophyta have basic stem-and-leaf-like structures, marking a step up in structural complexity even though Bryophyta still lack true vascular tissue.",
+      "realPurpose": "Tracking exactly which structures appear at each step of the classification explains why Thallophyta, Bryophyta, Pteridophyta and Spermatophyta are ordered the way they are, from simplest to most complex."
+    },
+    "cp_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What key feature is present in Pteridophyta (ferns) but absent in Bryophyta (mosses), allowing ferns to grow much taller and larger?",
+          "answer": "True vascular tissue (xylem and phloem)"
+        },
+        {
+          "question": "Which plant tissues, present in ferns but not in mosses, allow water and food to be transported efficiently over longer distances within the plant?",
+          "answer": "Xylem and phloem"
+        },
+        {
+          "question": "Why can ferns typically grow much larger than mosses, even though both groups reproduce using spores rather than seeds?",
+          "answer": "Ferns have true vascular tissue for efficient internal transport of water and food, which mosses lack"
+        }
+      ],
+      "distractorPool": [
+        "True vascular tissue (xylem and phloem)",
+        "Xylem and phloem",
+        "Ferns have true vascular tissue for efficient internal transport of water and food, which mosses lack",
+        "Seeds, which mosses lack entirely",
+        "Chlorophyll, which mosses lack entirely"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The presence of true vascular tissue (xylem for water transport and phloem for food transport) in Pteridophyta allows efficient movement of materials over greater distances, which is why ferns can grow considerably larger and taller than mosses despite both groups still reproducing via spores rather than seeds.",
+      "realPurpose": "This explains a visible real-world pattern: mosses stay low and small, while ferns can grow into much larger, more complex plants."
+    },
+    "cp_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What type of root system, made of many similarly thin roots branching from the base of the stem, is typical of monocotyledons like grass?",
+          "answer": "A fibrous root system"
+        },
+        {
+          "question": "What type of root system, with one thick main root growing deeper than its thinner branches, is typical of dicotyledons like a bean plant?",
+          "answer": "A tap root system"
+        }
+      ],
+      "distractorPool": [
+        "A fibrous root system",
+        "A tap root system",
+        "An aerial root system",
+        "A prop root system"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Monocots typically develop a fibrous root system, made of many thin roots of similar size branching directly from the stem base, while dicots typically develop a tap root system, with one dominant central root growing deeper than its thinner side branches.",
+      "realPurpose": "Recognising root type is one of several easy, visible clues (alongside leaf venation and flower parts) used to tell monocots and dicots apart in the field."
+    },
+    "cp_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What pattern of leaf veins, running parallel to each other along the length of the leaf, is typical of monocotyledons like grass or wheat?",
+          "answer": "Parallel venation"
+        },
+        {
+          "question": "What pattern of leaf veins, branching out in a net-like arrangement, is typical of dicotyledons like a bean or rose leaf?",
+          "answer": "Reticulate (net) venation"
+        }
+      ],
+      "distractorPool": [
+        "Parallel venation",
+        "Reticulate (net) venation",
+        "Radial venation",
+        "Spiral venation"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Leaf venation pattern is a reliable, easily visible clue for classification: monocot leaves generally show veins running parallel to one another along the leaf's length, while dicot leaves generally show a branching, net-like (reticulate) pattern of veins.",
+      "realPurpose": "This is one of the simplest ways to identify whether an unfamiliar flowering plant is a monocot or a dicot, just by looking closely at a single leaf."
+    },
+    "cp_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which seed-bearing plant group typically has needle-like or scale-like leaves and produces its seeds in cones, such as a pine tree?",
+          "answer": "Gymnosperms"
+        },
+        {
+          "question": "What term describes seeds that develop exposed on the surface of a structure such as a cone, without any surrounding fruit?",
+          "answer": "Naked seeds"
+        }
+      ],
+      "distractorPool": [
+        "Gymnosperms",
+        "Naked seeds",
+        "Angiosperms",
+        "Enclosed seeds"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Gymnosperms are typically characterised by needle-like or scale-like leaves and seeds that develop 'naked,' exposed directly on the surface of a cone scale, without any fruit forming around them.",
+      "realPurpose": "This distinctive cone-and-needle appearance is why conifer trees like pines are so easy to visually recognise as gymnosperms, even without examining their seeds directly."
+    },
+    "cp_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the common name for angiosperms, referring to the reproductive structure that gives this plant group its name?",
+          "answer": "Flowering plants"
+        },
+        {
+          "question": "Which structure, unique to angiosperms among all plant groups, contains the reproductive organs and eventually develops into a fruit?",
+          "answer": "The flower"
+        }
+      ],
+      "distractorPool": [
+        "Flowering plants",
+        "The flower",
+        "Cone-bearing plants",
+        "The cone"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Angiosperms are commonly called flowering plants because they are the only plant group that produces true flowers, the structure that houses the reproductive organs and later develops into a fruit enclosing the seeds.",
+      "realPurpose": "This is why angiosperms, uniquely among all plant groups, are responsible for the enormous variety of flowers and fruits seen in gardens, orchards and wild habitats."
+    },
+    "cp_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the general name for the specialised water- and food-conducting tissue (made of xylem and phloem) that first appears in Pteridophyta and continues in all more advanced plant groups?",
+          "answer": "Vascular tissue"
+        },
+        {
+          "question": "Which two plant groups are classified as 'vascular plants,' since both contain true xylem and phloem?",
+          "answer": "Pteridophyta and Spermatophyta"
+        }
+      ],
+      "distractorPool": [
+        "Vascular tissue",
+        "Pteridophyta and Spermatophyta",
+        "Meristematic tissue",
+        "Thallophyta and Bryophyta"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Vascular tissue (xylem and phloem together) first evolved in Pteridophyta and is retained in all Spermatophyta, marking the key structural boundary between the 'non-vascular' plant groups (Thallophyta and Bryophyta) and the 'vascular' ones.",
+      "realPurpose": "Understanding this boundary explains why ferns, gymnosperms and angiosperms can all grow far larger and more complex than any alga or moss, since all three have an efficient internal transport system."
+    },
+    "cp_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A botanical survey of {{totalPlants}} plant specimens found that {{percent}}% belonged to Pteridophyta (ferns). How many specimens were ferns?",
+      "vars": {
+        "totalPlants": {
+          "type": "pick",
+          "options": [
+            50,
+            100,
+            200,
+            400
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            5,
+            10,
+            15,
+            20
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "totalPlants",
+        "percent",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a survey total means multiplying the total count by the percentage expressed as a decimal fraction, the same calculation used for any proportional breakdown.",
+      "realPurpose": "Botanists use this kind of calculation to summarise plant biodiversity surveys and compare how common different plant groups are in a given habitat."
+    },
+    "cp_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "A collection of {{totalSpecies}} angiosperm species includes {{monocotPercent}}% monocotyledons. How many of the species are dicotyledons?",
+      "vars": {
+        "totalSpecies": {
+          "type": "pick",
+          "options": [
+            60,
+            100,
+            150,
+            200
+          ]
+        },
+        "monocotPercent": {
+          "type": "pick",
+          "options": [
+            30,
+            40,
+            50,
+            60
+          ]
+        },
+        "monocotCount": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            "totalSpecies",
+            "monocotPercent",
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        "totalSpecies",
+        "monocotCount"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "monocotCount"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "monocotPercent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every angiosperm species in the collection must be either a monocot or a dicot, the dicot count is found by subtracting the monocot count (calculated from its percentage) from the total.",
+      "realPurpose": "This kind of complementary calculation is used whenever a whole group is split into exactly two categories, letting one count be found directly from the other."
+    },
+    "cp_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A plant nursery stocks {{totalSeedPlants}} seed-bearing plant species in total. If {{gymnospermPercent}}% of them are gymnosperms, how many of the species are angiosperms?",
+      "vars": {
+        "totalSeedPlants": {
+          "type": "pick",
+          "options": [
+            80,
+            100,
+            120,
+            160
+          ]
+        },
+        "gymnospermPercent": {
+          "type": "pick",
+          "options": [
+            10,
+            15,
+            20,
+            25
+          ]
+        },
+        "gymnospermCount": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            "totalSeedPlants",
+            "gymnospermPercent",
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        "totalSeedPlants",
+        "gymnospermCount"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "gymnospermCount"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "gymnospermPercent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every seed-bearing (Spermatophyta) species must be either a gymnosperm or an angiosperm, the angiosperm count is found by subtracting the gymnosperm count (calculated from its percentage) from the total number of seed-bearing species.",
+      "realPurpose": "This kind of complementary calculation reflects a real biological fact: angiosperms vastly outnumber gymnosperms among living seed-bearing plant species."
+    },
+    "cp_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "A garden bed contains {{totalPlants}} flowering plants. If {{monocotPercent}}% of them are monocotyledons and the rest are dicotyledons, how many more dicotyledons are there than monocotyledons?",
+      "vars": {
+        "totalPlants": {
+          "type": "pick",
+          "options": [
+            40,
+            60,
+            80,
+            120
+          ]
+        },
+        "monocotPercent": {
+          "type": "pick",
+          "options": [
+            20,
+            25,
+            30,
+            35
+          ]
+        },
+        "monocotCount": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            "totalPlants",
+            "monocotPercent",
+            100
+          ]
+        },
+        "dicotCount": {
+          "type": "computed",
+          "formulaId": "subtract",
+          "args": [
+            "totalPlants",
+            "monocotCount"
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        "dicotCount",
+        "monocotCount"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "monocotCount"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "dicotCount"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding the difference between the two groups requires first calculating both the monocot count and the dicot count (the remainder), then subtracting one from the other, since a flowering plant must be exactly one or the other, never both.",
+      "realPurpose": "This kind of two-step comparison is common in real biodiversity surveys, where researchers report not just percentages but the actual difference in numbers between two categories."
+    },
+    "cp_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A single fern frond has {{numSori}} sori (spore clusters), each releasing approximately {{sporesPerSorus}} spores. How many spores does the frond release in total?",
+      "vars": {
+        "numSori": {
+          "type": "int",
+          "min": 10,
+          "max": 50
+        },
+        "sporesPerSorus": {
+          "type": "int",
+          "min": 200,
+          "max": 800
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "numSori",
+        "sporesPerSorus"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "sporesPerSorus"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -150,
+          "max": 150,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since each sorus on a fern frond releases roughly the same number of spores, the total number of spores released by the whole frond is found by multiplying the number of spores per sorus by the total number of sori.",
+      "realPurpose": "This reflects how ferns (Pteridophyta) reproduce, releasing huge numbers of lightweight spores that can be carried by wind to new locations, unlike the seeds of Spermatophyta."
+    },
+    "cp_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a fern must be a flowering plant since it has true roots, stems and leaves like other advanced plants. What is the flaw in this reasoning?",
+          "answer": "Ferns (Pteridophyta) have true roots, stems and leaves, but they reproduce using spores, NOT seeds or flowers — having advanced vascular structures doesn't automatically mean a plant produces seeds or flowers; only Spermatophyta produce seeds, and only angiosperms among those produce flowers",
+          "distractors": [
+            "The student is correct — any plant with true roots, stems and leaves must be a flowering plant",
+            "Ferns actually do produce flowers, but only during a very brief part of their life cycle",
+            "Ferns are not really plants at all, since they don't produce seeds like most other plants"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Pteridophyta evolved true vascular tissue (allowing true roots, stems and leaves) well before seed production evolved in Spermatophyta, so having vascular structures is a separate trait from being able to produce seeds or flowers.",
+      "realPurpose": "This distinction explains why ferns can grow tall and complex like flowering plants, yet still reproduce in the more ancient, spore-based way, without seeds or flowers."
+    },
+    "cp_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes all seed-bearing plants must produce fruit, since the plant they're most familiar with (an apple tree) does. What is the flaw in this reasoning?",
+          "answer": "Only angiosperms produce fruit around their seeds; gymnosperms (like pine trees) also produce seeds, but these seeds are 'naked' and not enclosed in any fruit — assuming all seed plants produce fruit overlooks this entire major group",
+          "distractors": [
+            "The student is correct — every plant that produces seeds must also produce a fruit around those seeds",
+            "Gymnosperms don't actually produce seeds at all, which is why they don't produce fruit",
+            "Fruit and seeds are unrelated structures, so this reasoning doesn't apply to any plant group"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Fruit formation is specifically an angiosperm trait, where the seed develops enclosed within a protective, often fleshy structure; gymnosperms produce seeds directly exposed on structures like cones, with no surrounding fruit at all.",
+      "realPurpose": "Recognising this difference explains why pine cones don't ripen into anything resembling a fruit, unlike apples, oranges, or tomatoes from flowering plants."
+    },
+    "cp_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a moss must have true roots, since it appears anchored firmly into the soil, similar to how a fern is anchored. What is the flaw in this reasoning?",
+          "answer": "Mosses (Bryophyta) lack true roots and true vascular tissue entirely; they anchor themselves using simple structures called rhizoids, which absorb some moisture but cannot transport water internally the way true roots with xylem can, unlike ferns (Pteridophyta), which do have true roots and vascular tissue",
+          "distractors": [
+            "The student is correct — any plant firmly anchored in soil must have true roots, regardless of its other features",
+            "Mosses have true roots identical to ferns, since both groups are equally advanced in structure",
+            "Mosses don't need to be anchored at all, and rhizoids serve no anchoring function whatsoever"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Being visibly anchored in soil is not, by itself, evidence of true roots; true roots are internally structured with vascular tissue capable of conducting water, a feature entirely absent in Bryophyta, whose rhizoids are simple thread-like structures that anchor the plant without any internal water-conducting system.",
+      "realPurpose": "This distinction reinforces why Bryophyta and Pteridophyta are placed in different classification groups, based on internal structure rather than superficial appearance."
+    },
+    "ca_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal phylum includes simple, pore-covered animals like sponges?",
+          "answer": "Porifera"
+        },
+        {
+          "question": "Which animal phylum includes jellyfish and sea anemones, which use stinging cells to catch prey?",
+          "answer": "Coelenterata"
+        },
+        {
+          "question": "Which animal phylum includes insects, spiders and crustaceans, all with jointed legs and a hard exoskeleton?",
+          "answer": "Arthropoda"
+        },
+        {
+          "question": "Which animal phylum includes soft-bodied animals like snails and octopuses, often with a shell?",
+          "answer": "Mollusca"
+        }
+      ],
+      "distractorPool": [
+        "Porifera",
+        "Coelenterata",
+        "Arthropoda",
+        "Mollusca"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Invertebrate phyla are distinguished by fundamentally different body plans — pores and no true tissues (Porifera), stinging cells (Coelenterata), jointed exoskeletons (Arthropoda), or soft unsegmented bodies (Mollusca).",
+      "realPurpose": "Recognising these phyla explains the astonishing diversity of invertebrates, which make up the vast majority of all animal species on Earth."
+    },
+    "ca_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which vertebrate class is cold-blooded and breathes using gills, typically living entirely in water?",
+          "answer": "Pisces (fish)"
+        },
+        {
+          "question": "Which vertebrate class is cold-blooded and typically begins life in water before developing the ability to live on land?",
+          "answer": "Amphibia"
+        },
+        {
+          "question": "Which vertebrate class is cold-blooded, lays eggs on land, and has dry, scaly skin?",
+          "answer": "Reptilia"
+        },
+        {
+          "question": "Which vertebrate class is warm-blooded, has feathers, and lays hard-shelled eggs?",
+          "answer": "Aves (birds)"
+        },
+        {
+          "question": "Which vertebrate class is warm-blooded and typically nurses its young with milk?",
+          "answer": "Mammalia"
+        }
+      ],
+      "distractorPool": [
+        "Pisces (fish)",
+        "Amphibia",
+        "Reptilia",
+        "Aves (birds)",
+        "Mammalia"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The five vertebrate classes are each defined by a specific combination of traits — body temperature regulation, skin covering, and reproductive method — that together distinguish fish, amphibians, reptiles, birds and mammals.",
+      "realPurpose": "Knowing these defining traits lets you correctly classify an unfamiliar vertebrate just by observing a few key characteristics."
+    },
+    "ca_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal phylum includes segmented worms, such as the earthworm, whose bodies are divided into a series of similar ring-like segments?",
+          "answer": "Annelida"
+        },
+        {
+          "question": "Which animal phylum includes spiny-skinned, radially symmetrical sea animals like starfish and sea urchins?",
+          "answer": "Echinodermata"
+        },
+        {
+          "question": "Which animal phylum includes flatworms, whose bodies are thin and flattened rather than round?",
+          "answer": "Platyhelminthes"
+        },
+        {
+          "question": "Which animal phylum includes roundworms, whose bodies are thin, cylindrical and pointed at both ends, unlike the flattened bodies of Platyhelminthes?",
+          "answer": "Nematoda"
+        }
+      ],
+      "distractorPool": [
+        "Annelida",
+        "Echinodermata",
+        "Platyhelminthes",
+        "Nematoda",
+        "Mollusca",
+        "Porifera"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Beyond Porifera, Coelenterata, Arthropoda and Mollusca, several other invertebrate phyla exist with their own distinctive body plans: Annelida with repeating body segments, Echinodermata with spiny skin and radial symmetry, Platyhelminthes with flattened, unsegmented bodies, and Nematoda with round, unsegmented, thread-like bodies.",
+      "realPurpose": "Recognising these additional phyla shows just how varied invertebrate body plans are, since animals as different-looking as an earthworm, a starfish, a flatworm and a roundworm are all still invertebrates."
+    },
+    "ca_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What special water-based system do starfish and other Echinodermata use for movement and feeding, powered by seawater pumped through canals inside the body?",
+          "answer": "A water vascular system"
+        },
+        {
+          "question": "What type of body symmetry, arranged evenly around a central point like the spokes of a wheel, is typical of adult starfish?",
+          "answer": "Radial symmetry"
+        }
+      ],
+      "distractorPool": [
+        "A water vascular system",
+        "Radial symmetry",
+        "Bilateral symmetry",
+        "A closed circulatory system"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Echinodermata are unique among invertebrates for their water vascular system, a network of fluid-filled canals that operates tiny tube feet for movement and feeding, paired with a radial body symmetry arranged evenly around a central point.",
+      "realPurpose": "These unusual features explain why a starfish can move and feed in ways that look completely different from more familiar invertebrates like insects or worms."
+    },
+    "ca_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which animal phylum contains more known species than all other animal phyla combined, including insects, spiders and crustaceans?",
+          "answer": "Arthropoda"
+        },
+        {
+          "question": "What hard external covering, which must be periodically shed as the animal grows, is a defining feature of Arthropoda?",
+          "answer": "An exoskeleton"
+        }
+      ],
+      "distractorPool": [
+        "Arthropoda",
+        "An exoskeleton",
+        "Mollusca",
+        "An internal skeleton"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Arthropoda is by far the largest and most diverse animal phylum, and its defining feature is a hard external exoskeleton made of a tough material that supports and protects the body but must be shed (moulted) periodically to allow growth.",
+      "realPurpose": "Recognising the exoskeleton and its need for moulting explains why arthropods, unlike vertebrates, cannot simply grow continuously inside a single unchanging body covering."
+    },
+    "ca_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What single structural feature is used to divide all animals into the two broadest groups: vertebrates and invertebrates?",
+          "answer": "The presence or absence of a backbone (vertebral column)"
+        },
+        {
+          "question": "What term describes the internal, jointed column of bone that protects the spinal cord in vertebrate animals?",
+          "answer": "The vertebral column (backbone/spine)"
+        }
+      ],
+      "distractorPool": [
+        "The presence or absence of a backbone (vertebral column)",
+        "The vertebral column (backbone/spine)",
+        "The presence or absence of an exoskeleton",
+        "Body size"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The single defining feature separating vertebrates from invertebrates is the presence of a vertebral column, a jointed internal structure made of bone (or cartilage) that encloses and protects the spinal cord.",
+      "realPurpose": "This one clear anatomical feature is why animals as different as fish, frogs, snakes, birds and humans are all grouped together as vertebrates, distinct from every invertebrate group."
+    },
+    "ca_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes an animal, like a fish or a reptile, whose internal body temperature changes with its surroundings rather than staying constant?",
+          "answer": "Cold-blooded (ectothermic)"
+        },
+        {
+          "question": "Which respiratory structure do fish use to extract dissolved oxygen directly from water?",
+          "answer": "Gills"
+        }
+      ],
+      "distractorPool": [
+        "Cold-blooded (ectothermic)",
+        "Gills",
+        "Warm-blooded (endothermic)",
+        "Lungs"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Fish are cold-blooded (ectothermic), meaning their body temperature rises and falls with the surrounding water temperature, and they extract dissolved oxygen from water using feathery gills rather than lungs.",
+      "realPurpose": "These two features together explain why fish are entirely restricted to living in water and cannot regulate a constant internal body temperature the way mammals and birds do."
+    },
+    "ca_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "During its early life stage (such as a tadpole), which respiratory structure does a young amphibian typically use to breathe underwater?",
+          "answer": "Gills"
+        },
+        {
+          "question": "Which respiratory structure does an adult amphibian, like a frog, typically develop to allow it to live partly on land?",
+          "answer": "Lungs"
+        }
+      ],
+      "distractorPool": [
+        "Gills",
+        "Lungs",
+        "Neither gills nor lungs",
+        "An exoskeleton"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Amphibians undergo a clear transformation during their life cycle: young stages (like tadpoles) breathe underwater using gills, while adults develop lungs (along with moist skin that also helps with breathing) to survive partly on land.",
+      "realPurpose": "This transition is what gives amphibians their name, meaning 'both lives,' since the same individual animal is adapted to breathe differently in water versus on land at different life stages."
+    },
+    "ca_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What type of skin, dry and covered in protective scales, helps reptiles survive on land without drying out?",
+          "answer": "Dry, scaly skin"
+        },
+        {
+          "question": "What type of skin, kept moist and used to help with breathing, is typical of amphibians rather than reptiles?",
+          "answer": "Moist, permeable skin"
+        }
+      ],
+      "distractorPool": [
+        "Dry, scaly skin",
+        "Moist, permeable skin",
+        "Skin covered in feathers",
+        "Skin covered in fur"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Reptile skin is dry and covered with waterproof scales, reducing water loss so reptiles can live in drier land habitats, while amphibian skin stays moist and permeable, both to prevent drying out and to assist with gas exchange, which restricts amphibians to damper environments.",
+      "realPurpose": "This skin difference is one reason reptiles, unlike most amphibians, can live successfully in dry habitats such as deserts."
+    },
+    "ca_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which body covering, providing both insulation and the surface needed for flight, is unique to birds among all vertebrate classes?",
+          "answer": "Feathers"
+        },
+        {
+          "question": "What structure do birds have instead of teeth, used to gather and handle food?",
+          "answer": "A beak"
+        }
+      ],
+      "distractorPool": [
+        "Feathers",
+        "A beak",
+        "Scales",
+        "Fur"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Feathers are found only in birds among all vertebrate classes, serving both insulation and flight, and are paired with a toothless beak that birds use in place of teeth to gather and handle food.",
+      "realPurpose": "These two unique features are the quickest way to identify an animal as a bird, distinguishing it instantly from every other vertebrate class."
+    },
+    "ca_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A wildlife survey recorded {{totalAnimals}} animal species, of which {{invertebratePercent}}% were invertebrates. How many species were invertebrates?",
+      "vars": {
+        "totalAnimals": {
+          "type": "pick",
+          "options": [
+            50,
+            100,
+            200,
+            400
+          ]
+        },
+        "invertebratePercent": {
+          "type": "pick",
+          "options": [
+            60,
+            70,
+            80,
+            90
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "totalAnimals",
+        "invertebratePercent",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "invertebratePercent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -12,
+          "max": 12,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a survey total means multiplying the total count by the percentage expressed as a decimal fraction, the same calculation used for any proportional species breakdown.",
+      "realPurpose": "This reflects a real biological fact: invertebrates make up the overwhelming majority of known animal species, far more than vertebrates."
+    },
+    "ca_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "Every insect (a member of Arthropoda) has exactly 6 legs. How many legs would {{insectCount}} insects have in total?",
+      "vars": {
+        "insectCount": {
+          "type": "int",
+          "min": 3,
+          "max": 20
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "insectCount",
+        6
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "insectCount"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every insect has the same fixed number of legs, the total leg count for a group of insects is found by multiplying the number of legs per insect by the total number of insects.",
+      "realPurpose": "This fixed leg count (six) is actually one of the defining features that identifies an arthropod specifically as an insect, distinguishing it from spiders (eight legs) and other arthropods."
+    },
+    "ca_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "Every spider (an arachnid, a member of Arthropoda) has exactly 8 legs. How many legs would {{spiderCount}} spiders have in total?",
+      "vars": {
+        "spiderCount": {
+          "type": "int",
+          "min": 3,
+          "max": 20
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "spiderCount",
+        8
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "spiderCount"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every spider has the same fixed number of legs, the total leg count for a group of spiders is found by multiplying the number of legs per spider by the total number of spiders.",
+      "realPurpose": "This fixed leg count (eight) is one of the defining features used to identify an arthropod specifically as an arachnid, distinguishing it from insects, which have six legs."
+    },
+    "ca_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "A wildlife park is home to {{totalVertebrates}} vertebrate species. If {{mammalPercent}}% of them are mammals, how many of the species are non-mammal vertebrates?",
+      "vars": {
+        "totalVertebrates": {
+          "type": "pick",
+          "options": [
+            40,
+            60,
+            80,
+            100
+          ]
+        },
+        "mammalPercent": {
+          "type": "pick",
+          "options": [
+            20,
+            25,
+            30,
+            40
+          ]
+        },
+        "mammalCount": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            "totalVertebrates",
+            "mammalPercent",
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        "totalVertebrates",
+        "mammalCount"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "mammalCount"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "mammalPercent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every vertebrate species at the park belongs to exactly one of the five vertebrate classes, the number of non-mammal vertebrates is found by subtracting the mammal count (calculated from its percentage) from the total number of vertebrate species.",
+      "realPurpose": "This kind of complementary calculation is used in real wildlife surveys to break down a vertebrate population by class."
+    },
+    "ca_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "Every crab (a decapod crustacean, a member of Arthropoda) has exactly 10 legs. How many legs would {{crabCount}} crabs have in total?",
+      "vars": {
+        "crabCount": {
+          "type": "int",
+          "min": 2,
+          "max": 15
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "crabCount",
+        10
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "crabCount"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -12,
+          "max": 12,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Crabs are decapod crustaceans, meaning they have exactly 10 legs (including their pair of claws), so the total leg count for a group of crabs is found by multiplying the fixed number of legs per crab by the total number of crabs.",
+      "realPurpose": "This fixed leg count highlights how crustaceans, another major group within Arthropoda, have their own distinctive body plan separate from insects and arachnids."
+    },
+    "ca_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a snake, since it has no legs, must be an amphibian, similar to how frogs seem 'simple' too. What is the flaw in this reasoning?",
+          "answer": "Snakes are reptiles, not amphibians — despite having no legs, snakes have dry, scaly skin and lay eggs with a protective shell on land, both reptile traits, while amphibians have moist skin and typically lay eggs in water; leglessness alone doesn't determine vertebrate class",
+          "distractors": [
+            "The student is correct — any vertebrate without legs must automatically be classified as an amphibian",
+            "Snakes are actually a type of fish that has adapted to live entirely on land",
+            "Snakes cannot be classified into any of the five vertebrate classes, since they lack legs"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Vertebrate classification depends on traits like skin type, body temperature regulation, and reproductive method, not on the presence or absence of legs; snakes have dry, scaly, waterproof skin and lay shelled eggs on land, both defining reptile traits, unlike the moist skin and water-dependent eggs typical of amphibians.",
+      "realPurpose": "This example shows why classification must rely on multiple defining traits together, rather than a single visible feature like the presence of legs."
+    },
+    "ca_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a bat must be classified as a bird since it can fly. What is the flaw in this reasoning?",
+          "answer": "Bats are mammals, not birds, despite flying — flight ability alone doesn't determine classification; bats have fur (not feathers), give birth to live young and nurse them with milk, all mammalian traits, while birds have feathers and lay hard-shelled eggs",
+          "distractors": [
+            "The student is correct — any animal capable of powered flight must be classified as a bird",
+            "Bats are technically insects that have evolved an unusually large body size",
+            "Bats belong to their own separate vertebrate class, entirely distinct from mammals and birds"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Flight evolved independently in both birds and bats, a pattern called convergent evolution, where unrelated animals develop similar features due to similar environmental pressures; despite sharing the ability to fly, bats retain fundamentally mammalian traits like fur, live birth and nursing with milk.",
+      "realPurpose": "This is a classic example of why classification must rely on fundamental body structure and reproduction, not on a shared ability like flight that can evolve separately in very different animal groups."
+    },
+    "ca_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a starfish must be classified alongside Pisces (fish), reasoning that 'its name literally contains the word fish.' What is the flaw in this reasoning?",
+          "answer": "A starfish is not a fish at all — it is an invertebrate belonging to Echinodermata, with no backbone, radial symmetry and a water vascular system, completely different from Pisces, which are vertebrates with a backbone, gills and fins; a common name containing the word 'fish' does not reflect true scientific classification",
+          "distractors": [
+            "The student is correct — any animal with 'fish' in its common name must belong to the vertebrate class Pisces",
+            "Starfish are actually a type of mollusc, closely related to snails and octopuses",
+            "Starfish are vertebrates, since only vertebrates are permitted to live in the ocean"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Scientific classification is based on actual shared structural and developmental features, not on common names, which often persist for historical or superficial reasons; a starfish's radial symmetry, lack of backbone, and water vascular system place it firmly in Echinodermata, entirely separate from the vertebrate fish of Pisces.",
+      "realPurpose": "This is a classic example of why biologists rely on structural evidence rather than common names, which can be misleading (other examples include jellyfish and silverfish, neither of which are true fish either)."
+    },
+    "pr_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which gas do plants absorb from the air to carry out photosynthesis?",
+          "answer": "Carbon dioxide"
+        },
+        {
+          "question": "Which gas do plants release as a byproduct of photosynthesis?",
+          "answer": "Oxygen"
+        },
+        {
+          "question": "Which green pigment inside plant cells captures light energy for photosynthesis?",
+          "answer": "Chlorophyll"
+        },
+        {
+          "question": "What is the main food substance produced by photosynthesis?",
+          "answer": "Glucose"
+        }
+      ],
+      "distractorPool": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Chlorophyll",
+        "Glucose",
+        "Nitrogen"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Photosynthesis is a precise chemical process: carbon dioxide and water are combined using light energy captured by chlorophyll, producing glucose (the plant's food) and releasing oxygen as a byproduct.",
+      "realPurpose": "Photosynthesis is the ultimate source of food and oxygen for almost all life on Earth, forming the base of nearly every food chain."
+    },
+    "pr_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which gas do living cells consume during respiration?",
+          "answer": "Oxygen"
+        },
+        {
+          "question": "Which gas do living cells release as a waste product of respiration?",
+          "answer": "Carbon dioxide"
+        },
+        {
+          "question": "What is released from glucose during respiration, allowing cells to carry out their activities?",
+          "answer": "Energy"
+        }
+      ],
+      "distractorPool": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Energy",
+        "Nitrogen"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Respiration breaks down glucose using oxygen to release usable energy, producing carbon dioxide and water as waste products — essentially the reverse chemical direction of photosynthesis.",
+      "realPurpose": "Respiration occurs in every living cell, in both plants and animals, providing the continuous energy supply needed for all life processes."
+    },
+    "pr_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which cell organelle, found in green plant cells and containing chlorophyll, is the specific site where photosynthesis takes place?",
+          "answer": "The chloroplast"
+        },
+        {
+          "question": "Which cell organelle, present in both plant and animal cells, is the specific site where respiration takes place to release energy from food?",
+          "answer": "The mitochondrion"
+        }
+      ],
+      "distractorPool": [
+        "The chloroplast",
+        "The mitochondrion",
+        "The nucleus",
+        "The cell wall"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Photosynthesis and respiration each occur inside their own specialised organelle: chloroplasts (containing chlorophyll) carry out photosynthesis in green plant cells, while mitochondria, present in nearly every living cell of both plants and animals, carry out respiration.",
+      "realPurpose": "Knowing exactly where each process occurs explains why only green plant parts can photosynthesise, while every living cell, plant or animal, is able to respire."
+    },
+    "pr_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the tiny pores, found mainly on the underside of leaves, that allow gases to move in and out of the plant?",
+          "answer": "Stomata"
+        },
+        {
+          "question": "What term describes the pair of specialised cells that surround each stomatal pore and control whether it opens or closes?",
+          "answer": "Guard cells"
+        },
+        {
+          "question": "What term describes the small pores found in the bark of woody stems that allow gas exchange, similar to the role stomata play in leaves?",
+          "answer": "Lenticels"
+        }
+      ],
+      "distractorPool": [
+        "Stomata",
+        "Guard cells",
+        "Lenticels",
+        "Chloroplasts"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Gas exchange in plants happens through small pores: stomata (controlled by a pair of guard cells) on leaves, and lenticels on woody stems, both allowing carbon dioxide, oxygen and water vapour to move in and out as needed for photosynthesis and respiration.",
+      "realPurpose": "Understanding these pore structures explains exactly how gases physically enter and exit a plant, since a plant has no lungs or gills of its own."
+    },
+    "pr_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes respiration that requires oxygen in order to fully break down glucose and release the maximum amount of energy?",
+          "answer": "Aerobic respiration"
+        },
+        {
+          "question": "What term describes respiration that occurs without oxygen, releasing much less energy than the oxygen-using form?",
+          "answer": "Anaerobic respiration"
+        }
+      ],
+      "distractorPool": [
+        "Aerobic respiration",
+        "Anaerobic respiration",
+        "Photosynthesis",
+        "Transpiration"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Most respiration in plant and animal cells is aerobic, using oxygen to fully release energy from glucose, but under certain conditions cells can also carry out anaerobic respiration, breaking down glucose without oxygen and releasing considerably less energy.",
+      "realPurpose": "Recognising that respiration doesn't always require oxygen explains how some cells and organisms can still generate a little energy even in low-oxygen conditions."
+    },
+    "pr_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides carbon dioxide, what other essential raw material, absorbed by the roots, does a plant need to carry out photosynthesis?",
+          "answer": "Water"
+        },
+        {
+          "question": "Besides oxygen, what essential substance does a living cell need to break down during respiration in order to release energy?",
+          "answer": "Glucose"
+        }
+      ],
+      "distractorPool": [
+        "Water",
+        "Glucose",
+        "Nitrogen",
+        "Chlorophyll"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Photosynthesis requires both carbon dioxide (absorbed from the air) and water (absorbed by the roots) as its raw materials, while respiration requires both oxygen and stored glucose to release usable energy.",
+      "realPurpose": "Recognising both raw materials for each process (not just the gas involved) gives a complete picture of exactly what a cell needs to carry out photosynthesis or respiration."
+    },
+    "pr_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which three factors are commonly described as 'limiting factors' because each one can slow down the rate of photosynthesis if it isn't sufficient?",
+          "answer": "Light intensity, carbon dioxide concentration, and temperature"
+        }
+      ],
+      "distractorPool": [
+        "Light intensity, carbon dioxide concentration, and temperature",
+        "Soil colour, wind speed, and time of day",
+        "Leaf colour, plant height, and root depth",
+        "Air pressure, humidity, and altitude"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The rate of photosynthesis depends on three key factors — light intensity, carbon dioxide concentration, and temperature — and if any one of these is in short supply, it becomes the 'limiting factor' holding back the overall rate, regardless of how favourable the other two factors are.",
+      "realPurpose": "Understanding limiting factors explains why greenhouse growers often control light, carbon dioxide levels and temperature carefully to maximise how quickly their plants grow."
+    },
+    "pr_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides carbon dioxide, what other substance is released as a waste product of respiration, alongside the energy released?",
+          "answer": "Water"
+        }
+      ],
+      "distractorPool": [
+        "Water",
+        "Oxygen",
+        "Glucose",
+        "Chlorophyll"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The word equation for respiration (Glucose + Oxygen → Carbon dioxide + Water + Energy) shows that water, not just carbon dioxide, is also produced as a waste product whenever a cell respires.",
+      "realPurpose": "Recognising water as a respiration byproduct completes the full picture of what happens chemically inside a respiring cell, beyond just the more commonly mentioned carbon dioxide."
+    },
+    "pr_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which storage carbohydrate is glucose commonly converted into within a plant, rather than remaining as glucose everywhere?",
+          "answer": "Starch"
+        }
+      ],
+      "distractorPool": [
+        "Starch",
+        "Chlorophyll",
+        "Cellulose",
+        "Glycogen"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The glucose produced during photosynthesis is often converted into starch for storage, a change that can be visually detected using an iodine solution, which turns blue-black in the presence of starch.",
+      "realPurpose": "This conversion is why testing a leaf for starch (using iodine) is a classic, simple way to provide indirect evidence that photosynthesis has been taking place."
+    },
+    "pr_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which gas, essential as a raw material for photosynthesis, actually makes up only a very small percentage of the air, far less than oxygen or nitrogen?",
+          "answer": "Carbon dioxide"
+        }
+      ],
+      "distractorPool": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Water vapour"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Although carbon dioxide is essential for photosynthesis, it makes up only a small fraction of the atmosphere compared to nitrogen and oxygen, which is one reason carbon dioxide concentration is often a limiting factor for how fast photosynthesis can occur.",
+      "realPurpose": "This fact highlights just how efficient plants are at using a relatively scarce atmospheric gas to produce the food that sustains almost all life on Earth."
+    },
+    "pr_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A plant produces approximately {{ratePerHour}} mL of oxygen per hour through photosynthesis in good sunlight. How much oxygen will it produce over {{hours}} hours?",
+      "vars": {
+        "ratePerHour": {
+          "type": "int",
+          "min": 2,
+          "max": 20
+        },
+        "hours": {
+          "type": "int",
+          "min": 2,
+          "max": 12
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "ratePerHour",
+        "hours"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "ratePerHour"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -12,
+          "max": 12,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Assuming a steady photosynthesis rate under consistent light, total oxygen output over time is found by multiplying the hourly production rate by the total number of hours.",
+      "realPurpose": "This kind of estimate helps explain why larger areas of healthy plant life, like forests, contribute so significantly to the oxygen content of the atmosphere over time."
+    },
+    "pr_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "At rest, a person's body consumes approximately {{restingRate}} mL of oxygen per minute through respiration. How much oxygen will be consumed over {{minutes}} minutes?",
+      "vars": {
+        "restingRate": {
+          "type": "int",
+          "min": 200,
+          "max": 300
+        },
+        "minutes": {
+          "type": "int",
+          "min": 5,
+          "max": 30
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "restingRate",
+        "minutes"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "restingRate"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -300,
+          "max": 300,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since respiration proceeds at a roughly steady rate at rest, the total oxygen consumed over a period of time is found by multiplying the per-minute rate by the number of minutes.",
+      "realPurpose": "This kind of calculation is used in medicine and sports science to estimate a person's total oxygen demand over a given period, at rest or during activity."
+    },
+    "pr_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A plant absorbs approximately {{ratePerHour}} mL of carbon dioxide per hour through photosynthesis in good sunlight. How much carbon dioxide will it absorb over {{hours}} hours?",
+      "vars": {
+        "ratePerHour": {
+          "type": "int",
+          "min": 3,
+          "max": 18
+        },
+        "hours": {
+          "type": "int",
+          "min": 2,
+          "max": 10
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "ratePerHour",
+        "hours"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "ratePerHour"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Assuming a steady photosynthesis rate under consistent light, total carbon dioxide absorbed over time is found by multiplying the hourly absorption rate by the total number of hours.",
+      "realPurpose": "This kind of estimate reflects how actively photosynthesising plants continuously draw carbon dioxide out of the surrounding air."
+    },
+    "pr_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "During exercise, a person's oxygen consumption rises to approximately {{exerciseRate}} mL per minute, compared to a resting rate of {{restingRate}} mL per minute. How much MORE oxygen do they consume over {{minutes}} minutes of exercise compared to the same duration at rest?",
+      "vars": {
+        "restingRate": {
+          "type": "int",
+          "min": 150,
+          "max": 250
+        },
+        "exerciseRate": {
+          "type": "int",
+          "min": 400,
+          "max": 700
+        },
+        "minutes": {
+          "type": "int",
+          "min": 5,
+          "max": 20
+        },
+        "diffRate": {
+          "type": "computed",
+          "formulaId": "subtract",
+          "args": [
+            "exerciseRate",
+            "restingRate"
+          ]
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "diffRate",
+        "minutes"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "multiply",
+            "args": [
+              "exerciseRate",
+              "minutes"
+            ]
+          },
+          {
+            "formulaId": "multiply",
+            "args": [
+              "restingRate",
+              "minutes"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -300,
+          "max": 300,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding the extra oxygen consumed during exercise requires first finding the difference between the exercise rate and the resting rate per minute, then multiplying that difference by the number of minutes, rather than simply multiplying either rate alone.",
+      "realPurpose": "This kind of calculation reflects why muscles need considerably more oxygen during physical activity, since respiration must speed up to release energy fast enough to meet the increased demand."
+    },
+    "pr_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A leaf has approximately {{stomataPerMm2}} stomata per square millimetre of its surface. How many stomata are on a leaf area of {{areaMm2}} square millimetres?",
+      "vars": {
+        "stomataPerMm2": {
+          "type": "int",
+          "min": 50,
+          "max": 300
+        },
+        "areaMm2": {
+          "type": "int",
+          "min": 2,
+          "max": 15
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "stomataPerMm2",
+        "areaMm2"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "stomataPerMm2"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -150,
+          "max": 150,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since stomata are distributed at a roughly consistent density across a leaf's surface, the total number of stomata over a given area is found by multiplying the density (stomata per square millimetre) by the total surface area.",
+      "realPurpose": "This kind of estimate helps explain why leaves, despite being thin, can exchange gases so efficiently — a single leaf surface can contain many thousands of stomata in total."
+    },
+    "pr_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student places a potted plant inside a sealed, transparent box in bright sunlight. After a few hours, water droplets appear on the inside walls of the box, even though no water was added. What is actually happening?",
+          "answer": "The water droplets are water vapour released by the plant through transpiration, which has condensed on the cooler inner surface of the sealed box; since the box was sealed, no outside moisture could have entered, and this is separate from respiration, which happens inside the plant's cells constantly",
+          "distractors": [
+            "The box must have a small leak that is letting in humid air from outside",
+            "The water droplets are proof that the plant has stopped photosynthesising and respiring entirely",
+            "The plant's roots are pushing water directly out through the leaves as a defence mechanism"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Water absorbed by the roots travels up through the plant and is released as water vapour through the stomata on the leaves in a process called transpiration; inside a sealed container, this vapour cannot escape and instead condenses back into liquid water on the cooler surrounding surfaces.",
+      "realPurpose": "This classic experiment provides direct visual evidence of transpiration, a process closely linked to (but distinct from) photosynthesis and respiration."
+    },
+    "pr_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that since plants photosynthesise, they must never actually need to respire like animals do. What is the flaw in this reasoning?",
+          "answer": "All living plant cells (not just leaves) constantly respire, just like animal cells, to release energy from stored food, using oxygen and releasing carbon dioxide continuously, day and night; photosynthesis is an ADDITIONAL process that only green plant parts carry out in light, but it never replaces or eliminates the plant's ongoing need to respire",
+          "distractors": [
+            "The student is correct — plants that can photosynthesise have no need to respire at all",
+            "Plants only respire at night, switching entirely to photosynthesis during the day with no respiration happening",
+            "Respiration in plants only occurs in the roots, never in the leaves or stems"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Photosynthesis and respiration are two separate processes occurring in different cell structures; every living plant cell requires a continuous supply of energy from respiration to survive, function and grow, regardless of whether that same cell is also capable of photosynthesising in sunlight.",
+      "realPurpose": "Recognising that plants respire constantly (not just at night) corrects a very common misconception and clarifies the true relationship between these two connected but distinct processes."
+    },
+    "pr_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that since a whole plant looks green, photosynthesis must occur equally in every single part of it, including the roots underground. What is the flaw in this reasoning?",
+          "answer": "Photosynthesis can only occur in cells that contain chlorophyll, found mainly in leaves and other green parts exposed to light; roots typically lack chlorophyll and receive no sunlight underground, so they do not photosynthesise, even though root cells (like all living cells) still constantly respire",
+          "distractors": [
+            "The student is correct — every part of a plant, including the roots, photosynthesises equally, since the whole plant is considered 'green'",
+            "Roots photosynthesise even more actively than leaves, since they are closer to the water absorbed from soil",
+            "Photosynthesis and respiration are the same process, so wherever one occurs, the other must occur equally"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Photosynthesis is restricted to cells containing chlorophyll and exposed to light, which in most plants means the leaves and green stems; roots, lacking chlorophyll and buried away from sunlight, cannot photosynthesise, but like every other living plant cell, they still respire continuously to obtain energy.",
+      "realPurpose": "This distinction clarifies that 'being part of a green plant' does not automatically mean every cell photosynthesises, helping separate the location-specific process of photosynthesis from the universal process of respiration."
+    },
+    "ex_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which pair of organs filters waste products and excess water from the blood to form urine?",
+          "answer": "The kidneys"
+        },
+        {
+          "question": "Which tube carries urine from each kidney down to the urinary bladder?",
+          "answer": "The ureter"
+        },
+        {
+          "question": "Which organ stores urine before it is released from the body?",
+          "answer": "The urinary bladder"
+        },
+        {
+          "question": "Which tube carries urine out of the body from the urinary bladder?",
+          "answer": "The urethra"
+        }
+      ],
+      "distractorPool": [
+        "The kidneys",
+        "The ureter",
+        "The urinary bladder",
+        "The urethra"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The human excretory system forms a connected pathway: the kidneys filter blood to produce urine, the ureters carry it to the bladder for storage, and the urethra finally releases it from the body.",
+      "realPurpose": "Understanding this pathway explains how the body continuously removes waste while carefully controlling exactly when urine is released."
+    },
+    "ex_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the removal of metabolic waste products, like urea, from the body?",
+          "answer": "Excretion"
+        },
+        {
+          "question": "What term describes the removal of undigested food waste (faeces) from the body?",
+          "answer": "Egestion"
+        },
+        {
+          "question": "Besides the kidneys, which organ excretes waste through sweat?",
+          "answer": "The skin"
+        },
+        {
+          "question": "Besides the kidneys, which organ excretes carbon dioxide as a waste product?",
+          "answer": "The lungs"
+        }
+      ],
+      "distractorPool": [
+        "Excretion",
+        "Egestion",
+        "The skin",
+        "The lungs"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Excretion (removing metabolic waste) is distinct from egestion (removing undigested food), and multiple organs — kidneys, skin and lungs — each excrete a different type of waste product.",
+      "realPurpose": "Recognising that excretion happens through several organs, not just the kidneys, explains why sweating and breathing out are also genuine waste-removal processes."
+    },
+    "ex_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which organ produces urea, the main nitrogenous waste product later filtered out by the kidneys, by breaking down excess amino acids?",
+          "answer": "The liver"
+        },
+        {
+          "question": "What is the name of the basic filtering unit found inside each kidney, of which there are roughly a million per kidney?",
+          "answer": "A nephron"
+        },
+        {
+          "question": "Besides filtering out waste, what second key process happens inside a nephron, in which useful substances (like water, glucose and salts) are taken back into the blood?",
+          "answer": "Reabsorption"
+        }
+      ],
+      "distractorPool": [
+        "The liver",
+        "A nephron",
+        "Reabsorption",
+        "The kidneys",
+        "Egestion"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Urea is produced in the liver from the breakdown of excess amino acids, then carried in the blood to the kidneys, where each nephron filters the blood and reabsorbs useful substances like water and glucose back into it, leaving urea and other wastes to form urine.",
+      "realPurpose": "Understanding that urea production (liver) and urea filtration (kidney nephrons) happen in two different organs clarifies exactly how the body coordinates waste removal across multiple organ systems."
+    },
+    "ex_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which blood vessel carries blood INTO the kidney to be filtered?",
+          "answer": "The renal artery"
+        },
+        {
+          "question": "Which blood vessel carries filtered (cleaned) blood AWAY FROM the kidney, back into general circulation?",
+          "answer": "The renal vein"
+        }
+      ],
+      "distractorPool": [
+        "The renal artery",
+        "The renal vein",
+        "The ureter",
+        "The urethra"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Blood constantly flows through the kidney via a dedicated blood supply: the renal artery delivers blood in to be filtered by the nephrons, and the renal vein carries the now-cleaned blood back out to rejoin general circulation.",
+      "realPurpose": "This blood supply, separate from the ureter (which carries urine, not blood), explains how the kidneys can continuously filter the entire blood supply many times throughout the day."
+    },
+    "ex_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides water and salts, which waste product (also found in urine) is present in small amounts in sweat?",
+          "answer": "Urea"
+        },
+        {
+          "question": "What term describes the fluid that is first filtered out of the blood in a nephron, before useful substances are reabsorbed back into the blood?",
+          "answer": "Filtrate"
+        }
+      ],
+      "distractorPool": [
+        "Urea",
+        "Filtrate",
+        "Glucose",
+        "Oxygen"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Sweat is mostly water and dissolved salts, but it also carries traces of urea, the same waste product removed by the kidneys, showing that excretory organs can overlap slightly in the wastes they remove; meanwhile, the initial fluid filtered out at the start of the nephron (the filtrate) still contains useful substances that must be reabsorbed before true urine is formed.",
+      "realPurpose": "Recognising that filtration produces a filtrate (not immediately urine) explains why reabsorption is such a crucial second step, preventing the body from losing valuable water, glucose and salts."
+    },
+    "ex_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which part of a nephron acts like a fine sieve, made of a tangled knot of tiny blood vessels, where blood is first filtered?",
+          "answer": "The glomerulus"
+        }
+      ],
+      "distractorPool": [
+        "The glomerulus",
+        "The ureter",
+        "The renal vein",
+        "The urinary bladder"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Inside each nephron, blood first passes through the glomerulus, a compact cluster of tiny blood vessels that acts as a fine filter, allowing water, salts, glucose and waste products to pass out of the blood while holding back blood cells and larger proteins.",
+      "realPurpose": "Understanding the glomerulus explains exactly where, at a microscopic level, blood filtration begins inside the kidney."
+    },
+    "ex_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the kidney's role in maintaining a stable balance of water and dissolved salts within the blood?",
+          "answer": "Osmoregulation"
+        }
+      ],
+      "distractorPool": [
+        "Osmoregulation",
+        "Egestion",
+        "Reabsorption",
+        "Transpiration"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Osmoregulation refers to the kidney's continuous adjustment of how much water and which dissolved salts are reabsorbed back into the blood versus excreted, keeping the body's internal fluid balance stable despite changes in diet or hydration.",
+      "realPurpose": "This regulatory role is why the kidneys are essential not just for removing waste, but for keeping the body's internal environment stable, a condition necessary for cells to function properly."
+    },
+    "ex_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What substance makes up the largest proportion of urine, alongside the dissolved urea and salts it also contains?",
+          "answer": "Water"
+        }
+      ],
+      "distractorPool": [
+        "Water",
+        "Glucose",
+        "Protein",
+        "Blood cells"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Urine is mostly water, with urea and various dissolved salts making up the rest; healthy urine should not normally contain significant glucose, protein or blood cells, since these are reabsorbed back into the blood or filtered out by the body's cells.",
+      "realPurpose": "Knowing urine's normal composition is why doctors can use a simple urine test to check for certain health problems, since substances like glucose or protein appearing in urine can be a warning sign."
+    },
+    "ex_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Where in the human body are the two kidneys located?",
+          "answer": "On either side of the spine, toward the back of the abdomen"
+        }
+      ],
+      "distractorPool": [
+        "On either side of the spine, toward the back of the abdomen",
+        "Inside the chest cavity, beside the lungs",
+        "Just below the skin, on the outer surface of the body",
+        "Inside the skull, beneath the brain"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The two kidneys sit toward the back of the abdominal cavity, one on either side of the spine, roughly at waist level, positioned to receive a rich blood supply directly from the main blood vessels running down the body.",
+      "realPurpose": "Knowing this location helps explain why kidney-related pain is often felt in the lower back or sides, rather than at the front of the abdomen."
+    },
+    "ex_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What distinctive shape is characteristic of the kidney, an organ so recognisably shaped that a common bean variety is named after it?",
+          "answer": "A bean shape"
+        }
+      ],
+      "distractorPool": [
+        "A bean shape",
+        "A perfectly round shape",
+        "A flat, disc-like shape",
+        "A long, tube-like shape"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each kidney has a distinctive curved, bean-like shape, with an indentation on one side where blood vessels, nerves and the ureter connect to the organ.",
+      "realPurpose": "This recognisable shape is exactly why 'kidney beans' get their name, since their shape closely resembles the organ itself."
+    },
+    "ex_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A person produces approximately {{ratePerHour}} mL of urine per hour. How much urine will they produce over {{hours}} hours?",
+      "vars": {
+        "ratePerHour": {
+          "type": "int",
+          "min": 20,
+          "max": 80
+        },
+        "hours": {
+          "type": "int",
+          "min": 2,
+          "max": 10
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "ratePerHour",
+        "hours"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "ratePerHour"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -60,
+          "max": 60,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Assuming a steady production rate, total urine output over time is found by multiplying the hourly rate by the number of hours, the same scaling logic used for any consistent rate.",
+      "realPurpose": "Doctors use this kind of estimate to monitor whether a patient's kidneys are functioning normally, since unusually high or low urine output can signal a health issue."
+    },
+    "ex_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "A person's two kidneys together contain about 2,000,000 nephrons. If {{percentDamaged}}% of them are damaged by a condition, how many nephrons remain healthy?",
+      "vars": {
+        "percentDamaged": {
+          "type": "pick",
+          "options": [
+            5,
+            10,
+            15,
+            20
+          ]
+        },
+        "damaged": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            2000000,
+            "percentDamaged",
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        2000000,
+        "damaged"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "damaged"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "percentDamaged"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -50000,
+          "max": 50000,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding the healthy nephron count means first calculating the damaged count from the given percentage, then subtracting it from the total, since healthy and damaged nephrons together must add up to the whole.",
+      "realPurpose": "This kind of calculation reflects how doctors assess kidney health, since the kidneys can often still function reasonably well even with a percentage of damaged nephrons, up to a point."
+    },
+    "ex_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "One kidney contains approximately 1,000,000 nephrons. If a health check finds that {{percentFunctioning}}% of them are functioning normally, how many nephrons in that kidney are functioning normally?",
+      "vars": {
+        "percentFunctioning": {
+          "type": "pick",
+          "options": [
+            80,
+            85,
+            90,
+            95
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        1000000,
+        "percentFunctioning",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percentFunctioning"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -30000,
+          "max": 30000,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of the roughly one million nephrons in a single kidney works the same way as with any total: multiply the total by the percentage expressed as a decimal fraction.",
+      "realPurpose": "This kind of calculation reflects how doctors assess how much of a kidney's filtering capacity remains functional after a health check."
+    },
+    "ex_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "A person sweats approximately {{ratePerHour}} mL per hour during vigorous exercise. How much sweat will they lose over {{hours}} hours?",
+      "vars": {
+        "ratePerHour": {
+          "type": "int",
+          "min": 300,
+          "max": 900
+        },
+        "hours": {
+          "type": "int",
+          "min": 1,
+          "max": 4
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "ratePerHour",
+        "hours"
+      ],
+      "decimals": 0,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "ratePerHour"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -400,
+          "max": 400,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Assuming a steady sweating rate, the total sweat lost over a period of time is found by multiplying the hourly rate by the number of hours, the same scaling logic used for any consistent excretory rate.",
+      "realPurpose": "This kind of estimate explains why people are advised to drink enough water during and after vigorous exercise, to replace the water excreted through the skin as sweat."
+    },
+    "ex_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A urine sample of {{volumeML}} mL contains approximately {{percent}}% urea by volume. How many mL of urea does the sample contain?",
+      "vars": {
+        "volumeML": {
+          "type": "pick",
+          "options": [
+            100,
+            150,
+            200,
+            250
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "volumeML",
+        "percent",
+        100
+      ],
+      "decimals": 1,
+      "unit": " mL",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -3,
+          "max": 3,
+          "decimals": 1,
+          "minValue": 0.1
+        }
+      },
+      "technicalIntricacy": "Finding what volume of urea is present in a urine sample means multiplying the total sample volume by the percentage of urea, expressed as a decimal fraction, the same calculation used for any proportional composition.",
+      "realPurpose": "This kind of calculation reflects how the concentration of urea in urine is measured, which can help indicate how well the kidneys are filtering waste from the blood."
+    },
+    "ex_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes egestion (removing faeces) and excretion (removing urea) are the exact same process, reasoning that 'both are just getting rid of body waste.' What is the flaw in this reasoning?",
+          "answer": "Excretion removes waste products actually produced by the body's own metabolism (like urea, filtered from blood by the kidneys), while egestion removes food that was never absorbed into the body at all (undigested material passed straight through the digestive tract) — despite both being types of 'waste removal,' they involve entirely different waste and entirely different organ systems",
+          "distractors": [
+            "The student is correct — excretion and egestion are simply two different names for the exact same process",
+            "Egestion only removes liquid waste, while excretion only removes solid waste",
+            "Excretion happens only in animals, while egestion happens only in plants"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Excretion removes waste generated inside the body's own cells through metabolism, filtered out by organs like the kidneys, while egestion removes food that was never absorbed into the bloodstream at all, simply passing through and out of the digestive tract.",
+      "realPurpose": "This distinction is important for correctly understanding which organ systems (excretory versus digestive) are responsible for which type of waste."
+    },
+    "ex_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that drinking large amounts of water has no effect on how much urine the kidneys produce, believing the kidneys 'always make the same amount no matter what.' What is the flaw in this reasoning?",
+          "answer": "The kidneys actively adjust how much water is filtered back into the blood versus excreted as urine, based on the body's hydration level; drinking more water leads to more dilute, more plentiful urine, while dehydration leads to the kidneys conserving water, producing less, more concentrated urine",
+          "distractors": [
+            "The student is correct — the kidneys always produce the exact same amount of urine regardless of how much water is consumed",
+            "Drinking more water has no effect on urine at all, only on sweat production",
+            "The kidneys stop producing urine completely whenever a large amount of water is consumed at once"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The kidneys continuously monitor the body's water balance and adjust how much water is reabsorbed back into the blood during filtration, meaning urine volume and concentration change dynamically based on how hydrated the body currently is.",
+      "realPurpose": "This is why urine appears pale and plentiful after drinking lots of water, but dark and scarce during dehydration — a useful, visible indicator of hydration level."
+    },
+    "ex_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes urea must be produced by the kidneys, reasoning that 'urine comes from the kidneys, and urine contains urea.' What is the flaw in this reasoning?",
+          "answer": "Urea is actually produced by the liver, from the breakdown of excess amino acids; the kidneys do not produce urea at all — they simply filter it out of the blood (where the liver has already released it) and excrete it as part of urine, so production and excretion happen in two entirely different organs",
+          "distractors": [
+            "The student is correct — urea must be produced inside the kidneys themselves, since urine comes from the kidneys",
+            "Urea is produced by the urinary bladder, not by the kidneys or the liver",
+            "Urea isn't actually produced anywhere in the body; it comes only from food that hasn't been digested"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Producing a waste product and excreting it are two separate biological jobs that can happen in different organs entirely; the liver breaks down excess amino acids into urea as part of its metabolic processing, and only afterward does that urea travel through the bloodstream to the kidneys, where it is filtered out and becomes part of urine.",
+      "realPurpose": "This distinction is important for correctly understanding how different organ systems (digestive/metabolic versus excretory) work together, rather than assuming the organ that releases a waste product must be the same one that created it."
+    },
+    "ns_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which part of a neuron receives incoming signals from other neurons?",
+          "answer": "The dendrites"
+        },
+        {
+          "question": "Which part of a neuron carries signals away toward the next neuron or muscle?",
+          "answer": "The axon"
+        },
+        {
+          "question": "Which part of the nervous system is made up of the brain and spinal cord?",
+          "answer": "The central nervous system (CNS)"
+        },
+        {
+          "question": "Which part of the nervous system is made up of the nerves branching throughout the rest of the body?",
+          "answer": "The peripheral nervous system (PNS)"
+        }
+      ],
+      "distractorPool": [
+        "The dendrites",
+        "The axon",
+        "The central nervous system (CNS)",
+        "The peripheral nervous system (PNS)"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The nervous system is built from neurons with specialised parts (dendrites to receive, axons to send) and is organised into a central hub (brain and spinal cord) connected to a body-wide network of peripheral nerves.",
+      "realPurpose": "This structure explains how a signal, like touching something hot, can travel almost instantly from a sensory receptor to the brain and back to a muscle."
+    },
+    "ns_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which part of the brain controls voluntary actions, thinking, memory and interpreting the senses?",
+          "answer": "The cerebrum"
+        },
+        {
+          "question": "Which part of the brain coordinates balance and the precision of muscular movement?",
+          "answer": "The cerebellum"
+        },
+        {
+          "question": "Which part of the brain controls involuntary actions like breathing and heartbeat?",
+          "answer": "The medulla oblongata"
+        }
+      ],
+      "distractorPool": [
+        "The cerebrum",
+        "The cerebellum",
+        "The medulla oblongata",
+        "The spinal cord"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Different regions of the brain specialise in different jobs — the cerebrum for conscious thought, the cerebellum for coordinated movement, and the medulla oblongata for automatic vital functions.",
+      "realPurpose": "This regional specialisation explains why damage to one specific part of the brain typically affects only its specific function, rather than the whole brain equally."
+    },
+    "ns_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which type of neuron carries an impulse FROM a receptor (like the skin or eye) TOWARD the central nervous system?",
+          "answer": "A sensory neuron"
+        },
+        {
+          "question": "Which type of neuron carries an impulse FROM the central nervous system TOWARD a muscle or gland to produce a response?",
+          "answer": "A motor neuron"
+        },
+        {
+          "question": "Which type of neuron, found within the spinal cord, connects a sensory neuron directly to a motor neuron during a reflex action?",
+          "answer": "A relay neuron (interneuron)"
+        }
+      ],
+      "distractorPool": [
+        "A sensory neuron",
+        "A motor neuron",
+        "A relay neuron (interneuron)",
+        "A synapse"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The nervous system uses three main types of neurons that pass a signal along in sequence: sensory neurons carry information inward from receptors, relay neurons (found in the spinal cord and brain) connect and process signals, and motor neurons carry the outgoing response toward muscles or glands.",
+      "realPurpose": "Understanding these three neuron types explains exactly how a single reflex action, like pulling a hand away from something hot, passes a signal along a specific, ordered pathway."
+    },
+    "ns_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a specialised cell or sense organ that detects a stimulus, such as heat, light or pressure, and generates a nerve impulse?",
+          "answer": "A receptor"
+        },
+        {
+          "question": "What term describes a muscle or gland that carries out the final response to a nerve impulse, such as contracting or releasing a substance?",
+          "answer": "An effector"
+        }
+      ],
+      "distractorPool": [
+        "A receptor",
+        "An effector",
+        "A neuron",
+        "A synapse"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Every nervous response begins at a receptor, which detects a specific stimulus and converts it into a nerve impulse, and ends at an effector, typically a muscle or gland, which carries out the actual physical response.",
+      "realPurpose": "Recognising receptors and effectors as the start and end points of a nervous pathway clarifies how the body senses its surroundings and then physically reacts to them."
+    },
+    "ns_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the correct order of structures involved in a simple reflex action, starting from the stimulus?",
+          "answer": "Receptor → sensory neuron → relay neuron (in the spinal cord) → motor neuron → effector"
+        }
+      ],
+      "distractorPool": [
+        "Receptor → sensory neuron → relay neuron (in the spinal cord) → motor neuron → effector",
+        "Receptor → motor neuron → relay neuron → sensory neuron → effector",
+        "Effector → motor neuron → relay neuron → sensory neuron → receptor",
+        "Receptor → cerebrum → cerebellum → medulla → effector"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "A reflex arc always follows the same fixed order — a receptor detects the stimulus, a sensory neuron carries the signal to the spinal cord, a relay neuron passes it directly to a motor neuron, and the motor neuron carries the signal to an effector — without the signal needing to travel up to the brain first.",
+      "realPurpose": "Knowing this fixed pathway explains exactly why reflex actions are so fast: the signal takes the shortest possible route through the spinal cord rather than a longer route through the brain."
+    },
+    "ns_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a chemical messenger released at a synapse that allows a nerve impulse to pass from one neuron to the next?",
+          "answer": "A neurotransmitter"
+        }
+      ],
+      "distractorPool": [
+        "A neurotransmitter",
+        "A hormone",
+        "An enzyme",
+        "An antibody"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "At a synapse, an electrical impulse triggers the release of a chemical neurotransmitter, which crosses the tiny gap between two neurons and triggers a new electrical impulse in the next neuron, allowing continuous signal transmission along a nerve pathway.",
+      "realPurpose": "Understanding neurotransmitters explains why a synapse is not a direct physical connection between neurons, but a chemical handover point in the signalling pathway."
+    },
+    "ns_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which bony structure, made up of a chain of connected vertebrae, surrounds and protects the spinal cord?",
+          "answer": "The vertebral column (backbone/spine)"
+        }
+      ],
+      "distractorPool": [
+        "The vertebral column (backbone/spine)",
+        "The skull",
+        "The rib cage",
+        "The pelvis"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The spinal cord runs down the back inside a protective bony tunnel formed by the vertebral column, a chain of connected vertebrae that shields this vital, delicate nerve pathway from physical damage.",
+      "realPurpose": "This protective structure explains why a serious injury to the vertebral column can also damage the spinal cord, potentially affecting nerve signals to and from large areas of the body."
+    },
+    "ns_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes an action performed under conscious control, such as deciding to pick up a pencil?",
+          "answer": "A voluntary action"
+        },
+        {
+          "question": "What term describes an action that happens automatically, without conscious control, such as your heart beating?",
+          "answer": "An involuntary action"
+        }
+      ],
+      "distractorPool": [
+        "A voluntary action",
+        "An involuntary action",
+        "A reflex action",
+        "A synaptic action"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Voluntary actions are consciously controlled by the cerebrum, while involuntary actions (like heartbeat and breathing) are automatically controlled without needing conscious thought, mainly by the medulla oblongata.",
+      "realPurpose": "This distinction explains why you can consciously decide to move your arm, but cannot consciously stop your heart from beating or your digestive system from working."
+    },
+    "ns_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which five organs are commonly known as the 'sense organs,' each containing receptors specialised to detect a particular type of stimulus?",
+          "answer": "The eyes, ears, nose, tongue and skin"
+        }
+      ],
+      "distractorPool": [
+        "The eyes, ears, nose, tongue and skin",
+        "The brain, spinal cord, eyes, ears and skin",
+        "The heart, lungs, eyes, ears and nose",
+        "The eyes, ears, nose, tongue and brain"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The five sense organs each contain receptors tuned to a specific stimulus — the eyes to light, the ears to sound, the nose to smell, the tongue to taste, and the skin to touch, temperature and pressure — converting these different stimuli into nerve impulses.",
+      "realPurpose": "Recognising these five dedicated sense organs explains how the body gathers such a wide variety of information about its surroundings, each through its own specialised receptor type."
+    },
+    "ns_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which bony structure encases and protects the brain from physical damage?",
+          "answer": "The skull (cranium)"
+        }
+      ],
+      "distractorPool": [
+        "The skull (cranium)",
+        "The vertebral column",
+        "The rib cage",
+        "The collar bone"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The brain, being extremely delicate and essential, is enclosed within the hard, protective bone of the skull (cranium), much like the spinal cord is protected by the vertebral column running down the back.",
+      "realPurpose": "This protective structure explains why head injuries are treated so seriously, since the skull's protection, while strong, still has limits against severe impact."
+    },
+    "ns_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A nerve impulse travels at approximately {{speed}} metres per second. How long would it take to travel {{distance}} metres along a nerve? (Time = Distance ÷ Speed)",
+      "vars": {
+        "speed": {
+          "type": "int",
+          "min": 20,
+          "max": 100
+        },
+        "distance": {
+          "type": "int",
+          "min": 1,
+          "max": 5
+        }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": [
+        "distance",
+        "speed"
+      ],
+      "decimals": 3,
+      "unit": " s",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "multiply",
+            "args": [
+              "distance",
+              "speed"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -0.05,
+          "max": 0.05,
+          "decimals": 3,
+          "minValue": 0.001
+        }
+      },
+      "technicalIntricacy": "Since speed, distance and time are always linked by Time = Distance ÷ Speed, knowing a nerve impulse's typical speed lets you calculate how long a signal takes to travel any given distance along a nerve.",
+      "realPurpose": "This kind of calculation explains why reflexes and reactions feel almost instantaneous — nerve impulses travel extremely fast, covering short body distances in a tiny fraction of a second."
+    },
+    "ns_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "The human brain contains approximately 86 billion neurons. If a simplified model assumes {{percent}}% of them are located in the cerebrum, how many neurons (in billions) are in the cerebrum?",
+      "vars": {
+        "percent": {
+          "type": "pick",
+          "options": [
+            10,
+            15,
+            20,
+            25
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        86,
+        "percent",
+        100
+      ],
+      "decimals": 1,
+      "unit": " billion",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              86
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -5,
+          "max": 5,
+          "decimals": 1,
+          "minValue": 0.1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a very large total works exactly the same way as with any smaller number: multiply the total by the percentage expressed as a decimal fraction.",
+      "realPurpose": "This kind of estimate helps illustrate just how many neurons are concentrated in the cerebrum, the brain region responsible for conscious thought and voluntary movement."
+    },
+    "ns_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "The human brain contains approximately 86 billion neurons. If a simplified model assumes {{percent}}% of them are located in the cerebellum, how many neurons (in billions) are in the cerebellum?",
+      "vars": {
+        "percent": {
+          "type": "pick",
+          "options": [
+            75,
+            78,
+            80,
+            82
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        86,
+        "percent",
+        100
+      ],
+      "decimals": 1,
+      "unit": " billion",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              86
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -3,
+          "max": 3,
+          "decimals": 1,
+          "minValue": 0.1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a very large total works exactly the same way as with any smaller number: multiply the total by the percentage expressed as a decimal fraction.",
+      "realPurpose": "This kind of estimate reveals a genuinely surprising fact: despite being much smaller in size than the cerebrum, the cerebellum is packed with tiny, densely-clustered granule cells and actually holds the large majority of the brain's neurons."
+    },
+    "ns_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "The skin contains approximately {{receptorsPerCm2}} touch receptors per square centimetre. How many touch receptors would be found in a patch of skin covering {{areaCm2}} square centimetres?",
+      "vars": {
+        "receptorsPerCm2": {
+          "type": "int",
+          "min": 5,
+          "max": 25
+        },
+        "areaCm2": {
+          "type": "int",
+          "min": 2,
+          "max": 12
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "receptorsPerCm2",
+        "areaCm2"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "receptorsPerCm2"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -15,
+          "max": 15,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since touch receptors are distributed at a roughly consistent density across an area of skin, the total number of receptors in a patch of skin is found by multiplying the density (receptors per square centimetre) by the total area.",
+      "realPurpose": "This kind of estimate explains why some areas of skin (with a higher receptor density, like the fingertips) are far more sensitive to touch than others."
+    },
+    "ns_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A particular reflex arc signal must cross {{numSynapses}} synapses along its pathway, and each synapse adds a delay of approximately {{delayPerSynapse}} milliseconds. What is the total synapse delay for this reflex, in milliseconds?",
+      "vars": {
+        "numSynapses": {
+          "type": "int",
+          "min": 2,
+          "max": 6
+        },
+        "delayPerSynapse": {
+          "type": "int",
+          "min": 1,
+          "max": 5
+        }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": [
+        "numSynapses",
+        "delayPerSynapse"
+      ],
+      "decimals": 0,
+      "unit": " ms",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "delayPerSynapse"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -4,
+          "max": 4,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since each synapse along a nerve pathway adds a small, roughly consistent delay while the neurotransmitter crosses the gap, the total synapse delay for a signal crossing several synapses is found by multiplying the delay per synapse by the number of synapses crossed.",
+      "realPurpose": "This kind of calculation explains why a reflex pathway with fewer synapses (like the two-neuron pathway used in some simple reflexes) responds even faster than a pathway involving several relay neurons."
+    },
+    "ns_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that when they touch a hot object and pull their hand away instantly, their brain must have consciously thought 'this is hot, pull away' before the hand actually moved. What is the flaw in this reasoning?",
+          "answer": "Pulling away from a hot object is usually a reflex action, processed directly by the spinal cord without first involving the brain's conscious thought; this is precisely why the reaction is so fast — by the time the brain becomes consciously aware of the pain, the hand has often already moved",
+          "distractors": [
+            "The student is correct — the brain always consciously processes and decides on every single body movement before it happens",
+            "The hand moves entirely on its own, with no involvement from the nervous system at all",
+            "Reflex actions are controlled by the cerebellum, not the spinal cord, and always involve full conscious thought first"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A reflex arc allows a sensory signal to travel to the spinal cord and trigger a motor response directly, without waiting for the signal to travel all the way up to the brain and back, which is what makes reflexes so much faster than consciously decided actions.",
+      "realPurpose": "Understanding reflex arcs explains why the body can protect itself from harm faster than conscious thought would otherwise allow."
+    },
+    "ns_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes the brain is a single, uniform organ where 'everything happens everywhere,' with no particular part responsible for any particular job. What is the flaw in this reasoning?",
+          "answer": "Different regions of the brain are specialised for different jobs — the cerebrum for conscious thought and voluntary movement, the cerebellum for balance and coordination, and the medulla oblongata for automatic vital functions like breathing — damage to one specific area typically affects only its specific function",
+          "distractors": [
+            "The student is correct — every part of the brain performs the exact same general function, with no specialisation at all",
+            "Only the cerebrum has any specific function; every other brain region is simply inactive tissue",
+            "Brain regions can instantly take over each other's jobs completely, so damage to any one area has no lasting effect"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Decades of medical observation (including cases of localised brain injury) show that specific brain regions reliably control specific functions, such as balance, breathing, or voluntary movement, which is why damage to one region often produces very specific, predictable effects.",
+      "realPurpose": "This regional specialisation is why doctors can often predict what abilities might be affected based on which part of the brain has been injured."
+    },
+    "ns_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because nerve impulses travel 'as fast as thought,' they must move instantly, with absolutely zero time delay. What is the flaw in this reasoning?",
+          "answer": "Nerve impulses travel extremely fast, but at a real, measurable speed (commonly tens of metres per second), not instantly; additionally, each synapse a signal crosses adds a further tiny delay while a neurotransmitter chemical crosses the gap, so the total time for any signal, however fast it feels, is always a genuine, non-zero amount of time",
+          "distractors": [
+            "The student is correct — nerve impulses travel with absolutely zero delay, arriving at their destination the instant a stimulus occurs",
+            "Nerve impulses only have a measurable speed inside the brain, but move instantly everywhere else in the body",
+            "Synapses have no effect on signal speed at all, since neurotransmitters cross them instantly with no delay"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Nerve impulses travel at a finite, measurable speed along a neuron, and additional, real delays accumulate at every synapse a signal crosses since a chemical neurotransmitter must diffuse across the tiny synaptic gap; the impression of an 'instant' reaction is simply because these delays add up to a very small, but never truly zero, amount of time.",
+      "realPurpose": "Understanding that nerve signals take a small but real amount of time explains why reaction times can actually be measured and compared, and why reflexes (with fewer synapses) are noticeably faster than consciously decided actions (which involve many more synapses through the brain)."
+    },
+    "al_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes an exaggerated immune response to a normally harmless substance?",
+          "answer": "An allergy"
+        },
+        {
+          "question": "What term describes a substance that triggers an allergic reaction?",
+          "answer": "An allergen"
+        },
+        {
+          "question": "What type of medicine is commonly used to relieve mild allergy symptoms?",
+          "answer": "An antihistamine"
+        }
+      ],
+      "distractorPool": [
+        "An allergy",
+        "An allergen",
+        "An antihistamine",
+        "An antibody"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "An allergy is the body's overreaction to a specific trigger (an allergen), and antihistamine medicines work by counteracting the chemical signals the immune system releases during that overreaction.",
+      "realPurpose": "Understanding this vocabulary helps students correctly describe and discuss allergic reactions, which affect a significant portion of the population in varying degrees."
+    },
+    "al_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which of these is a very common airborne allergen released by many plants during certain seasons?",
+          "answer": "Pollen"
+        },
+        {
+          "question": "Which of these is a well-known common food allergen for some people?",
+          "answer": "Peanuts"
+        },
+        {
+          "question": "Which of these is a common allergy symptom affecting the skin?",
+          "answer": "A rash (or hives)"
+        },
+        {
+          "question": "Which of these is a common allergy symptom affecting the eyes and nose?",
+          "answer": "Watery eyes and a runny nose"
+        }
+      ],
+      "distractorPool": [
+        "Pollen",
+        "Peanuts",
+        "A rash (or hives)",
+        "Watery eyes and a runny nose"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Common allergens (like pollen and certain foods) and common symptoms (like rashes and watery eyes) both vary from person to person, since an allergy is specific to how an individual's own immune system reacts.",
+      "realPurpose": "Recognising common allergens and symptoms helps people identify a possible allergy early and seek advice on how to manage or avoid it."
+    },
+    "al_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which tiny, dust-dwelling creatures, commonly found in bedding and carpets, are a very common household allergen?",
+          "answer": "Dust mites"
+        },
+        {
+          "question": "Which common allergen consists of tiny flakes of skin, along with fur or feathers, shed by pets?",
+          "answer": "Pet dander"
+        }
+      ],
+      "distractorPool": [
+        "Dust mites",
+        "Pet dander",
+        "Pollen",
+        "Peanuts"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Dust mites (microscopic creatures living in household dust) and pet dander (tiny flakes of skin shed along with fur or feathers) are two of the most common indoor allergens, alongside outdoor allergens like pollen.",
+      "realPurpose": "Recognising these everyday indoor allergens helps explain why regularly cleaning bedding, carpets and pet areas can help reduce allergy symptoms for people sensitive to them."
+    },
+    "al_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides a runny nose and watery eyes, which two very common allergy symptoms involve a sudden, repeated reflex and an urge to scratch?",
+          "answer": "Sneezing and itching"
+        },
+        {
+          "question": "What is the common term for a seasonal allergy to pollen, which causes sneezing, itching, and watery eyes despite having nothing to do with an actual fever?",
+          "answer": "Hay fever"
+        }
+      ],
+      "distractorPool": [
+        "Sneezing and itching",
+        "Hay fever",
+        "A skin rash",
+        "A cough"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Sneezing and itching are two of the most common allergy symptoms, often triggered by airborne allergens like pollen; the seasonal version of this reaction is commonly called hay fever, a name that persists historically even though it isn't caused by hay and doesn't involve an actual fever.",
+      "realPurpose": "Knowing these common terms helps people recognise and describe a likely allergic reaction, rather than mistaking it for an unrelated illness like a common cold."
+    },
+    "al_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a severe, whole-body allergic reaction that can affect breathing and requires urgent medical attention?",
+          "answer": "Anaphylaxis"
+        }
+      ],
+      "distractorPool": [
+        "Anaphylaxis",
+        "Hay fever",
+        "A common cold",
+        "An antihistamine"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Anaphylaxis is the medical term for a severe, rapidly developing allergic reaction that can affect the whole body, including breathing, and is treated as a medical emergency requiring urgent professional care.",
+      "realPurpose": "Knowing this term helps people recognise that some allergic reactions are far more serious than mild sneezing or itching, and understand why people with known severe allergies are advised to be especially cautious around their specific triggers."
+    },
+    "al_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is generally considered the most effective way to prevent an allergic reaction from happening in the first place?",
+          "answer": "Avoiding known allergens"
+        }
+      ],
+      "distractorPool": [
+        "Avoiding known allergens",
+        "Eating a small amount of the allergen daily",
+        "Ignoring the allergy entirely, since it will resolve on its own",
+        "Avoiding all food and drink until symptoms disappear"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Since an allergy is triggered by contact with a specific allergen, the most reliable way to prevent a reaction is simply avoiding that known trigger wherever possible, which is why people with identified allergies are often advised to check labels or surroundings carefully.",
+      "realPurpose": "This is exactly why food packaging lists common allergens clearly, and why schools and public spaces take known allergies seriously, to help people avoid accidental exposure."
+    },
+    "al_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which immune system proteins normally help the body recognise and fight off harmful germs, but can also become involved when the immune system mistakenly overreacts to a harmless substance?",
+          "answer": "Antibodies"
+        }
+      ],
+      "distractorPool": [
+        "Antibodies",
+        "Antihistamines",
+        "Enzymes",
+        "Hormones"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "The immune system normally produces antibodies to identify and help fight genuinely harmful invaders like bacteria and viruses; during an allergic reaction, this same antibody system mistakenly identifies a harmless substance (the allergen) as a threat, triggering an unnecessary immune response.",
+      "realPurpose": "Understanding that allergies involve the body's normal defence system misfiring (rather than a completely separate process) explains why allergies are classified as an immune system condition."
+    },
+    "al_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides foods and pollen, which type of encounter, such as a bee or wasp sting, is a well-known trigger for a serious allergic reaction in some people?",
+          "answer": "An insect sting"
+        }
+      ],
+      "distractorPool": [
+        "An insect sting",
+        "Direct sunlight",
+        "Cold air",
+        "Loud noise"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Insect stings, such as from bees or wasps, are a well-documented allergen for some people, capable of triggering reactions ranging from localised swelling to a severe, whole-body reaction in those with a specific sensitivity.",
+      "realPurpose": "Recognising insect stings as a potential allergen (not just foods or airborne particles) broadens understanding of just how varied allergy triggers can be."
+    },
+    "al_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides peanuts, which two common foods are also well-known food allergens, especially in young children?",
+          "answer": "Milk and eggs"
+        },
+        {
+          "question": "Which type of seafood is a well-known common food allergen for some people, alongside fish?",
+          "answer": "Shellfish (such as shrimp or crab)"
+        }
+      ],
+      "distractorPool": [
+        "Milk and eggs",
+        "Shellfish (such as shrimp or crab)",
+        "Peanuts",
+        "Rice and potatoes"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "A small, well-recognised group of foods is responsible for the vast majority of food allergies, including peanuts, tree nuts, milk, eggs, shellfish, fish, wheat and soy, which is why these particular ingredients are singled out so prominently on food packaging.",
+      "realPurpose": "Knowing this list of common food allergens explains why food labels are required to clearly flag ingredients like milk, eggs and shellfish, helping people with known allergies avoid them easily."
+    },
+    "al_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides foods, pollen, dust mites and insect stings, what other category of substance is also recognised as a common allergen for some people?",
+          "answer": "Certain medicines"
+        },
+        {
+          "question": "What term describes the pattern where allergies are somewhat more common among people whose close family members also have allergies?",
+          "answer": "A hereditary (genetic) tendency"
+        }
+      ],
+      "distractorPool": [
+        "Certain medicines",
+        "A hereditary (genetic) tendency",
+        "Loud noises",
+        "Cold weather alone"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Certain medicines can act as allergens for some people, triggering a reaction in the same way a food or airborne substance might, and separately, a person's overall likelihood of developing allergies is influenced by heredity, meaning allergies tend to be somewhat more common within families where they already occur.",
+      "realPurpose": "Recognising medicines as a possible allergen alongside more familiar triggers, and understanding the hereditary element of allergies, gives a fuller picture of why allergic tendencies vary so much between individuals and families."
+    },
+    "al_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "In a survey of {{total}} people, {{percent}}% reported having at least one known allergy. How many people reported having an allergy?",
+      "vars": {
+        "total": {
+          "type": "pick",
+          "options": [
+            100,
+            200,
+            300,
+            500
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            10,
+            15,
+            20,
+            25,
+            30
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "total",
+        "percent",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -12,
+          "max": 12,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a survey total means multiplying the total by the percentage expressed as a decimal fraction, the same calculation used for any proportional health statistic.",
+      "realPurpose": "Public health researchers use this kind of calculation to track how common allergies are within a population, which helps guide awareness and healthcare planning."
+    },
+    "al_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In City A, {{groupAPercent}}% of {{groupASize}} surveyed people reported a pollen allergy. In City B, {{groupBPercent}}% of {{groupBSize}} surveyed people reported the same allergy. How many more people (in count, not percentage) reported the allergy in the city with the higher count?",
+          "vars": {
+            "groupASize": {
+              "type": "pick",
+              "options": [
+                100,
+                150,
+                200
+              ]
+            },
+            "groupAPercent": {
+              "type": "pick",
+              "options": [
+                10,
+                15,
+                20
+              ]
+            },
+            "groupBSize": {
+              "type": "pick",
+              "options": [
+                100,
+                150,
+                200
+              ]
+            },
+            "groupBPercent": {
+              "type": "pick",
+              "options": [
+                20,
+                25,
+                30
+              ]
+            },
+            "groupACount": {
+              "type": "computed",
+              "formulaId": "multiplyDivide",
+              "args": [
+                "groupASize",
+                "groupAPercent",
+                100
+              ]
+            },
+            "groupBCount": {
+              "type": "computed",
+              "formulaId": "multiplyDivide",
+              "args": [
+                "groupBSize",
+                "groupBPercent",
+                100
+              ]
+            },
+            "difference": {
+              "type": "computed",
+              "formulaId": "absDiff",
+              "args": [
+                "groupBCount",
+                "groupACount"
+              ]
+            }
+          },
+          "answer": "{{difference}}",
+          "distractors": [
+            "{{groupACount}}",
+            "{{groupBCount}}",
+            "{{groupAPercent}}"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Comparing two groups by actual count (not just percentage) requires first converting each percentage into a real number using its own total, then finding the difference between those two counts.",
+      "realPurpose": "This distinction matters in real health statistics, since a lower percentage in a much larger population can still represent more actual people affected."
+    },
+    "al_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "In a survey of {{total}} people, {{percent}}% reported having at least one known allergy. How many people did NOT report having an allergy?",
+      "vars": {
+        "total": {
+          "type": "pick",
+          "options": [
+            100,
+            150,
+            200,
+            300
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            15,
+            20,
+            25,
+            30
+          ]
+        },
+        "allergyCount": {
+          "type": "computed",
+          "formulaId": "multiplyDivide",
+          "args": [
+            "total",
+            "percent",
+            100
+          ]
+        }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": [
+        "total",
+        "allergyCount"
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "allergyCount"
+            ]
+          },
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -12,
+          "max": 12,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Since every surveyed person either does or doesn't have a known allergy, the number without an allergy is found by first calculating the allergy count from its percentage, then subtracting it from the total.",
+      "realPurpose": "This kind of complementary calculation is used in real health surveys whenever a population is split into exactly two categories."
+    },
+    "al_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "Among {{total}} people with a known dust allergy, {{percent}}% specifically react to dust mites (rather than another dust-related trigger). How many of them react specifically to dust mites?",
+      "vars": {
+        "total": {
+          "type": "pick",
+          "options": [
+            60,
+            80,
+            120,
+            150
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            40,
+            50,
+            60,
+            70
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "total",
+        "percent",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -10,
+          "max": 10,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a survey total means multiplying the total by the percentage expressed as a decimal fraction, the same calculation used for any proportional health statistic.",
+      "realPurpose": "This kind of calculation reflects how researchers narrow down broad allergy categories (like 'dust allergy') into more specific triggers, such as dust mites."
+    },
+    "al_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "Of {{total}} people stung by insects in a year, {{percent}}% developed a noticeable allergic reaction to the sting. How many people developed a reaction?",
+      "vars": {
+        "total": {
+          "type": "pick",
+          "options": [
+            100,
+            200,
+            300,
+            500
+          ]
+        },
+        "percent": {
+          "type": "pick",
+          "options": [
+            5,
+            8,
+            10,
+            12
+          ]
+        }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": [
+        "total",
+        "percent",
+        100
+      ],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [
+          {
+            "formulaId": "identity",
+            "args": [
+              "percent"
+            ]
+          }
+        ],
+        "perturb": {
+          "min": -8,
+          "max": 8,
+          "decimals": 0,
+          "minValue": 1
+        }
+      },
+      "technicalIntricacy": "Finding a percentage of a survey total means multiplying the total by the percentage expressed as a decimal fraction, the same calculation used for any proportional health statistic.",
+      "realPurpose": "This kind of calculation reflects how public health data tracks how common allergic reactions to insect stings are, helping identify how significant this particular allergen is compared to others."
+    },
+    "al_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a food (like peanuts) is completely safe for them personally, it must be safe for everyone to eat without any concern. What is the flaw in this reasoning?",
+          "answer": "An allergy is specific to an individual's own immune system; a food that is perfectly harmless for one person can trigger a serious, even dangerous, allergic reaction in someone else with an allergy to that specific substance — personal safety with a substance says nothing about whether it's universally safe for others",
+          "distractors": [
+            "The student is correct — if a food is safe for one person, it is guaranteed to be safe for every other person as well",
+            "Food allergies only exist in very young children and disappear completely in every person by adulthood",
+            "An allergy to a specific food means that food is toxic and unsafe for absolutely everyone, without exception"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Allergic reactions occur when a specific person's immune system mistakenly identifies a normally harmless substance as dangerous; this immune response varies from person to person, so a substance's safety for one individual provides no information about its safety for someone with a genuine allergy to it.",
+      "realPurpose": "This is exactly why food labels warn about common allergens and why schools and public spaces take food allergies seriously, even for foods most people can eat safely."
+    },
+    "al_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that having mild allergy symptoms one year (like occasional sneezing near pollen) means their allergy can never become more serious in the future. What is the flaw in this reasoning?",
+          "answer": "Allergic reactions can change in severity over time, sometimes becoming more pronounced with repeated exposure to the same allergen, so a mild reaction in the past does not guarantee future reactions will stay equally mild — this is why people with known allergies are often advised to stay cautious and monitor their symptoms over time",
+          "distractors": [
+            "The student is correct — an allergy that starts out mild is guaranteed to remain exactly as mild for the rest of a person's life",
+            "Allergies can only ever become milder over time, never more severe, regardless of continued exposure",
+            "Once a person has one mild allergic reaction, their immune system becomes permanently immune to that allergen afterward"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The immune system's response to a particular allergen can shift with repeated exposure over time, sometimes intensifying rather than staying constant or fading, which is why medical guidance often recommends ongoing caution rather than assuming a mild history guarantees a mild future.",
+      "realPurpose": "This is why people with known allergies, especially to foods or insect stings, are often advised to carry appropriate precautions and seek medical advice if symptoms ever seem to be worsening."
+    },
+    "al_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that since an antihistamine medicine relieves their allergy symptoms, it must have permanently cured the allergy itself. What is the flaw in this reasoning?",
+          "answer": "An antihistamine only temporarily counteracts the chemical signals released during an allergic reaction, relieving symptoms for a while — it does not change the immune system's underlying tendency to react to that allergen, so the same allergy will still be present and can trigger symptoms again on future exposure",
+          "distractors": [
+            "The student is correct — taking an antihistamine permanently removes an allergy, so the person will never react to that allergen again",
+            "Antihistamines work by destroying the allergen itself before it can enter the body at all",
+            "Antihistamines have no real effect on allergy symptoms; any improvement is entirely coincidental"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Antihistamines work by blocking the effects of the chemical signals the immune system releases during an allergic reaction, which relieves symptoms while the medicine is active, but this does not retrain or permanently change the immune system's underlying sensitivity to that specific allergen.",
+      "realPurpose": "This distinction is why people with a known allergy are generally advised to keep avoiding their specific trigger, rather than assuming that symptom relief means the allergy itself has gone away for good."
+    }
+  },
+  "chapters": {
+    "tissues": {
+      "title": "Plant and Animal Tissues",
+      "overview": "A tissue is a group of similar cells that work together to perform a specific function. This chapter covers the main plant tissues (meristematic and permanent, including xylem, phloem and sclerenchyma) and the main animal tissues (epithelial, connective, muscular and nervous), along with their functions.",
+      "deepDivePurpose": "Understanding tissues explains how multicellular organisms achieve specialised functions — like how muscle tissue enables movement and xylem tissue transports water — instead of every cell doing everything, and underlies fields like medicine, agriculture and biotechnology.",
+      "recap": [
+        "A tissue is a group of similar cells that work together to perform a specific function.",
+        "Meristematic plant tissue consists of actively dividing cells found at growing points (root tips, shoot tips) and is responsible for growth.",
+        "Permanent plant tissue consists of cells that have stopped dividing and are specialised for a function, such as parenchyma, collenchyma and sclerenchyma.",
+        "Xylem transports water and minerals upward from roots to leaves; phloem transports food throughout the plant.",
+        "The four main animal tissues are epithelial (covering/lining), connective (binding/support), muscular (movement) and nervous (control/communication) tissue.",
+        "Muscular tissue is of three types: skeletal (voluntary), smooth (involuntary) and cardiac (found only in the heart)."
+      ],
+      "questionBank": {
+        "1": [
+          "ts_l1_t1",
+          "ts_l1_t2",
+          "ts_l1_t3",
+          "ts_l1_t4",
+          "ts_l1_t5",
+          "ts_l1_t6",
+          "ts_l1_t7",
+          "ts_l1_t8",
+          "ts_l1_t9",
+          "ts_l1_t10"
+        ],
+        "2": [
+          "ts_l2_t1",
+          "ts_l2_t2",
+          "ts_l2_t3",
+          "ts_l2_t4",
+          "ts_l2_t5"
+        ],
+        "3": [
+          "ts_l3_t1",
+          "ts_l3_t2",
+          "ts_l3_t3",
+          "ts_l3_t4"
+        ]
+      }
+    },
+    "classification_plants": {
+      "title": "Classification of Plants",
+      "overview": "Plants are classified into major groups based on their body structure and reproductive methods — Thallophyta (simple plants without true roots, stems or leaves), Bryophyta (mosses), Pteridophyta (ferns), and Spermatophyta (seed-bearing plants), which are further divided into gymnosperms and angiosperms.",
+      "deepDivePurpose": "Classifying plants by structure and reproduction reveals how plant life evolved from simple, water-dependent forms toward complex, seed-bearing plants that dominate today's land ecosystems, and explains the incredible diversity of the plant kingdom.",
+      "recap": [
+        "Thallophyta are simple plants, like algae, that lack true roots, stems and leaves.",
+        "Bryophyta (mosses and liverworts) have simple stem-and-leaf-like structures but no true vascular tissue, and depend on moisture to reproduce.",
+        "Pteridophyta (ferns) have true roots, stems and leaves with vascular tissue, and reproduce using spores rather than seeds.",
+        "Spermatophyta (seed-bearing plants) are divided into gymnosperms, which produce 'naked' seeds not enclosed in a fruit (like pine trees), and angiosperms, which produce seeds enclosed within a fruit.",
+        "Angiosperms are further divided into monocotyledons (one seed leaf, like wheat and grass) and dicotyledons (two seed leaves, like beans and roses).",
+        "Moving from Thallophyta to Spermatophyta represents increasing structural complexity and decreasing dependence on water for reproduction."
+      ],
+      "questionBank": {
+        "1": [
+          "cp_l1_t1",
+          "cp_l1_t2",
+          "cp_l1_t3",
+          "cp_l1_t4",
+          "cp_l1_t5",
+          "cp_l1_t6",
+          "cp_l1_t7",
+          "cp_l1_t8",
+          "cp_l1_t9",
+          "cp_l1_t10"
+        ],
+        "2": [
+          "cp_l2_t1",
+          "cp_l2_t2",
+          "cp_l2_t3",
+          "cp_l2_t4",
+          "cp_l2_t5"
+        ],
+        "3": [
+          "cp_l3_t1",
+          "cp_l3_t2",
+          "cp_l3_t3"
+        ]
+      }
+    },
+    "classification_animals": {
+      "title": "Classification of Animals",
+      "overview": "Animals are broadly classified into invertebrates (animals without a backbone, such as sponges, insects and molluscs) and vertebrates (animals with a backbone, divided into fish, amphibians, reptiles, birds and mammals), based on body structure and the presence or absence of an internal skeleton.",
+      "deepDivePurpose": "Classifying animals by body structure reveals evolutionary relationships and explains why animals as different-looking as a shark and a human share the defining vertebrate trait of a backbone, while a jellyfish and a housefly are both invertebrates despite being very different.",
+      "recap": [
+        "Invertebrates are animals without a backbone; examples include sponges (Porifera), jellyfish (Coelenterata), insects and spiders (Arthropoda), snails (Mollusca), earthworms (Annelida), starfish (Echinodermata), flatworms (Platyhelminthes) and roundworms (Nematoda).",
+        "Vertebrates are animals with a backbone (vertebral column), divided into five classes: fish, amphibians, reptiles, birds and mammals.",
+        "Arthropoda is the largest animal phylum, including insects, spiders, and crustaceans, all with jointed legs and a hard external exoskeleton.",
+        "Fish (Pisces) are cold-blooded vertebrates that breathe using gills and typically live entirely in water.",
+        "Amphibians are cold-blooded vertebrates that typically begin life in water breathing with gills, then develop lungs to live partly on land as adults.",
+        "Mammals are warm-blooded vertebrates that typically have hair or fur and nurse their young with milk."
+      ],
+      "questionBank": {
+        "1": [
+          "ca_l1_t1",
+          "ca_l1_t2",
+          "ca_l1_t3",
+          "ca_l1_t4",
+          "ca_l1_t5",
+          "ca_l1_t6",
+          "ca_l1_t7",
+          "ca_l1_t8",
+          "ca_l1_t9",
+          "ca_l1_t10"
+        ],
+        "2": [
+          "ca_l2_t1",
+          "ca_l2_t2",
+          "ca_l2_t3",
+          "ca_l2_t4",
+          "ca_l2_t5"
+        ],
+        "3": [
+          "ca_l3_t1",
+          "ca_l3_t2",
+          "ca_l3_t3"
+        ]
+      }
+    },
+    "photosynthesis_respiration": {
+      "title": "Photosynthesis and Respiration",
+      "overview": "Photosynthesis is the process by which green plants make their own food using sunlight, carbon dioxide and water, releasing oxygen as a byproduct; respiration is the process by which living cells release energy from food, consuming oxygen and releasing carbon dioxide — two connected but opposite gas-exchange processes essential to life.",
+      "deepDivePurpose": "Photosynthesis and respiration together form a continuous cycle of gas exchange between plants, animals and the atmosphere, and understanding both processes explains how nearly all life on Earth obtains food and usable energy.",
+      "recap": [
+        "Photosynthesis occurs in green plant cells containing chlorophyll, using light energy to combine carbon dioxide and water into glucose, releasing oxygen as a byproduct.",
+        "The word equation for photosynthesis is: Carbon dioxide + Water + Sunlight (with chlorophyll) → Glucose + Oxygen.",
+        "Respiration is the process by which all living cells (in plants and animals) break down glucose to release usable energy, consuming oxygen and releasing carbon dioxide and water.",
+        "The word equation for respiration is: Glucose + Oxygen → Carbon dioxide + Water + Energy.",
+        "Unlike photosynthesis, which only occurs in green plant parts during daylight, respiration occurs continuously, day and night, in every living cell.",
+        "Stomata (in leaves) and lenticels (in stems) are tiny pores that allow gases to move in and out of a plant during both photosynthesis and respiration."
+      ],
+      "questionBank": {
+        "1": [
+          "pr_l1_t1",
+          "pr_l1_t2",
+          "pr_l1_t3",
+          "pr_l1_t4",
+          "pr_l1_t5",
+          "pr_l1_t6",
+          "pr_l1_t7",
+          "pr_l1_t8",
+          "pr_l1_t9",
+          "pr_l1_t10"
+        ],
+        "2": [
+          "pr_l2_t1",
+          "pr_l2_t2",
+          "pr_l2_t3",
+          "pr_l2_t4",
+          "pr_l2_t5"
+        ],
+        "3": [
+          "pr_l3_t1",
+          "pr_l3_t2",
+          "pr_l3_t3"
+        ]
+      }
+    },
+    "excretion": {
+      "title": "Excretion in Humans",
+      "overview": "Excretion is the process of removing metabolic waste products from the body. In humans, the excretory system — kidneys, ureters, urinary bladder and urethra — filters waste from the blood to form urine, while the skin (sweat) and lungs (carbon dioxide) also play excretory roles.",
+      "deepDivePurpose": "Understanding excretion explains how the body continuously removes toxic waste products that would otherwise build up and harm cells, and shows why organs like the kidneys are essential to survival, not just a digestion-related afterthought.",
+      "recap": [
+        "Excretion is the removal of metabolic waste products (like urea) from the body; it is different from egestion, which is the removal of undigested food waste (faeces).",
+        "The human excretory system consists of two kidneys, two ureters, a urinary bladder, and a urethra.",
+        "The kidneys filter waste products and excess water from the blood, forming urine.",
+        "Urine travels from each kidney through a ureter to the urinary bladder, where it is stored before being released through the urethra.",
+        "The skin excretes waste through sweat, which also helps cool the body; the lungs excrete carbon dioxide, a waste product of respiration.",
+        "The basic filtering unit inside each kidney is called a nephron, and each kidney contains about a million of them."
+      ],
+      "questionBank": {
+        "1": [
+          "ex_l1_t1",
+          "ex_l1_t2",
+          "ex_l1_t3",
+          "ex_l1_t4",
+          "ex_l1_t5",
+          "ex_l1_t6",
+          "ex_l1_t7",
+          "ex_l1_t8",
+          "ex_l1_t9",
+          "ex_l1_t10"
+        ],
+        "2": [
+          "ex_l2_t1",
+          "ex_l2_t2",
+          "ex_l2_t3",
+          "ex_l2_t4",
+          "ex_l2_t5"
+        ],
+        "3": [
+          "ex_l3_t1",
+          "ex_l3_t2",
+          "ex_l3_t3"
+        ]
+      }
+    },
+    "nervous_system": {
+      "title": "Nervous System",
+      "overview": "The nervous system is the body's communication and control network, made up of the brain, spinal cord, and nerves. It receives information from sense organs, processes it in the brain, and sends signals to muscles and organs to produce a response, including automatic reflex actions.",
+      "deepDivePurpose": "Understanding the nervous system explains how the human body can react to danger in a split second, coordinate complex movements, and consciously think, remember and make decisions — all through networks of specialised nerve cells sending electrical signals.",
+      "recap": [
+        "The nervous system is divided into the central nervous system (CNS), made up of the brain and spinal cord, and the peripheral nervous system (PNS), made up of the nerves that branch throughout the body.",
+        "A neuron (nerve cell) has three main parts: dendrites (which receive signals), a cell body, and an axon (which sends signals onward).",
+        "The cerebrum, the largest part of the brain, controls voluntary actions, thinking, memory and the senses.",
+        "The cerebellum coordinates balance and muscular movement; the medulla oblongata controls involuntary actions like breathing and heartbeat.",
+        "The spinal cord carries messages between the brain and the rest of the body, and also controls simple reflex actions on its own.",
+        "A reflex action is a rapid, automatic, involuntary response to a stimulus (like pulling a hand away from something hot) that does not require conscious thought from the brain first."
+      ],
+      "questionBank": {
+        "1": [
+          "ns_l1_t1",
+          "ns_l1_t2",
+          "ns_l1_t3",
+          "ns_l1_t4",
+          "ns_l1_t5",
+          "ns_l1_t6",
+          "ns_l1_t7",
+          "ns_l1_t8",
+          "ns_l1_t9",
+          "ns_l1_t10"
+        ],
+        "2": [
+          "ns_l2_t1",
+          "ns_l2_t2",
+          "ns_l2_t3",
+          "ns_l2_t4",
+          "ns_l2_t5"
+        ],
+        "3": [
+          "ns_l3_t1",
+          "ns_l3_t2",
+          "ns_l3_t3"
+        ]
+      }
+    },
+    "allergy": {
+      "title": "Allergy",
+      "overview": "An allergy is an exaggerated reaction by the body's immune system to a normally harmless substance, called an allergen. This chapter covers common allergens, typical allergic symptoms, and simple ways allergies are managed and prevented.",
+      "deepDivePurpose": "Understanding allergies explains why some people react strongly to things like pollen or certain foods that don't bother most people at all, and highlights the importance of recognising and safely managing personal allergens.",
+      "recap": [
+        "An allergy is an exaggerated immune response to a substance that is normally harmless to most people.",
+        "A substance that triggers an allergic reaction is called an allergen; common allergens include pollen, dust mites, certain foods (like peanuts or shellfish), pet dander, and some medicines.",
+        "Common allergy symptoms include sneezing, itching, skin rashes, watery eyes, and a runny nose.",
+        "In some people, a severe allergic reaction can affect breathing and requires urgent medical attention.",
+        "Avoiding known allergens is the most effective way to prevent an allergic reaction from occurring in the first place.",
+        "Antihistamine medicines are commonly used to relieve mild allergy symptoms by counteracting the body's exaggerated immune response."
+      ],
+      "questionBank": {
+        "1": [
+          "al_l1_t1",
+          "al_l1_t2",
+          "al_l1_t3",
+          "al_l1_t4",
+          "al_l1_t5",
+          "al_l1_t6",
+          "al_l1_t7",
+          "al_l1_t8",
+          "al_l1_t9",
+          "al_l1_t10"
+        ],
+        "2": [
+          "al_l2_t1",
+          "al_l2_t2",
+          "al_l2_t3",
+          "al_l2_t4",
+          "al_l2_t5"
+        ],
+        "3": [
+          "al_l3_t1",
+          "al_l3_t2",
+          "al_l3_t3"
+        ]
+      }
+    }
+  }
+}

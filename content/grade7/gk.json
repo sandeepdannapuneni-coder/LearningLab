@@ -1,0 +1,1988 @@
+{
+  "title": "General Knowledge & World Affairs",
+  "questionPool": {
+    "gp_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the capital city of Japan?", "answer": "Tokyo", "subject": "Japan" },
+        { "question": "What is the capital city of France?", "answer": "Paris", "subject": "France" },
+        { "question": "What is the capital city of Australia?", "answer": "Canberra", "subject": "Australia" },
+        { "question": "What is the capital city of Canada?", "answer": "Ottawa", "subject": "Canada" },
+        { "question": "What is the capital city of Egypt?", "answer": "Cairo", "subject": "Egypt" },
+        { "question": "What is the capital city of Brazil?", "answer": "Brasília", "subject": "Brazil" },
+        { "question": "What is the capital city of India?", "answer": "New Delhi", "subject": "India" }
+      ],
+      "distractorPool": ["Tokyo", "Paris", "Canberra", "Ottawa", "Cairo", "Brasília", "New Delhi"],
+      "distractorCount": 3,
+      "wrongAnswerTemplate": "{{wrongAnswer}} is the capital of {{wrongSubject}}, not {{correctSubject}}.",
+      "technicalIntricacy": "A capital city is usually chosen by a country's government or constitution as the official seat of power, and is not always the country's largest or most famous city.",
+      "realPurpose": "Knowing capital cities helps build a clearer mental map of the world and makes international news, travel, and geography lessons much easier to follow."
+    },
+    "gp_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the official currency used in Japan?", "answer": "Yen", "subject": "Japan" },
+        { "question": "What is the official currency used in India?", "answer": "Rupee", "subject": "India" },
+        { "question": "What is the official currency used in the United States?", "answer": "Dollar", "subject": "the United States" },
+        { "question": "What is the official currency used in the United Kingdom?", "answer": "Pound Sterling", "subject": "the United Kingdom" },
+        { "question": "What is the official currency used in Germany?", "answer": "Euro", "subject": "Germany" },
+        { "question": "What is the official currency used in Switzerland?", "answer": "Swiss Franc", "subject": "Switzerland" }
+      ],
+      "distractorPool": ["Yen", "Rupee", "Dollar", "Pound Sterling", "Euro", "Swiss Franc"],
+      "distractorCount": 3,
+      "wrongAnswerTemplate": "{{wrongAnswer}} is the currency of {{wrongSubject}}, not {{correctSubject}}.",
+      "technicalIntricacy": "A currency is the specific form of money a country's government issues and recognises for buying, selling and trade; several countries can also choose to share a single common currency.",
+      "realPurpose": "Recognising major world currencies helps students understand international news, travel budgeting, and how trade works between different countries."
+    },
+    "gp_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "On which continent is Egypt located?", "answer": "Africa", "subject": "Egypt" },
+        { "question": "On which continent is Brazil located?", "answer": "South America", "subject": "Brazil" },
+        { "question": "On which continent is Japan located?", "answer": "Asia", "subject": "Japan" },
+        { "question": "On which continent is France located?", "answer": "Europe", "subject": "France" },
+        { "question": "On which continent is Australia located?", "answer": "Australia (Oceania)", "subject": "Australia" },
+        { "question": "On which continent is Canada located?", "answer": "North America", "subject": "Canada" }
+      ],
+      "distractorPool": ["Africa", "South America", "Asia", "Europe", "Australia (Oceania)", "North America"],
+      "distractorCount": 3,
+      "correctionTemplate": "{{correctSubject}} is actually in {{correctAnswer}}, not {{wrongAnswer}}.",
+      "technicalIntricacy": "Every country belongs to one of the seven continents, and knowing this placement builds a foundational mental map of world geography that makes news, travel, and cultural context far easier to understand.",
+      "realPurpose": "Correctly placing countries on their continent is a basic geographic skill that supports understanding everything from climate patterns to historical trade routes."
+    },
+    "gp_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the official language of Japan?", "answer": "Japanese", "subject": "Japan" },
+        { "question": "What is the official language of Brazil?", "answer": "Portuguese", "subject": "Brazil" },
+        { "question": "What is the official language of Egypt?", "answer": "Arabic", "subject": "Egypt" },
+        { "question": "What is the official language of France?", "answer": "French", "subject": "France" },
+        { "question": "What is the official language of Germany?", "answer": "German", "subject": "Germany" }
+      ],
+      "distractorPool": ["Japanese", "Portuguese", "Arabic", "French", "German"],
+      "distractorCount": 3,
+      "wrongAnswerTemplate": "{{wrongAnswer}} is the official language of {{wrongSubject}}, not {{correctSubject}}.",
+      "technicalIntricacy": "A country's official language reflects its history, colonisation patterns, and cultural identity, and some countries recognise multiple official languages reflecting diverse populations within their borders.",
+      "realPurpose": "Knowing major world languages helps students appreciate global communication patterns and understand why certain languages are widely spoken across multiple countries."
+    },
+    "gp_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "How many continents are there on Earth?",
+          "answer": "Seven",
+          "distractors": ["Five", "Six", "Eight"]
+        }
+      ],
+      "technicalIntricacy": "Geographers group the world's land into seven large continents — Asia, Africa, North America, South America, Antarctica, Europe and Australia (Oceania) — based on broad landmasses rather than strict political borders.",
+      "realPurpose": "Knowing the total number of continents is a basic building block for organising all other geography knowledge, from countries to oceans to climate zones."
+    },
+    "gp_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name of the imaginary line that circles the Earth and divides it into the Northern Hemisphere and the Southern Hemisphere?",
+          "answer": "The Equator",
+          "distractors": ["The Prime Meridian", "The Tropic of Cancer", "The International Date Line"]
+        }
+      ],
+      "technicalIntricacy": "The Equator is an imaginary line at 0° latitude, exactly halfway between the North and South Poles, and it is used as the reference point for measuring how far north or south any location on Earth is.",
+      "realPurpose": "Understanding the Equator helps explain hemisphere-based climate patterns and is essential vocabulary for reading any world map."
+    },
+    "gp_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name of the imaginary line at 0° longitude, passing through Greenwich, England, that is used as the reference point for measuring the world's time zones?",
+          "answer": "The Prime Meridian",
+          "distractors": ["The Equator", "The Tropic of Capricorn", "The Arctic Circle"]
+        }
+      ],
+      "technicalIntricacy": "While the Equator divides the Earth into north and south, the Prime Meridian divides it into east and west, and it also serves as the reference line (0°) from which all of the world's time zones are measured.",
+      "realPurpose": "Understanding the Prime Meridian explains why world clocks are set relative to Greenwich Mean Time and how time zones are organised around the globe."
+    },
+    "gp_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Is Australia located mainly in the Northern Hemisphere or the Southern Hemisphere?", "answer": "The Southern Hemisphere" },
+        { "question": "Is Canada located mainly in the Northern Hemisphere or the Southern Hemisphere?", "answer": "The Northern Hemisphere" },
+        { "question": "Is Egypt located mainly in the Northern Hemisphere or the Southern Hemisphere?", "answer": "The Northern Hemisphere" },
+        { "question": "Is Argentina located mainly in the Northern Hemisphere or the Southern Hemisphere?", "answer": "The Southern Hemisphere" },
+        { "question": "Is Japan located mainly in the Northern Hemisphere or the Southern Hemisphere?", "answer": "The Northern Hemisphere" }
+      ],
+      "distractorPool": ["The Southern Hemisphere", "The Northern Hemisphere", "Exactly on the Equator", "Both hemispheres equally"],
+      "distractorCount": 3,
+      "technicalIntricacy": "A country's hemisphere is determined by whether most of its land lies north or south of the Equator, and this placement has a major influence on its seasons and climate patterns.",
+      "realPurpose": "Knowing which hemisphere a country sits in helps explain why, for example, some countries celebrate summer holidays in December while others do so in June."
+    },
+    "gp_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Besides a capital city, an official currency, and a national language, which colourful symbol does a country also use to represent its identity, typically flown at government buildings and international events?",
+          "answer": "Its national flag",
+          "distractors": ["Its national currency", "Its national capital", "Its national language"]
+        }
+      ],
+      "technicalIntricacy": "A national flag uses specific colours, symbols and patterns chosen deliberately to represent a country's history, values or identity, making it instantly recognisable at events like the Olympics or the United Nations.",
+      "realPurpose": "Recognising a country's flag alongside its capital, currency and language rounds out a basic understanding of what makes up a nation's identity."
+    },
+    "gp_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the line, whether natural (like a river) or man-made, that marks where one country's territory ends and a neighbouring country's territory begins?",
+          "answer": "A border",
+          "distractors": ["A continent", "A hemisphere", "A time zone"]
+        }
+      ],
+      "technicalIntricacy": "Borders can follow natural features like rivers and mountain ranges, or be drawn as straight lines agreed upon by treaty, and they define exactly which government has authority over a given area of land.",
+      "realPurpose": "Understanding what a border is helps make sense of international news involving trade, travel, and relations between neighbouring countries."
+    },
+    "gp_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "If it is {{hour}}:00 in London, and Tokyo is {{offset}} hours ahead of London, what time is it in Tokyo? (Use 24-hour time, wrapping past 23:00 back to 0:00)",
+          "answer": "{{destHour}}:00",
+          "distractors": ["{{distractorA}}:00", "{{distractorB}}:00", "{{distractorC}}:00"],
+          "vars": {
+            "hour": { "type": "int", "min": 0, "max": 23 },
+            "offset": { "type": "int", "min": 1, "max": 11 },
+            "hourPlusOffset": { "type": "computed", "formulaId": "add", "args": ["hour", "offset"] },
+            "destHour": { "type": "computed", "formulaId": "mod", "args": ["hourPlusOffset", 24] },
+            "hourPlusOffsetPlus1": { "type": "computed", "formulaId": "add", "args": ["hourPlusOffset", 1] },
+            "distractorA": { "type": "computed", "formulaId": "mod", "args": ["hourPlusOffsetPlus1", 24] },
+            "distractorB": { "type": "computed", "formulaId": "absDiff", "args": ["hour", "offset"] },
+            "destHourPlus2": { "type": "computed", "formulaId": "add", "args": ["destHour", 2] },
+            "distractorC": { "type": "computed", "formulaId": "mod", "args": ["destHourPlus2", 24] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Because the Earth is divided into roughly hour-wide time zones, finding the time in another zone means adding (or subtracting) the zone difference and wrapping around past midnight using a 24-hour clock.",
+      "realPurpose": "Understanding time zones is essential for international travel, scheduling calls across countries, and understanding when news events are actually happening in real time."
+    },
+    "gp_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "If 1 US Dollar is worth approximately ₹{{rate}} (Indian Rupees), approximately how many Rupees would ${{dollars}} be worth?",
+          "answer": "₹{{rupees}}",
+          "distractors": ["₹{{distractorA}}", "₹{{distractorB}}", "₹{{dollars}}"],
+          "vars": {
+            "rate": { "type": "int", "min": 70, "max": 90 },
+            "dollars": { "type": "int", "min": 2, "max": 50 },
+            "rupees": { "type": "computed", "formulaId": "multiply", "args": ["rate", "dollars"] },
+            "bump1": { "type": "int", "min": 50, "max": 300 },
+            "distractorA": { "type": "computed", "formulaId": "add", "args": ["rupees", "bump1"] },
+            "bump2": { "type": "int", "min": 50, "max": 300 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["rupees", "bump2"] },
+            "distractorB": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Currency conversion is a simple multiplication: the amount in the original currency is multiplied by the exchange rate to find its equivalent value in the second currency.",
+      "realPurpose": "Currency conversion is used every time someone travels abroad, shops from an international website, or follows global trade and business news."
+    },
+    "gp_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A flight covers a distance of {{distance}} km at an average speed of {{speed}} km/h. Approximately how many hours will the flight take?",
+      "vars": {
+        "distance": { "type": "int", "min": 500, "max": 10000 },
+        "speed": { "type": "pick", "options": [500, 600, 700, 800, 900] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["distance", "speed"],
+      "decimals": 1,
+      "unit": " hours",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["distance", "speed"] }],
+        "perturb": { "min": -4, "max": 4, "decimals": 1, "minValue": 0.1 }
+      },
+      "technicalIntricacy": "Travel time is found by dividing the total distance by the average speed, the same basic relationship (Time = Distance ÷ Speed) used for any journey, whether on foot, by car, or by air.",
+      "realPurpose": "This calculation is exactly how airlines and travellers estimate flight durations when planning international trips."
+    },
+    "gp_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A country has a total population of {{totalPopulation}}. If {{urbanPercent}}% of the population lives in urban areas, how many people live in urban areas?",
+          "answer": "{{urbanPopulation}}",
+          "distractors": ["{{rural}}", "{{urbanPercent}}", "{{urbanPlus5}}"],
+          "vars": {
+            "totalPopulation": { "type": "pick", "options": [1000000, 5000000, 10000000, 50000000] },
+            "urbanPercent": { "type": "pick", "options": [40, 50, 60, 70, 80] },
+            "urbanPopulation": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalPopulation", "urbanPercent", 100] },
+            "rural": { "type": "computed", "formulaId": "subtract", "args": ["totalPopulation", "urbanPopulation"] },
+            "urbanPlus5": { "type": "computed", "formulaId": "addPercentOf", "args": ["urbanPopulation", "totalPopulation", 5] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding a percentage of a total population means multiplying the total by the percentage expressed as a decimal fraction, the same calculation used for any proportional population breakdown.",
+      "realPurpose": "Urban versus rural population statistics like this are used by governments and planners to allocate resources for infrastructure, housing and services."
+    },
+    "gp_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "Earth rotates 360° in 24 hours, so each time zone represents about 15° of longitude. If two cities are {{degrees}}° of longitude apart, approximately how many hours' time difference is there between them?",
+      "vars": {
+        "degrees": { "type": "pick", "options": [15, 30, 45, 60, 75, 90, 105, 120] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["degrees", 15],
+      "decimals": 0,
+      "unit": " hours",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["degrees", 15] }],
+        "perturb": { "min": -3, "max": 3, "decimals": 0, "minValue": 1 }
+      },
+      "technicalIntricacy": "Since Earth completes a full 360° rotation every 24 hours, dividing 360 by 24 shows that each hour corresponds to 15° of longitude, so dividing the longitude gap by 15 gives the time difference in hours.",
+      "realPurpose": "This is the actual geographic principle behind how the world's 24 time zones are laid out, and it explains why places farther apart in longitude have bigger time differences."
+    },
+    "gp_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that Sydney is the capital of Australia because it's the country's largest and most famous city. What is the mistake in this reasoning?",
+          "answer": "The actual capital is Canberra; a country's largest or most famous city is not always its capital, since capital status is officially decided by the government or constitution, not by size or fame"
+        },
+        {
+          "question": "A student assumes that New York City is the capital of the United States because it's the country's most famous city. What is the mistake in this reasoning?",
+          "answer": "The actual capital is Washington, D.C.; a country's largest or most famous city is not always its capital, since capital status is officially decided by the government or constitution, not by size or fame"
+        },
+        {
+          "question": "A student assumes that Mumbai is the capital of India because it's the country's largest and busiest city. What is the mistake in this reasoning?",
+          "answer": "The actual capital is New Delhi; a country's largest or most famous city is not always its capital, since capital status is officially decided by the government or constitution, not by size or fame"
+        }
+      ],
+      "distractorPool": [
+        "The student is correct — the largest or most famous city in a country is always automatically its capital",
+        "Capital cities are decided purely by population size, so the biggest city always wins the title",
+        "Every country's capital changes every few years to whichever city becomes the most famous"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "A capital city is formally designated through a country's laws, history, or constitution, and this decision can be based on factors like historical significance, central location, or political compromise, rather than simply choosing whichever city happens to be the largest or most internationally famous.",
+      "realPurpose": "This is one of the most common geography mix-ups, and getting it right helps avoid confusion when reading about government, elections, and international events."
+    },
+    "gp_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that every country in Europe uses the Euro as its currency, since it's such a well-known European currency. What is the mistake in this reasoning?",
+          "answer": "Not every European country uses the Euro; some, like the United Kingdom (Pound Sterling) and Switzerland (Swiss Franc), have kept their own separate currencies, while only countries in the 'Eurozone' have officially adopted the Euro",
+          "distractors": [
+            "The student is correct — every country located in Europe is required to use the Euro as its currency",
+            "Only France and Germany actually use the Euro, while all other European countries share a different single currency",
+            "The Euro is used worldwide by every country, not just those in Europe"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The Euro is the shared currency of the 'Eurozone,' a specific group of European Union member countries that chose to adopt it; other European countries remain outside the Eurozone and continue to use their own national currencies.",
+      "realPurpose": "Understanding which countries share currencies (and which don't) is useful for travel budgeting and for accurately following international financial and political news."
+    },
+    "gp_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a country is geographically large (like Russia or Canada), it must automatically have the largest population too. What is the flaw in this reasoning?",
+          "answer": "Land area and population are two completely separate measures — a country's population depends on factors like habitability, history and economic development, not simply its physical size; large countries like Russia and Canada actually have relatively modest populations because large portions of their land are sparsely inhabited, while some physically small countries have enormous populations",
+          "distractors": [
+            "The student is correct — the physically largest countries by land area are always also the most populated countries in the world",
+            "Population size is determined entirely by a country's official language, with no connection to land area or habitability",
+            "Every country's population is roughly the same, regardless of its size, due to how land is naturally distributed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Population depends heavily on how much of a country's land is actually habitable and historically settled — vast stretches of Russia and Canada are extremely cold and sparsely populated, while comparatively small countries like India or Bangladesh have fertile, densely settled land supporting enormous populations.",
+      "realPurpose": "This distinction between land area and population is essential for accurately interpreting maps and statistics about the world's countries."
+    },
+    "gp_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because two countries are neighbours sharing a border, they must always speak the same language and share the same currency. What is the mistake in this reasoning?",
+          "answer": "Neighbouring countries often have completely different official languages, currencies, and cultures, shaped by their own separate histories, even when sharing a border; geographic proximity does not necessarily mean cultural or economic similarity",
+          "distractors": [
+            "The student is correct — any two countries that share a border must always use the same language and currency",
+            "Neighbouring countries are required by international law to adopt identical currencies once they share a border",
+            "Language and currency are always determined solely by a country's continent, not by its individual history"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A country's language, currency and culture develop from its own unique history, migrations, and governance, not simply from its geographic position; France and Germany, for example, are direct neighbours yet have entirely different languages and, prior to the Euro, entirely different currencies.",
+      "realPurpose": "Recognising that borders don't guarantee cultural or economic similarity is essential for accurately understanding international relations and travel between neighbouring nations."
+    },
+    "wd_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which famous natural or human-made wonder is best described as the tallest mountain above sea level on Earth, located in the Himalayas?", "answer": "Mount Everest" },
+        { "question": "Which famous natural or human-made wonder is best described as the largest coral reef system in the world, found off the coast of Australia?", "answer": "The Great Barrier Reef" },
+        { "question": "Which famous natural or human-made wonder is best described as the largest tropical rainforest on Earth, located mostly in Brazil?", "answer": "The Amazon Rainforest" },
+        { "question": "Which famous natural or human-made wonder is best described as a massive gorge in the United States carved by the Colorado River over millions of years?", "answer": "The Grand Canyon" },
+        { "question": "Which famous natural or human-made wonder is best described as an ancient series of walls in China, built long ago to help protect Chinese states?", "answer": "The Great Wall of China" },
+        { "question": "Which famous natural or human-made wonder is best described as ancient stone tombs built for Egyptian pharaohs, located near Cairo?", "answer": "The Pyramids of Giza" }
+      ],
+      "distractorPool": ["Mount Everest", "The Great Barrier Reef", "The Amazon Rainforest", "The Grand Canyon", "The Great Wall of China", "The Pyramids of Giza"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of these wonders is exceptional for a measurable reason — extreme height, immense length, biological diversity, or historical age — which is exactly why they're recognised as standout landmarks among millions of other geographic features.",
+      "realPurpose": "Learning about these wonders builds geographic literacy and curiosity about the natural world and human history."
+    },
+    "wd_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "In which country is The Eiffel Tower located?", "answer": "France", "subject": "The Eiffel Tower" },
+        { "question": "In which country is The Statue of Liberty located?", "answer": "The United States", "subject": "The Statue of Liberty" },
+        { "question": "In which country is Machu Picchu located?", "answer": "Peru", "subject": "Machu Picchu" },
+        { "question": "In which country is The Taj Mahal located?", "answer": "India", "subject": "The Taj Mahal" },
+        { "question": "In which country is The Colosseum located?", "answer": "Italy", "subject": "The Colosseum" },
+        { "question": "In which country is Uluru (Ayers Rock) located?", "answer": "Australia", "subject": "Uluru (Ayers Rock)" }
+      ],
+      "distractorPool": ["France", "The United States", "Peru", "India", "Italy", "Australia"],
+      "distractorCount": 3,
+      "wrongAnswerTemplate": "{{wrongAnswer}} is where {{wrongSubject}} is located, not {{correctSubject}}.",
+      "technicalIntricacy": "Famous landmarks are often deeply tied to the history and identity of the country they're in, whether built centuries ago (like Machu Picchu or the Colosseum) or more recently (like the Eiffel Tower).",
+      "realPurpose": "Knowing where landmarks are located helps connect history, geography and culture together, and is useful general knowledge for travel and world news."
+    },
+    "wd_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "On which continent is Machu Picchu located?", "answer": "South America", "subject": "Machu Picchu" },
+        { "question": "On which continent is The Great Wall of China located?", "answer": "Asia", "subject": "The Great Wall of China" },
+        { "question": "On which continent is The Pyramids of Giza located?", "answer": "Africa", "subject": "The Pyramids of Giza" },
+        { "question": "On which continent is The Grand Canyon located?", "answer": "North America", "subject": "The Grand Canyon" },
+        { "question": "On which continent is The Great Barrier Reef located?", "answer": "Australia (Oceania)", "subject": "The Great Barrier Reef" }
+      ],
+      "distractorPool": ["South America", "Asia", "Africa", "North America", "Australia (Oceania)"],
+      "distractorCount": 3,
+      "correctionTemplate": "{{correctSubject}} is actually located in {{correctAnswer}}, not {{wrongAnswer}}.",
+      "technicalIntricacy": "Each famous wonder is tied to the specific geography and geological or historical processes of its continent, whether that's ancient civilisations, unique landforms, or distinctive ecosystems.",
+      "realPurpose": "Connecting wonders to their continents strengthens overall geographic literacy and helps place famous landmarks accurately on a mental world map."
+    },
+    "wd_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Is Mount Everest a natural wonder or a human-made wonder?",
+          "answer": "Natural wonder",
+          "distractors": ["Human-made wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        },
+        {
+          "question": "Is The Great Wall of China a natural wonder or a human-made wonder?",
+          "answer": "Human-made wonder",
+          "distractors": ["Natural wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        },
+        {
+          "question": "Is The Grand Canyon a natural wonder or a human-made wonder?",
+          "answer": "Natural wonder",
+          "distractors": ["Human-made wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        },
+        {
+          "question": "Is The Pyramids of Giza a natural wonder or a human-made wonder?",
+          "answer": "Human-made wonder",
+          "distractors": ["Natural wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        },
+        {
+          "question": "Is The Amazon Rainforest a natural wonder or a human-made wonder?",
+          "answer": "Natural wonder",
+          "distractors": ["Human-made wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        },
+        {
+          "question": "Is The Eiffel Tower a natural wonder or a human-made wonder?",
+          "answer": "Human-made wonder",
+          "distractors": ["Natural wonder", "Neither natural nor human-made", "Both equally natural and human-made"]
+        }
+      ],
+      "technicalIntricacy": "Natural wonders form entirely through geological or ecological processes without human construction, while human-made wonders are built through deliberate engineering and labour, though both can be equally awe-inspiring.",
+      "realPurpose": "Distinguishing natural from human-made wonders highlights the difference between appreciating nature's processes and celebrating human achievement and ingenuity."
+    },
+    "wd_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which river is responsible for carving the Grand Canyon over millions of years?",
+          "answer": "The Colorado River",
+          "distractors": ["The Mississippi River", "The Nile River", "The Amazon River"]
+        }
+      ],
+      "technicalIntricacy": "Flowing water can gradually wear away even solid rock over an enormous span of time, and the Colorado River's steady erosion is exactly what carved out the Grand Canyon's mile-deep layers of rock.",
+      "realPurpose": "Understanding how the Grand Canyon formed is a clear, visible example of how slow, patient natural processes can reshape the Earth's surface over deep time."
+    },
+    "wd_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which river, flowing through northeastern Africa, is widely regarded as one of the longest rivers in the world?",
+          "answer": "The Nile River",
+          "distractors": ["The Amazon River", "The Mississippi River", "The Yangtze River"]
+        }
+      ],
+      "technicalIntricacy": "Measuring a river's exact length can be tricky since it depends on which smaller tributary streams are counted as the 'true' source, which is why the Nile and the Amazon are both often mentioned among the longest rivers in the world.",
+      "realPurpose": "The Nile has supported human civilisation along its banks for thousands of years, making it one of the most historically significant rivers on Earth."
+    },
+    "wd_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name of the tallest mountain in Africa, a dormant volcano located in Tanzania?",
+          "answer": "Mount Kilimanjaro",
+          "distractors": ["Mount Everest", "Mount Kenya", "Table Mountain"]
+        }
+      ],
+      "technicalIntricacy": "Mount Kilimanjaro is classified as a dormant (currently inactive but not extinct) volcano, and despite being near the equator, its peak is high enough to stay capped with snow and ice for much of the year.",
+      "realPurpose": "Recognising Mount Kilimanjaro as Africa's tallest peak builds a fuller mental map of the world's major mountains beyond just the single tallest one overall."
+    },
+    "wd_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "The Great Barrier Reef is built up over time mainly by which tiny living sea creatures?",
+          "answer": "Coral polyps",
+          "distractors": ["Jellyfish", "Sea sponges", "Starfish"]
+        }
+      ],
+      "technicalIntricacy": "Coral polyps are tiny animals that build hard limestone skeletons around themselves; as countless generations of polyps grow, die and are built upon by new ones, they slowly form the enormous coral structures that make up a reef.",
+      "realPurpose": "Knowing that a reef is a living structure built by tiny animals (not just a rock formation) helps explain why reefs are so sensitive to changes in ocean temperature and water quality."
+    },
+    "wd_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Niagara Falls, one of the most famous waterfalls in the world, sits on the border between Canada and which other country?",
+          "answer": "The United States",
+          "distractors": ["Mexico", "Brazil", "France"]
+        }
+      ],
+      "technicalIntricacy": "Niagara Falls is actually made up of three separate waterfalls that straddle the international border between Ontario, Canada, and New York, in the United States, making it a landmark shared by two countries.",
+      "realPurpose": "Learning about landmarks that span international borders shows how natural wonders don't always fit neatly inside a single country's territory."
+    },
+    "wd_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "The Taj Mahal, a famous white marble mausoleum in India, was built by Emperor Shah Jahan in memory of whom?",
+          "answer": "His wife",
+          "distractors": ["His father", "A famous general", "A religious leader"]
+        }
+      ],
+      "technicalIntricacy": "The Taj Mahal was commissioned as a mausoleum (a grand tomb) to honour the memory of Emperor Shah Jahan's wife, and its construction involved thousands of skilled workers and craftsmen over many years.",
+      "realPurpose": "Knowing the story behind a landmark's construction adds meaningful historical and emotional context beyond simply recognising what it looks like."
+    },
+    "wd_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "A famous mountain has a height of {{metres}} metres. What is its height in kilometres? (1 km = 1000 m)",
+      "vars": {
+        "metres": { "type": "int", "min": 500, "max": 9000 }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["metres", 1000],
+      "decimals": 2,
+      "unit": " km",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "divide", "args": ["metres", 100] }],
+        "perturb": { "min": -5, "max": 5, "decimals": 2, "minValue": 0.1 }
+      },
+      "technicalIntricacy": "Converting metres to kilometres means dividing by 1000, since a kilometre is defined as exactly 1000 metres.",
+      "realPurpose": "Unit conversions like this are used constantly in geography to compare heights, distances and areas using whichever unit is most convenient."
+    },
+    "wd_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "A famous monument was built approximately {{yearsAgo}} years ago. If it is currently the year {{year}}, in approximately what year was the monument built?",
+      "vars": {
+        "year": { "type": "int", "min": 2020, "max": 2030 },
+        "yearsAgo": { "type": "int", "min": 50, "max": 1000 }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": ["year", "yearsAgo"],
+      "decimals": 0,
+      "prefix": "Around the year ",
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["year"] }],
+        "perturb": { "min": -200, "max": 200, "decimals": 0 }
+      },
+      "technicalIntricacy": "Finding a historical date from 'years ago' simply means subtracting the number of years elapsed from the current year, since each year that passes moves the calendar forward by exactly one.",
+      "realPurpose": "This kind of calculation helps place historical landmarks and events on a timeline, making it easier to understand how old — or how recent — different parts of history really are."
+    },
+    "wd_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A mountain is {{mountainHeight}} m tall, and a famous building is {{buildingHeight}} m tall. Approximately how many times taller is the mountain than the building?",
+      "vars": {
+        "mountainHeight": { "type": "int", "min": 1000, "max": 9000 },
+        "buildingHeight": { "type": "pick", "options": [100, 200, 300, 400, 500] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["mountainHeight", "buildingHeight"],
+      "decimals": 1,
+      "unit": " times",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["mountainHeight", "buildingHeight"] }],
+        "perturb": { "min": -8, "max": 8, "decimals": 1, "minValue": 0.1 }
+      },
+      "technicalIntricacy": "Comparing two heights as a multiple means dividing the larger height by the smaller one, showing exactly how many times one fits into the other.",
+      "realPurpose": "This kind of comparison helps put famously large natural features into perspective against familiar human-made structures."
+    },
+    "wd_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A rainforest covers a total area of {{totalArea}} square km. If {{percentProtected}}% of it is designated as a protected reserve, how many square km are protected?",
+          "answer": "{{protectedArea}}",
+          "distractors": ["{{unprotected}}", "{{percentProtected}}", "{{protectedPlus5}}"],
+          "vars": {
+            "totalArea": { "type": "pick", "options": [1000000, 2000000, 5000000] },
+            "percentProtected": { "type": "pick", "options": [10, 20, 30, 40] },
+            "protectedArea": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalArea", "percentProtected", 100] },
+            "unprotected": { "type": "computed", "formulaId": "subtract", "args": ["totalArea", "protectedArea"] },
+            "protectedPlus5": { "type": "computed", "formulaId": "addPercentOf", "args": ["protectedArea", "totalArea", 5] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding the protected area means multiplying the total area by the protected percentage, expressed as a decimal fraction, the same calculation used for any proportional land-area breakdown.",
+      "realPurpose": "Conservationists use this kind of calculation to track how much of a vital ecosystem, like a rainforest, is formally protected from deforestation or development."
+    },
+    "wd_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "The Amazon Rainforest spreads across approximately {{area}} thousand square km of land, shared among {{countries}} different countries in South America. On average, approximately how many thousand square km of rainforest lie within each country?",
+      "vars": {
+        "area": { "type": "pick", "options": [4200, 4800, 5400, 6000, 6600] },
+        "countries": { "type": "pick", "options": [9] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["area", "countries"],
+      "decimals": 1,
+      "unit": " thousand km²",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["area", "countries"] }],
+        "perturb": { "min": -200, "max": 200, "decimals": 1, "minValue": 1 }
+      },
+      "technicalIntricacy": "Finding an average share means dividing the total amount by the number of parts it's spread across, the same calculation used any time a big total needs to be split evenly among several groups.",
+      "realPurpose": "This kind of estimate helps explain why protecting the Amazon Rainforest requires cooperation between many different national governments, since no single country contains all of it."
+    },
+    "wd_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student says the Great Wall of China can be clearly seen from space with the naked eye, since it's 'the biggest wall on Earth.' What is the actual, correct fact?",
+          "answer": "Despite being extremely long, the Great Wall of China is quite narrow, and it is NOT actually visible to the naked eye from space — this is one of the most common myths about the wall; length alone does not guarantee something is visible from such a great distance, since width matters far more",
+          "distractors": [
+            "The student is correct — the Great Wall is so long that it is easily visible to the naked eye from space",
+            "The Great Wall can only be seen from space at night, when it is lit up",
+            "The Great Wall is visible from space, but only through a telescope, never with just the eyes"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Visibility from space depends far more on an object's width than its length; the Great Wall, while thousands of kilometres long, is only a few metres wide in most places, making it effectively too narrow to distinguish from other natural features at orbital distances without aid.",
+      "realPurpose": "Correcting this popular myth is a great example of how impressive-sounding facts (like extreme length) don't always translate into other impressive claims (like visibility) without checking the actual science."
+    },
+    "wd_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes the Sahara must be the largest desert in the world, reasoning that 'deserts are just hot, sandy places, and the Sahara is famous for being extremely hot.' What is the mistake in this reasoning?",
+          "answer": "Technically, the largest desert in the world is actually Antarctica; deserts are defined by very low precipitation (not necessarily heat), and Antarctica qualifies as a cold desert — the Sahara is only the largest HOT desert, not the largest desert overall",
+          "distractors": [
+            "The student is correct — the Sahara is the largest desert in the world because it is the hottest place on Earth",
+            "Deserts can only exist in hot climates, so Antarctica cannot be considered a desert at all",
+            "The largest desert in the world is actually the Arabian Desert, not the Sahara or Antarctica"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The scientific definition of a desert is based on how little precipitation (rain or snow) an area receives, not on temperature; Antarctica receives extremely little precipitation, technically making it the largest desert on Earth by area, even though it's covered in ice rather than sand.",
+      "realPurpose": "This surprising fact shows why it's important to check the actual definition behind a familiar word, rather than assuming it only matches the most common everyday example."
+    },
+    "wd_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes the Amazon Rainforest, being called the 'lungs of the Earth,' must be the single largest source of the planet's oxygen supply, providing far more than any other source. What is the more accurate scientific understanding?",
+          "answer": "While the Amazon does produce a significant amount of oxygen, most scientists point out that ocean phytoplankton actually produce a considerably larger share of the world's oxygen overall; mature rainforests also consume nearly as much oxygen (through respiration) as they produce, so the popular 'lungs of the Earth' framing oversimplifies the actual science",
+          "distractors": [
+            "The student is correct — the Amazon Rainforest is confirmed to be the single largest source of oxygen on the planet, by a wide margin",
+            "The Amazon Rainforest actually produces no oxygen at all, and the 'lungs of the Earth' nickname is entirely inaccurate",
+            "Oxygen production is impossible to measure or compare between different ecosystems, so no reliable comparison can ever be made"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Oceanic phytoplankton, despite being microscopic, collectively photosynthesise across a vast area of ocean surface and are estimated to generate a large share of atmospheric oxygen; additionally, the plants and organisms within a mature rainforest also consume oxygen through their own respiration, meaning the rainforest's NET oxygen contribution is smaller than its gross production alone would suggest.",
+      "realPurpose": "This is a great example of how a catchy, well-meaning phrase ('lungs of the Earth') can become a popular oversimplification of more complex real science."
+    },
+    "wd_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because the Grand Canyon is extremely old, it must have looked essentially the same for all of Earth's 4.5-billion-year history. What is the more accurate explanation?",
+          "answer": "The Grand Canyon, though ancient by human standards, is actually relatively young in Earth's full geological history, having formed over the last several million years (a tiny fraction of Earth's 4.5-billion-year age) as the Colorado River gradually eroded through rock layers; landscapes are constantly changing over geological time",
+          "distractors": [
+            "The student is correct — the Grand Canyon has looked essentially unchanged since the very formation of the Earth itself",
+            "The Grand Canyon formed instantly in a single catastrophic event, rather than gradually over time",
+            "The rock layers exposed in the Grand Canyon are all exactly the same age, having formed all at once"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The Grand Canyon's exposed rock layers are indeed extremely old (some over a billion years), but the canyon itself — the specific carved shape we see today — is a comparatively recent feature, formed as the Colorado River slowly eroded through those ancient rock layers over the last several million years, an amount of time that is enormous by human standards but still just a small slice of Earth's full geological history.",
+      "realPurpose": "This distinction between the age of the rock material and the age of the landscape's current shape is a key concept in geology, showing how Earth's surface continually reshapes itself over deep time."
+    },
+    "sp_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which planet is known as the 'Red Planet' because of its rusty, iron-rich soil?", "answer": "Mars" },
+        { "question": "Which planet is the largest in our Solar System?", "answer": "Jupiter" },
+        { "question": "Which planet is closest to the Sun?", "answer": "Mercury" },
+        { "question": "Which planet is famous for its beautiful rings made of ice and rock?", "answer": "Saturn" }
+      ],
+      "distractorPool": ["Mars", "Jupiter", "Mercury", "Saturn", "Venus", "Neptune", "Earth"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each planet in our Solar System has distinct physical characteristics — like Mars's iron-oxide-rich surface, Jupiter's enormous size, or Saturn's extensive ring system — that help scientists and students tell them apart at a glance.",
+      "realPurpose": "Learning the distinct features of each planet builds a foundation for understanding our Solar System and how it compares to the countless other planetary systems being discovered around other stars."
+    },
+    "sp_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which space agency led the Apollo 11 mission that first landed humans on the Moon?", "answer": "NASA" },
+        { "question": "Who was the first human to walk on the Moon?", "answer": "Neil Armstrong" },
+        { "question": "What do we call a huge collection of billions of stars, gas and dust held together by gravity?", "answer": "A galaxy" },
+        { "question": "What is the name of the galaxy that contains our Solar System?", "answer": "The Milky Way" }
+      ],
+      "distractorPool": ["NASA", "Neil Armstrong", "A galaxy", "The Milky Way", "Buzz Aldrin", "A nebula"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Major milestones in space exploration, like the Apollo 11 Moon landing, and fundamental concepts like galaxies, form the essential vocabulary and history needed to follow any deeper discussion about space.",
+      "realPurpose": "Knowing these space exploration milestones and terms connects science lessons to real human achievements and helps make sense of ongoing space missions in the news."
+    },
+    "sp_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the name of Earth's only natural satellite?", "answer": "The Moon" },
+        { "question": "What do we call a small, rocky object that survives its journey through Earth's atmosphere and lands on the ground?", "answer": "A meteorite" },
+        { "question": "What do we call an artificial object launched into orbit around Earth, such as one used for communication or weather monitoring?", "answer": "A satellite" }
+      ],
+      "distractorPool": ["The Moon", "A meteorite", "A satellite", "A comet"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Objects in space are named precisely based on what they are and how they behave — a natural satellite like the Moon orbits a planet, a meteorite is rocky debris that reaches the ground, and an artificial satellite is a human-made object placed deliberately into orbit.",
+      "realPurpose": "This precise vocabulary lets scientists and the public communicate clearly about very different kinds of objects that might otherwise be confused with one another."
+    },
+    "sp_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What is the name for the path an object like a planet or satellite follows around another object due to gravity?", "answer": "An orbit" },
+        { "question": "What term describes the point in an object's orbit where it is closest to the body it's orbiting?", "answer": "Periapsis" },
+        { "question": "What is a space telescope, such as Hubble, primarily used for?", "answer": "Capturing clear images of distant space objects from above Earth's atmosphere" }
+      ],
+      "distractorPool": ["An orbit", "Periapsis", "Capturing clear images of distant space objects from above Earth's atmosphere", "A spacewalk"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Orbits, their closest points, and space telescopes are all connected concepts in how objects move through and are observed in space, each defined precisely so scientists can track and study them accurately. The general term for an orbit's closest point is 'periapsis'; for a satellite orbiting Earth specifically, this same point is usually called 'perigee', and for an object orbiting the Sun, 'perihelion'.",
+      "realPurpose": "Understanding orbital paths and observation tools explains how satellites stay in position and how astronomers capture such detailed images of distant galaxies."
+    },
+    "sp_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is a 'light-year' a measurement of?",
+          "answer": "The distance light travels in one year",
+          "distractors": ["The time it takes light to travel one kilometre", "The brightness of a star as seen from Earth", "The number of years a star can shine before it dies"]
+        }
+      ],
+      "technicalIntricacy": "Despite having 'year' in its name, a light-year measures distance, not time — it's the enormous distance that light, travelling at about 300,000 km per second, covers in a full year.",
+      "realPurpose": "Light-years let astronomers describe mind-bogglingly large distances between stars and galaxies using much more manageable numbers than writing out every zero in kilometres."
+    },
+    "sp_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which planet is the first planet from the Sun?", "answer": "Mercury" },
+        { "question": "Which planet is the third planet from the Sun?", "answer": "Earth" },
+        { "question": "Which planet is the fourth planet from the Sun?", "answer": "Mars" },
+        { "question": "Which planet is the last (eighth) planet from the Sun?", "answer": "Neptune" },
+        { "question": "Which planet lies between Mars and Saturn, counting outward from the Sun?", "answer": "Jupiter" }
+      ],
+      "distractorPool": ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+      "distractorCount": 3,
+      "technicalIntricacy": "The eight planets orbit the Sun at different average distances, and this fixed order — Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune — is what astronomers use to describe a planet's position within the Solar System.",
+      "realPurpose": "Knowing the order of the planets is one of the most fundamental building blocks of astronomy, useful for understanding everything from orbital distances to why outer planets are so much colder."
+    },
+    "sp_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Since 2006, Pluto has been officially reclassified from a full planet into which category of object?",
+          "answer": "A dwarf planet",
+          "distractors": ["An asteroid", "A comet", "A moon"]
+        }
+      ],
+      "technicalIntricacy": "Pluto was reclassified after astronomers agreed on a stricter definition of 'planet' that requires an object to have cleared other debris from around its orbit, a criterion Pluto doesn't meet, placing it instead in the 'dwarf planet' category alongside similar distant objects.",
+      "realPurpose": "This reclassification shows how scientific categories can be refined as understanding improves, even for objects that have been known for a long time."
+    },
+    "sp_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What do we call a small, rocky object that orbits the Sun, many of which are found in a belt between Mars and Jupiter?", "answer": "An asteroid" },
+        { "question": "What do we call an icy object that develops a glowing tail of gas and dust as it travels close to the Sun?", "answer": "A comet" }
+      ],
+      "distractorPool": ["An asteroid", "A comet", "A meteor", "A satellite"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Asteroids are rocky (or metallic) leftover material from the Solar System's formation, while comets are icy bodies that release gas and dust as they warm near the Sun, forming their characteristic glowing tail.",
+      "realPurpose": "Distinguishing asteroids from comets helps make sense of news about objects passing near Earth and the different missions scientists send to study each type."
+    },
+    "sp_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name of the large spacecraft that orbits Earth, where astronauts from different countries live and carry out scientific experiments together?",
+          "answer": "The International Space Station (ISS)",
+          "distractors": ["The Hubble Space Telescope", "The Apollo 11 command module", "A weather satellite"]
+        }
+      ],
+      "technicalIntricacy": "The International Space Station is a large, continuously crewed spacecraft built and operated through cooperation between multiple countries' space agencies, orbiting Earth roughly every 90 minutes.",
+      "realPurpose": "The ISS is one of the clearest real-world examples of international scientific cooperation, and it hosts ongoing research that isn't possible on Earth's surface."
+    },
+    "sp_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "The main asteroid belt, home to millions of rocky objects, is located between which two planets?",
+          "answer": "Mars and Jupiter",
+          "distractors": ["Earth and Mars", "Jupiter and Saturn", "Venus and Earth"]
+        }
+      ],
+      "technicalIntricacy": "The main asteroid belt lies in the wide gap between the rocky inner planets and the gas giants, and its rocky material is thought to be leftover debris that never combined into a single planet.",
+      "realPurpose": "Knowing where the asteroid belt sits helps build an accurate mental map of the Solar System's overall layout."
+    },
+    "sp_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Light travels at approximately 300,000 km per second. If a star is {{distanceMillionKm}} million km away, approximately how many seconds does its light take to reach Earth?",
+          "answer": "{{seconds}} seconds",
+          "distractors": ["{{secondsDouble}} seconds", "{{secondsPlusBump}} seconds", "{{secondsMinusBumpClamped}} seconds"],
+          "vars": {
+            "n": { "type": "int", "min": 1, "max": 50 },
+            "distanceMillionKm": { "type": "computed", "formulaId": "multiply", "args": ["n", 3] },
+            "seconds": { "type": "computed", "formulaId": "multiply", "args": ["n", 10] },
+            "secondsDouble": { "type": "computed", "formulaId": "multiply", "args": ["seconds", 2] },
+            "bump": { "type": "int", "min": 10, "max": 50 },
+            "secondsPlusBump": { "type": "computed", "formulaId": "add", "args": ["seconds", "bump"] },
+            "bump2": { "type": "int", "min": 10, "max": 50 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["seconds", "bump2"] },
+            "secondsMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "The time light takes to travel a distance is found by dividing that distance by the speed of light, since speed, distance and time are always related by distance = speed × time.",
+      "realPurpose": "This calculation shows why looking at distant stars means looking back in time — we always see light that left its source moments, years, or even centuries in the past."
+    },
+    "sp_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Neil Armstrong first walked on the Moon in 1969. If the current year is {{year}}, how many years ago did this happen?",
+          "answer": "{{yearsAgo}} years ago",
+          "distractors": ["{{yearsAgoPlusBump}} years ago", "{{yearsAgoMinusBumpClamped}} years ago", "1969 years ago"],
+          "vars": {
+            "year": { "type": "int", "min": 2020, "max": 2035 },
+            "yearsAgo": { "type": "computed", "formulaId": "subtract", "args": ["year", 1969] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "yearsAgoPlusBump": { "type": "computed", "formulaId": "add", "args": ["yearsAgo", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 10 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["yearsAgo", "bump2"] },
+            "yearsAgoMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding how many years have passed since a historical event simply means subtracting the event's year from the current year.",
+      "realPurpose": "This kind of calculation helps place major achievements, like the Moon landing, into context on a timeline and appreciate how recent (or distant) they really are."
+    },
+    "sp_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A satellite completes approximately {{orbitsPerDay}} orbits of Earth per day. How many orbits will it complete in {{days}} days?",
+          "answer": "{{totalOrbits}}",
+          "distractors": ["{{orbitsPerDay}}", "{{totalPlusBump}}", "{{totalMinusBumpClamped}}"],
+          "vars": {
+            "orbitsPerDay": { "type": "int", "min": 10, "max": 16 },
+            "days": { "type": "int", "min": 2, "max": 30 },
+            "totalOrbits": { "type": "computed", "formulaId": "multiply", "args": ["orbitsPerDay", "days"] },
+            "bump": { "type": "int", "min": 5, "max": 20 },
+            "totalPlusBump": { "type": "computed", "formulaId": "add", "args": ["totalOrbits", "bump"] },
+            "bump2": { "type": "int", "min": 5, "max": 20 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["totalOrbits", "bump2"] },
+            "totalMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Total orbits over multiple days is found by multiplying the daily orbit count by the number of days, the same scaling logic used for any repeating daily rate.",
+      "realPurpose": "Satellite operators use this kind of calculation to schedule communications and predict exactly when a satellite will pass over a particular location on Earth."
+    },
+    "sp_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A rocket has a total launch mass of {{totalMass}} kg, of which {{fuelPercent}}% is fuel. What is the mass of the fuel?",
+          "answer": "{{fuelMass}} kg",
+          "distractors": ["{{nonFuel}} kg", "{{fuelPercent}} kg", "{{fuelMassPlusBump}} kg"],
+          "vars": {
+            "totalMass": { "type": "int", "min": 500, "max": 5000 },
+            "fuelPercent": { "type": "pick", "options": [70, 75, 80, 85, 90] },
+            "fuelMass": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalMass", "fuelPercent", 100] },
+            "nonFuel": { "type": "computed", "formulaId": "subtract", "args": ["totalMass", "fuelMass"] },
+            "bump": { "type": "int", "min": 20, "max": 100 },
+            "fuelMassPlusBump": { "type": "computed", "formulaId": "add", "args": ["fuelMass", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding the fuel's mass means multiplying the rocket's total mass by the fuel's percentage share, expressed as a decimal fraction, the same calculation used for any proportional breakdown of a total.",
+      "realPurpose": "This reflects a real engineering fact: the vast majority of a rocket's launch mass is fuel, which is why rockets are designed to be as lightweight as possible everywhere else."
+    },
+    "sp_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A spacecraft travels at a constant speed of {{speedKmH}} km per hour. Approximately how many kilometres will it travel in {{days}} days?",
+      "vars": {
+        "speedKmH": { "type": "pick", "options": [10000, 20000, 30000, 40000] },
+        "days": { "type": "int", "min": 2, "max": 20 }
+      },
+      "answerFormulaId": "multiply3",
+      "answerArgs": ["speedKmH", 24, "days"],
+      "decimals": 0,
+      "unit": " km",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["speedKmH", "days"] }],
+        "perturb": { "min": -500000, "max": 500000, "decimals": 0, "minValue": 1000 }
+      },
+      "technicalIntricacy": "Total distance travelled at a constant speed is found by multiplying the speed by the total time elapsed; since speed here is given per hour, the number of days must first be converted into hours (multiplying by 24) before multiplying by speed.",
+      "realPurpose": "Mission planners use exactly this kind of speed-time-distance calculation to estimate how far a spacecraft will have travelled by a certain point in its journey."
+    },
+    "sp_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student says stars 'twinkle' because they are physically flickering on and off in space. What is the actual, correct explanation?",
+          "answer": "Stars appear to twinkle because their light passes through Earth's moving, turbulent atmosphere before reaching our eyes, which bends the light slightly and makes it look like it's flickering — the stars themselves are not actually flickering at all",
+          "distractors": [
+            "The student is correct — stars are physically flickering on and off in space",
+            "Stars twinkle because they are extremely far away, which causes their light to blink on its own",
+            "Twinkling happens because stars are cooling down and heating up very quickly, over and over"
+          ]
+        }
+      ],
+      "technicalIntricacy": "As starlight travels through Earth's atmosphere, it passes through pockets of air at different temperatures and densities that constantly shift and move, slightly bending (refracting) the light in different directions — this rapid, tiny bending is what causes the twinkling effect we see.",
+      "realPurpose": "This is also why stars viewed from space, or through large telescopes designed to correct for atmospheric distortion, appear as steady points of light rather than twinkling."
+    },
+    "sp_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student claims the Sun is 'on fire,' burning like a bonfire made of gas. What is the more accurate, correct explanation of how the Sun produces its heat and light?",
+          "answer": "The Sun does not 'burn' the way an ordinary fire does (which needs oxygen); instead, it produces energy through nuclear fusion, where hydrogen atoms combine under immense heat and pressure at its core to form helium, releasing enormous amounts of light and heat energy",
+          "distractors": [
+            "The student is correct — the Sun is a giant ball of burning gas, essentially a huge bonfire in space",
+            "The Sun produces heat and light through simple friction between gas particles, with no chemical or nuclear process involved",
+            "The Sun's heat and light come from reflecting light from nearby stars, rather than producing its own energy"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Nuclear fusion is fundamentally different from ordinary combustion (burning); it doesn't require oxygen at all, and instead relies on extreme pressure and temperature to force the nuclei of hydrogen atoms to combine, converting a tiny amount of mass directly into a huge amount of energy.",
+      "realPurpose": "Understanding nuclear fusion in the Sun also helps explain why scientists are working to develop fusion power on Earth, as a potential source of enormous, clean energy."
+    },
+    "sp_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes astronauts float in space because there is 'no gravity' out there. What is the more accurate, correct explanation?",
+          "answer": "Gravity actually still exists in orbit — it's what keeps a spacecraft moving in a circular path around Earth in the first place; astronauts and objects float because they are in continuous freefall together with their spacecraft, orbiting Earth at high speed, a condition called microgravity or 'weightlessness,' not literally zero gravity",
+          "distractors": [
+            "The student is correct — there is genuinely zero gravity in space, which is the only reason astronauts float",
+            "Astronauts float because their spacecraft actively cancels out gravity using a special anti-gravity engine",
+            "Gravity only exists on the surface of planets, and completely disappears the moment a spacecraft leaves the ground"
+          ]
+        }
+      ],
+      "technicalIntricacy": "At the altitude of the International Space Station, Earth's gravity is still roughly 90% as strong as it is on the surface; astronauts feel weightless because they, their spacecraft, and everything inside it are all continuously falling toward Earth together at the same rate while also moving forward fast enough to continually 'miss' the ground, a balance that creates a stable orbit.",
+      "realPurpose": "Understanding microgravity (rather than 'zero gravity') explains why astronauts still need exercise routines in space to counteract long-term health effects, since their bodies are still very much within Earth's gravitational influence."
+    },
+    "sp_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a rocket needs to escape Earth's gravity, it must eventually reach a point in space where gravity 'switches off' completely. What is the more accurate explanation?",
+          "answer": "Gravity never completely switches off — it weakens gradually with distance but technically never reaches exactly zero, no matter how far away you go; a rocket 'escapes' Earth by reaching a speed (escape velocity) fast enough that Earth's weakening gravitational pull can no longer pull it back, not by reaching a boundary where gravity truly stops",
+          "distractors": [
+            "The student is correct — there is a specific, fixed altitude above which Earth's gravity abruptly stops affecting any object completely",
+            "Gravity only affects objects while they remain on a planet's surface, and stops the instant a rocket lifts off",
+            "Escape velocity refers to the rocket's fuel being completely used up, not to reaching any particular speed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Gravity follows an inverse-square relationship with distance, meaning it gets weaker and weaker the farther away you go, but mathematically it never reaches a hard zero at any finite distance; a rocket achieves 'escape' not by leaving gravity's reach entirely, but by travelling fast enough (reaching escape velocity) that it will keep moving away forever rather than eventually falling back.",
+      "realPurpose": "This distinction is why even distant spacecraft, far beyond our Solar System, are still technically (if extremely weakly) influenced by the combined gravity of everything in the universe."
+    },
+    "ta_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What number system, using only the digits 0 and 1, do computers use to process information?", "answer": "Binary code" },
+        { "question": "What is the term for computer systems designed to perform tasks that normally require human intelligence?", "answer": "Artificial Intelligence (AI)" },
+        { "question": "What is the type of AI called where computers learn patterns from data instead of following fixed, explicit rules?", "answer": "Machine Learning" },
+        { "question": "What do we call the vast global network that connects computers around the world?", "answer": "The Internet" }
+      ],
+      "distractorPool": ["Binary code", "Artificial Intelligence (AI)", "Machine Learning", "The Internet", "Cloud computing", "A microchip"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Modern computing rests on ideas built on top of one another: binary code represents raw data, software uses that data to run programs, and AI/machine learning systems use huge amounts of data to recognise patterns and make predictions.",
+      "realPurpose": "Understanding these foundational terms helps students become informed, confident users of the technology that surrounds them every day."
+    },
+    "ta_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Who is credited with inventing the World Wide Web in 1989?", "answer": "Tim Berners-Lee" },
+        { "question": "What do we call a machine that can be programmed to carry out tasks automatically?", "answer": "A robot" },
+        { "question": "What is the name for a very small electronic circuit that acts as the 'brain' of most modern devices?", "answer": "A microchip" },
+        { "question": "What term describes storing and accessing data and programs over the Internet instead of on a local device?", "answer": "Cloud computing" }
+      ],
+      "distractorPool": ["Tim Berners-Lee", "A robot", "A microchip", "Cloud computing", "Alan Turing", "A server"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Many everyday technologies, from the Web to cloud storage to microchips, trace back to specific inventions and inventors, and understanding these origins helps explain how quickly modern technology has developed.",
+      "realPurpose": "Recognising key inventors and inventions builds an appreciation for how individual ideas can transform the way billions of people live, work, and communicate."
+    },
+    "ta_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a step-by-step set of instructions that a computer follows to complete a task?", "answer": "An algorithm" },
+        { "question": "What term describes a mistake in computer code that causes a program to behave incorrectly?", "answer": "A bug" },
+        { "question": "What term describes the process of finding and fixing bugs in computer code?", "answer": "Debugging" }
+      ],
+      "distractorPool": ["An algorithm", "A bug", "Debugging", "A firewall"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Programming relies on precisely defined step-by-step instructions (algorithms); when those instructions contain mistakes (bugs), programmers must carefully trace through the logic (debugging) to find and correct exactly where things went wrong.",
+      "realPurpose": "Understanding this basic programming vocabulary is the foundation for learning to write, test and fix any piece of software."
+    },
+    "ta_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Is a computer's keyboard an example of hardware or software?",
+          "answer": "Hardware",
+          "distractors": ["Software", "Neither hardware nor software", "Both hardware and software equally"]
+        },
+        {
+          "question": "Is a computer's monitor (screen) an example of hardware or software?",
+          "answer": "Hardware",
+          "distractors": ["Software", "Neither hardware nor software", "Both hardware and software equally"]
+        },
+        {
+          "question": "Is a word processing app used to write documents an example of hardware or software?",
+          "answer": "Software",
+          "distractors": ["Hardware", "Neither hardware nor software", "Both hardware and software equally"]
+        },
+        {
+          "question": "Is a web browser used to visit websites an example of hardware or software?",
+          "answer": "Software",
+          "distractors": ["Hardware", "Neither hardware nor software", "Both hardware and software equally"]
+        },
+        {
+          "question": "Is a computer's central processing unit (CPU) an example of hardware or software?",
+          "answer": "Hardware",
+          "distractors": ["Software", "Neither hardware nor software", "Both hardware and software equally"]
+        }
+      ],
+      "technicalIntricacy": "Hardware refers to the physical, touchable parts of a computer system, while software refers to the programs and instructions that run on that hardware — a distinction that's essential for understanding how any computer system actually works.",
+      "realPurpose": "Understanding this basic split helps troubleshoot computer problems correctly, since a hardware issue (like a broken screen) requires a very different fix than a software issue (like a buggy app)."
+    },
+    "ta_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A computer uses 8 bits (binary digits) to represent one 'byte' of information. How many bits would {{bytes}} bytes contain?",
+          "answer": "{{bits}} bits",
+          "distractors": ["{{bytes}} bits", "{{bitsPlusBump}} bits", "{{bitsMinusBumpClamped}} bits"],
+          "vars": {
+            "bytes": { "type": "int", "min": 2, "max": 50 },
+            "bits": { "type": "computed", "formulaId": "multiply", "args": ["bytes", 8] },
+            "bump": { "type": "int", "min": 4, "max": 20 },
+            "bitsPlusBump": { "type": "computed", "formulaId": "add", "args": ["bits", "bump"] },
+            "bump2": { "type": "int", "min": 4, "max": 20 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["bits", "bump2"] },
+            "bitsMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Since one byte is defined as exactly 8 bits, the total number of bits in any number of bytes is found by multiplying the number of bytes by 8.",
+      "realPurpose": "Understanding bits and bytes is the foundation for understanding file sizes, storage capacity, and internet data usage."
+    },
+    "ta_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A file is {{size}} MB (megabytes) in size, and an internet connection downloads at {{speed}} MB per second. Approximately how many seconds will the download take?",
+          "answer": "{{multiplier}} seconds",
+          "distractors": ["{{multiplierPlusBump}} seconds", "{{multiplierMinusBumpClamped}} seconds", "{{size}} seconds"],
+          "vars": {
+            "speed": { "type": "int", "min": 2, "max": 20 },
+            "multiplier": { "type": "int", "min": 2, "max": 30 },
+            "size": { "type": "computed", "formulaId": "multiply", "args": ["speed", "multiplier"] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "multiplierPlusBump": { "type": "computed", "formulaId": "add", "args": ["multiplier", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 10 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["multiplier", "bump2"] },
+            "multiplierMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Download time is found by dividing the total file size by the download speed, since speed tells you how much data is transferred every second.",
+      "realPurpose": "This kind of calculation helps explain why a faster internet connection makes such a noticeable difference when downloading large files like videos or games."
+    },
+    "ta_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A storage device has a total capacity of {{capacityGB}} GB, and {{usedPercent}}% of it is currently used. How much free storage space remains?",
+          "answer": "{{freeGB}} GB",
+          "distractors": ["{{usedGB}} GB", "{{freePlusBump}} GB", "{{freeMinusBumpClamped}} GB"],
+          "vars": {
+            "capacityGB": { "type": "pick", "options": [64, 128, 256, 512, 1000] },
+            "usedPercent": { "type": "pick", "options": [25, 40, 50, 60, 75] },
+            "usedGB": { "type": "computed", "formulaId": "multiplyDivide", "args": ["capacityGB", "usedPercent", 100] },
+            "freeGB": { "type": "computed", "formulaId": "subtract", "args": ["capacityGB", "usedGB"] },
+            "bump": { "type": "int", "min": 5, "max": 30 },
+            "freePlusBump": { "type": "computed", "formulaId": "add", "args": ["freeGB", "bump"] },
+            "bump2": { "type": "int", "min": 5, "max": 30 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["freeGB", "bump2"] },
+            "freeMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding remaining free space requires first calculating the used space (total capacity × used percentage), then subtracting that from the total capacity.",
+      "realPurpose": "This is exactly the calculation behind the storage indicator shown on phones and computers, helping users decide whether they need to delete files or upgrade their storage."
+    },
+    "ta_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A phone uses approximately {{dataPerDayMB}} MB of internet data per day. How much data will it use over {{days}} days?",
+          "answer": "{{totalDataMB}} MB",
+          "distractors": ["{{dataPerDayMB}} MB", "{{totalPlusBump}} MB", "{{totalMinusBumpClamped}} MB"],
+          "vars": {
+            "dataPerDayMB": { "type": "int", "min": 50, "max": 500 },
+            "days": { "type": "int", "min": 3, "max": 30 },
+            "totalDataMB": { "type": "computed", "formulaId": "multiply", "args": ["dataPerDayMB", "days"] },
+            "bump": { "type": "int", "min": 50, "max": 300 },
+            "totalPlusBump": { "type": "computed", "formulaId": "add", "args": ["totalDataMB", "bump"] },
+            "bump2": { "type": "int", "min": 50, "max": 300 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["totalDataMB", "bump2"] },
+            "totalMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Total data usage over multiple days is found by multiplying the daily usage rate by the number of days, the same scaling calculation used for any steady daily consumption rate.",
+      "realPurpose": "This kind of estimate helps users choose an appropriate mobile data plan and avoid unexpectedly running out of data partway through a billing cycle."
+    },
+    "ta_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "An AI writing assistant can generate about {{wordsPerSec}} words every second. At that steady rate, approximately how many words could it generate in {{seconds}} seconds?",
+      "vars": {
+        "wordsPerSec": { "type": "int", "min": 2, "max": 15 },
+        "seconds": { "type": "int", "min": 5, "max": 60 }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": ["wordsPerSec", "seconds"],
+      "unit": " words",
+      "decimals": 0,
+      "distractors": { "count": 3, "perturb": { "min": -20, "max": 20, "decimals": 0, "minValue": 1 } },
+      "technicalIntricacy": "This is the same rate-times-time calculation used for any steady process: total output equals the rate of production multiplied by how long that rate is sustained.",
+      "realPurpose": "Thinking in terms of 'rate x time' helps make sense of how quickly modern AI tools can process huge amounts of text compared to a person typing by hand."
+    },
+    "ta_l2_t6": {
+      "kind": "numeric",
+      "questionTemplate": "An AI image generator takes about {{secPerImage}} seconds to create one picture. Approximately how many seconds would it take to generate {{count}} pictures at that same rate?",
+      "vars": {
+        "secPerImage": { "type": "int", "min": 2, "max": 20 },
+        "count": { "type": "int", "min": 3, "max": 25 }
+      },
+      "answerFormulaId": "multiply",
+      "answerArgs": ["secPerImage", "count"],
+      "unit": " seconds",
+      "decimals": 0,
+      "distractors": { "count": 3, "perturb": { "min": -15, "max": 15, "decimals": 0, "minValue": 1 } },
+      "technicalIntricacy": "Just like the words-per-second example, total time here is found by multiplying the time needed per image by the number of images requested.",
+      "realPurpose": "This kind of estimate explains why generating many AI images in a batch takes noticeably longer than generating just one."
+    },
+    "ta_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student believes AI systems 'think and understand' exactly the way humans do, with real feelings and consciousness. What is a more accurate way to describe how most AI systems actually work?",
+          "answer": "Most current AI systems recognise patterns in data and generate responses based on statistical patterns learned during training, without genuine understanding, consciousness, or feelings the way humans experience them — it's important to distinguish impressive pattern-matching from true human-like thought",
+          "distractors": [
+            "The student is correct — modern AI systems think and feel exactly the way humans do, with real consciousness",
+            "AI systems are simply following a single fixed list of rules written by a programmer, with no learning involved at all",
+            "AI systems are entirely random and produce completely unpredictable answers with no underlying process"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Most AI systems, including machine learning models, work by identifying statistical patterns across enormous amounts of training data and using those patterns to generate outputs; this can look remarkably human-like, but it is fundamentally different from human consciousness, emotions, or genuine understanding.",
+      "realPurpose": "Understanding this distinction helps people use AI tools thoughtfully and critically, rather than assuming their responses always reflect genuine understanding or judgement."
+    },
+    "ta_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that once information is deleted from a device, it disappears completely and instantly forever, with no trace left behind. What is a more accurate explanation of how digital deletion often works?",
+          "answer": "Deleting a file often just removes the reference (or 'pointer') to it and marks that storage space as available to be overwritten, meaning the actual data can sometimes still be recovered with special tools until new data overwrites it — truly permanent deletion usually requires specifically overwriting or securely erasing the data",
+          "distractors": [
+            "The student is correct — deleted information disappears completely and instantly, with absolutely no trace left behind",
+            "Deleted files are always immediately and physically destroyed inside the device's hardware",
+            "Deletion only removes a file's name, while all of its data remains fully visible and readable immediately afterward"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Storage devices generally keep track of files using a kind of index or table; deleting a file typically removes its entry from that index and frees up the space for future use, but the underlying data often physically remains until it happens to be overwritten by something new.",
+      "realPurpose": "Understanding this helps explain both why deleted files can sometimes be recovered by data-recovery software, and why securely erasing sensitive information requires more than just pressing 'delete.'"
+    },
+    "ta_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student believes that once a program is written and works correctly the first time it's tested, it will always work correctly forever, under any conditions. What is the flaw in this reasoning?",
+          "answer": "Software that works under one set of test conditions can still fail under different inputs, unusual edge cases, updates to other software it depends on, or unexpected user behaviour; thorough testing across many different scenarios (not just one successful test) is necessary because working once does not guarantee a program is fully correct or will keep working as conditions change",
+          "distractors": [
+            "The student is correct — a program that passes its very first test is guaranteed to work correctly forever after, under any conditions",
+            "Software only needs to be tested once, since computers always behave in exactly the same way no matter the input",
+            "Software problems only ever appear immediately, and can never surface later after a program has already worked correctly"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Software behaviour depends heavily on its specific inputs and the environment it runs in; a program might handle common, expected inputs perfectly while still failing on rare edge cases, unusual data, or after other connected software changes, which is why professional software development relies on extensive testing across many different scenarios rather than a single successful run.",
+      "realPurpose": "This is why software companies continuously test and update their products even after release, since new situations can reveal previously hidden bugs."
+    },
+    "ta_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that a stronger, more powerful computer will automatically make any software run without ever crashing or having bugs. What is the flaw in this reasoning?",
+          "answer": "Hardware power (processing speed, memory, etc.) affects how FAST a program runs, but it has no effect on logical errors (bugs) written into the actual code; a powerful computer will simply run a buggy program's mistakes faster, not fix them — bugs must be found and corrected in the code itself, regardless of how powerful the hardware running it is",
+          "distractors": [
+            "The student is correct — sufficiently powerful hardware automatically detects and corrects any bugs present in software",
+            "Bugs in software are actually caused directly by weak hardware, so upgrading the computer will always eliminate them",
+            "Software bugs and hardware power are completely unrelated concepts that never interact with each other in any way"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Bugs are logical mistakes built into a program's actual instructions, independent of whatever hardware executes them; a faster, more powerful computer will simply carry out those flawed instructions more quickly, potentially even causing certain bugs (like ones tied to timing) to appear more often, rather than correcting the underlying logical error.",
+      "realPurpose": "This distinction between hardware performance and software correctness is fundamental to understanding why buying newer, faster devices doesn't fix poorly written or buggy software."
+    },
+    "ta_l3_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that a confident, detailed-sounding answer from an AI chatbot must always be factually correct. What is the flaw in this reasoning?",
+          "answer": "AI chatbots are built to generate text that sounds statistically plausible based on patterns in their training data, not to guarantee factual accuracy — they can produce confident-sounding but incorrect or fabricated information (sometimes called a 'hallucination'), so important claims should always be checked against a reliable source before being trusted",
+          "distractors": [
+            "The student is correct — a confident-sounding AI answer is always guaranteed to be factually accurate",
+            "AI chatbots only ever repeat information word-for-word from a single verified source, so errors are impossible",
+            "AI chatbots deliberately try to lie to users as often as possible"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Large language models generate each word based on the statistical likelihood of what should come next, given patterns learned from training data — this can produce fluent, confident-sounding text that is nonetheless factually wrong, a well-documented behaviour often called 'hallucination.'",
+      "realPurpose": "Understanding that AI fluency and AI accuracy are not the same thing is one of the most important digital literacy skills for anyone using AI tools for schoolwork, research, or everyday questions."
+    },
+    "ta_l3_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a photo or video must be real simply because it looks highly realistic and detailed. What is the flaw in this reasoning?",
+          "answer": "Modern AI tools can generate or alter images, video and audio (sometimes called 'deepfakes') that look extremely convincing despite being entirely or partly fabricated, so visual realism alone does not prove something actually happened — checking the original source and looking for confirmation from trusted outlets matters more than how real something looks",
+          "distractors": [
+            "The student is correct — if a photo or video looks realistic and detailed, it must genuinely be real",
+            "AI-generated images and videos always look obviously fake and can never be mistaken for real footage",
+            "Only professional film studios have access to tools that can alter photos or videos convincingly"
+          ]
+        }
+      ],
+      "technicalIntricacy": "AI image and video generation has advanced rapidly, and tools that once produced obviously artificial results can now create highly convincing synthetic media, which is why media literacy increasingly depends on verifying sources rather than trusting appearances alone.",
+      "realPurpose": "This skill helps students navigate a world where photos and videos can no longer be assumed genuine just because they look convincing, encouraging healthy scepticism and source-checking rather than either blind trust or blanket distrust."
+    },
+    "ta_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes AI systems, like chatbots and image generators, that create brand-new text, images, or other content rather than just analysing existing data?", "answer": "Generative AI" },
+        { "question": "What is the name for an AI system trained on huge amounts of text so it can generate human-like written responses to questions and prompts?", "answer": "A large language model (LLM)" },
+        { "question": "What term describes a computer program designed to hold a text-based conversation with a person, often powered by AI?", "answer": "A chatbot" }
+      ],
+      "distractorPool": ["Generative AI", "A large language model (LLM)", "A chatbot", "A firewall", "A search engine", "Cloud computing"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Generative AI tools, including large language models and chatbots, work by learning statistical patterns from enormous amounts of existing text, images, or other data, then using those patterns to produce new content that resembles what they were trained on.",
+      "realPurpose": "Generative AI tools have become part of everyday life for writing, research, art, and coding, so understanding what they actually are — and how they differ from a simple search engine — is now a basic form of digital literacy."
+    },
+    "ta_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes a realistic-looking but fake photo, video, or audio clip created or altered using AI to make it appear that something happened when it didn't?", "answer": "A deepfake" },
+        { "question": "What is the term for false or misleading information, sometimes created or spread with the help of AI tools, that is presented as if it were true?", "answer": "Misinformation" },
+        { "question": "What is the process of verifying whether a claim, image, or video is actually true before believing or sharing it called?", "answer": "Fact-checking" }
+      ],
+      "distractorPool": ["A deepfake", "Misinformation", "Fact-checking", "A firewall", "A pop-up", "A cookie (website data)"],
+      "distractorCount": 3,
+      "technicalIntricacy": "As AI-generated images, audio and video become more realistic, telling real media apart from fabricated 'deepfakes' becomes harder using appearance alone, which is why checking the original source of a claim matters more than ever.",
+      "realPurpose": "Recognising these terms is a core internet-safety skill: knowing that AI can convincingly fabricate media helps students pause and verify surprising or emotionally charged content before trusting or sharing it."
+    },
+    "ta_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the essential software that manages a device's hardware and allows other programs to run, such as Windows, macOS, or Android?",
+          "answer": "An operating system",
+          "distractors": ["A web browser", "A search engine", "A firewall"]
+        }
+      ],
+      "technicalIntricacy": "An operating system sits between a device's physical hardware and the apps a user interacts with, managing memory, storage and processing power so that multiple programs can run smoothly at the same time.",
+      "realPurpose": "Understanding what an operating system does explains why the same app can look and behave slightly differently depending on which device or operating system it's running on."
+    },
+    "ta_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a security system that monitors and filters incoming and outgoing network traffic to help protect a computer or network from unauthorised access?",
+          "answer": "A firewall",
+          "distractors": ["An operating system", "A search engine", "A microchip"]
+        }
+      ],
+      "technicalIntricacy": "A firewall works like a security checkpoint, inspecting data travelling in and out of a network and blocking traffic that looks suspicious or doesn't meet its safety rules.",
+      "realPurpose": "Firewalls are one of the most basic and widespread cybersecurity tools, helping protect devices and networks from unauthorised access and certain types of attacks."
+    },
+    "ta_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the unique web address, such as 'https://www.example.com', used to locate a specific page on the Internet?",
+          "answer": "A URL (web address)",
+          "distractors": ["A firewall", "An operating system", "A microchip"]
+        }
+      ],
+      "technicalIntricacy": "A URL (Uniform Resource Locator) works like a precise postal address for the Web, telling a browser exactly which server to contact and which specific page or file to retrieve from it.",
+      "realPurpose": "Understanding URLs helps students navigate the Web more safely, including learning to check a website's address before entering personal information."
+    },
+    "ta_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name for an online tool, such as Google or Bing, designed to help users find information by entering search terms?",
+          "answer": "A search engine",
+          "distractors": ["A firewall", "An operating system", "A URL"]
+        }
+      ],
+      "technicalIntricacy": "A search engine works by continuously scanning and indexing enormous numbers of webpages in advance, so that when a user types in search terms, it can instantly rank and display the most relevant matching pages.",
+      "realPurpose": "Understanding how search engines organise information (rather than 'knowing' every answer themselves) is a foundational piece of digital literacy, distinct from how generative AI chatbots produce answers."
+    },
+    "lw_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What do we call the international organisation, formed in 1945, where countries work together on peace and cooperation?", "answer": "The United Nations (UN)" },
+        { "question": "What is a country's most important written set of rules called, which lays out how its government works?", "answer": "A constitution" },
+        { "question": "What is the name of the UN agency that names and helps protect important cultural and natural heritage sites?", "answer": "UNESCO" },
+        { "question": "What is the term for a system of government where citizens choose their leaders through fair elections?", "answer": "Democracy" }
+      ],
+      "distractorPool": ["The United Nations (UN)", "A constitution", "UNESCO", "Democracy", "A monarchy", "The World Health Organization (WHO)"],
+      "distractorCount": 3,
+      "technicalIntricacy": "International institutions, constitutions, and systems of government each provide structure — for cooperation between countries, for how a nation governs itself, and for how citizens participate in choosing their leaders.",
+      "realPurpose": "Understanding these terms helps students follow news about government, elections, and international cooperation with real comprehension."
+    },
+    "lw_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which branch of government is responsible for making laws?", "answer": "The Legislative branch" },
+        { "question": "Which branch of government is responsible for enforcing and carrying out laws?", "answer": "The Executive branch" },
+        { "question": "Which branch of government is responsible for interpreting laws and settling legal disputes?", "answer": "The Judicial branch" }
+      ],
+      "distractorPool": ["The Legislative branch", "The Executive branch", "The Judicial branch", "The Administrative branch"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Dividing government into separate branches, each with a distinct job, is designed to spread out power so that no single part of government can control everything on its own — a principle often called the 'separation of powers.'",
+      "realPurpose": "Understanding the three branches of government helps explain how laws are created, carried out, and fairly interpreted in many countries around the world."
+    },
+    "lw_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term describes basic rights and freedoms believed to belong to every person, simply because they are human?", "answer": "Human rights" },
+        { "question": "What is the right to vote in an election commonly called?", "answer": "Suffrage" },
+        { "question": "What term describes a country's fundamental law that limits and defines the powers of its government?", "answer": "A constitution" }
+      ],
+      "distractorPool": ["Human rights", "Suffrage", "A constitution", "A treaty"],
+      "distractorCount": 3,
+      "technicalIntricacy": "These terms form the vocabulary of civic life: human rights describe universal protections, suffrage describes the specific right to vote, and a constitution formally defines and limits how a government may exercise its power.",
+      "realPurpose": "Understanding this vocabulary helps students follow news about elections, rights movements, and constitutional debates around the world."
+    },
+    "lw_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which level of government typically handles issues specific to a single city, such as local roads and waste collection?", "answer": "Local (municipal) government" },
+        { "question": "Which level of government typically handles issues affecting an entire nation, such as national defence and foreign policy?", "answer": "National (federal) government" },
+        { "question": "What term describes cooperation between multiple different countries on a shared global issue?", "answer": "International cooperation" }
+      ],
+      "distractorPool": ["Local (municipal) government", "National (federal) government", "International cooperation", "Regional government"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Governance operates at multiple levels — local governments handle nearby, everyday concerns, national governments handle country-wide policy, and international cooperation addresses issues that cross national borders entirely.",
+      "realPurpose": "Recognising which level of government handles a given issue helps citizens understand who is actually responsible for addressing a particular problem or policy."
+    },
+    "lw_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In a parliamentary system of government, who typically serves as the head of government, usually the leader of the majority party in parliament?",
+          "answer": "The Prime Minister",
+          "distractors": ["The President", "The monarch", "The Chief Justice"]
+        }
+      ],
+      "technicalIntricacy": "In parliamentary systems, the Prime Minister usually leads the government day-to-day, while a separate ceremonial head of state (such as a president or monarch) may hold a more symbolic role — a different arrangement from presidential systems, where the president serves as both head of state and head of government.",
+      "realPurpose": "Understanding the difference between a head of state and a head of government helps students correctly interpret news about elections and government formation in different countries."
+    },
+    "lw_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a system of government led by a king or queen, where the position is usually passed down within a single family?",
+          "answer": "A monarchy",
+          "distractors": ["A democracy", "A republic", "A dictatorship"]
+        }
+      ],
+      "technicalIntricacy": "In a monarchy, the position of head of state is typically inherited rather than earned through election; today many monarchies are 'constitutional monarchies,' where the monarch's powers are limited and elected officials handle most day-to-day governing.",
+      "realPurpose": "Recognising monarchies as one of several possible systems of government helps students understand the range of ways countries around the world choose (or inherit) their leadership."
+    },
+    "lw_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a country in which the head of state is an elected or appointed official rather than a hereditary monarch?",
+          "answer": "A republic",
+          "distractors": ["A monarchy", "A colony", "A dictatorship"]
+        }
+      ],
+      "technicalIntricacy": "A republic's leadership position is not inherited by birth; instead, the head of state gains that role through election or appointment under the country's own laws and constitution.",
+      "realPurpose": "Understanding what makes a country a republic helps clarify a term used constantly in the names and news coverage of countries around the world."
+    },
+    "lw_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What international organisation, headquartered in Geneva, Switzerland, coordinates global efforts on public health issues, such as tracking and responding to disease outbreaks?",
+          "answer": "The World Health Organization (WHO)",
+          "distractors": ["UNESCO", "The United Nations (UN) Security Council", "The International Red Cross"]
+        }
+      ],
+      "technicalIntricacy": "The World Health Organization is a specialised agency that operates under the umbrella of the United Nations, focusing specifically on coordinating international responses to health issues rather than broader political or cultural matters.",
+      "realPurpose": "Recognising specialised international institutions like the WHO helps students understand how large-scale global problems, like disease outbreaks, are addressed through coordinated international cooperation."
+    },
+    "lw_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes a formal, official agreement between two or more countries, often covering issues like trade, peace, or shared cooperation?",
+          "answer": "A treaty",
+          "distractors": ["A constitution", "A census", "A referendum"]
+        }
+      ],
+      "technicalIntricacy": "Treaties are formal written agreements that countries voluntarily commit to following, and they can cover almost anything from ending a war to setting shared environmental standards.",
+      "realPurpose": "Understanding what a treaty is helps students make sense of international news about trade deals, peace agreements, and environmental accords between countries."
+    },
+    "lw_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the right of citizens to express their opinions, including criticism of their government, without fear of punishment?",
+          "answer": "Freedom of speech",
+          "distractors": ["Suffrage", "A treaty", "A constitution"]
+        }
+      ],
+      "technicalIntricacy": "Freedom of speech is considered one of the most fundamental human rights in many democratic countries, though most countries also place some limits on it, such as laws against direct incitement to violence.",
+      "realPurpose": "Understanding freedom of speech as a specific, named right helps students engage thoughtfully with news and debates about free expression around the world."
+    },
+    "lw_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "The United Nations was founded in 1945. If the current year is {{year}}, how many years has the United Nations existed?",
+          "answer": "{{age}} years",
+          "distractors": ["{{agePlusBump}} years", "{{ageMinusBumpClamped}} years", "1945 years"],
+          "vars": {
+            "year": { "type": "int", "min": 2020, "max": 2035 },
+            "age": { "type": "computed", "formulaId": "subtract", "args": ["year", 1945] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "agePlusBump": { "type": "computed", "formulaId": "add", "args": ["age", "bump"] },
+            "bump2": { "type": "int", "min": 2, "max": 10 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["age", "bump2"] },
+            "ageMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding the age of an organisation from its founding year simply means subtracting the founding year from the current year.",
+      "realPurpose": "This kind of calculation helps place the history of major institutions like the United Nations into a clear timeline alongside other world events."
+    },
+    "lw_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A country's parliament has {{totalSeats}} total seats. If a political party wins {{seatsWon}} of those seats, what percentage of the seats does that party hold?",
+          "answer": "{{percentPick}}%",
+          "vars": {
+            "totalSeats": { "type": "pick", "options": [100, 200, 250, 300, 400, 500] },
+            "percentPick": { "type": "pick", "options": [10, 20, 25, 30, 40, 50, 60] },
+            "seatsWon": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalSeats", "percentPick", 100] }
+          }
+        }
+      ],
+      "distractorPool": ["10%", "20%", "25%", "30%", "40%", "50%", "60%"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Finding what percentage a portion represents of a whole means dividing the portion by the total and multiplying by 100.",
+      "realPurpose": "This kind of calculation is used constantly in real election coverage, to describe how much of a parliament or council a political party actually controls."
+    },
+    "lw_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In an election, there are {{eligibleVoters}} eligible voters, and voter turnout is {{turnoutPercent}}%. How many people actually voted?",
+          "answer": "{{votersWhoVoted}}",
+          "distractors": ["{{notVoted}}", "{{turnoutPercent}}", "{{votersPlus5}}"],
+          "vars": {
+            "eligibleVoters": { "type": "pick", "options": [10000, 50000, 100000, 500000] },
+            "turnoutPercent": { "type": "pick", "options": [40, 50, 60, 70, 80] },
+            "votersWhoVoted": { "type": "computed", "formulaId": "multiplyDivide", "args": ["eligibleVoters", "turnoutPercent", 100] },
+            "notVoted": { "type": "computed", "formulaId": "subtract", "args": ["eligibleVoters", "votersWhoVoted"] },
+            "votersPlus5": { "type": "computed", "formulaId": "addPercentOf", "args": ["votersWhoVoted", "eligibleVoters", 5] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Voter turnout is expressed as a percentage of eligible voters, so the actual number of votes cast is found by multiplying the total eligible voters by that turnout percentage.",
+      "realPurpose": "This kind of calculation is used in every real election report to describe civic participation and compare turnout across different elections or regions."
+    },
+    "lw_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A council has {{totalVotes}} total votes, and a proposal needs at least {{requiredMajorityPercent}}% approval to pass. What is the minimum number of votes needed for the proposal to pass?",
+          "answer": "{{votesNeeded}}",
+          "distractors": ["{{totalVotes}}", "{{votesNeededPlusBump}}", "{{votesNeededMinusBumpClamped}}"],
+          "vars": {
+            "totalVotes": { "type": "pick", "options": [100, 200, 500, 1000] },
+            "requiredMajorityPercent": { "type": "pick", "options": [50, 51, 60, 66, 75] },
+            "votesNeeded": { "type": "computed", "formulaId": "ceilMultiplyDivide", "args": ["totalVotes", "requiredMajorityPercent", 100] },
+            "bump": { "type": "int", "min": 5, "max": 20 },
+            "votesNeededPlusBump": { "type": "computed", "formulaId": "add", "args": ["votesNeeded", "bump"] },
+            "bump2": { "type": "int", "min": 5, "max": 20 },
+            "rawSub": { "type": "computed", "formulaId": "subtract", "args": ["votesNeeded", "bump2"] },
+            "votesNeededMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["rawSub", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding a required majority means multiplying the total number of votes by the required percentage threshold, expressed as a decimal fraction, and rounding up to ensure the threshold is genuinely met.",
+      "realPurpose": "Understanding majority thresholds explains how different voting systems (simple majority, two-thirds majority, etc.) require different levels of agreement to pass a decision."
+    },
+    "lw_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A country's parliament has {{totalSeats}} seats, representing a total population of {{population}} people spread evenly across every seat. On average, approximately how many people does each seat represent?",
+      "vars": {
+        "totalSeats": { "type": "pick", "options": [100, 200, 250, 400, 500] },
+        "population": { "type": "pick", "options": [10000000, 20000000, 50000000, 100000000] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["population", "totalSeats"],
+      "decimals": 0,
+      "unit": " people",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["population", "totalSeats"] }],
+        "perturb": { "min": -50000, "max": 50000, "decimals": 0, "minValue": 1000 }
+      },
+      "technicalIntricacy": "Finding how many people each seat represents means dividing the total population by the number of seats, the same calculation used to describe representation ratios in any elected assembly.",
+      "realPurpose": "This kind of calculation is exactly how analysts describe representation fairness, comparing how many people a single elected representative speaks for across different countries or districts."
+    },
+    "lw_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student believes that once a law is written into a country's constitution, it can never, ever be changed. What is a more accurate explanation?",
+          "answer": "Most constitutions actually include a formal process for making amendments (changes), usually requiring a significant majority vote or a special approval process, precisely so that laws can adapt over time — it's not accurate that constitutions can never be changed, though the process is usually intentionally difficult, not simple or automatic",
+          "distractors": [
+            "The student is correct — once written, a constitution can genuinely never be changed under any circumstances",
+            "Constitutions can be changed instantly, at any time, by a single leader acting alone",
+            "Constitutions automatically rewrite themselves every few years without requiring any approval process"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Constitutions are generally designed to be stable and difficult to change quickly, in order to protect important rights and institutions from being altered on a whim, but nearly all include a formal (often demanding) amendment process for legitimate, carefully considered changes over time.",
+      "realPurpose": "Understanding this balance between stability and adaptability explains how countries can update their most important laws to reflect changing values, while still protecting them from being changed too easily or unfairly."
+    },
+    "lw_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that the United Nations is a kind of 'world government' with the power to directly control what happens inside any country. What is a more accurate description of how the UN actually works?",
+          "answer": "The UN is primarily a forum for cooperation between independent, sovereign countries rather than a world government with direct control; it can pass resolutions, offer assistance, and coordinate action, but it generally relies on the voluntary cooperation of its member countries rather than commanding them directly",
+          "distractors": [
+            "The student is correct — the United Nations can directly order any country in the world to do whatever it decides",
+            "The United Nations has no real power or influence of any kind, and exists only as a symbolic organisation",
+            "The United Nations can only make decisions about countries that are not already independent nations"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The United Nations was designed as an organisation of independent member states that voluntarily agree to cooperate, discuss shared problems, and follow certain agreed-upon rules, rather than as a central authority with direct enforcement power over sovereign nations.",
+      "realPurpose": "Understanding the UN's real role helps students correctly interpret international news about UN resolutions, peacekeeping efforts, and global cooperation."
+    },
+    "lw_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a country described as a 'democracy' must always have every single decision voted on directly by every citizen. What is the mistake in this reasoning?",
+          "answer": "Most modern democracies are 'representative democracies,' where citizens elect representatives (like members of parliament or congress) who then make most day-to-day decisions and laws on their behalf, rather than every citizen personally voting on every single issue; voting for representatives, rather than voting on every decision directly, is still fully considered democratic",
+          "distractors": [
+            "The student is correct — a true democracy requires every single citizen to personally vote on every individual decision made by the government",
+            "Democracies never involve any form of voting for representatives; every law must be created and approved by unelected officials instead",
+            "Any country that doesn't hold a nationwide vote on every single decision cannot be considered a democracy in any sense"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Direct democracy, where citizens vote personally on every issue, is rare at a national scale due to its impracticality; most democracies instead use a representative system, where citizens periodically elect officials who are then entrusted (and held accountable through future elections) to make detailed policy decisions on their behalf.",
+      "realPurpose": "Understanding representative democracy explains how large, modern nations with millions of citizens can still function democratically without requiring a national vote on every single issue."
+    },
+    "lw_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a law was passed by an elected government, it must automatically be fair and can never be legally challenged or changed. What is the flaw in this reasoning?",
+          "answer": "Even laws passed by a fairly elected government can be challenged in courts (if they conflict with a constitution or fundamental rights) and can be changed or repealed later by future elected governments; being democratically passed does not make a law permanently beyond question",
+          "distractors": [
+            "The student is correct — once a law is passed by any elected government, it can never be challenged or changed by anyone, ever",
+            "Laws can only ever be changed through a violent revolution, never through courts or future elections",
+            "Elected governments are legally forbidden from ever changing or repealing a law once it has been passed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Democratic systems typically include built-in checks, such as courts that can strike down laws conflicting with a constitution or fundamental rights, and the ongoing ability of future elected governments to amend or repeal existing laws, ensuring that being 'democratically passed' is a starting point, not a permanent guarantee of correctness.",
+      "realPurpose": "This ability to legally challenge and revise laws over time is actually one of the defining strengths of a healthy, functioning democracy, rather than a weakness or contradiction."
+    },
+    "cu_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which festival, celebrated mainly in India, is known as the 'Festival of Lights'?", "answer": "Diwali" },
+        { "question": "Which festival, celebrated across many East Asian countries, marks the beginning of a new year based on the lunar calendar?", "answer": "Lunar New Year" },
+        { "question": "Which vibrant festival, famous for its parades, music and costumes, is especially associated with Brazil?", "answer": "Carnival" },
+        { "question": "Which Japanese art form involves folding paper into decorative shapes and figures?", "answer": "Origami" }
+      ],
+      "distractorPool": ["Diwali", "Lunar New Year", "Carnival", "Origami", "Thanksgiving", "Calligraphy"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Festivals and traditional art forms often carry deep symbolic meaning tied to a culture's history, beliefs and seasons, which is why they are celebrated and passed down across many generations.",
+      "realPurpose": "Learning about festivals and traditions from around the world builds appreciation for the different ways people celebrate, create and connect with one another."
+    },
+    "cu_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What term does UNESCO use for a place recognised as being of outstanding cultural or natural importance to all of humanity?", "answer": "A World Heritage Site" },
+        { "question": "Which language has the largest number of native speakers in the world?", "answer": "Mandarin Chinese" },
+        { "question": "What is the name for a traditional style of dot painting associated with Indigenous Australian art?", "answer": "Aboriginal dot painting" }
+      ],
+      "distractorPool": ["A World Heritage Site", "Mandarin Chinese", "Aboriginal dot painting", "English", "A National Park"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Recognising and naming cultural achievements — whether a UNESCO site, a widely spoken language, or a traditional art style — helps preserve and share knowledge about humanity's shared heritage.",
+      "realPurpose": "This kind of cultural general knowledge helps students appreciate the scale and diversity of human creativity and history across the world."
+    },
+    "cu_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Sushi, a dish made with vinegared rice and often raw fish, is a traditional food most associated with which country?", "answer": "Japan" },
+        { "question": "Which country is the traditional home of the tango, a passionate partner dance?", "answer": "Argentina" },
+        { "question": "Which country is traditionally associated with the art of paper-cutting and elaborate silk weaving going back thousands of years?", "answer": "China" }
+      ],
+      "distractorPool": ["Japan", "Argentina", "China", "Mexico"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Traditional foods and dances often develop over centuries, shaped by a region's available ingredients, climate, history and social customs, which is why they become such distinctive symbols of a particular culture.",
+      "realPurpose": "Recognising these cultural traditions builds appreciation for how different histories and environments shape unique, lasting forms of art and cuisine."
+    },
+    "cu_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "The sitar, a stringed instrument with a distinctive buzzing tone, is traditionally associated with the classical music of which country?", "answer": "India" },
+        { "question": "The didgeridoo, a wind instrument made from a hollowed tree branch, is a traditional instrument of which people?", "answer": "Indigenous Australians" },
+        { "question": "Flamenco, a passionate style of music and dance involving guitar, singing and rhythmic footwork, originated in which country?", "answer": "Spain" }
+      ],
+      "distractorPool": ["India", "Indigenous Australians", "Spain", "Peru"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Traditional musical instruments and styles are often deeply tied to a specific culture's history and materials available locally, which is why instruments like the sitar, didgeridoo, and flamenco guitar remain so strongly associated with their regions of origin.",
+      "realPurpose": "Learning about traditional music from around the world builds appreciation for the incredible diversity of human artistic expression."
+    },
+    "cu_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What term describes the art of elegant, decorative handwriting, practiced as a respected art form in cultures such as China, Japan, and across the Arab world?",
+          "answer": "Calligraphy",
+          "distractors": ["Origami", "Aboriginal dot painting", "Carnival"]
+        }
+      ],
+      "technicalIntricacy": "Calligraphy treats the shapes, strokes and spacing of written characters as a deliberate art form in itself, with different traditions developing their own distinct tools, styles and techniques over centuries.",
+      "realPurpose": "Recognising calligraphy as a shared art form across multiple cultures highlights how written language can be valued for its beauty as well as its meaning."
+    },
+    "cu_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the name for the traditional flowing garment commonly worn by women in India, typically wrapped elegantly around the body?",
+          "answer": "A sari",
+          "distractors": ["A kimono", "A toga", "A poncho"]
+        }
+      ],
+      "technicalIntricacy": "A sari is traditionally a single long piece of fabric, draped and wrapped rather than cut and sewn like many other garments, with regional styles varying widely in how it's worn and decorated across India.",
+      "realPurpose": "Learning about traditional clothing from different cultures builds appreciation for the variety of textile traditions and craftsmanship found around the world."
+    },
+    "cu_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which classical Western dance style, known for pointe shoes and graceful, precise movements, originated in the royal courts of Italy and France?",
+          "answer": "Ballet",
+          "distractors": ["Flamenco", "The tango", "Aboriginal dot painting"]
+        }
+      ],
+      "technicalIntricacy": "Ballet developed a codified system of formal positions and movements starting in Renaissance-era Italian and French royal courts, and that shared vocabulary of steps is still used by ballet dancers and companies worldwide today.",
+      "realPurpose": "Recognising ballet's origins alongside other traditional dance styles like flamenco and tango builds appreciation for how distinct dance traditions developed in different parts of the world."
+    },
+    "cu_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Museums and libraries around the world play an important role in preserving which of the following for future generations to study and enjoy?",
+          "answer": "Cultural artifacts, artworks and historical documents",
+          "distractors": ["Only items that are less than ten years old", "Only documents written in a single specific language", "Nothing of lasting value"]
+        }
+      ],
+      "technicalIntricacy": "Museums and libraries use careful conservation techniques, controlled environments and cataloguing systems to protect fragile artifacts, artworks and documents from damage, loss or decay over long periods of time.",
+      "realPurpose": "Understanding the preservation role of museums and libraries highlights why these institutions matter for keeping history and culture accessible to future generations."
+    },
+    "cu_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which ancient city, famously carved directly into rose-coloured rock cliffs in Jordan, is a well-known UNESCO World Heritage Site?",
+          "answer": "Petra",
+          "distractors": ["Machu Picchu", "Angkor Wat", "Stonehenge"]
+        }
+      ],
+      "technicalIntricacy": "Petra's buildings were carved directly into natural sandstone cliffs rather than constructed from separately quarried and stacked blocks, an engineering approach that has helped many of its structures survive for over two thousand years.",
+      "realPurpose": "Learning about diverse UNESCO World Heritage Sites like Petra broadens appreciation for remarkable historical achievements across many different regions and cultures."
+    },
+    "cu_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What UNESCO term describes traditions like oral storytelling, music, dance, or craft skills that are passed down through generations, rather than physical places or objects?",
+          "answer": "Intangible cultural heritage",
+          "distractors": ["A World Heritage Site", "A national anthem", "A census"]
+        }
+      ],
+      "technicalIntricacy": "Unlike physical World Heritage Sites, intangible cultural heritage refers to living practices and knowledge, like traditional performances or craftsmanship, that only survive by continuing to be taught, practiced and passed on by people.",
+      "realPurpose": "Recognising intangible cultural heritage highlights that not everything worth preserving is a physical monument or object — traditions of skill and performance need active practice to survive."
+    },
+    "cu_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A museum has {{totalArtifacts}} artifacts on display, and {{percent}}% of them come from Ancient Egypt. How many artifacts are from Ancient Egypt?",
+          "answer": "{{count}}",
+          "distractors": ["{{diff}}", "{{percent}}", "{{countPlusBump}}"],
+          "vars": {
+            "totalArtifacts": { "type": "pick", "options": [100, 150, 200, 250, 300] },
+            "percent": { "type": "pick", "options": [10, 20, 25, 30, 40, 50] },
+            "count": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalArtifacts", "percent", 100] },
+            "diff": { "type": "computed", "formulaId": "subtract", "args": ["totalArtifacts", "count"] },
+            "bump": { "type": "int", "min": 5, "max": 20 },
+            "countPlusBump": { "type": "computed", "formulaId": "add", "args": ["count", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding a percentage of a total means multiplying the total by the percentage expressed as a decimal fraction, giving the exact count that share that characteristic.",
+      "realPurpose": "Museums and researchers use this kind of calculation to summarise and describe the makeup of large collections of artifacts and exhibits."
+    },
+    "cu_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "A famous cultural site was officially recognised {{yearsAgo}} years ago. If it is currently the year {{year}}, in approximately what year was it recognised?",
+      "vars": {
+        "year": { "type": "int", "min": 2020, "max": 2030 },
+        "yearsAgo": { "type": "int", "min": 20, "max": 500 }
+      },
+      "answerFormulaId": "subtract",
+      "answerArgs": ["year", "yearsAgo"],
+      "decimals": 0,
+      "prefix": "Around the year ",
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["year"] }],
+        "perturb": { "min": -100, "max": 100, "decimals": 0 }
+      },
+      "technicalIntricacy": "Finding a historical date from a number of years ago means subtracting that many years from the current year, treating each year as a single, consistent step backward on the calendar.",
+      "realPurpose": "This kind of calculation helps place cultural landmarks and traditions into historical context, showing how old or how recently established they really are."
+    },
+    "cu_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "An art gallery displays {{totalArtworks}} artworks in total, and {{paintingPercent}}% of them are paintings. How many paintings are on display?",
+          "answer": "{{paintingCount}}",
+          "distractors": ["{{diff}}", "{{paintingPercent}}", "{{paintingCountPlusBump}}"],
+          "vars": {
+            "totalArtworks": { "type": "pick", "options": [100, 200, 300, 500] },
+            "paintingPercent": { "type": "pick", "options": [40, 50, 60, 70] },
+            "paintingCount": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalArtworks", "paintingPercent", 100] },
+            "diff": { "type": "computed", "formulaId": "subtract", "args": ["totalArtworks", "paintingCount"] },
+            "bump": { "type": "int", "min": 5, "max": 20 },
+            "paintingCountPlusBump": { "type": "computed", "formulaId": "add", "args": ["paintingCount", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding the number of paintings means multiplying the total number of artworks by the percentage that are paintings, expressed as a decimal fraction.",
+      "realPurpose": "Museums and galleries use this kind of breakdown to describe and organise the composition of their collections for visitors and researchers."
+    },
+    "cu_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A country has a population of {{totalPopulation}}. If {{percentBilingual}}% of the population speaks two or more languages fluently, how many people are bilingual (or multilingual)?",
+          "answer": "{{bilingualCount}}",
+          "distractors": ["{{monolingual}}", "{{percentBilingual}}", "{{bilingualPlus5}}"],
+          "vars": {
+            "totalPopulation": { "type": "pick", "options": [1000000, 5000000, 10000000] },
+            "percentBilingual": { "type": "pick", "options": [10, 20, 30, 40] },
+            "bilingualCount": { "type": "computed", "formulaId": "multiplyDivide", "args": ["totalPopulation", "percentBilingual", 100] },
+            "monolingual": { "type": "computed", "formulaId": "subtract", "args": ["totalPopulation", "bilingualCount"] },
+            "bilingualPlus5": { "type": "computed", "formulaId": "addPercentOf", "args": ["bilingualCount", "totalPopulation", 5] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Finding the bilingual population means multiplying the total population by the percentage who are bilingual, expressed as a decimal fraction, the same calculation used for any proportional population statistic.",
+      "realPurpose": "Language statistics like this help linguists and educators understand how widespread multilingualism is within a country, which can shape education and public service policy."
+    },
+    "cu_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A cultural festival attracts a total of {{totalVisitors}} visitors spread evenly across {{days}} days. On average, approximately how many visitors attend per day?",
+      "vars": {
+        "totalVisitors": { "type": "pick", "options": [50000, 100000, 150000, 200000, 250000] },
+        "days": { "type": "pick", "options": [2, 5, 10, 25] }
+      },
+      "answerFormulaId": "divide",
+      "answerArgs": ["totalVisitors", "days"],
+      "decimals": 0,
+      "unit": " visitors",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["totalVisitors", "days"] }],
+        "perturb": { "min": -3000, "max": 3000, "decimals": 0, "minValue": 100 }
+      },
+      "technicalIntricacy": "Finding an average daily figure means dividing the total amount by the number of days it's spread across, the same calculation used for any steady rate spread evenly over a period of time.",
+      "realPurpose": "Event organisers use exactly this kind of calculation to estimate daily attendance and plan staffing, safety and facilities for large cultural festivals."
+    },
+    "cu_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a tradition or celebration looks unfamiliar or different from their own, it must be 'less important' or 'less advanced' than their own culture's traditions. What is the flaw in this thinking?",
+          "answer": "Cultural practices are shaped by different histories, environments, and values, not by being more or less 'advanced'; judging unfamiliar traditions as inferior simply because they look different reflects a narrow perspective rather than an accurate one — every culture's traditions carry deep meaning to the people who practice them",
+          "distractors": [
+            "The student is correct — traditions that look unfamiliar or different are generally less developed than more widely known ones",
+            "Only traditions that have existed for many centuries deserve to be considered valuable or important",
+            "Cultural practices can be accurately ranked from 'best' to 'worst' using a single, universal standard"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Every culture develops its traditions through its own particular history, environment, beliefs and needs, so traditions that look unfamiliar are simply different responses to different circumstances, not lesser or less developed versions of a single 'correct' way of doing things.",
+      "realPurpose": "Recognising this helps build genuine curiosity and respect when learning about other cultures, rather than unfairly judging them through the lens of one's own background."
+    },
+    "cu_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student says every country in Asia must share the exact same culture, language, and traditions, since they're all grouped together on a map. What is the mistake in this assumption?",
+          "answer": "Continents and regions like Asia contain enormous cultural diversity — home to thousands of distinct languages, religions and traditions across many different countries; being geographically close or on the same continent does not mean cultures are all the same",
+          "distractors": [
+            "The student is correct — every country in Asia shares essentially the same culture, language and traditions",
+            "Only large countries within Asia have their own distinct culture; smaller countries simply share whichever culture is most common nearby",
+            "Cultural differences only exist between continents, never between countries on the same continent"
+          ],
+          "technicalIntricacy": "A continent or region is simply a geographic grouping, not a cultural one; Asia, for example, contains a huge range of distinct countries, each shaped by its own unique history, language, religion and traditions, meaning geographic closeness does not imply cultural uniformity."
+        },
+        {
+          "question": "A student says every country in Africa must share the exact same culture, language, and traditions, since they're all grouped together on a map. What is the mistake in this assumption?",
+          "answer": "Continents and regions like Africa contain enormous cultural diversity — home to thousands of distinct languages, religions and traditions across many different countries; being geographically close or on the same continent does not mean cultures are all the same",
+          "distractors": [
+            "The student is correct — every country in Africa shares essentially the same culture, language and traditions",
+            "Only large countries within Africa have their own distinct culture; smaller countries simply share whichever culture is most common nearby",
+            "Cultural differences only exist between continents, never between countries on the same continent"
+          ],
+          "technicalIntricacy": "A continent or region is simply a geographic grouping, not a cultural one; Africa, for example, contains a huge range of distinct countries, each shaped by its own unique history, language, religion and traditions, meaning geographic closeness does not imply cultural uniformity."
+        },
+        {
+          "question": "A student says every country in Europe must share the exact same culture, language, and traditions, since they're all grouped together on a map. What is the mistake in this assumption?",
+          "answer": "Continents and regions like Europe contain enormous cultural diversity — home to thousands of distinct languages, religions and traditions across many different countries; being geographically close or on the same continent does not mean cultures are all the same",
+          "distractors": [
+            "The student is correct — every country in Europe shares essentially the same culture, language and traditions",
+            "Only large countries within Europe have their own distinct culture; smaller countries simply share whichever culture is most common nearby",
+            "Cultural differences only exist between continents, never between countries on the same continent"
+          ],
+          "technicalIntricacy": "A continent or region is simply a geographic grouping, not a cultural one; Europe, for example, contains a huge range of distinct countries, each shaped by its own unique history, language, religion and traditions, meaning geographic closeness does not imply cultural uniformity."
+        },
+        {
+          "question": "A student says every country in South America must share the exact same culture, language, and traditions, since they're all grouped together on a map. What is the mistake in this assumption?",
+          "answer": "Continents and regions like South America contain enormous cultural diversity — home to thousands of distinct languages, religions and traditions across many different countries; being geographically close or on the same continent does not mean cultures are all the same",
+          "distractors": [
+            "The student is correct — every country in South America shares essentially the same culture, language and traditions",
+            "Only large countries within South America have their own distinct culture; smaller countries simply share whichever culture is most common nearby",
+            "Cultural differences only exist between continents, never between countries on the same continent"
+          ],
+          "technicalIntricacy": "A continent or region is simply a geographic grouping, not a cultural one; South America, for example, contains a huge range of distinct countries, each shaped by its own unique history, language, religion and traditions, meaning geographic closeness does not imply cultural uniformity."
+        }
+      ],
+      "realPurpose": "Recognising the cultural diversity within continents and regions helps avoid oversimplified or inaccurate generalisations about large groups of people."
+    },
+    "cu_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that a very old cultural tradition must be 'outdated' and less relevant than something more modern. What is the flaw in this reasoning?",
+          "answer": "The age of a tradition has no bearing on its ongoing relevance or value; many ancient traditions (such as yoga, classical music, or traditional medicine practices) remain widely practiced, deeply meaningful, and even scientifically studied today, showing that a practice's age doesn't determine whether it still holds genuine value or relevance in modern life",
+          "distractors": [
+            "The student is correct — any tradition old enough to be considered 'ancient' is automatically less relevant than something modern",
+            "Only traditions invented within the last few decades can be considered genuinely useful or worth practicing today",
+            "The value of a tradition can be measured precisely by counting exactly how many years old it is"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A tradition's usefulness or meaning comes from what it actually offers people — physical benefits, community connection, artistic value, or spiritual significance — none of which fade simply because a practice has existed for a long time; many ancient traditions continue to be refined, studied, and valued precisely because they have proven so enduringly useful or meaningful.",
+      "realPurpose": "This helps build a more thoughtful view of tradition and modernity, recognising that genuine value isn't determined by how recently something was created."
+    },
+    "cu_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that because a particular food, style of dress, or custom is unfamiliar to them personally, it must be rare or uncommon worldwide. What is the flaw in this reasoning?",
+          "answer": "A tradition being unfamiliar to one person (based on their own limited personal experience) says nothing about how common or widespread it actually is globally; a practice could be followed by hundreds of millions of people across an entire region, while still being completely unfamiliar to someone who has never encountered that specific culture",
+          "distractors": [
+            "The student is correct — if a tradition is unfamiliar to someone personally, it must genuinely be rare or uncommon around the world",
+            "Cultural practices can only be considered common if they are already familiar to people in every single country simultaneously",
+            "Personal familiarity with a tradition is always a perfectly accurate way to measure exactly how widespread that tradition is worldwide"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Any individual's personal experience only ever samples a tiny fraction of the world's cultures, so a tradition practiced by an enormous population elsewhere can easily be something that person has simply never encountered, rather than something genuinely rare on a global scale.",
+      "realPurpose": "This distinction encourages genuine curiosity about unfamiliar traditions, rather than assuming personal unfamiliarity reflects how common or significant a practice actually is worldwide."
+    }
+  },
+  "chapters": {
+    "geopolitics": {
+      "title": "Countries, Capitals & Currencies",
+      "overview": "This unit explores the world's countries, their capital cities, and the currencies they use for trade, helping build a mental map of the globe and how different nations are connected through geography and commerce.",
+      "deepDivePurpose": "Knowing countries, capitals and currencies helps students understand news, travel, and international trade, and builds the geographic literacy needed to make sense of world events.",
+      "recap": [
+        "A capital city is usually the seat of a country's government, where key national institutions like parliament are located.",
+        "A currency is the type of money officially used in a country, such as the Yen in Japan or the Euro shared by many European countries.",
+        "Continents are the seven large landmasses of Earth: Asia, Africa, North America, South America, Antarctica, Europe and Australia (Oceania).",
+        "Some countries share a common currency (like the Euro) to make trade between them easier.",
+        "A country's flag, capital, and currency are all part of its national identity, alongside its language and culture.",
+        "The equator divides the Earth into the Northern and Southern Hemispheres, and passes through countries in Africa, South America, and Asia."
+      ],
+      "questionBank": {
+        "1": ["gp_l1_t1", "gp_l1_t2", "gp_l1_t3", "gp_l1_t4", "gp_l1_t5", "gp_l1_t6", "gp_l1_t7", "gp_l1_t8", "gp_l1_t9", "gp_l1_t10"],
+        "2": ["gp_l2_t1", "gp_l2_t2", "gp_l2_t3", "gp_l2_t4", "gp_l2_t5"],
+        "3": ["gp_l3_t1", "gp_l3_t2", "gp_l3_t3", "gp_l3_t4"]
+      }
+    },
+    "wonders": {
+      "title": "Natural Wonders & Global Landmarks",
+      "overview": "This unit explores famous natural wonders and human-made landmarks around the world, from towering mountains and vast canyons to ancient monuments, helping students appreciate the planet's geography and shared human heritage.",
+      "deepDivePurpose": "Learning about natural wonders and landmarks builds curiosity about the wider world, encourages environmental appreciation, and helps connect geography lessons to real, awe-inspiring places.",
+      "recap": [
+        "Mount Everest, located in the Himalayas, is the tallest mountain above sea level on Earth.",
+        "The Great Barrier Reef, off the coast of Australia, is the largest coral reef system in the world and is home to an enormous variety of marine life.",
+        "The Amazon Rainforest, mostly in Brazil, is the largest tropical rainforest on Earth and is often called the 'lungs of the planet' for the oxygen it produces.",
+        "The Grand Canyon in the United States is a massive gorge carved over millions of years by the Colorado River.",
+        "The Great Wall of China is an ancient series of walls and fortifications stretching thousands of kilometres.",
+        "The Pyramids of Giza in Egypt are ancient stone structures built thousands of years ago as tombs for Egyptian pharaohs."
+      ],
+      "questionBank": {
+        "1": ["wd_l1_t1", "wd_l1_t2", "wd_l1_t3", "wd_l1_t4", "wd_l1_t5", "wd_l1_t6", "wd_l1_t7", "wd_l1_t8", "wd_l1_t9", "wd_l1_t10"],
+        "2": ["wd_l2_t1", "wd_l2_t2", "wd_l2_t3", "wd_l2_t4", "wd_l2_t5"],
+        "3": ["wd_l3_t1", "wd_l3_t2", "wd_l3_t3", "wd_l3_t4"]
+      }
+    },
+    "space": {
+      "title": "Space Exploration & Astrophysics",
+      "overview": "This unit introduces the solar system, the exploration of space by humans and robotic missions, and basic astrophysics concepts like stars, galaxies, and how light from space takes time to reach us.",
+      "deepDivePurpose": "Understanding space exploration and astrophysics inspires curiosity about our place in the universe, and connects to real achievements in science and engineering, from the first Moon landing to modern rovers on Mars.",
+      "recap": [
+        "The Solar System consists of the Sun and everything that orbits it, including eight planets, their moons, dwarf planets, asteroids and comets.",
+        "In order from the Sun, the eight planets are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune.",
+        "Astronauts Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon in 1969, during NASA's Apollo 11 mission.",
+        "A light-year is the distance light travels in one year, and is used to measure vast distances between stars and galaxies.",
+        "A galaxy is a huge collection of stars, gas and dust held together by gravity; our Solar System is located in the Milky Way galaxy.",
+        "Space telescopes, like the Hubble and James Webb Space Telescopes, orbit above Earth's atmosphere to capture clearer images of distant objects in space."
+      ],
+      "questionBank": {
+        "1": ["sp_l1_t1", "sp_l1_t2", "sp_l1_t3", "sp_l1_t4", "sp_l1_t5", "sp_l1_t6", "sp_l1_t7", "sp_l1_t8", "sp_l1_t9", "sp_l1_t10"],
+        "2": ["sp_l2_t1", "sp_l2_t2", "sp_l2_t3", "sp_l2_t4", "sp_l2_t5"],
+        "3": ["sp_l3_t1", "sp_l3_t2", "sp_l3_t3", "sp_l3_t4"]
+      }
+    },
+    "tech_ai": {
+      "title": "Science, Technology & Artificial Intelligence",
+      "overview": "This unit introduces key ideas in modern science and technology, including how computers process information, what artificial intelligence is and how it learns, notable inventions that have shaped the modern world, and how fast-moving developments like generative AI, chatbots and deepfakes are changing how people create and verify information online.",
+      "deepDivePurpose": "Understanding the basics of technology and AI — including newer developments like generative AI tools and AI-generated media — prepares students to be informed, thoughtful, and appropriately sceptical users of the digital tools that increasingly shape everyday life, education, and future careers.",
+      "recap": [
+        "A computer processes information using binary code, a system of just two digits (0 and 1), to represent all data and instructions.",
+        "Artificial Intelligence (AI) refers to computer systems designed to perform tasks that normally require human intelligence, such as recognising images or understanding language.",
+        "Machine learning is a type of AI where computer systems learn patterns from large amounts of data, rather than being explicitly programmed with fixed rules for every situation.",
+        "The Internet is a vast global network that connects computers around the world, allowing them to share information almost instantly.",
+        "The World Wide Web, invented by Tim Berners-Lee in 1989, is a system of linked webpages that people access using the Internet.",
+        "Robots are machines that can be programmed to carry out tasks automatically, ranging from factory assembly lines to exploring other planets.",
+        "Generative AI tools, including chatbots and image generators, create new text, images or other content by learning patterns from huge amounts of existing data, rather than simply looking up or copying existing answers.",
+        "AI chatbots can sometimes produce confident-sounding but factually incorrect answers (called 'hallucinations'), and AI can also be used to create realistic-looking fake images, video or audio ('deepfakes') — so verifying information from reliable sources remains essential."
+      ],
+      "questionBank": {
+        "1": ["ta_l1_t1", "ta_l1_t2", "ta_l1_t3", "ta_l1_t4", "ta_l1_t5", "ta_l1_t6", "ta_l1_t7", "ta_l1_t8", "ta_l1_t9", "ta_l1_t10"],
+        "2": ["ta_l2_t1", "ta_l2_t2", "ta_l2_t3", "ta_l2_t4", "ta_l2_t5", "ta_l2_t6"],
+        "3": ["ta_l3_t1", "ta_l3_t2", "ta_l3_t3", "ta_l3_t4", "ta_l3_t5", "ta_l3_t6"]
+      }
+    },
+    "law_civics": {
+      "title": "World Law, Governance & Institutions",
+      "overview": "This unit introduces how countries are governed, the basic branches of government, and major international institutions like the United Nations that help countries cooperate on shared global issues.",
+      "deepDivePurpose": "Understanding governance and international institutions helps students become informed citizens who can follow news about their country and the world, and appreciate how nations work together to solve shared problems.",
+      "recap": [
+        "A democracy is a system of government in which citizens choose their leaders through fair and free elections.",
+        "Government is often divided into three branches: the legislative branch (makes laws), the executive branch (enforces laws), and the judicial branch (interprets laws).",
+        "The United Nations (UN) is an international organisation formed in 1945 where countries work together on issues like peace, human rights, and development.",
+        "A constitution is a country's most important set of written rules, laying out how the government works and protecting citizens' basic rights.",
+        "UNESCO, a UN agency, works to protect important cultural and natural heritage sites around the world by naming them World Heritage Sites.",
+        "Human rights are basic rights and freedoms that belong to every person in the world, regardless of nationality, simply because they are human."
+      ],
+      "questionBank": {
+        "1": ["lw_l1_t1", "lw_l1_t2", "lw_l1_t3", "lw_l1_t4", "lw_l1_t5", "lw_l1_t6", "lw_l1_t7", "lw_l1_t8", "lw_l1_t9", "lw_l1_t10"],
+        "2": ["lw_l2_t1", "lw_l2_t2", "lw_l2_t3", "lw_l2_t4", "lw_l2_t5"],
+        "3": ["lw_l3_t1", "lw_l3_t2", "lw_l3_t3", "lw_l3_t4"]
+      }
+    },
+    "culture": {
+      "title": "Global Culture, Heritage & Arts",
+      "overview": "This unit celebrates the diversity of world cultures, exploring traditional festivals, languages, art forms, and UNESCO World Heritage Sites that reflect humanity's shared creativity and history.",
+      "deepDivePurpose": "Learning about different cultures builds empathy, curiosity and respect for the diverse ways people around the world live, celebrate, create art, and pass down traditions across generations.",
+      "recap": [
+        "A World Heritage Site is a place recognised by UNESCO as being of outstanding cultural or natural importance to all of humanity.",
+        "Thousands of languages are spoken around the world today, with Mandarin Chinese, Spanish and English among the most widely spoken.",
+        "Festivals like Diwali (the Festival of Lights in India), Lunar New Year (celebrated across East Asia), and Carnival (celebrated in Brazil) reflect the rich diversity of world traditions.",
+        "Traditional art forms vary widely between cultures, from Japanese origami (paper folding) to African textile weaving to Indigenous Australian dot painting.",
+        "Museums and libraries around the world help preserve important cultural artifacts, artworks and historical documents for future generations to learn from.",
+        "Music and dance styles, from classical ballet to traditional folk dances, are an important way that cultures express their history and identity."
+      ],
+      "questionBank": {
+        "1": ["cu_l1_t1", "cu_l1_t2", "cu_l1_t3", "cu_l1_t4", "cu_l1_t5", "cu_l1_t6", "cu_l1_t7", "cu_l1_t8", "cu_l1_t9", "cu_l1_t10"],
+        "2": ["cu_l2_t1", "cu_l2_t2", "cu_l2_t3", "cu_l2_t4", "cu_l2_t5"],
+        "3": ["cu_l3_t1", "cu_l3_t2", "cu_l3_t3", "cu_l3_t4"]
+      }
+    }
+  }
+}

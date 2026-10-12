@@ -1,0 +1,324 @@
+/* ============================================================
+   ICSE Arena — local static stylesheet
+   ------------------------------------------------------------
+   Replaces the Tailwind Play CDN script (https://cdn.tailwindcss.com).
+   That script was (a) an external network dependency loaded on every
+   page view, breaking the "100% local/offline" goal, and (b) a runtime
+   JIT compiler never intended for production use. This file instead
+   hand-reproduces Tailwind's exact design tokens (spacing scale, color
+   palette) as plain, static CSS rules — but ONLY for the utility
+   classes actually used across index.html and parent.html. No
+   JavaScript runs to produce this styling; nothing here can change
+   without a direct edit to this file.
+
+   Organised in the same category order Tailwind itself uses, so any
+   class name here can be found by scanning down to its section.
+   ============================================================ */
+
+/* ---------- 1. Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
+html { line-height: 1.5; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+h1, h2, h3, p, ul { margin: 0; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; background: none; cursor: pointer; }
+select, input { font: inherit; color: inherit; }
+table { border-collapse: collapse; }
+img, svg { display: block; max-width: 100%; }
+
+/* ---------- 2. Colour palette (Tailwind default hex values, only shades used) ---------- */
+:root {
+  --slate-50: 248 250 252;   --slate-100: 241 245 249;  --slate-200: 226 232 240;
+  --slate-300: 203 213 225;  --slate-400: 148 163 184;  --slate-500: 100 116 139;
+  --slate-600: 71 85 105;    --slate-700: 51 65 85;     --slate-800: 30 41 59;
+  --slate-900: 15 23 42;
+  --white: 255 255 255;
+  --emerald-300: 110 231 183; --emerald-400: 52 211 153; --emerald-500: 16 185 129; --emerald-600: 5 150 105;
+  --cyan-300: 103 232 249;    --cyan-400: 34 211 238;    --cyan-500: 6 182 212;
+  --rose-300: 253 164 175;    --rose-400: 251 113 133;   --rose-500: 244 63 94;
+  --sky-300: 125 211 252;     --sky-500: 14 165 233;
+  --amber-300: 252 211 77;    --amber-400: 251 191 36;   --amber-500: 245 158 11;   --amber-600: 217 119 6;
+  --orange-300: 253 186 116;  --orange-500: 249 115 22;
+  --fuchsia-100: 250 232 255; --fuchsia-300: 240 171 252; --fuchsia-500: 217 70 239; --fuchsia-600: 192 38 211; --fuchsia-700: 162 28 175;
+  --yellow-300: 253 224 71;   --yellow-500: 234 179 8;
+  --violet-300: 196 181 253;  --violet-500: 139 92 246;
+  --purple-300: 216 180 254;  --purple-500: 168 85 247;
+  --teal-300: 94 234 212;     --teal-500: 20 184 166;
+  --indigo-100: 224 231 255;  --indigo-300: 165 180 252;  --indigo-500: 99 102 241;  --indigo-600: 79 70 229; --indigo-700: 67 56 202;
+  --emerald-100: 209 250 229; --emerald-700: 4 120 87;
+  --orange-600: 234 88 12;
+}
+
+/* ---------- 3. Layout / display ---------- */
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.top-0 { top: 0; }
+.-z-10 { z-index: -10; }
+.z-30 { z-index: 30; }
+.block { display: block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+/* Declared after every other display-setting utility above so it always wins
+   the cascade tie when an element carries both (e.g. class="flex hidden") —
+   otherwise whichever of .flex/.grid/.block/.inline-flex happens to be
+   declared later in this file would silently win and the element would
+   never actually become display:none despite JS adding "hidden" to it. */
+.hidden { display: none; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.overflow-hidden { overflow: hidden; }
+.overflow-x-auto { overflow-x: auto; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 640px) { .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.shrink-0 { flex-shrink: 0; }
+
+/* ---------- 4. Spacing (Tailwind scale: 1 unit = 0.25rem) ---------- */
+.p-1 { padding: .25rem; } .p-1\.5 { padding: .375rem; } .p-2 { padding: .5rem; }
+.p-3 { padding: .75rem; } .p-4 { padding: 1rem; } .p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; }
+.px-1 { padding-left: .25rem; padding-right: .25rem; }
+.px-2 { padding-left: .5rem; padding-right: .5rem; }
+.px-3 { padding-left: .75rem; padding-right: .75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-0\.5 { padding-top: .125rem; padding-bottom: .125rem; }
+.py-1 { padding-top: .25rem; padding-bottom: .25rem; }
+.py-1\.5 { padding-top: .375rem; padding-bottom: .375rem; }
+.py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+.py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.pb-3 { padding-bottom: .75rem; }
+.pt-1 { padding-top: .25rem; }
+.pt-4 { padding-top: 1rem; }
+.pr-4 { padding-right: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-1 { margin-bottom: .25rem; } .mb-2 { margin-bottom: .5rem; } .mb-3 { margin-bottom: .75rem; }
+.mb-4 { margin-bottom: 1rem; } .mb-5 { margin-bottom: 1.25rem; } .mb-6 { margin-bottom: 1.5rem; } .mb-8 { margin-bottom: 2rem; }
+.mt-1 { margin-top: .25rem; } .mt-2 { margin-top: .5rem; } .mt-3 { margin-top: .75rem; } .mt-4 { margin-top: 1rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; }
+.ml-2 { margin-left: .5rem; }
+.gap-1 { gap: .25rem; } .gap-1\.5 { gap: .375rem; } .gap-2 { gap: .5rem; } .gap-3 { gap: .75rem; } .gap-4 { gap: 1rem; } .gap-6 { gap: 1.5rem; }
+.space-y-1 > * + * { margin-top: .25rem; }
+.space-y-1\.5 > * + * { margin-top: .375rem; }
+.space-y-3 > * + * { margin-top: .75rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+@media (min-width: 768px) { .md\:px-8 { padding-left: 2rem; padding-right: 2rem; } }
+
+/* ---------- 5. Sizing ---------- */
+.w-9 { width: 2.25rem; } .w-14 { width: 3.5rem; } .w-full { width: 100%; }
+.h-9 { height: 2.25rem; } .h-14 { height: 3.5rem; }
+.min-h-screen { min-height: 100vh; }
+.max-w-md { max-width: 28rem; } .max-w-sm { max-width: 24rem; } .max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; } .max-w-5xl { max-width: 64rem; } .max-w-6xl { max-width: 72rem; }
+@media (min-width: 768px) { .md\:w-1\/3 { width: 33.333333%; } }
+
+/* ---------- 6. Typography ---------- */
+.text-\[10px\] { font-size: 10px; }
+.text-xs { font-size: .75rem; line-height: 1rem; }
+.text-sm { font-size: .875rem; line-height: 1.25rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-black { font-weight: 900; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.leading-none { line-height: 1; }
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-relaxed { line-height: 1.625; }
+.uppercase { text-transform: uppercase; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.list-disc { list-style-type: disc; padding-left: 1.5rem; }
+.list-inside { list-style-position: inside; }
+
+/* ---------- 7. Colour utilities ---------- */
+/* Backgrounds */
+.bg-white { background-color: rgb(var(--white)); }
+.bg-slate-50 { background-color: rgb(var(--slate-50)); }
+.bg-slate-100 { background-color: rgb(var(--slate-100)); }
+.bg-slate-800 { background-color: rgb(var(--slate-800)); }
+.bg-slate-900 { background-color: rgb(var(--slate-900)); }
+.bg-slate-800\/50 { background-color: rgb(var(--slate-800) / .5); }
+.bg-slate-800\/60 { background-color: rgb(var(--slate-800) / .6); }
+.bg-slate-800\/70 { background-color: rgb(var(--slate-800) / .7); }
+.bg-indigo-500 { background-color: rgb(var(--indigo-500)); }
+.bg-indigo-600 { background-color: rgb(var(--indigo-600)); }
+.bg-indigo-500\/15 { background-color: rgb(var(--indigo-500) / .15); }
+.bg-rose-500\/15 { background-color: rgb(var(--rose-500) / .15); }
+.bg-cyan-500\/15 { background-color: rgb(var(--cyan-500) / .15); }
+.bg-sky-500\/15 { background-color: rgb(var(--sky-500) / .15); }
+.bg-amber-500\/15 { background-color: rgb(var(--amber-500) / .15); }
+.bg-orange-500\/15 { background-color: rgb(var(--orange-500) / .15); }
+.bg-fuchsia-500\/15 { background-color: rgb(var(--fuchsia-500) / .15); }
+.bg-yellow-500\/15 { background-color: rgb(var(--yellow-500) / .15); }
+.bg-violet-500\/15 { background-color: rgb(var(--violet-500) / .15); }
+.bg-purple-500\/15 { background-color: rgb(var(--purple-500) / .15); }
+.bg-emerald-500\/15 { background-color: rgb(var(--emerald-500) / .15); }
+.bg-teal-500\/15 { background-color: rgb(var(--teal-500) / .15); }
+.bg-slate-500\/15 { background-color: rgb(var(--slate-500) / .15); }
+.bg-indigo-100 { background-color: rgb(var(--indigo-100)); }
+.bg-emerald-100 { background-color: rgb(var(--emerald-100)); }
+.bg-fuchsia-100 { background-color: rgb(var(--fuchsia-100)); }
+/* Text colours */
+.text-white { color: rgb(var(--white)); }
+.text-slate-100 { color: rgb(var(--slate-100)); }
+.text-slate-300 { color: rgb(var(--slate-300)); }
+.text-slate-400 { color: rgb(var(--slate-400)); }
+.text-slate-500 { color: rgb(var(--slate-500)); }
+.text-slate-600 { color: rgb(var(--slate-600)); }
+.text-slate-700 { color: rgb(var(--slate-700)); }
+.text-slate-800 { color: rgb(var(--slate-800)); }
+.text-slate-900 { color: rgb(var(--slate-900)); }
+.text-emerald-300 { color: rgb(var(--emerald-300)); }
+.text-emerald-400 { color: rgb(var(--emerald-400)); }
+.text-emerald-600 { color: rgb(var(--emerald-600)); }
+.text-cyan-300 { color: rgb(var(--cyan-300)); }
+.text-cyan-400 { color: rgb(var(--cyan-400)); }
+.text-rose-300 { color: rgb(var(--rose-300)); }
+.text-rose-400 { color: rgb(var(--rose-400)); }
+.text-sky-300 { color: rgb(var(--sky-300)); }
+.text-amber-300 { color: rgb(var(--amber-300)); }
+.text-amber-400 { color: rgb(var(--amber-400)); }
+.text-amber-500 { color: rgb(var(--amber-500)); }
+.text-amber-600 { color: rgb(var(--amber-600)); }
+.text-orange-300 { color: rgb(var(--orange-300)); }
+.text-orange-500 { color: rgb(var(--orange-500)); }
+.text-orange-600 { color: rgb(var(--orange-600)); }
+.text-indigo-700 { color: rgb(var(--indigo-700)); }
+.text-emerald-700 { color: rgb(var(--emerald-700)); }
+.text-fuchsia-700 { color: rgb(var(--fuchsia-700)); }
+.text-fuchsia-300 { color: rgb(var(--fuchsia-300)); }
+.text-fuchsia-600 { color: rgb(var(--fuchsia-600)); }
+.text-yellow-300 { color: rgb(var(--yellow-300)); }
+.text-violet-300 { color: rgb(var(--violet-300)); }
+.text-purple-300 { color: rgb(var(--purple-300)); }
+.text-teal-300 { color: rgb(var(--teal-300)); }
+.text-indigo-300 { color: rgb(var(--indigo-300)); }
+.text-indigo-600 { color: rgb(var(--indigo-600)); }
+.placeholder-slate-500::placeholder { color: rgb(var(--slate-500)); }
+/* Border colours */
+.border-white\/5 { border-color: rgb(var(--white) / .05); }
+.border-white\/10 { border-color: rgb(var(--white) / .1); }
+.border-white\/20 { border-color: rgb(var(--white) / .2); }
+.border-slate-200 { border-color: rgb(var(--slate-200)); }
+.border-slate-300 { border-color: rgb(var(--slate-300)); }
+.border-slate-400\/30 { border-color: rgb(var(--slate-400) / .3); }
+.border-emerald-400\/30 { border-color: rgb(var(--emerald-400) / .3); }
+.border-emerald-500 { border-color: rgb(var(--emerald-500)); }
+.border-cyan-400\/30 { border-color: rgb(var(--cyan-400) / .3); }
+.border-rose-400\/30 { border-color: rgb(var(--rose-400) / .3); }
+.border-rose-400\/40 { border-color: rgb(var(--rose-400) / .4); }
+.border-sky-400\/30 { border-color: rgb(var(--sky-400) / .3); }
+.border-amber-400\/30 { border-color: rgb(var(--amber-400) / .3); }
+.border-orange-400\/30 { border-color: rgb(var(--orange-400) / .3); }
+.border-fuchsia-400\/30 { border-color: rgb(var(--fuchsia-400) / .3); }
+.border-yellow-400\/30 { border-color: rgb(var(--yellow-400) / .3); }
+.border-violet-400\/30 { border-color: rgb(var(--violet-400) / .3); }
+.border-purple-400\/30 { border-color: rgb(var(--purple-400) / .3); }
+.border-teal-400\/30 { border-color: rgb(var(--teal-400) / .3); }
+.border-transparent { border-color: transparent; }
+.divide-slate-200 > * + * { border-top-color: rgb(var(--slate-200)); }
+
+/* ---------- 8. Borders / radius / shadow ---------- */
+.border { border-width: 1px; }
+.border-2 { border-width: 2px; }
+.border-b { border-bottom-width: 1px; }
+.border-b-2 { border-bottom-width: 2px; }
+.border-t { border-top-width: 1px; }
+.border-collapse { border-collapse: collapse; }
+.divide-y > * + * { border-top-width: 1px; }
+.rounded { border-radius: .25rem; }
+.rounded-md { border-radius: .375rem; }
+.rounded-lg { border-radius: .5rem; }
+.rounded-xl { border-radius: .75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-full { border-radius: 9999px; }
+.shadow-sm { box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / .25); }
+.shadow-\[0_0_25px_rgba\(16\,185\,129\,0\.55\)\] { box-shadow: 0 0 25px rgba(16,185,129,.55); }
+
+/* ---------- 9. Gradients ---------- */
+.bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)); }
+.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to)); }
+.from-emerald-400 { --tw-gradient-from: rgb(var(--emerald-400)); }
+.from-emerald-500 { --tw-gradient-from: rgb(var(--emerald-500)); }
+.to-cyan-500 { --tw-gradient-to: rgb(var(--cyan-500)); }
+.bg-\[radial-gradient\(circle_at_20\%_20\%\,rgba\(16\,185\,129\,0\.12\)\,transparent_45\%\)\,radial-gradient\(circle_at_80\%_0\%\,rgba\(56\,189\,248\,0\.12\)\,transparent_40\%\)\,radial-gradient\(circle_at_50\%_100\%\,rgba\(244\,63\,94\,0\.08\)\,transparent_40\%\)\] {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(16,185,129,0.12), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(56,189,248,0.12), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(244,63,94,0.08), transparent 40%);
+}
+
+/* ---------- 10. Transitions / transforms / misc state ---------- */
+.transition { transition: all .15s cubic-bezier(.4,0,.2,1); }
+.transition-transform { transition: transform .15s cubic-bezier(.4,0,.2,1); }
+.cursor-not-allowed { cursor: not-allowed; }
+.pointer-events-none { pointer-events: none; }
+.opacity-50 { opacity: .5; }
+.opacity-70 { opacity: .7; }
+.active\:scale-\[0\.99\]:active { transform: scale(.99); }
+
+/* ---------- 11. Interactive state variants ---------- */
+.hover\:bg-slate-800:hover { background-color: rgb(var(--slate-800)); }
+.hover\:bg-slate-50:hover { background-color: rgb(var(--slate-50)); }
+.hover\:bg-indigo-700:hover { background-color: rgb(67 56 202); }
+.hover\:text-rose-400:hover { color: rgb(var(--rose-400)); }
+.hover\:text-cyan-300:hover { color: rgb(var(--cyan-300)); }
+.hover\:border-rose-400\/40:hover { border-color: rgb(var(--rose-400) / .4); }
+.hover\:border-white\/20:hover { border-color: rgb(var(--white) / .2); }
+.hover\:scale-110:hover { transform: scale(1.1); }
+.hover\:shadow-\[0_0_25px_rgba\(16\,185\,129\,0\.55\)\]:hover { box-shadow: 0 0 25px rgba(16,185,129,.55); }
+.focus\:outline-none:focus { outline: none; }
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px rgb(var(--emerald-500) / .5); }
+.focus\:ring-emerald-500:focus { box-shadow: 0 0 0 2px rgb(var(--emerald-500) / .5); }
+.focus\:ring-indigo-500:focus { box-shadow: 0 0 0 2px rgb(var(--indigo-500) / .5); }
+.focus\:border-emerald-500:focus { border-color: rgb(var(--emerald-500)); }
+.disabled\:opacity-50:disabled { opacity: .5; }
+.disabled\:cursor-not-allowed:disabled { cursor: not-allowed; }
+.disabled\:hover\:shadow-none:disabled:hover { box-shadow: none; }
+
+/* ---------- 12. Native <select> chevron ---------- */
+/* Replaces the OS-default dropdown arrow (which otherwise looks out of place
+   against this app's custom dark-glass and light-card themes) with a single
+   neutral slate chevron that reads on both. */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .65rem center;
+  background-size: 1em;
+}
+/* Extra right padding so long option text never runs under the arrow;
+   scoped via a compound selector (higher specificity than the plain
+   utility class) to the two padding scales selects actually use. */
+select.px-3 { padding-right: 2.25rem; }
+select.p-2 { padding-right: 2.25rem; }
+
+/* Note: index.html defines its own app-specific state classes (.tab-btn.active,
+   .level-btn.active, .stash-toggle-btn.active, .glass, .glow-correct/-wrong,
+   .accordion-body) in a page-scoped <style> block — intentionally not duplicated
+   here since they only apply to that one page's component markup. */

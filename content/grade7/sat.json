@@ -1,0 +1,1496 @@
+{
+  "title": "Digital SAT Foundation & Prep",
+  "questionPool": {
+    "rv_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A Words-in-Context question on the Digital SAT primarily tests your ability to:",
+          "answer": "Determine the most precise word or phrase that fits a sentence's specific logical context",
+          "distractors": [
+            "Recall the dictionary definition of the most advanced vocabulary word among the choices",
+            "Identify which word is used most frequently in everyday conversation",
+            "Choose the word that sounds most similar to other words already in the sentence"
+          ]
+        },
+        {
+          "question": "What is the best strategy for solving a Command of Evidence (Textual) question?",
+          "answer": "Identify the exact claim being made, then find the quotation that most directly and specifically supports it",
+          "distractors": [
+            "Choose the longest quotation available, since longer evidence is generally stronger",
+            "Choose any quotation that mentions the same general topic as the claim",
+            "Choose the quotation located closest to the beginning of the passage"
+          ]
+        },
+        {
+          "question": "Why should you avoid choosing an answer just because it 'relates to the general topic' of a passage?",
+          "answer": "Because the correct answer must precisely match the specific logical relationship required, not just be topically related",
+          "distractors": [
+            "Because topic-related answers are always factually incorrect",
+            "Because the SAT never includes any answer choices related to the passage's topic",
+            "Because only answers completely unrelated to the topic can ever be correct"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Both Words-in-Context and Command of Evidence questions reward precise, literal reading over background knowledge — the correct answer is always the one that most exactly satisfies the specific logical requirement, not merely a plausible or topically related choice.",
+      "realPurpose": "These skills mirror real academic and professional reading tasks, where selecting the exact right word or the exact right supporting evidence matters far more than general familiarity with a topic."
+    },
+    "rv_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A blank preceded by the word 'however' most likely requires a word or phrase that:",
+          "answer": "Contrasts with the idea stated just before it",
+          "distractors": ["Restates the exact same idea stated just before it", "Introduces a completely unrelated new topic", "Summarizes the entire passage read so far"]
+        },
+        {
+          "question": "A blank preceded by the word 'similarly' most likely requires a word or phrase that:",
+          "answer": "Reinforces or parallels the idea stated just before it",
+          "distractors": ["Directly contradicts the idea stated just before it", "Introduces an exception to the idea stated just before it", "Poses a question about the idea stated just before it"]
+        },
+        {
+          "question": "A blank preceded by the phrase 'as a result' most likely requires a word or phrase that:",
+          "answer": "Describes a consequence or effect of the idea stated just before it",
+          "distractors": ["Describes a cause that came before the idea stated just before it", "Contrasts sharply with the idea stated just before it", "Repeats the idea stated just before it using different words"]
+        }
+      ],
+      "technicalIntricacy": "Signal words like 'however,' 'similarly,' and 'as a result' each establish a specific logical relationship (contrast, reinforcement, or cause-and-effect) that the missing word or phrase must satisfy exactly.",
+      "realPurpose": "Recognising these signal words instantly narrows down the required meaning of a blank before even reading the answer choices, making Words-in-Context questions much faster and more reliable to solve."
+    },
+    "rv_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In a Words-in-Context question with two blanks, what is the best approach?",
+          "answer": "Determine the logical requirement for each blank separately using its own local context clues, then check that both choices work together coherently",
+          "distractors": [
+            "Assume both blanks must always require the exact same word or a synonym of each other",
+            "Only focus on the first blank, since the second blank rarely affects the final answer choice",
+            "Pick whichever pair of words sounds most sophisticated together, regardless of context"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Two-blank questions require independently verifying the specific context clues surrounding each blank, since the two words often serve different logical functions in the sentence, and only afterward confirming the pair makes sense together as a whole.",
+      "realPurpose": "This step-by-step approach prevents the common trap of anchoring on one blank's answer and forcing the second blank to match it, rather than letting each blank's own context guide the choice."
+    },
+    "rv_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Words-in-Context questions on the Digital SAT primarily test:",
+          "answer": "How a specific word functions and its precise shade of meaning within a particular sentence, not a general dictionary definition alone",
+          "distractors": [
+            "The single most common dictionary definition of a word, regardless of the sentence it appears in",
+            "Whether a word is spelled correctly according to standard English conventions",
+            "How many syllables a given vocabulary word contains"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Many words have multiple possible meanings or connotations depending on context; the SAT specifically tests whether a student can identify which precise shade of meaning fits a given sentence, rather than simply recalling a word's most familiar dictionary sense.",
+      "realPurpose": "This context-sensitive skill mirrors how language actually works in real writing, where the same word can carry different implications depending on its surrounding sentence."
+    },
+    "rv_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What characteristic makes a specific data point the 'best' quantitative evidence for a claim, rather than just any number from the chart?",
+          "answer": "The data point must directly and specifically match what the claim is asserting, not merely come from the same chart or table",
+          "distractors": [
+            "Whichever number appears first in the chart or table is always the best evidence",
+            "The largest number in the entire data set is always the strongest evidence, regardless of the claim",
+            "Any number from the same chart automatically counts as valid supporting evidence"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Quantitative evidence questions require checking that a specific data point's exact value and relationship match precisely what the claim states, since a chart can contain many numbers that are irrelevant to the particular claim being tested.",
+      "realPurpose": "This precise matching skill mirrors how data analysts must select only the specific figures that actually support a stated conclusion, rather than any number that happens to appear in the same report."
+    },
+    "rv_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Why should you be cautious of an answer choice containing extreme, absolute words like 'always,' 'never,' or 'completely'?",
+          "answer": "Passages usually support moderate, qualified claims, so an extreme or absolute answer choice often overstates what the text or data actually shows",
+          "distractors": [
+            "Extreme or absolute words automatically make an answer choice correct, since they sound the most definitive",
+            "Extreme or absolute words are never permitted to appear anywhere in a correct answer choice",
+            "Extreme wording has no effect at all on whether an answer choice is correct or incorrect"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Correct Digital SAT answers are precisely supported by the passage or data, and words like 'always,' 'never,' or 'completely' claim a certainty that a nuanced, moderate passage rarely actually provides, making such choices a common wrong-answer trap.",
+      "realPurpose": "Watching for absolute language helps a student quickly eliminate overstated answer choices before carefully checking the more moderate, precisely-worded options."
+    },
+    "rv_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Two words can share the same basic dictionary definition but differ in their 'connotation.' What does connotation refer to?",
+          "answer": "The emotional association or implied attitude (positive or negative) a word carries, beyond its literal dictionary meaning",
+          "distractors": [
+            "The exact number of letters contained within the word",
+            "The part of speech (noun, verb, adjective, etc.) that the word belongs to",
+            "The literal dictionary definition of the word, with no regard for tone or attitude"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Words like 'frugal' and 'stingy' can share a similar literal meaning (careful with money) while carrying very different connotations (positive discipline versus negative selfishness), and the SAT requires matching the connotation implied by the surrounding context, not just the literal definition.",
+      "realPurpose": "This distinction is essential because a technically 'close' synonym can still be the wrong answer if its emotional tone doesn't match the passage's context."
+    },
+    "rv_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In a sentence like '___ the rain, the game continued,' which type of word or phrase correctly fills the blank?",
+          "answer": "A concession/contrast word such as 'Despite' or 'Although,' signaling that the second part of the sentence happens in spite of the first",
+          "distractors": [
+            "A cause-and-effect word such as 'Because,' signaling that the rain directly caused the game to continue",
+            "An addition word such as 'Furthermore,' signaling an extra supporting detail",
+            "A time-order word such as 'Afterward,' signaling that the two events happened in sequence"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Words like 'despite' and 'although' signal a contrast between two ideas within a SINGLE sentence (unlike 'however,' which more often begins a new sentence contrasting with the previous one), showing that the outcome happens in spite of the preceding condition.",
+      "realPurpose": "Recognising within-sentence contrast words helps a student instantly identify the required logical relationship without needing to look outside the current sentence."
+    },
+    "rv_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "How does a word like 'because' or 'since' function differently from a phrase like 'as a result' when connecting two ideas?",
+          "answer": "'Because' and 'since' directly introduce the REASON or cause for an idea, while 'as a result' introduces the CONSEQUENCE that follows after a cause has already been stated",
+          "distractors": [
+            "'Because,' 'since,' and 'as a result' are fully interchangeable in every possible sentence context",
+            "'Because' and 'since' can only be used to introduce a consequence, never a reason",
+            "'As a result' can only be used at the very beginning of a passage, never in the middle of a sentence"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Although both relate cause and effect, 'because'/'since' attach directly to the reason itself within a sentence, while 'as a result' typically begins a new statement that describes the effect after the cause was already given.",
+      "realPurpose": "Distinguishing cause-introducing words from effect-introducing words allows for precise, logical word choice when completing Words-in-Context blanks involving cause and effect."
+    },
+    "rv_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After selecting an answer for a Words-in-Context blank, what is the best final check before moving on?",
+          "answer": "Substitute the chosen word or phrase back into the original sentence and confirm it preserves the sentence's precise logical relationship",
+          "distractors": [
+            "Assume the answer is correct as long as it is grammatically a valid word in English",
+            "Skip any final check, since the first answer that seems plausible is always correct",
+            "Check only whether the word sounds sophisticated, without rereading the full sentence"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Reading the completed sentence with the chosen answer plugged back in reveals whether the specific logical relationship (contrast, cause-effect, reinforcement, and so on) required by the context is actually satisfied, catching errors that might not be obvious when reading the answer choice in isolation.",
+      "realPurpose": "This final substitution check is a fast, reliable habit that catches subtle mismatches between an answer choice and the sentence's actual logical requirement."
+    },
+    "rv_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A study reports that Group A had a satisfaction score of {{scoreA}} out of 10, and Group B had a satisfaction score of {{scoreB}} out of 10. Which claim is best supported by this data?",
+          "answer": "{{higherGroup}} reported a higher average satisfaction score ({{higherScore}}/10) than the other group ({{lowerScore}}/10)",
+          "distractors": [
+            "{{otherGroup}} reported a higher average satisfaction score than the other group",
+            "Both groups reported exactly identical satisfaction scores, showing no measurable difference",
+            "The data shows no meaningful relationship between the two groups' satisfaction scores"
+          ],
+          "vars": {
+            "scenario": {
+              "type": "pick",
+              "options": [
+                { "scoreA": 7, "scoreB": 4 },
+                { "scoreA": 5, "scoreB": 8 },
+                { "scoreA": 9, "scoreB": 6 },
+                { "scoreA": 3, "scoreB": 7 },
+                { "scoreA": 8, "scoreB": 3 },
+                { "scoreA": 4, "scoreB": 9 },
+                { "scoreA": 6, "scoreB": 5 },
+                { "scoreA": 9, "scoreB": 4 },
+                { "scoreA": 3, "scoreB": 5 },
+                { "scoreA": 7, "scoreB": 9 }
+              ]
+            },
+            "scoreA": { "type": "field", "of": "scenario", "key": "scoreA" },
+            "scoreB": { "type": "field", "of": "scenario", "key": "scoreB" },
+            "groupALabel": { "type": "pick", "options": ["Group A"] },
+            "groupBLabel": { "type": "pick", "options": ["Group B"] },
+            "higherGroup": { "type": "computed", "formulaId": "greaterOf", "args": ["scoreA", "scoreB", "groupALabel", "groupBLabel"] },
+            "otherGroup": { "type": "computed", "formulaId": "greaterOf", "args": ["scoreA", "scoreB", "groupBLabel", "groupALabel"] },
+            "higherScore": { "type": "computed", "formulaId": "max2", "args": ["scoreA", "scoreB"] },
+            "lowerScore": { "type": "computed", "formulaId": "min2", "args": ["scoreA", "scoreB"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "A Command of Evidence (Quantitative) question requires directly comparing the actual numeric values given, and the best-supported claim is the one that accurately and specifically reflects exactly what the numbers show — no more, no less.",
+      "realPurpose": "This skill is identical to how researchers and analysts must draw only the conclusions that data actually supports, avoiding overstatement or unsupported claims."
+    },
+    "rv_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In a survey of {{total}} students, {{percent}}% reported using a particular study method. Which of the following is an accurate claim based on this data?",
+          "answer": "Exactly {{count}} out of the {{total}} surveyed students reported using this method",
+          "distractors": [
+            "Exactly {{totalMinusCount}} out of the {{total}} surveyed students reported using this method",
+            "Exactly {{percent}} out of the {{total}} surveyed students reported using this method",
+            "More than half of the surveyed students reported using this method"
+          ],
+          "vars": {
+            "total": { "type": "pick", "options": [100, 200, 400] },
+            "percent": { "type": "pick", "options": [25, 40, 50, 60, 75] },
+            "count": { "type": "computed", "formulaId": "multiplyDivide", "args": ["total", "percent", 100] },
+            "totalMinusCount": { "type": "computed", "formulaId": "subtract", "args": ["total", "count"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Converting a percentage into an exact count requires multiplying the total sample size by the percentage expressed as a decimal fraction, giving the precise number the data actually supports.",
+      "realPurpose": "This is exactly the kind of quantitative reasoning the Digital SAT tests when a passage includes a chart, table, or reported statistic alongside the text."
+    },
+    "rv_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A chart shows that a company's sales were {{yearOneSales}} units in Year 1 and {{yearTwoSales}} units in Year 2. Which claim is best supported by this data?",
+          "answer": "Sales {{trend}} by {{change}} units from Year 1 to Year 2",
+          "distractors": [
+            "Sales {{oppositeTrend}} by {{change}} units from Year 1 to Year 2",
+            "Sales remained exactly the same from Year 1 to Year 2",
+            "Sales {{trend}} by {{changeExaggerated}} units from Year 1 to Year 2"
+          ],
+          "vars": {
+            "yearOneSales": { "type": "int", "min": 100, "max": 900 },
+            "salesDelta": { "type": "pick", "options": [-80, -60, -40, -25, -15, 15, 25, 40, 60, 80] },
+            "yearTwoSales": { "type": "computed", "formulaId": "add", "args": ["yearOneSales", "salesDelta"] },
+            "increasedLabel": { "type": "pick", "options": ["increased"] },
+            "decreasedLabel": { "type": "pick", "options": ["decreased"] },
+            "trend": { "type": "computed", "formulaId": "greaterOf", "args": ["yearTwoSales", "yearOneSales", "increasedLabel", "decreasedLabel"] },
+            "oppositeTrend": { "type": "computed", "formulaId": "greaterOf", "args": ["yearTwoSales", "yearOneSales", "decreasedLabel", "increasedLabel"] },
+            "change": { "type": "computed", "formulaId": "absDiff", "args": ["yearOneSales", "yearTwoSales"] },
+            "changeBump": { "type": "int", "min": 20, "max": 100 },
+            "changeExaggerated": { "type": "computed", "formulaId": "add", "args": ["change", "changeBump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Determining a trend from two data points means comparing them directly to see which is larger, then calculating the exact difference to describe precisely how much change occurred.",
+      "realPurpose": "Passages that reference charts or tables on the Digital SAT require exactly this skill: reading specific values accurately and describing their relationship precisely, not just in general terms."
+    },
+    "rv_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A survey found that for every {{ratioA}} people who preferred Option X, {{ratioB}} people preferred Option Y. If {{totalSurveyed}} people total were surveyed with this same ratio, how many preferred Option X?",
+          "answer": "{{optionXCount}} people preferred Option X",
+          "distractors": ["{{optionYCount}} people preferred Option X", "{{totalSurveyed}} people preferred Option X", "{{optionXCountBumped}} people preferred Option X"],
+          "vars": {
+            "ratioA": { "type": "int", "min": 1, "max": 5 },
+            "ratioB": { "type": "int", "min": 1, "max": 5 },
+            "totalParts": { "type": "computed", "formulaId": "add", "args": ["ratioA", "ratioB"] },
+            "multiplier": { "type": "int", "min": 2, "max": 20 },
+            "totalSurveyed": { "type": "computed", "formulaId": "multiply", "args": ["totalParts", "multiplier"] },
+            "optionXCount": { "type": "computed", "formulaId": "multiply", "args": ["ratioA", "multiplier"] },
+            "optionYCount": { "type": "computed", "formulaId": "multiply", "args": ["ratioB", "multiplier"] },
+            "bump": { "type": "int", "min": 2, "max": 10 },
+            "optionXCountBumped": { "type": "computed", "formulaId": "add", "args": ["optionXCount", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Solving a ratio-based evidence question means dividing the total into equal 'parts' based on the given ratio, then multiplying the number of parts belonging to the group in question by the value of one part.",
+      "realPurpose": "This proportional reasoning skill is directly tested whenever a Digital SAT passage presents survey or ratio-based data alongside a claim to evaluate."
+    },
+    "rv_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A company's quarterly revenue rose from ${{month1Rev}} to ${{month2Rev}}. Which claim about the percent increase is best supported by this data?",
+          "answer": "Revenue increased by {{percent}}% from Quarter 1 to Quarter 2",
+          "distractors": [
+            "Revenue increased by {{percentWrong}}% from Quarter 1 to Quarter 2",
+            "Revenue decreased by {{percent}}% from Quarter 1 to Quarter 2",
+            "Revenue increased by {{percent}}% from Quarter 2 to Quarter 1"
+          ],
+          "vars": {
+            "month1Rev": { "type": "pick", "options": [100, 200, 300, 400, 500, 800] },
+            "percent": { "type": "pick", "options": [10, 20, 25, 50] },
+            "month2Rev": { "type": "computed", "formulaId": "addPercentOf", "args": ["month1Rev", "month1Rev", "percent"] },
+            "percentBump": { "type": "int", "min": 5, "max": 15 },
+            "percentWrong": { "type": "computed", "formulaId": "add", "args": ["percent", "percentBump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Determining percent change requires dividing the amount of change by the ORIGINAL value (not the new value), then expressing that ratio as a percentage — the stated direction (increase vs. decrease) must also match which value is actually larger.",
+      "realPurpose": "This is exactly the kind of quantitative reasoning tested when a Digital SAT passage cites a percent change between two data points rather than stating the percentage directly."
+    },
+    "rv_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student picks the vocabulary answer choice that has the 'fanciest' or most sophisticated-sounding word, assuming harder vocabulary is more likely to be correct. What is the flaw in this reasoning?",
+          "answer": "SAT vocabulary answers are chosen for precise contextual fit, not for sounding sophisticated; an unfamiliar, 'fancy' word is just as likely to be wrong as a simple one if it doesn't precisely match the required logical relationship",
+          "distractors": [
+            "The student is correct — the Digital SAT is specifically designed so that the most difficult-sounding vocabulary word is always the correct answer",
+            "Difficulty level and correctness are directly proportional; harder words are always safer choices on this question type",
+            "Simple, common words can never be correct answers on a Words-in-Context question"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Correctness on Words-in-Context questions depends entirely on how precisely a word's meaning fits the sentence's specific logical context, which has no inherent connection to how rare, long, or impressive-sounding that word is.",
+      "realPurpose": "This is one of the most well-documented, unreliable test-taking myths about the SAT, and avoiding it prevents students from being drawn toward attractive-sounding wrong answers."
+    },
+    "rv_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student selects an evidence quotation that mentions the same general topic as a claim, without checking whether it actually proves that specific claim. What is the mistake in this reasoning?",
+          "answer": "Command of Evidence questions require the cited evidence to directly and specifically support the exact claim given, not just be on the same subject; picking evidence that's merely topically related (but doesn't logically prove the specific claim) is one of the most common wrong-answer traps",
+          "distractors": [
+            "The student is correct — any quotation mentioning the same general subject as the claim is automatically valid supporting evidence",
+            "Evidence only needs to appear somewhere in the same paragraph as the claim to be considered valid support",
+            "The strongest evidence is always whichever quotation is the longest and most detailed"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A quotation can discuss the exact same subject as a claim while still failing to actually demonstrate or support that specific claim's precise logic; the correct evidence must directly establish the claim being tested, not merely share its general topic.",
+      "realPurpose": "Recognising this trap prevents one of the most frequently tested wrong-answer patterns on Command of Evidence questions."
+    },
+    "rv_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes a word must be correct because it is the only unfamiliar or rare vocabulary word among the choices, reasoning that the SAT 'always picks the hardest word.' What is the flaw in this reasoning?",
+          "answer": "Correctness depends purely on fitting the sentence's precise logical context, never on a word's difficulty level or rarity; both common and rare words appear as correct answers, and this 'hardest word' assumption is a documented, unreliable test-taking myth",
+          "distractors": [
+            "The student is correct — the single rarest or most unusual vocabulary word among the answer choices is always the intended correct answer",
+            "Word rarity is a reliable, official rule the College Board uses when writing correct answers",
+            "Only unfamiliar words are ever tested as correct answers on the Digital SAT"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The Digital SAT deliberately writes both familiar and unfamiliar words as correct answers, since the actual skill being tested is contextual precision, not vocabulary difficulty; treating rarity as a shortcut ignores the sentence's actual logical requirements.",
+      "realPurpose": "Avoiding this myth keeps a student focused on the context clues that actually determine the correct answer, rather than an unreliable shortcut."
+    },
+    "rv_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "When asked to find quantitative evidence supporting a claim, a student picks the data point that is largest or most extreme in the chart, assuming bigger numbers are always more 'supportive.' What is the mistake in this reasoning?",
+          "answer": "The correct data point is whichever one logically and specifically matches the exact claim being tested, not simply the largest or most dramatic-looking number in the data set; large or extreme values that don't actually relate to the specific claim are common traps",
+          "distractors": [
+            "The student is correct — the largest or most extreme number in any data set is always the strongest possible supporting evidence",
+            "Quantitative evidence questions are always solved by choosing whichever value appears first in the chart or table",
+            "Any data point at all can support any claim, as long as both come from the same chart"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The correct quantitative evidence must specifically and logically demonstrate the exact claim stated, regardless of whether that value happens to be the largest in the data set; an extreme value that doesn't relate to the specific claim being tested is not valid supporting evidence.",
+      "realPurpose": "This is a frequently tested trap, since large or dramatic-looking numbers can be tempting distractors that don't actually address the claim in question."
+    },
+    "rg_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Joining two complete sentences with only a comma (and no conjunction) is called:", "answer": "A comma splice" },
+        { "question": "What punctuation mark can correctly join two independent clauses without using a conjunction?", "answer": "A semicolon" },
+        { "question": "What term describes the rule that a singular subject must be paired with a singular verb, and a plural subject with a plural verb?", "answer": "Subject-verb agreement" },
+        { "question": "What term describes using the same grammatical form for each item in a list or comparison, such as all items ending in '-ing'?", "answer": "Parallel structure" }
+      ],
+      "distractorPool": ["A comma splice", "A semicolon", "Subject-verb agreement", "Parallel structure"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Each of these terms names a specific, testable grammar rule — how independent clauses may be joined, how subjects and verbs must match in number, and how list items must share the same grammatical form.",
+      "realPurpose": "These few, precisely defined rules account for a large share of Standard English Conventions questions, since the same rule patterns repeat across many different sentences."
+    },
+    "rg_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which category of transition word would logically connect two contrasting ideas?", "answer": "A contrast transition (e.g., however, nevertheless, yet)" },
+        { "question": "Which category of transition word would logically connect a cause to its effect?", "answer": "A cause-and-effect transition (e.g., therefore, consequently, as a result)" },
+        { "question": "Which category of transition word would logically add a supporting or similar point?", "answer": "An addition transition (e.g., furthermore, in addition, moreover)" }
+      ],
+      "distractorPool": [
+        "A contrast transition (e.g., however, nevertheless, yet)",
+        "A cause-and-effect transition (e.g., therefore, consequently, as a result)",
+        "An addition transition (e.g., furthermore, in addition, moreover)",
+        "A time-order transition (e.g., meanwhile, subsequently)"
+      ],
+      "distractorCount": 3,
+      "technicalIntricacy": "Transitions are grouped by the exact logical relationship they signal — contrast, cause-and-effect, or addition — and choosing the correct transition requires first identifying which of these relationships actually connects the two ideas in question.",
+      "realPurpose": "Recognising these categories lets you narrow down the correct transition immediately, based on the logic of the sentence, rather than guessing among several similar-sounding words."
+    },
+    "rg_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the correct rule for using an apostrophe to show possession?",
+          "answer": "An apostrophe + s (’s) for a singular possessive noun, and an s + apostrophe (s’) for a plural possessive noun already ending in s",
+          "distractors": [
+            "An apostrophe is always placed directly before the final letter of any noun, regardless of whether it is singular or plural",
+            "Apostrophes are only used to form plurals, never to show possession",
+            "A plural possessive noun never requires any apostrophe at all"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Possessive apostrophe placement depends on whether the noun is singular or already plural: singular nouns add ’s, while plural nouns ending in s typically add only an apostrophe after the existing s.",
+      "realPurpose": "Apostrophe placement is one of the most frequently and predictably tested Standard English Conventions rules on the Digital SAT."
+    },
+    "rg_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What does parallel structure require in a list of actions, such as 'She enjoys running, swimming, and to bike'?",
+          "answer": "Every verb or verb phrase in the list must share the same grammatical form, such as all ending in '-ing' or all in the same tense",
+          "distractors": [
+            "Only the first and last items in a list need to match grammatically; the middle items can take any form",
+            "Parallel structure only applies to lists containing exactly three items",
+            "As long as every item in a list is spelled correctly, parallel structure is automatically satisfied"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Parallel structure requires that every item performing the same grammatical role in a sentence (like a list of activities) use a matching grammatical form, so a mismatched form (like 'to bike' among '-ing' verbs) creates an error.",
+      "realPurpose": "Parallel structure errors are common and highly testable because the fix is mechanical once the mismatched item is identified — just change its form to match the others."
+    },
+    "rg_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In the sentence 'Running down the street, the backpack fell off her shoulder,' what grammatical error is present?",
+          "answer": "A dangling modifier — the phrase 'Running down the street' has no logical subject to describe, since it was the person, not the backpack, doing the running",
+          "distractors": [
+            "A comma splice, since two independent clauses are joined only by a comma",
+            "A subject-verb agreement error, since the subject and verb do not match in number",
+            "There is no error; the sentence is grammatically correct exactly as written"
+          ]
+        },
+        {
+          "question": "What is a 'dangling modifier'?",
+          "answer": "An introductory phrase that fails to logically describe the subject immediately following it in the sentence",
+          "distractors": [
+            "Any phrase placed at the end of a sentence, regardless of what it describes",
+            "A word that is spelled incorrectly within an otherwise correct sentence",
+            "A pronoun that does not match its antecedent in number"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A modifier (usually an introductory phrase) must logically describe the subject that immediately follows it; when the actual subject of the main clause isn't the thing the phrase is describing, the modifier 'dangles' with nothing correct to attach to.",
+      "realPurpose": "Modifier placement errors are a frequently tested Standard English Conventions issue, since Digital SAT sentences often place a descriptive phrase before a subject it doesn't logically match."
+    },
+    "rg_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the rule for using commas around a nonessential (nonrestrictive) clause, such as 'My brother, who lives in Chicago, called me'?",
+          "answer": "Commas should surround the nonessential clause on both sides, since the information could be removed without changing the sentence's core meaning",
+          "distractors": [
+            "No commas are ever needed, since all descriptive clauses are considered essential to the sentence",
+            "Only one comma is needed, placed immediately after the clause but never before it",
+            "The clause should be surrounded by parentheses instead of commas, since commas are reserved for lists only"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A nonessential (nonrestrictive) clause adds extra, removable information about a noun and must be set off with a comma on both sides, while an essential (restrictive) clause — one required to identify the noun precisely — takes no commas at all.",
+      "realPurpose": "Distinguishing essential from nonessential clauses is a core, precisely testable comma rule on the Digital SAT, since the presence or absence of commas actually changes a sentence's meaning."
+    },
+    "rg_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which of the following is a sentence fragment?",
+          "answer": "\"Because the meeting ran late.\"",
+          "distractors": [
+            "\"The meeting ran late.\"",
+            "\"The meeting ran late, so we rescheduled.\"",
+            "\"Although late, the meeting was productive.\""
+          ]
+        }
+      ],
+      "technicalIntricacy": "A sentence fragment is a group of words punctuated as a sentence but missing an independent clause — often because it begins with a subordinating word like 'because,' 'although,' or 'since' and never connects to a main clause with a subject and complete verb.",
+      "realPurpose": "Recognizing fragments is essential because the Digital SAT frequently presents an underlined portion that looks sentence-like but cannot stand alone grammatically."
+    },
+    "rg_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the correct rule for using a colon in a sentence, as in 'She brought three items: a pen, a notebook, and a laptop'?",
+          "answer": "A colon can introduce a list, explanation, or elaboration, but only when the words immediately before it form a complete independent clause",
+          "distractors": [
+            "A colon can be placed after any phrase at all, whether or not it forms a complete sentence",
+            "A colon and a comma are always fully interchangeable in every context",
+            "A colon may only be used to separate the hours and minutes in a time, never within a sentence"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A colon signals that a list, explanation, or elaboration is about to follow, but standard usage requires that the clause immediately preceding the colon be a grammatically complete independent clause on its own.",
+      "realPurpose": "Colon-usage questions are a predictable Standard English Conventions pattern, testing whether the clause before the colon can stand alone as a complete sentence."
+    },
+    "rg_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Which pronoun correctly refers back to the singular antecedent 'the committee' when it is treated as a single unit, as in 'The committee announced ___ decision'?",
+          "answer": "its",
+          "distractors": ["their", "they're", "it's"]
+        }
+      ],
+      "technicalIntricacy": "A pronoun must agree in number with its antecedent; a collective noun like 'committee,' when treated as a single unit, takes the singular pronoun 'its' rather than the plural 'their.'",
+      "realPurpose": "Pronoun-antecedent agreement errors are a frequently tested Standard English Conventions issue, especially with collective nouns that can be easily mistaken for plural subjects."
+    },
+    "rg_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Joining two complete sentences with NO punctuation and NO conjunction at all, as in 'I finished my homework I went outside,' is called:",
+          "answer": "A run-on (fused) sentence",
+          "distractors": ["A comma splice", "A sentence fragment", "A dangling modifier"]
+        }
+      ],
+      "technicalIntricacy": "A run-on (or 'fused') sentence occurs when two independent clauses are joined with no punctuation and no conjunction whatsoever, which is a distinct error from a comma splice (where a comma alone joins the clauses).",
+      "realPurpose": "Distinguishing a run-on from a comma splice and a fragment is essential, since each of these three sentence-boundary errors is fixed differently on the Digital SAT."
+    },
+    "rg_l2_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Each of the {{n}} students in the group ___ submitted their assignment on time. Which verb form correctly completes the sentence?",
+          "answer": "has",
+          "distractors": ["have", "having", "had"],
+          "vars": { "n": { "type": "int", "min": 3, "max": 50 } }
+        }
+      ],
+      "technicalIntricacy": "The subject of this sentence is 'Each,' which is always grammatically singular, regardless of how large the group described in the following prepositional phrase actually is; the verb must agree with 'Each,' not with the plural noun that follows it.",
+      "realPurpose": "This is one of the most common subject-verb agreement traps on the Digital SAT, since the plural-sounding phrase between the true subject and the verb can easily mislead a quick reader."
+    },
+    "rg_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A report noted that {{n}} companies each announced a merger. Which is the correctly punctuated possessive form referring to something belonging to all of the companies collectively (as in, \"the ___ combined profits\")?",
+          "answer": "companies’",
+          "distractors": ["company’s", "companies’s", "companies"],
+          "vars": { "n": { "type": "int", "min": 2, "max": 20 } }
+        }
+      ],
+      "technicalIntricacy": "Since 'companies' is already a plural noun ending in s, its possessive form is created by adding only an apostrophe after the existing s (companies’), rather than adding another s.",
+      "realPurpose": "Correctly punctuating plural possessives is a frequently and predictably tested Standard English Conventions rule."
+    },
+    "rg_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A sentence contains the list: \"running, jumping, and to swim.\" Which part of this list breaks parallel structure, and how should it be fixed?",
+          "answer": "\"to swim\" should be replaced with \"swimming\" to maintain parallel structure",
+          "distractors": [
+            "The sentence is already grammatically correct exactly as written, with no parallel structure issue",
+            "The entire list should be rewritten as a single combined phrase instead of 3 separate items",
+            "\"to swim\" is correct, and the other items in the list should be changed to match its form instead"
+          ]
+        },
+        {
+          "question": "A sentence contains the list: \"to read, to write, and thinking critically.\" Which part of this list breaks parallel structure, and how should it be fixed?",
+          "answer": "\"thinking critically\" should be replaced with \"to think critically\" to maintain parallel structure",
+          "distractors": [
+            "The sentence is already grammatically correct exactly as written, with no parallel structure issue",
+            "The entire list should be rewritten as a single combined phrase instead of 3 separate items",
+            "\"thinking critically\" is correct, and the other items in the list should be changed to match its form instead"
+          ]
+        },
+        {
+          "question": "A sentence contains the list: \"quickly, quietly, and with care.\" Which part of this list breaks parallel structure, and how should it be fixed?",
+          "answer": "\"with care\" should be replaced with \"carefully\" to maintain parallel structure",
+          "distractors": [
+            "The sentence is already grammatically correct exactly as written, with no parallel structure issue",
+            "The entire list should be rewritten as a single combined phrase instead of 3 separate items",
+            "\"with care\" is correct, and the other items in the list should be changed to match its form instead"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Identifying a parallel structure error means finding the one item in a list that doesn't match the grammatical form established by the others, then converting that mismatched item to fit the established pattern.",
+      "realPurpose": "This mechanical fix-the-mismatched-item skill is directly and predictably tested whenever the Digital SAT presents a list of actions, qualities, or descriptions."
+    },
+    "rg_l2_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A company's profits grew by {{percent}}% this year; ___, its stock price remained flat. Which transition best completes this sentence?",
+          "answer": "However",
+          "distractors": ["Therefore", "Similarly", "In addition"],
+          "vars": { "percent": { "type": "int", "min": 5, "max": 40 } }
+        }
+      ],
+      "technicalIntricacy": "The two clauses describe a surprising contrast (profits grew, yet the stock price did not follow), so the transition must signal contrast rather than agreement, addition, or cause-and-effect.",
+      "realPurpose": "Correctly matching a transition to the actual logical relationship between two clauses is the core skill tested by every Transitions question on the Digital SAT."
+    },
+    "rg_l2_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Neither the manager nor the {{n}} employees ___ available to meet today. Which verb form correctly completes the sentence, following the rule that with 'neither...nor,' the verb agrees with the nearer subject?",
+          "answer": "are",
+          "distractors": ["is", "be", "being"],
+          "vars": { "n": { "type": "int", "min": 2, "max": 20 } }
+        }
+      ],
+      "technicalIntricacy": "With correlative conjunctions like 'neither...nor' or 'either...or,' the verb must agree with whichever subject is closer to it — here, the plural noun 'employees,' not the singular 'manager,' determines that the plural verb 'are' is correct.",
+      "realPurpose": "This 'agree with the nearer subject' rule is a distinctly tested subject-verb agreement pattern, separate from simple singular/plural subject matching, and it frequently appears in Digital SAT sentences using 'either/or' or 'neither/nor' constructions."
+    },
+    "rg_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes 'their' can never be used to refer to a singular antecedent, marking every instance of singular 'their' as an error. What is the flaw in this reasoning?",
+          "answer": "Modern Standard English (and the Digital SAT's own conventions) accept singular 'they/their' as correct when referring to a person of unspecified or non-binary gender, or a generic singular antecedent; assuming singular 'their' is always wrong is an outdated rule not consistently tested as an error",
+          "distractors": [
+            "The student is correct — 'their' can only ever correctly refer to a plural antecedent, with no exceptions",
+            "'Their' is never grammatically acceptable in formal writing under any circumstances",
+            "Only 'his or her' is ever an acceptable substitute for a singular antecedent, and 'their' should always be marked wrong"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Contemporary Standard English usage, reflected in current SAT conventions, recognises singular 'they/their' as grammatically acceptable for referring to a person whose gender is unspecified or non-binary, or to a generic individual (e.g., 'Each student should bring their own laptop').",
+      "realPurpose": "Understanding this update prevents a student from incorrectly flagging a perfectly acceptable sentence as containing an error."
+    },
+    "rg_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student inserts a comma before every instance of 'and,' assuming a comma is always required immediately before it, regardless of context. What is the mistake in this reasoning?",
+          "answer": "A comma before 'and' is only required in specific situations, such as before the final item in a serial list or when 'and' joins two independent clauses; inserting a comma before an 'and' that merely joins two verbs or a short phrase creates an unnecessary, often incorrect comma",
+          "distractors": [
+            "The student is correct — a comma must always be placed immediately before every instance of 'and,' with no exceptions",
+            "Commas should never be used near the word 'and' under any circumstances",
+            "A comma before 'and' is only ever wrong, regardless of what the word 'and' is connecting"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Whether a comma belongs before 'and' depends entirely on what 'and' is connecting — two full independent clauses generally require a comma before 'and,' while 'and' joining just two verbs or a short phrase within a single clause typically does not.",
+      "realPurpose": "This distinction is one of the most reliably testable comma rules, since it depends on a clear, checkable structural difference (independent clause vs. shorter phrase)."
+    },
+    "rg_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student always chooses 'therefore' whenever two clauses appear in the same sentence, assuming any two connected ideas must have a cause-and-effect relationship. What is the flaw in this reasoning?",
+          "answer": "Not every pair of connected ideas has a cause-and-effect relationship; some pairs contrast (however), and some simply add related information (furthermore) — the correct transition must match the logical relationship actually present, not just any two connected ideas",
+          "distractors": [
+            "The student is correct — any two ideas placed in the same sentence must always have a cause-and-effect relationship",
+            "'Therefore' is a universally safe transition that is always grammatically correct in every context",
+            "The specific logical relationship between two clauses never affects which transition word is correct"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Sentences can connect ideas through many different logical relationships — contrast, addition, cause-and-effect, or sequence — and 'therefore' is only correct when the second idea is genuinely a direct consequence of the first, not simply whenever two ideas happen to appear together.",
+      "realPurpose": "Forcing a cause-and-effect transition onto a non-causal relationship is a common, easily corrected error once the actual logical relationship is properly identified."
+    },
+    "rg_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student assumes that longer, more complex-sounding sentences are always grammatically 'more correct' than short, simple sentences. What is the flaw in this reasoning?",
+          "answer": "Sentence length and grammatical correctness are completely independent; a short sentence can be perfectly grammatical while a long one contains a clear error, and vice versa — correctness depends on following specific grammar rules, not on a sentence's length or apparent sophistication",
+          "distractors": [
+            "The student is correct — longer, more complex sentences are inherently more grammatically correct than short ones",
+            "Short sentences are always ungrammatical on the Digital SAT and should generally be marked as errors",
+            "Grammatical correctness is determined by how many clauses a sentence contains, with more clauses always being better"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Grammatical correctness is determined entirely by whether a sentence follows specific, checkable rules (agreement, punctuation, parallel structure, and so on), which has no inherent relationship to how long or elaborate the sentence sounds.",
+      "realPurpose": "This distinction matters because the Digital SAT frequently tests short sentences containing clear errors, alongside longer sentences that are perfectly correct as written."
+    },
+    "sa_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A system of two linear equations that represent parallel lines (same slope, different y-intercepts) has:",
+          "answer": "No solution",
+          "distractors": ["Infinitely many solutions", "Exactly one solution", "Exactly two solutions"]
+        },
+        {
+          "question": "A system of two linear equations that represent the exact same line has:",
+          "answer": "Infinitely many solutions",
+          "distractors": ["No solution", "Exactly one solution", "Exactly two solutions"]
+        },
+        {
+          "question": "A system of two linear equations that represent lines with different slopes has:",
+          "answer": "Exactly one solution",
+          "distractors": ["No solution", "Infinitely many solutions", "Exactly two solutions"]
+        }
+      ],
+      "technicalIntricacy": "The number of solutions to a linear system depends entirely on the relationship between the two lines' slopes and intercepts: different slopes guarantee exactly one intersection point, identical lines overlap completely, and parallel-but-distinct lines never meet at all.",
+      "realPurpose": "Recognising these three outcomes immediately from a system's coefficients (without fully solving) is a fast, frequently tested Digital SAT Math skill."
+    },
+    "sa_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In the equation y = mx + b modeling a rental cost, what does the value of m most likely represent?",
+          "answer": "The rate charged per unit (e.g., per hour or per mile)",
+          "distractors": ["The total number of items purchased, regardless of cost", "The maximum possible value the equation could ever output", "A value that has no real-world meaning in this context"]
+        },
+        {
+          "question": "In the equation y = mx + b modeling a rental cost, what does the value of b most likely represent?",
+          "answer": "The fixed starting cost before any usage (the cost when x = 0)",
+          "distractors": ["The total number of items purchased, regardless of cost", "The maximum possible value the equation could ever output", "A value that has no real-world meaning in this context"]
+        }
+      ],
+      "technicalIntricacy": "In a real-world linear model y = mx + b, the slope m represents a constant rate of change per unit of x, while the y-intercept b represents the starting value already present before x begins increasing from zero.",
+      "realPurpose": "Interpreting slope and intercept in context is one of the most frequently tested Digital SAT Math skills, since it connects an abstract equation directly to a real-world scenario."
+    },
+    "sa_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "How is the solution to an equation like x = 5 different from the solution to an inequality like x > 5?",
+          "answer": "An equation typically has one specific solution, while an inequality has a whole range of solutions",
+          "distractors": ["Equations and inequalities always have exactly the same type and number of solutions", "An inequality can only ever be solved if it is first converted into an equation", "A number line can only represent a single exact solution, never a range of values"]
+        },
+        {
+          "question": "Why is a linear inequality's solution often best represented on a number line?",
+          "answer": "Because it represents an entire continuous range of possible values, not a single point",
+          "distractors": ["Equations and inequalities always have exactly the same type and number of solutions", "An inequality can only ever be solved if it is first converted into an equation", "A number line can only represent a single exact solution, never a range of values"]
+        }
+      ],
+      "technicalIntricacy": "An equation like x = 5 pins down exactly one value that makes it true, while an inequality like x > 5 is satisfied by infinitely many values, which is why its solution is best shown as a shaded range or ray on a number line rather than a single point.",
+      "realPurpose": "Recognising this distinction prevents a student from treating an inequality's answer as a single number when the question actually calls for a full range of values."
+    },
+    "sa_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is it called when you solve one equation for a variable and then substitute that expression into the other equation in a system?",
+          "answer": "The substitution method",
+          "distractors": ["The graphing method", "The distributive method", "The reciprocal method"]
+        },
+        {
+          "question": "What is it called when you add or subtract two equations in a system to eliminate one variable?",
+          "answer": "The elimination method",
+          "distractors": ["The graphing method", "The distributive method", "The reciprocal method"]
+        }
+      ],
+      "technicalIntricacy": "Substitution and elimination are the two standard algebraic techniques for solving a system of equations without graphing, each suited to different-looking systems — substitution when one equation is already easy to isolate a variable in, elimination when the coefficients line up conveniently for cancellation.",
+      "realPurpose": "Knowing both named methods lets a student quickly choose whichever approach will solve a given system fastest under timed testing conditions."
+    },
+    "sa_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the general method for solving a linear equation like 3x + 5 = 20 for x?",
+          "answer": "Use inverse operations to isolate x, applying the same operation to both sides of the equation until x is alone",
+          "distractors": [
+            "Multiply both sides by the coefficient of x before doing anything else",
+            "Add the same variable to both sides to cancel out x",
+            "Square both sides of the equation to eliminate the variable"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Solving a linear equation means undoing whatever operations were applied to x, in reverse order, while keeping both sides of the equation equal by performing the same operation on each side.",
+      "realPurpose": "This inverse-operations process is the foundational technique behind every linear equation on the Digital SAT Math section, no matter how the equation is dressed up."
+    },
+    "sa_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What happens to the direction of an inequality sign when you multiply or divide both sides by a NEGATIVE number?",
+          "answer": "The inequality sign must be reversed (flipped) to keep the statement true",
+          "distractors": [
+            "The inequality sign stays exactly the same, regardless of the sign of the number",
+            "The inequality sign is removed entirely and the expression becomes an equation",
+            "The inequality sign only flips when dividing, never when multiplying"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Multiplying or dividing both sides of an inequality by a negative number reverses the relative order of the two sides, so the inequality symbol must flip direction to keep the statement mathematically true.",
+      "realPurpose": "This sign-flip rule is one of the most heavily and predictably tested rules on Digital SAT inequality questions."
+    },
+    "sa_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "After solving a system of two linear equations for x and y, what is the best way to verify your solution is correct?",
+          "answer": "Substitute both values back into BOTH original equations and confirm each one holds true",
+          "distractors": [
+            "Substitute the values into only one of the two original equations",
+            "Graph only one of the equations and check where it crosses the x-axis",
+            "Assume the solution is correct as long as the arithmetic looked reasonable while solving"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A true solution to a system must satisfy every equation in that system simultaneously, so checking only one equation could miss an error that happened to still satisfy that single equation.",
+      "realPurpose": "This verification habit catches computational errors before they cost points, especially under timed testing conditions."
+    },
+    "sa_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What does the x-intercept of a line represent?",
+          "answer": "The point where the line crosses the x-axis, where y = 0",
+          "distractors": [
+            "The point where the line crosses the y-axis, where x = 0",
+            "The steepness of the line at every point along its length",
+            "The highest point the line ever reaches"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The x-intercept is the specific point on a line where its y-coordinate equals zero, found by setting y = 0 in the equation and solving for x.",
+      "realPurpose": "Identifying intercepts quickly from an equation or graph is a frequently tested Digital SAT Math skill, especially in real-world contexts like finding when a value reaches zero."
+    },
+    "sa_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A line is written in standard form as Ax + By = C. What must you do to find its slope?",
+          "answer": "Rearrange the equation into slope-intercept form (y = mx + b); the slope is then −A/B",
+          "distractors": [
+            "The slope is always equal to A, regardless of B or C",
+            "The slope is always equal to C, regardless of A or B",
+            "Standard form equations have no defined slope unless graphed first"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Standard form (Ax + By = C) doesn't display the slope directly; solving the equation for y isolates it in the form y = mx + b, revealing that the slope equals −A/B.",
+      "realPurpose": "Digital SAT Math frequently presents linear equations in standard form, so quickly converting to slope-intercept form is an essential, time-saving skill."
+    },
+    "sa_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "The formula for distance is d = rt (distance = rate × time). How would you solve this formula for t (time) in terms of d and r?",
+          "answer": "t = d/r, found by dividing both sides of the equation by r",
+          "distractors": [
+            "t = d − r, found by subtracting r from both sides",
+            "t = r/d, found by flipping the fraction without changing the operation",
+            "t = dr, found by multiplying d and r together"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Solving a literal equation for a different variable uses the same inverse-operations principle as solving a numeric equation — here, dividing both sides by r isolates t, since r and t are multiplied together in the original formula.",
+      "realPurpose": "Rearranging formulas to solve for a different variable is a common Digital SAT Math skill, especially in real-world rate, geometry, and science-context problems."
+    },
+    "sa_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "Solve for x: {{a}}x {{bSign}} {{bAbs}} = {{c}}",
+      "vars": {
+        "a": { "type": "int", "min": 2, "max": 9 },
+        "xVal": { "type": "int", "min": -10, "max": 20 },
+        "b": { "type": "int", "min": -20, "max": 20 },
+        "c": { "type": "computed", "formulaId": "affineEval", "args": ["a", "xVal", "b"] },
+        "bSign": { "type": "computed", "formulaId": "signSymbol", "args": ["b"] },
+        "bAbs": { "type": "computed", "formulaId": "absValue", "args": ["b"] }
+      },
+      "answerFormulaId": "identity",
+      "answerArgs": ["xVal"],
+      "decimals": 0,
+      "prefix": "x = ",
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["c"] }],
+        "perturb": { "min": -4, "max": 4, "decimals": 0 }
+      },
+      "technicalIntricacy": "Solving a two-step linear equation requires undoing operations in reverse order — first subtracting (or adding) the constant term from both sides, then dividing both sides by the coefficient of x.",
+      "realPurpose": "This is the most fundamental algebra skill tested on the Digital SAT Math section, underlying nearly every more complex algebraic question."
+    },
+    "sa_l2_t2": {
+      "kind": "numeric",
+      "questionTemplate": "Solve the system of equations for x:<br>x + y = {{s}}<br>x − y = {{d}}",
+      "vars": {
+        "x0": { "type": "int", "min": 1, "max": 10 },
+        "y0": { "type": "int", "min": 1, "max": 10 },
+        "s": { "type": "computed", "formulaId": "add", "args": ["x0", "y0"] },
+        "d": { "type": "computed", "formulaId": "subtract", "args": ["x0", "y0"] }
+      },
+      "answerFormulaId": "identity",
+      "answerArgs": ["x0"],
+      "decimals": 0,
+      "prefix": "x = ",
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["y0"] }],
+        "perturb": { "min": -4, "max": 4, "decimals": 0 }
+      },
+      "technicalIntricacy": "A system of two linear equations can be solved by elimination — here, adding the two equations makes y cancel out (since one equation has +y and the other −y), leaving a single equation that can be solved directly for x.",
+      "realPurpose": "Solving systems algebraically is essential for modeling situations with two unknowns and two constraints, such as comparing the cost of two different pricing plans."
+    },
+    "sa_l2_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "Solve the inequality: {{coefficient}}x < {{rightSide}}",
+          "answer": "x < {{bound}}",
+          "distractors": ["x > {{bound}}", "x < {{boundPlusBump}}", "x < {{boundMinusBumpClamped}}"],
+          "vars": {
+            "coefficient": { "type": "int", "min": 2, "max": 9 },
+            "bound": { "type": "int", "min": 2, "max": 20 },
+            "rightSide": { "type": "computed", "formulaId": "multiply", "args": ["coefficient", "bound"] },
+            "bumpA": { "type": "int", "min": 1, "max": 4 },
+            "boundPlusBump": { "type": "computed", "formulaId": "add", "args": ["bound", "bumpA"] },
+            "bumpB": { "type": "int", "min": 1, "max": 4 },
+            "boundMinusBumpRaw": { "type": "computed", "formulaId": "subtract", "args": ["bound", "bumpB"] },
+            "boundMinusBumpClamped": { "type": "computed", "formulaId": "clampMin1", "args": ["boundMinusBumpRaw", 0] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Solving a linear inequality with a positive coefficient works exactly like solving an equation — divide both sides by the coefficient to isolate x, and the inequality sign stays in the same direction.",
+      "realPurpose": "Inequalities model real situations with a range of acceptable values, such as a budget constraint or a minimum required score, rather than a single exact answer."
+    },
+    "sa_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "What is the slope of the line passing through the points ({{x1}}, {{y1}}) and ({{x2}}, {{y2}})?",
+      "vars": {
+        "slope": { "type": "pick", "options": [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5] },
+        "dx": { "type": "int", "min": 1, "max": 5 },
+        "x1": { "type": "int", "min": -10, "max": 5 },
+        "x2": { "type": "computed", "formulaId": "add", "args": ["x1", "dx"] },
+        "y1": { "type": "int", "min": -10, "max": 5 },
+        "dy": { "type": "computed", "formulaId": "multiply", "args": ["slope", "dx"] },
+        "y2": { "type": "computed", "formulaId": "add", "args": ["y1", "dy"] }
+      },
+      "answerFormulaId": "identity",
+      "answerArgs": ["slope"],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "multiply", "args": ["slope", -1] }, { "formulaId": "identity", "args": ["dx"] }],
+        "perturb": { "min": 1, "max": 3, "decimals": 0 }
+      },
+      "technicalIntricacy": "Slope is calculated as the change in y divided by the change in x between two points on a line: (y<sub>2</sub> − y<sub>1</sub>) ÷ (x<sub>2</sub> − x<sub>1</sub>).",
+      "realPurpose": "Calculating slope from two points is a foundational Digital SAT Math skill used in questions about rates of change, graphs, and real-world linear models."
+    },
+    "sa_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A line is given by the equation y = {{m}}x {{bSign}} {{bAbs}}. What is the line's x-intercept (the value of x where y = 0)?",
+      "vars": {
+        "m": { "type": "pick", "options": [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5] },
+        "xMagnitude": { "type": "int", "min": 1, "max": 10 },
+        "xSign": { "type": "pick", "options": [1, -1] },
+        "xVal": { "type": "computed", "formulaId": "multiply", "args": ["xMagnitude", "xSign"] },
+        "b": { "type": "computed", "formulaId": "multiply3", "args": ["m", "xVal", -1] },
+        "bSign": { "type": "computed", "formulaId": "signSymbol", "args": ["b"] },
+        "bAbs": { "type": "computed", "formulaId": "absValue", "args": ["b"] }
+      },
+      "answerFormulaId": "identity",
+      "answerArgs": ["xVal"],
+      "decimals": 0,
+      "prefix": "x = ",
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["b"] }],
+        "perturb": { "min": -4, "max": 4, "decimals": 0 }
+      },
+      "technicalIntricacy": "The x-intercept of a line is found by setting y = 0 and solving the resulting equation for x; a common mistake is assuming the x-intercept equals the constant term b instead of actually solving 0 = mx + b.",
+      "realPurpose": "Calculating intercepts directly from an equation (without graphing) is a fast, frequently tested Digital SAT Math skill, especially in questions describing real-world break-even points or starting conditions."
+    },
+    "sa_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student solves a system of equations and arrives at the equation 0 = 5 (a false statement with no variables remaining), then assumes they made an arithmetic mistake, believing every system must have a solution. What is the flaw in this reasoning?",
+          "answer": "Reaching a false statement like 0 = 5 (with all variables cancelling out) is a valid, meaningful result — it means the system has NO solution (the two lines are parallel and never intersect), not that an error was made",
+          "distractors": [
+            "The student is correct — every system of equations must have a solution, so reaching 0 = 5 always indicates an arithmetic mistake",
+            "Reaching 0 = 5 means the correct solution is x = 0 and y = 5",
+            "Reaching 0 = 5 means the system must be solved again using a completely different method to find the missing variables"
+          ]
+        }
+      ],
+      "technicalIntricacy": "When solving a system algebraically causes the variables to cancel out entirely, the resulting statement reveals the system's true nature: a false statement (like 0 = 5) means the lines are parallel and the system has no solution, while a true statement (like 0 = 0) means the lines are identical and the system has infinitely many solutions.",
+      "realPurpose": "Recognising these two special outcomes prevents wasted time hunting for arithmetic errors that were never actually made."
+    },
+    "sa_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student solves a system and arrives at the equation 0 = 0 (a true statement with no variables remaining), and assumes this means x = 0 and y = 0. What is the flaw in this reasoning?",
+          "answer": "Reaching a true statement with no variables remaining (like 0 = 0) means the two equations represent the SAME line, giving infinitely many solutions, not that x and y both equal 0",
+          "distractors": [
+            "The student is correct — reaching 0 = 0 always means x = 0 and y = 0 is the solution",
+            "Reaching 0 = 0 means the system has no solution at all",
+            "Reaching 0 = 0 means the original equations were written incorrectly and must be redone"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A true, variable-free statement like 0 = 0 arises when the two original equations are actually equivalent (the same line written differently), meaning every point on that line is a solution — infinitely many solutions — rather than pointing to one specific numeric answer.",
+      "realPurpose": "Distinguishing this outcome from an actual numeric solution is essential for correctly interpreting what happened during the solving process."
+    },
+    "sa_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student solves the inequality −{{coefficient}}x > {{rightSide}} by dividing both sides by −{{coefficient}}, without changing the direction of the inequality sign, and gets x > {{bound}}. What is the mistake, and what is the correct solution?",
+          "answer": "x < {{bound}}, found by dividing both sides by −{{coefficient}} AND flipping the inequality sign, since dividing by a negative number always reverses the inequality direction",
+          "distractors": [
+            "x > {{bound}} is correct, since the inequality sign should always stay the same no matter what is divided",
+            "x > {{negBound}}, found by ignoring the negative sign on the coefficient entirely",
+            "The inequality has no valid solution, since a negative coefficient makes it unsolvable"
+          ],
+          "vars": {
+            "coefficient": { "type": "int", "min": 2, "max": 9 },
+            "bound": { "type": "int", "min": 2, "max": 15 },
+            "rightSide": { "type": "computed", "formulaId": "multiply3", "args": ["coefficient", "bound", -1] },
+            "negBound": { "type": "computed", "formulaId": "multiply", "args": ["bound", -1] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Dividing or multiplying both sides of an inequality by a negative number reverses the order of the values being compared, which is why the inequality sign must be flipped to keep the statement true — one of the most heavily tested rules on Digital SAT inequality questions.",
+      "realPurpose": "Forgetting this flip is one of the single most common errors on inequality questions, and checking for a negative coefficient before dividing is an easy, reliable habit to build."
+    },
+    "sa_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student calculates the slope of the line through ({{x1}}, {{y1}}) and ({{x2}}, {{y2}}) by computing (x<sub>2</sub> − x<sub>1</sub>) ÷ (y<sub>2</sub> − y<sub>1</sub>), inverting the standard slope formula. What is the mistake, and what is the correct slope?",
+          "answer": "{{slope}}, found using (y<sub>2</sub> − y<sub>1</sub>) ÷ (x<sub>2</sub> − x<sub>1</sub>) = ({{y2}} − {{y1}}) ÷ ({{x2}} − {{x1}})",
+          "distractors": [
+            "{{wrongSlope}}, found by incorrectly calculating (x<sub>2</sub> − x<sub>1</sub>) ÷ (y<sub>2</sub> − y<sub>1</sub>) instead",
+            "{{negSlope}}, found by reversing the order of subtraction in only the numerator",
+            "{{slopeBumped}}, found by making an arithmetic error while subtracting"
+          ],
+          "vars": {
+            "x1": { "type": "int", "min": -10, "max": 5 },
+            "dx": { "type": "int", "min": 1, "max": 6 },
+            "x2": { "type": "computed", "formulaId": "add", "args": ["x1", "dx"] },
+            "slope": { "type": "pick", "options": [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5] },
+            "y1": { "type": "int", "min": -10, "max": 5 },
+            "slopeDx": { "type": "computed", "formulaId": "multiply", "args": ["slope", "dx"] },
+            "y2": { "type": "computed", "formulaId": "add", "args": ["y1", "slopeDx"] },
+            "yDiff": { "type": "computed", "formulaId": "subtract", "args": ["y2", "y1"] },
+            "wrongSlopeRaw": { "type": "computed", "formulaId": "divide", "args": ["dx", "yDiff"] },
+            "wrongSlope": { "type": "computed", "formulaId": "round2", "args": ["wrongSlopeRaw"] },
+            "negSlope": { "type": "computed", "formulaId": "multiply", "args": ["slope", -1] },
+            "bump": { "type": "int", "min": 1, "max": 3 },
+            "slopeBumped": { "type": "computed", "formulaId": "add", "args": ["slope", "bump"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Slope is defined specifically as the change in y (rise) divided by the change in x (run); inverting this formula produces the reciprocal of the true slope, which represents a completely different (and generally incorrect) rate of change.",
+      "realPurpose": "Keeping the rise-over-run order straight is essential, since an inverted slope can lead to a dramatically different (and wrong) interpretation of a real-world rate of change."
+    },
+    "sq_l1_t1": {
+      "kind": "choice",
+      "variants": [
+        { "question": "How many solutions (real roots) can a quadratic equation have at most?", "answer": "Two" },
+        { "question": "What is the term for the point on a parabola where it reaches its maximum or minimum value?", "answer": "The vertex" },
+        { "question": "What does the discriminant (b<sup>2</sup> − 4ac) tell you about a quadratic equation's solutions?", "answer": "Whether the equation has two, one, or zero real solutions" }
+      ],
+      "distractorPool": ["Two", "The vertex", "Whether the equation has two, one, or zero real solutions", "One"],
+      "distractorCount": 3,
+      "technicalIntricacy": "A quadratic's graph is a parabola, which can cross the x-axis at most twice, and its vertex marks the single highest or lowest point on that curve; the discriminant determines exactly how many times (if any) the parabola crosses the x-axis.",
+      "realPurpose": "These core quadratic concepts underlie nearly every Digital SAT question involving parabolas, from solving equations to interpreting graphs."
+    },
+    "sq_l1_t2": {
+      "kind": "choice",
+      "variants": [
+        { "question": "What does the notation f(x) represent?", "answer": "The output of function f for a given input x" },
+        { "question": "If f(x) = x<sup>2</sup> + 1, what does f(3) represent?", "answer": "The value of the function when x is replaced with 3" },
+        { "question": "What does it mean if a graph shows f(2) = 7?", "answer": "When the input is 2, the function's output is 7" }
+      ],
+      "distractorPool": ["The value of x when the function's output equals f", "The number of times the letter f appears in the function's equation", "A fixed constant that never changes regardless of the function's input"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Function notation f(x) names a rule (f) that transforms an input (x) into a specific output; evaluating f at a particular number means substituting that number everywhere x appears in the function's definition.",
+      "realPurpose": "Fluent, error-free use of function notation is required across many Digital SAT Math questions, from evaluating functions to interpreting function graphs and tables."
+    },
+    "sq_l1_t3": {
+      "kind": "choice",
+      "variants": [
+        { "question": "In vertex form, a quadratic is written as y = a(x − h)<sup>2</sup> + k. What does the point (h, k) represent?", "answer": "The vertex of the parabola" },
+        { "question": "In vertex form y = a(x − h)<sup>2</sup> + k, what does the sign of 'a' tell you about the parabola?", "answer": "Whether the parabola opens upward (positive a) or downward (negative a)" }
+      ],
+      "distractorPool": ["A point where the parabola crosses the x-axis, rather than its maximum or minimum", "The y-intercept of the parabola, rather than its vertex", "The steepness of the parabola at every single point along its curve"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Vertex form is specifically structured to make the vertex (h, k) and the direction the parabola opens immediately readable from the equation, without needing to complete the square or graph the function first.",
+      "realPurpose": "Recognising vertex form instantly saves valuable time on the Digital SAT, since the vertex and orientation of a parabola can otherwise require several extra algebraic steps to find from standard form."
+    },
+    "sq_l1_t4": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which type of growth increases by the same fixed AMOUNT each time period?", "answer": "Linear growth" },
+        { "question": "Which type of growth increases by the same fixed PERCENTAGE each time period, making it grow faster and faster over time?", "answer": "Exponential growth" }
+      ],
+      "distractorPool": ["Quadratic growth", "Negative growth", "Static (unchanging) growth"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Linear growth adds the same fixed number every period, producing a straight-line graph, while exponential growth multiplies by the same fixed percentage every period, producing a curve that accelerates increasingly quickly over time.",
+      "realPurpose": "Distinguishing linear from exponential growth is essential for correctly modeling real situations like savings accounts, populations, and viral spread, which behave very differently over the long run."
+    },
+    "sq_l1_t5": {
+      "kind": "choice",
+      "variants": [
+        { "question": "Which method solves a quadratic equation by finding two numbers that multiply to c and add to b?", "answer": "Factoring" },
+        { "question": "Which method solves any quadratic equation using the formula x = (−b ± √(b<sup>2</sup> − 4ac)) ÷ 2a?", "answer": "The quadratic formula" },
+        { "question": "Which method solves a quadratic equation by rewriting one side as a perfect square trinomial?", "answer": "Completing the square" }
+      ],
+      "distractorPool": ["Factoring", "The quadratic formula", "Completing the square", "Substitution"],
+      "distractorCount": 3,
+      "technicalIntricacy": "Every quadratic equation can be solved by the quadratic formula, and many can also be solved faster by factoring (when it factors into whole numbers) or by completing the square (rewriting the equation as a perfect square).",
+      "realPurpose": "Knowing all three named methods lets a student choose whichever approach solves a given quadratic fastest under timed testing conditions."
+    },
+    "sq_l1_t6": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the 'axis of symmetry' of a parabola?",
+          "answer": "The vertical line that passes through the vertex, dividing the parabola into two mirror-image halves",
+          "distractors": [
+            "The horizontal line that passes through the y-intercept of the parabola",
+            "A line that touches the parabola at exactly two separate points",
+            "The line segment connecting the parabola's two x-intercepts"
+          ]
+        },
+        {
+          "question": "For a quadratic in standard form y = ax<sup>2</sup> + bx + c, what is the formula for the axis of symmetry?",
+          "answer": "x = −b ÷ (2a)",
+          "distractors": ["x = −c ÷ (2a)", "x = b ÷ (2a)", "x = −b ÷ (2c)"]
+        }
+      ],
+      "technicalIntricacy": "The axis of symmetry is the vertical line x = −b/(2a) that passes directly through a parabola's vertex, and every point on one side of this line has a mirror-image point on the other side at the same height.",
+      "realPurpose": "The axis of symmetry formula also gives the x-coordinate of the vertex directly, making it a fast way to locate a parabola's maximum or minimum point from standard form."
+    },
+    "sq_l1_t7": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "In the exponential decay formula y = a(1 − r)<sup>t</sup>, what does 'r' represent?",
+          "answer": "The decay rate — the fixed fraction (as a decimal) of the value that is lost during each time period",
+          "distractors": [
+            "The total number of time periods that have passed",
+            "The final value of y after all decay has occurred",
+            "The initial starting value before any decay begins"
+          ]
+        },
+        {
+          "question": "In the exponential decay formula y = a(1 − r)<sup>t</sup>, what does 'a' represent?",
+          "answer": "The initial starting value, before any decay has occurred (the value when t = 0)",
+          "distractors": [
+            "The decay rate expressed as a decimal",
+            "The total number of time periods that have passed",
+            "The final value of y after all decay has occurred"
+          ]
+        }
+      ],
+      "technicalIntricacy": "In exponential decay, y = a(1 − r)<sup>t</sup>, 'a' is the starting amount, 'r' is the fixed percentage lost each period (expressed as a decimal), and 't' counts the number of periods, with the quantity shrinking by a smaller and smaller amount each time as it approaches zero.",
+      "realPurpose": "Exponential decay models real phenomena such as depreciation, radioactive decay, and medication leaving the bloodstream, all of which decrease by a percentage rather than a fixed amount each period."
+    },
+    "sq_l1_t8": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What is the 'difference of squares' factoring pattern for an expression like x<sup>2</sup> − 9?",
+          "answer": "x<sup>2</sup> − 9 factors as (x + 3)(x − 3), since 9 is a perfect square (3<sup>2</sup>)",
+          "distractors": [
+            "x<sup>2</sup> − 9 factors as (x − 9)(x + 1), since those add to match the original expression",
+            "x<sup>2</sup> − 9 cannot be factored because it has only two terms",
+            "x<sup>2</sup> − 9 factors as (x − 3)(x − 3), since 3 × 3 = 9"
+          ]
+        },
+        {
+          "question": "Which of the following expressions fits the 'difference of squares' pattern a<sup>2</sup> − b<sup>2</sup> = (a + b)(a − b)?",
+          "answer": "x<sup>2</sup> − 16",
+          "distractors": ["x<sup>2</sup> + 16", "x<sup>2</sup> − 15", "x<sup>2</sup> − 8"]
+        }
+      ],
+      "technicalIntricacy": "The difference of squares pattern applies whenever an expression is a perfect square minus another perfect square (a<sup>2</sup> − b<sup>2</sup>), and it always factors immediately into (a + b)(a − b) without needing to search for factor pairs the way a general trinomial does.",
+      "realPurpose": "Recognising this pattern instantly saves valuable time on the Digital SAT whenever a quadratic expression happens to be a difference of two perfect squares."
+    },
+    "sq_l1_t9": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What does the 'domain' of a function refer to?",
+          "answer": "The complete set of valid input (x) values for which the function is defined",
+          "distractors": [
+            "The complete set of possible output (y) values the function can produce",
+            "The single input value that makes the function equal to zero",
+            "The highest possible output value the function can ever reach"
+          ]
+        }
+      ],
+      "technicalIntricacy": "A function's domain is the full set of input values that can be plugged into the function and produce a defined, real output, which is distinct from its range (the resulting set of output values).",
+      "realPurpose": "Identifying domain restrictions (such as values that would require dividing by zero or taking the square root of a negative number) is a commonly tested Digital SAT function skill."
+    },
+    "sq_l1_t10": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A scatterplot shows a strong relationship between two variables. Why is it incorrect to automatically conclude that one variable directly CAUSES the other?",
+          "answer": "Correlation (a statistical relationship between two variables) does not by itself prove causation; the relationship could be coincidental or explained by another, unmeasured factor affecting both variables",
+          "distractors": [
+            "A strong statistical relationship between two variables always proves that one variable causes the other",
+            "Correlation and causation are simply two different names for the exact same statistical concept",
+            "Only a weak, unclear relationship between variables could ever fail to indicate direct causation"
+          ]
+        }
+      ],
+      "technicalIntricacy": "Correlation describes a statistical association between two variables (that they tend to change together), while causation requires proving that one variable's change directly produces the other's change — a strong correlation alone never guarantees this direct causal link.",
+      "realPurpose": "The Digital SAT frequently tests whether a student incorrectly extends a data trend into an unsupported causal claim, since real data can show correlation without any true underlying cause."
+    },
+    "sq_l2_t1": {
+      "kind": "numeric",
+      "questionTemplate": "If f(x) = {{a}}x<sup>2</sup> {{bSign}} {{bAbs}}x {{cSign}} {{cAbs}}, what is f({{xVal}})?",
+      "vars": {
+        "a": { "type": "int", "min": 1, "max": 5 },
+        "xVal": { "type": "int", "min": -5, "max": 5 },
+        "b": { "type": "int", "min": -5, "max": 5 },
+        "c": { "type": "int", "min": -10, "max": 10 },
+        "bSign": { "type": "computed", "formulaId": "signSymbol", "args": ["b"] },
+        "bAbs": { "type": "computed", "formulaId": "absValue", "args": ["b"] },
+        "cSign": { "type": "computed", "formulaId": "signSymbol", "args": ["c"] },
+        "cAbs": { "type": "computed", "formulaId": "absValue", "args": ["c"] }
+      },
+      "answerFormulaId": "quadraticEval",
+      "answerArgs": ["a", "xVal", "b", "c"],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "quadraticLinearMistake", "args": ["a", "xVal", "b", "c"] }],
+        "perturb": { "min": -10, "max": 10, "decimals": 0 }
+      },
+      "technicalIntricacy": "Evaluating a quadratic function at a specific input means substituting that value everywhere x appears (including inside the squared term), then carefully following the order of operations to compute the final result.",
+      "realPurpose": "This substitution skill is essential for evaluating any function, and quadratics specifically test whether the squaring step is applied correctly before combining the remaining terms."
+    },
+    "sq_l2_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "What are the solutions to x<sup>2</sup> {{bSign}} {{bAbs}}x {{cSign}} {{cAbs}} = 0?",
+          "answer": "x = {{r1}} or x = {{r2}}",
+          "distractors": ["x = {{b}} or x = {{c}}", "x = {{r1Plus1}} or x = {{r2Minus1}}", "x = {{negR1}} or x = {{negR2}}"],
+          "vars": {
+            "r1": { "type": "int", "min": -8, "max": -1 },
+            "r2": { "type": "int", "min": 1, "max": 8 },
+            "sumR": { "type": "computed", "formulaId": "add", "args": ["r1", "r2"] },
+            "b": { "type": "computed", "formulaId": "multiply", "args": ["sumR", -1] },
+            "c": { "type": "computed", "formulaId": "multiply", "args": ["r1", "r2"] },
+            "bSign": { "type": "computed", "formulaId": "signSymbol", "args": ["b"] },
+            "bAbs": { "type": "computed", "formulaId": "absValue", "args": ["b"] },
+            "cSign": { "type": "computed", "formulaId": "signSymbol", "args": ["c"] },
+            "cAbs": { "type": "computed", "formulaId": "absValue", "args": ["c"] },
+            "r1Plus1": { "type": "computed", "formulaId": "add", "args": ["r1", 1] },
+            "r2Minus1": { "type": "computed", "formulaId": "subtract", "args": ["r2", 1] },
+            "negR1": { "type": "computed", "formulaId": "multiply", "args": ["r1", -1] },
+            "negR2": { "type": "computed", "formulaId": "multiply", "args": ["r2", -1] }
+          }
+        }
+      ],
+      "technicalIntricacy": "Factoring a quadratic in the form x<sup>2</sup> + bx + c means finding two numbers that multiply to c and add to b; those two numbers become the solutions when each factor is set equal to zero.",
+      "realPurpose": "Factoring is often the fastest way to solve a quadratic equation on a timed test, when the equation happens to factor into whole numbers."
+    },
+    "sq_l2_t3": {
+      "kind": "numeric",
+      "questionTemplate": "A population starts at {{initial}} and grows at a rate of {{ratePercent}}% per year. Using the formula y = a(1 + r)<sup>t</sup>, approximately what will the population be after {{years}} years (rounded to the nearest whole number)?",
+      "vars": {
+        "initial": { "type": "int", "min": 100, "max": 1000 },
+        "ratePercent": { "type": "pick", "options": [5, 10, 15, 20] },
+        "years": { "type": "int", "min": 1, "max": 4 },
+        "rateTimesYears": { "type": "computed", "formulaId": "multiply", "args": ["ratePercent", "years"] },
+        "linearGrowth": { "type": "computed", "formulaId": "addPercentOf", "args": ["initial", "initial", "rateTimesYears"], "round": true }
+      },
+      "answerFormulaId": "compoundGrowth",
+      "answerArgs": ["initial", "ratePercent", "years"],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["linearGrowth"] }],
+        "perturb": { "min": -50, "max": 50, "decimals": 0, "minValue": 1 }
+      },
+      "technicalIntricacy": "Exponential growth compounds the growth rate onto an already-grown value each year, rather than adding the same fixed amount every time, which is why the formula raises (1 + r) to the power of the number of years instead of simply multiplying.",
+      "realPurpose": "Exponential models like this describe real phenomena including population growth, compound interest, and the spread of information, all of which grow faster and faster over time rather than at a constant rate."
+    },
+    "sq_l2_t4": {
+      "kind": "numeric",
+      "questionTemplate": "A table shows that out of {{totalSurveyed}} people surveyed, {{categoryPercent}}% preferred Product A. How many people preferred Product A?",
+      "vars": {
+        "totalSurveyed": { "type": "pick", "options": [100, 200, 300, 500] },
+        "categoryPercent": { "type": "pick", "options": [20, 25, 30, 40, 50] }
+      },
+      "answerFormulaId": "multiplyDivide",
+      "answerArgs": ["totalSurveyed", "categoryPercent", 100],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "subtract", "args": ["totalSurveyed", "$answer"] }, { "formulaId": "identity", "args": ["categoryPercent"] }],
+        "perturb": { "min": 5, "max": 20, "decimals": 0 }
+      },
+      "technicalIntricacy": "Converting a percentage from a data table into an exact count means multiplying the total sample size by that percentage, expressed as a decimal fraction.",
+      "realPurpose": "Reading and calculating exact values from tables and charts is a core Digital SAT Math data analysis skill, tested across many question formats."
+    },
+    "sq_l2_t5": {
+      "kind": "numeric",
+      "questionTemplate": "A car valued at ${{initial}} depreciates (loses value) at a rate of {{ratePercent}}% per year. Using the formula y = a(1 − r)<sup>t</sup>, approximately what will the car's value be after {{years}} years (rounded to the nearest whole number)?",
+      "vars": {
+        "initial": { "type": "pick", "options": [4000, 8000, 12000, 16000, 20000] },
+        "ratePercent": { "type": "pick", "options": [5, 10, 15, 20] },
+        "years": { "type": "int", "min": 1, "max": 4 },
+        "rateTimesYears": { "type": "computed", "formulaId": "multiply", "args": ["ratePercent", "years"] },
+        "linearDecayAmount": { "type": "computed", "formulaId": "multiplyDivide", "args": ["initial", "rateTimesYears", 100] },
+        "linearDecay": { "type": "computed", "formulaId": "subtract", "args": ["initial", "linearDecayAmount"] }
+      },
+      "answerFormulaId": "compoundDecay",
+      "answerArgs": ["initial", "ratePercent", "years"],
+      "decimals": 0,
+      "unit": "",
+      "distractors": {
+        "count": 3,
+        "alternates": [{ "formulaId": "identity", "args": ["linearDecay"] }],
+        "perturb": { "min": -800, "max": 800, "decimals": 0, "minValue": 1 }
+      },
+      "technicalIntricacy": "Exponential decay repeatedly multiplies the shrinking value by the same fixed percentage each year (rather than subtracting the same fixed dollar amount every time), which is why the formula raises (1 − r) to the power of the number of years instead of using simple subtraction.",
+      "realPurpose": "Depreciation, radioactive decay, and medication dosage over time all follow this same percentage-based decay pattern, which behaves very differently from a straight-line (linear) decrease over multiple years."
+    },
+    "sq_l3_t1": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student factors x<sup>2</sup> {{bSign}} {{bAbs}}x {{cSign}} {{cAbs}} and concludes the solutions are x = {{b}} and x = {{c}}, directly using the coefficients as the roots. What is the mistake, and what are the actual solutions?",
+          "answer": "x = {{r1}} and x = {{r2}}, found by identifying two numbers that multiply to {{c}} and add to {{b}}, then setting each resulting factor equal to zero — NOT by reading the coefficients {{b}} and {{c}} directly as the roots",
+          "distractors": [
+            "x = {{b}} and x = {{c}} is correct, since the coefficients of a quadratic are always its solutions",
+            "x = {{c}} and x = {{b}} is correct, since the constant term always equals one root and the linear coefficient the other",
+            "The equation has no real solutions, since the coefficients {{b}} and {{c}} do not match any simple pattern"
+          ],
+          "vars": {
+            "r1": { "type": "int", "min": -8, "max": -1 },
+            "r2": { "type": "int", "min": 1, "max": 8 },
+            "sumR": { "type": "computed", "formulaId": "add", "args": ["r1", "r2"] },
+            "b": { "type": "computed", "formulaId": "multiply", "args": ["sumR", -1] },
+            "c": { "type": "computed", "formulaId": "multiply", "args": ["r1", "r2"] },
+            "bSign": { "type": "computed", "formulaId": "signSymbol", "args": ["b"] },
+            "bAbs": { "type": "computed", "formulaId": "absValue", "args": ["b"] },
+            "cSign": { "type": "computed", "formulaId": "signSymbol", "args": ["c"] },
+            "cAbs": { "type": "computed", "formulaId": "absValue", "args": ["c"] }
+          }
+        }
+      ],
+      "technicalIntricacy": "The coefficients of a quadratic in standard form are NOT its solutions; the actual roots come from factoring the expression into two binomials and setting each one equal to zero, which generally produces completely different numbers than the original b and c coefficients.",
+      "realPurpose": "This is a common shortcut-gone-wrong on quadratic factoring questions, and avoiding it requires actually completing the factoring process rather than assuming a direct shortcut."
+    },
+    "sq_l3_t2": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student uses the quadratic formula but forgets to include both the + and − in the ± symbol, reporting only one solution when the equation actually has two distinct real roots. What is the mistake?",
+          "answer": "The ± in the quadratic formula indicates there are generally TWO solutions — one from adding the square root term, one from subtracting it; omitting one of these means missing a legitimate second solution whenever the discriminant is positive",
+          "distractors": [
+            "The student is correct — the quadratic formula only ever produces one valid solution, and the ± symbol is purely decorative",
+            "The ± symbol means the two possible solutions are always exact opposites (positive and negative versions) of each other",
+            "Only the '+' half of the ± symbol ever produces a mathematically valid solution"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The quadratic formula, x = (−b ± √(b<sup>2</sup> − 4ac)) ÷ 2a, produces two separate solutions whenever the discriminant (b<sup>2</sup> − 4ac) is positive — one using addition and one using subtraction of the square root term — and both must be calculated and reported.",
+      "realPurpose": "Missing the second solution is a common careless error that can cost easy points, especially since many real-world quadratic problems require considering both roots."
+    },
+    "sq_l3_t3": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student evaluates f({{inputVal}}) for f(x) = {{a}}x<sup>2</sup> + 2x by substituting {{inputVal}} in place of f instead of in place of x. What is the mistake?",
+          "answer": "Every instance of x in the function's definition must be replaced with {{inputVal}} (the given input), since x is the input variable — \"f\" is just the name of the function, not a variable to substitute values into",
+          "distractors": [
+            "f itself should be replaced with {{inputVal}} everywhere it appears in the equation",
+            "Both f and x should be replaced with {{inputVal}} throughout the equation",
+            "f({{inputVal}}) cannot be evaluated without first knowing the numeric value of f"
+          ],
+          "vars": {
+            "a": { "type": "int", "min": 1, "max": 5 },
+            "inputVal": { "type": "int", "min": 2, "max": 8 }
+          }
+        }
+      ],
+      "technicalIntricacy": "In function notation f(x), 'f' is simply the function's name (a label), while 'x' is the input variable that gets replaced by whatever value appears inside the parentheses; only x (and every occurrence of x in the definition) should be substituted, never f itself.",
+      "realPurpose": "This is a foundational function-notation misunderstanding, and correcting it is essential before attempting any more advanced function-based Digital SAT question."
+    },
+    "sq_l3_t4": {
+      "kind": "choice",
+      "variants": [
+        {
+          "question": "A student looks at a scatterplot with a clearly negative trend line and assumes a negative slope means the two variables have 'no real relationship' or an unusually weak one. What is the flaw in this reasoning?",
+          "answer": "A negative slope indicates a real, meaningful NEGATIVE (inverse) relationship — as one variable increases, the other tends to decrease — not the absence of a relationship or an unusually weak one; the strength of a relationship is instead shown by how closely the data points cluster around the trend line",
+          "distractors": [
+            "The student is correct — a negative slope always means there is no real relationship between the two variables",
+            "A negative slope always indicates a weaker relationship than a positive slope of the same steepness would show",
+            "The sign of a trend line's slope is the only factor that determines how strong or reliable a relationship is"
+          ]
+        }
+      ],
+      "technicalIntricacy": "The sign of a trend line's slope (positive or negative) only indicates the DIRECTION of the relationship between two variables, while the strength or reliability of that relationship is shown separately by how tightly the actual data points cluster around the trend line, regardless of its slope's sign.",
+      "realPurpose": "Confusing direction with strength is a common data-analysis error, and correcting it is essential for accurately interpreting scatterplots and correlation on the Digital SAT."
+    }
+  },
+  "chapters": {
+    "rw_vocab": {
+      "title": "Reading & Writing: Command of Evidence & Vocab-in-Context",
+      "overview": "This unit covers two core Digital SAT Reading & Writing skills: Words in Context (choosing the word or phrase that best completes a passage based on precise contextual clues) and Command of Evidence (identifying which piece of textual or quantitative evidence best supports a given claim or completes a passage's logic).",
+      "deepDivePurpose": "These skills reward careful, literal reading over background knowledge or vocabulary memorisation alone — the SAT specifically tests whether a student can use context to determine the most precise word or the most directly relevant evidence, a skill that maps directly onto real academic and professional reading tasks.",
+      "recap": [
+        "Words-in-Context questions ask you to choose the word or phrase that most precisely completes a sentence's meaning based on specific context clues elsewhere in the text — not simply a word that seems related to the topic.",
+        "Look for signal words like 'however,' 'therefore,' 'despite,' and 'similarly' — they reveal whether the missing word should contrast with or reinforce the surrounding ideas.",
+        "Command of Evidence (Textual) questions ask which quoted line or detail from a passage best supports a specific claim.",
+        "Command of Evidence (Quantitative) questions ask which data point from a chart or table best supports or completes a stated claim.",
+        "Always substitute your chosen answer back into the original sentence and check that it preserves the passage's precise logical relationship, not just its general topic.",
+        "Eliminate answer choices that are only 'somewhat related' to the topic — the correct answer must be the most precise and directly supported choice, not just a plausible one."
+      ],
+      "questionBank": {
+        "1": ["rv_l1_t1", "rv_l1_t2", "rv_l1_t3", "rv_l1_t4", "rv_l1_t5", "rv_l1_t6", "rv_l1_t7", "rv_l1_t8", "rv_l1_t9", "rv_l1_t10"],
+        "2": ["rv_l2_t1", "rv_l2_t2", "rv_l2_t3", "rv_l2_t4", "rv_l2_t5"],
+        "3": ["rv_l3_t1", "rv_l3_t2", "rv_l3_t3", "rv_l3_t4"]
+      }
+    },
+    "rw_grammar": {
+      "title": "Reading & Writing: Standard English Conventions & Transitions",
+      "overview": "This unit covers Standard English Conventions (correct grammar, usage and punctuation, including comma splices, subject-verb agreement, and apostrophe use) and Transitions (choosing the logical connecting word or phrase, such as 'however,' 'therefore,' or 'in addition,' that correctly links two ideas).",
+      "deepDivePurpose": "These are the most frequently tested skills on the Digital SAT Reading & Writing section; mastering a small set of grammar rules and transition logic patterns yields outsized, reliable point gains because the same rules repeat in predictable, testable patterns question after question.",
+      "recap": [
+        "A comma splice occurs when two independent clauses (complete sentences) are joined with only a comma; use a period, semicolon, or a comma plus a coordinating conjunction (like 'and' or 'but') instead.",
+        "A semicolon can join two independent clauses without a conjunction, or separate items in a complex list.",
+        "Subject-verb agreement requires a singular subject to take a singular verb and a plural subject to take a plural verb, even when other words come between them.",
+        "An apostrophe + s (’s) shows possession for a singular noun; an s + apostrophe (s’) shows possession for a plural noun ending in s.",
+        "Transitions must match the exact logical relationship between two ideas: contrast words (however, yet), cause-effect words (therefore, consequently), and addition words (furthermore, in addition) are not interchangeable.",
+        "Parallel structure requires items in a list or comparison to use the same grammatical form (e.g., all verbs ending in '-ing', or all in the same tense)."
+      ],
+      "questionBank": {
+        "1": ["rg_l1_t1", "rg_l1_t2", "rg_l1_t3", "rg_l1_t4", "rg_l1_t5", "rg_l1_t6", "rg_l1_t7", "rg_l1_t8", "rg_l1_t9", "rg_l1_t10"],
+        "2": ["rg_l2_t1", "rg_l2_t2", "rg_l2_t3", "rg_l2_t4", "rg_l2_t5"],
+        "3": ["rg_l3_t1", "rg_l3_t2", "rg_l3_t3", "rg_l3_t4"]
+      }
+    },
+    "math_algebra": {
+      "title": "Math: Linear Equations, Systems & Inequalities",
+      "overview": "This unit covers Digital SAT Math skills involving linear equations in one variable, systems of two linear equations, and linear inequalities — including solving algebraically, interpreting slope and intercept in real-world contexts, and determining the number of solutions a system has.",
+      "deepDivePurpose": "Linear equations and systems make up a substantial share of the Digital SAT Math section, and these skills transfer directly to real-world modeling — from calculating costs and rates to determining break-even points between two options.",
+      "recap": [
+        "To solve a linear equation, use inverse operations to isolate the variable, applying the same operation to both sides of the equation.",
+        "A system of two linear equations can be solved by substitution (solving one equation for a variable and substituting into the other) or elimination (adding or subtracting equations to cancel a variable).",
+        "A system of two linear equations has exactly one solution unless the lines are parallel (no solution) or identical (infinitely many solutions).",
+        "In the equation y = mx + b, m represents the slope (rate of change) and b represents the y-intercept (starting value when x = 0).",
+        "A linear inequality is solved the same way as an equation, EXCEPT the inequality sign must be reversed when multiplying or dividing both sides by a negative number.",
+        "When solving a system algebraically, check your solution by substituting both values back into BOTH original equations."
+      ],
+      "questionBank": {
+        "1": ["sa_l1_t1", "sa_l1_t2", "sa_l1_t3", "sa_l1_t4", "sa_l1_t5", "sa_l1_t6", "sa_l1_t7", "sa_l1_t8", "sa_l1_t9", "sa_l1_t10"],
+        "2": ["sa_l2_t1", "sa_l2_t2", "sa_l2_t3", "sa_l2_t4", "sa_l2_t5"],
+        "3": ["sa_l3_t1", "sa_l3_t2", "sa_l3_t3", "sa_l3_t4"]
+      }
+    },
+    "math_advanced": {
+      "title": "Math: Advanced Functions, Quadratics & Data Analysis",
+      "overview": "This unit covers Digital SAT Math skills involving quadratic equations and their graphs, function notation, exponential growth and decay, and interpreting data from tables, scatterplots and statistical summaries.",
+      "deepDivePurpose": "Advanced functions and data analysis questions reward pattern recognition and comfort with function notation and graphical representations — skills that are essential not just for the SAT but for any STEM field, from engineering to economics to computer science.",
+      "recap": [
+        "A quadratic equation in standard form is written as ax<sup>2</sup> + bx + c = 0, and can be solved by factoring, completing the square, or using the quadratic formula.",
+        "The quadratic formula is x = (−b ± √(b<sup>2</sup> − 4ac)) ÷ 2a.",
+        "Function notation f(x) means 'the output of function f when the input is x'; f(3) means substitute 3 for x and evaluate.",
+        "A quadratic function's graph is a parabola; its vertex represents the maximum or minimum point, and its axis of symmetry passes through the vertex.",
+        "Exponential growth/decay is modeled as y = a(1 + r)<sup>t</sup> for growth or y = a(1 − r)<sup>t</sup> for decay, where a is the initial value and r is the rate.",
+        "On a scatterplot, a trend line (line of best fit) summarises the general relationship between two variables, and its slope indicates whether the relationship is positive or negative."
+      ],
+      "questionBank": {
+        "1": ["sq_l1_t1", "sq_l1_t2", "sq_l1_t3", "sq_l1_t4", "sq_l1_t5", "sq_l1_t6", "sq_l1_t7", "sq_l1_t8", "sq_l1_t9", "sq_l1_t10"],
+        "2": ["sq_l2_t1", "sq_l2_t2", "sq_l2_t3", "sq_l2_t4", "sq_l2_t5"],
+        "3": ["sq_l3_t1", "sq_l3_t2", "sq_l3_t3", "sq_l3_t4"]
+      }
+    }
+  }
+}

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parent Telemetry Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f46e5'/%3E%3Ctext x='50' y='68' font-size='55' font-family='Arial,sans-serif' font-weight='900' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8 flex justify-between items-center flex-wrap gap-3">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-800">Parent Telemetry Dashboard</h1>
+                <p class="text-slate-500">Real-time learning analytics and activity tracking</p>
+            </div>
+            <div class="text-right">
+                <button onclick="loadTelemetry()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Refresh Data</button>
+                <p id="lastUpdated" class="text-xs text-slate-400 mt-1"></p>
+            </div>
+        </header>
+
+        <!-- Student Selector -->
+        <div class="mb-6 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+            <label for="studentSelect" class="block text-sm font-medium text-slate-700 mb-2">Select Student:</label>
+            <select id="studentSelect" onchange="updateDashboard()" class="w-full md:w-1/3 p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                <option value="">-- All Students --</option>
+            </select>
+        </div>
+
+        <!-- Primary Stat Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500">Sessions</p>
+                <p id="totalSessions" class="text-3xl font-bold text-indigo-600 mt-2">0</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500">Quizzes Attempted</p>
+                <p id="totalQuizzes" class="text-3xl font-bold text-emerald-600 mt-2">0</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500">Average Score</p>
+                <p id="avgScore" class="text-3xl font-bold text-amber-600 mt-2">0%</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500">Best Level Cleared</p>
+                <p id="bestLevel" class="text-3xl font-bold text-slate-400 mt-2">-</p>
+            </div>
+        </div>
+
+        <!-- Secondary Stat Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500 mb-1">Ideas Stashed</p>
+                <p id="totalStashed" class="text-2xl font-bold text-fuchsia-600">0</p>
+            </div>
+            <div id="streakCard" class="hidden bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500 mb-1">Current Streak</p>
+                <p id="streakValue" class="text-2xl font-bold text-orange-600">0 days</p>
+                <p id="freezeValue" class="text-xs text-slate-400 mt-1"></p>
+            </div>
+            <div id="streakPlaceholder" class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center">
+                <p class="text-sm text-slate-400">Select a single student to see their streak.</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                <p class="text-sm font-medium text-slate-500 mb-2">Activity Breakdown</p>
+                <div id="breakdownText" class="text-xs text-slate-600 space-y-1">
+                    <div>Today: <span id="loginsDay" class="font-semibold">0</span> &nbsp;·&nbsp; This week: <span id="loginsWeek" class="font-semibold">0</span></div>
+                    <div>This month: <span id="loginsMonth" class="font-semibold">0</span> &nbsp;·&nbsp; This year: <span id="loginsYear" class="font-semibold">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Per-Subject Breakdown -->
+        <div id="subjectBreakdownWrap" class="hidden bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+            <h3 class="font-bold text-slate-800 mb-4">Performance by Subject</h3>
+            <div id="subjectBreakdown" class="space-y-3"></div>
+        </div>
+
+        <!-- Performance & Progress Infographics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 class="font-bold text-slate-800 mb-4">Score Trend (Last 15 Quizzes)</h3>
+                <div id="scoreTrendWrap"></div>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3 class="font-bold text-slate-800 mb-4">Level Distribution</h3>
+                <div id="levelDistWrap"></div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+            <h3 class="font-bold text-slate-800 mb-1">Activity — Last 14 Days</h3>
+            <p class="text-xs text-slate-400 mb-4">Combined sessions, quizzes and stashed ideas per day</p>
+            <div id="activityHeatmap" class="flex gap-1.5 flex-wrap"></div>
+        </div>
+
+        <!-- Detailed History Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-200">
+                <h3 class="font-bold text-slate-800">Activity &amp; Quiz History</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3">Timestamp</th>
+                            <th scope="col" class="px-6 py-3">Student</th>
+                            <th scope="col" class="px-6 py-3">Action</th>
+                            <th scope="col" class="px-6 py-3">Subject / Lesson</th>
+                            <th scope="col" class="px-6 py-3">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logTableBody" class="divide-y divide-slate-200 text-sm text-slate-700">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="tableEmptyState" class="hidden py-10 text-center text-slate-400 text-sm">No activity recorded yet.</div>
+        </div>
+    </div>
+
+    <script>
+        let rawLogs = [];
+
+        // All log fields ultimately originate from student-entered input (the name
+        // field on the login screen) that round-trips through localStorage and the
+        // /save endpoint into scores_dashboard.json. Never insert them into the DOM
+        // without escaping, or a crafted name/value becomes a stored XSS payload
+        // that executes here in whoever opens this dashboard.
+        function escapeHtml(str) {
+            const div = document.createElement("div");
+            div.textContent = String(str ?? "");
+            return div.innerHTML;
+        }
+
+        const LEVEL_RANK = { Bronze: 1, Silver: 2, Gold: 3 };
+        const LEVEL_BADGE_CLASS = {
+            Gold: "bg-amber-500/15 text-amber-600 border border-amber-400/30",
+            Silver: "bg-slate-500/15 text-slate-600 border border-slate-400/30",
+            Bronze: "bg-orange-500/15 text-orange-600 border border-orange-400/30",
+        };
+
+        // server.py writes every entry as {name, timestamp, action, payload}. The
+        // dashboard previously read subject/score/etc. straight off the entry itself,
+        // which never matched this shape (they only ever live under `payload`) — that
+        // was the root cause of the report showing blank subjects, scores and percents.
+        function extractRecord(l) {
+            const p = (l && typeof l.payload === "object" && l.payload) || {};
+            const scoreText = p.score !== undefined ? String(p.score) : null;
+            let scoreNum = null;
+            let maxNum = null;
+            let pct = null;
+            if (scoreText) {
+                const parts = scoreText.split("/").map((n) => parseFloat(n.trim()));
+                if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1]) && parts[1] > 0) {
+                    scoreNum = parts[0];
+                    maxNum = parts[1];
+                    pct = (scoreNum / maxNum) * 100;
+                }
+            }
+            return {
+                name: l.name || p.name || "Unknown",
+                action: l.action || "activity",
+                timestamp: l.timestamp || p.timestamp || null,
+                subject: p.subject || null,
+                lesson: p.lesson || null,
+                scoreText,
+                pct,
+                levelCleared: p.levelCleared || null,
+            };
+        }
+
+        async function loadTelemetry() {
+            try {
+                const response = await fetch('/scores_dashboard.json?t=' + new Date().getTime());
+                if (!response.ok) throw new Error("Could not fetch log file");
+
+                const text = await response.text();
+                rawLogs = text.trim().split('\n').map(line => {
+                    try { return JSON.parse(line); } catch(e) { return null; }
+                }).filter(Boolean);
+
+                document.getElementById('lastUpdated').textContent = "Last updated " + new Date().toLocaleTimeString();
+
+                populateStudents();
+                updateDashboard();
+            } catch (err) {
+                console.error("Error loading telemetry:", err);
+            }
+        }
+
+        function populateStudents() {
+            const select = document.getElementById('studentSelect');
+            const currentVal = select.value;
+            const students = [...new Set(rawLogs.map(l => l.name).filter(Boolean))].sort();
+
+            select.innerHTML = '<option value="">-- All Students --</option>' +
+                students.map(s => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('');
+            select.value = currentVal;
+        }
+
+        async function fetchStreak(name) {
+            const streakCard = document.getElementById('streakCard');
+            const placeholder = document.getElementById('streakPlaceholder');
+            if (!name) {
+                streakCard.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+                return;
+            }
+            try {
+                const res = await fetch('/progress?name=' + encodeURIComponent(name));
+                if (!res.ok) throw new Error("progress fetch failed");
+                const progress = await res.json();
+                document.getElementById('streakValue').textContent = (progress.currentStreak || 0) + (progress.currentStreak === 1 ? " day" : " days");
+                const tokens = progress.freezeTokensAvailable || 0;
+                document.getElementById('freezeValue').textContent = tokens > 0 ? tokens + " freeze token" + (tokens === 1 ? "" : "s") + " banked" : "No freeze tokens banked yet";
+                placeholder.classList.add('hidden');
+                streakCard.classList.remove('hidden');
+            } catch (err) {
+                streakCard.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+            }
+        }
+
+        function renderScoreTrend(quizzesInOrder) {
+            const wrap = document.getElementById('scoreTrendWrap');
+            const pts = quizzesInOrder.filter(q => q.pct !== null).slice(-15);
+            if (pts.length < 2) {
+                wrap.innerHTML = '<p class="text-sm text-slate-400">Not enough scored quizzes yet to show a trend.</p>';
+                return;
+            }
+            const w = 300, h = 90, pad = 10;
+            const stepX = pts.length > 1 ? (w - pad * 2) / (pts.length - 1) : 0;
+            const coords = pts.map((q, i) => [pad + i * stepX, pad + (1 - q.pct / 100) * (h - pad * 2)]);
+            const linePoints = coords.map(([x, y]) => x.toFixed(1) + ',' + y.toFixed(1)).join(' ');
+            const dots = coords.map(([x, y], i) => {
+                const color = pts[i].pct >= 80 ? '#10b981' : pts[i].pct >= 50 ? '#f59e0b' : '#f43f5e';
+                return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.5" fill="' + color + '"></circle>';
+            }).join('');
+            wrap.innerHTML =
+                '<svg viewBox="0 0 ' + w + ' ' + h + '" class="w-full" style="max-height:110px">' +
+                '<polyline points="' + linePoints + '" fill="none" stroke="#6366f1" stroke-width="2"></polyline>' +
+                dots +
+                '</svg>' +
+                '<div class="flex justify-between text-xs text-slate-400 mt-1"><span>' + pts.length + ' most recent</span><span>0% - 100%</span></div>';
+        }
+
+        function renderLevelDistribution(quizzes) {
+            const wrap = document.getElementById('levelDistWrap');
+            const counts = { Gold: 0, Silver: 0, Bronze: 0 };
+            quizzes.forEach(q => { if (q.levelCleared && counts[q.levelCleared] !== undefined) counts[q.levelCleared]++; });
+            const total = counts.Gold + counts.Silver + counts.Bronze;
+            if (total === 0) {
+                wrap.innerHTML = '<p class="text-sm text-slate-400">No completed quizzes yet.</p>';
+                return;
+            }
+            const pctG = (counts.Gold / total) * 100;
+            const pctS = (counts.Silver / total) * 100;
+            const pctB = (counts.Bronze / total) * 100;
+            wrap.innerHTML =
+                '<div class="w-full rounded-full overflow-hidden flex" style="height:14px;background-color:#f1f5f9">' +
+                '<div style="width:' + pctG + '%;background-color:#f59e0b" title="Gold: ' + counts.Gold + '"></div>' +
+                '<div style="width:' + pctS + '%;background-color:#94a3b8" title="Silver: ' + counts.Silver + '"></div>' +
+                '<div style="width:' + pctB + '%;background-color:#fb923c" title="Bronze: ' + counts.Bronze + '"></div>' +
+                '</div>' +
+                '<div class="flex gap-4 text-xs text-slate-600 mt-3">' +
+                '<span>&#9679; Gold: ' + counts.Gold + '</span>' +
+                '<span>&#9679; Silver: ' + counts.Silver + '</span>' +
+                '<span>&#9679; Bronze: ' + counts.Bronze + '</span>' +
+                '</div>';
+        }
+
+        function renderActivityHeatmap(filtered) {
+            const wrap = document.getElementById('activityHeatmap');
+            const now = new Date();
+            const days = [];
+            for (let i = 13; i >= 0; i--) {
+                const d = new Date(now);
+                d.setDate(d.getDate() - i);
+                days.push(d);
+            }
+            const counts = days.map(d => filtered.filter(r => r.timestamp && !isNaN(new Date(r.timestamp)) && new Date(r.timestamp).toDateString() === d.toDateString()).length);
+            const maxCount = Math.max(1, ...counts);
+            wrap.innerHTML = days.map((d, i) => {
+                const c = counts[i];
+                const intensity = c === 0 ? 0 : Math.min(1, c / maxCount);
+                const bg = c === 0 ? '#f1f5f9' : 'rgba(99,102,241,' + (0.25 + intensity * 0.6).toFixed(2) + ')';
+                const label = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+                return '<div title="' + label + ': ' + c + ' activit' + (c === 1 ? 'y' : 'ies') + '" style="width:28px;height:28px;background-color:' + bg + ';border-radius:6px" class="flex items-center justify-center text-[10px] text-slate-500">' + d.getDate() + '</div>';
+            }).join('');
+        }
+
+        function updateDashboard() {
+            const selectedStudent = document.getElementById('studentSelect').value;
+            const filteredRaw = selectedStudent ? rawLogs.filter(l => l.name === selectedStudent) : rawLogs;
+            const filtered = filteredRaw.map(extractRecord);
+
+            fetchStreak(selectedStudent);
+
+            const sessions = filtered.filter(r => r.action === 'session_start');
+            const quizzes = filtered.filter(r => r.action === 'quiz_completed');
+            const stashed = filtered.filter(r => r.action === 'card_stashed');
+
+            document.getElementById('totalSessions').innerText = sessions.length;
+            document.getElementById('totalQuizzes').innerText = quizzes.length;
+            document.getElementById('totalStashed').innerText = stashed.length;
+
+            let percentageSum = 0;
+            let scoredQuizzesCount = 0;
+            let bestLevel = null;
+            const subjectStats = {};
+
+            quizzes.forEach(q => {
+                if (q.pct !== null) {
+                    percentageSum += q.pct;
+                    scoredQuizzesCount++;
+                }
+                if (q.levelCleared && (!bestLevel || LEVEL_RANK[q.levelCleared] > LEVEL_RANK[bestLevel])) {
+                    bestLevel = q.levelCleared;
+                }
+                if (q.subject) {
+                    const s = subjectStats[q.subject] || { count: 0, pctSum: 0, pctCount: 0 };
+                    s.count++;
+                    if (q.pct !== null) { s.pctSum += q.pct; s.pctCount++; }
+                    subjectStats[q.subject] = s;
+                }
+            });
+
+            const avg = scoredQuizzesCount > 0 ? (percentageSum / scoredQuizzesCount).toFixed(1) : 0;
+            document.getElementById('avgScore').innerText = avg + '%';
+
+            renderScoreTrend(quizzes);
+            renderLevelDistribution(quizzes);
+            renderActivityHeatmap(filtered);
+
+            const bestLevelEl = document.getElementById('bestLevel');
+            bestLevelEl.innerText = bestLevel || '-';
+            bestLevelEl.className = "text-3xl font-bold mt-2 " + (bestLevel ? { Gold: "text-amber-500", Silver: "text-slate-400", Bronze: "text-orange-500" }[bestLevel] : "text-slate-300");
+
+            // Per-subject breakdown
+            const subjectWrap = document.getElementById('subjectBreakdownWrap');
+            const subjectEntries = Object.keys(subjectStats);
+            if (subjectEntries.length > 0) {
+                subjectWrap.classList.remove('hidden');
+                document.getElementById('subjectBreakdown').innerHTML = subjectEntries
+                    .sort((a, b) => subjectStats[b].count - subjectStats[a].count)
+                    .map(subj => {
+                        const s = subjectStats[subj];
+                        const subjPct = s.pctCount > 0 ? Math.round(s.pctSum / s.pctCount) : 0;
+                        return `
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-medium text-slate-700">${escapeHtml(subj)}</span>
+                                    <span class="text-slate-500">${s.count} quiz${s.count === 1 ? "" : "zes"} &middot; ${subjPct}% avg</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full" style="height:8px">
+                                    <div class="bg-indigo-500 rounded-full" style="height:8px;width:${Math.min(100, subjPct)}%"></div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+            } else {
+                subjectWrap.classList.add('hidden');
+            }
+
+            const now = new Date();
+            let dCount = 0, wCount = 0, mCount = 0, yCount = 0;
+
+            filtered.forEach(r => {
+                if (!r.timestamp) return;
+                const lDate = new Date(r.timestamp);
+                if (isNaN(lDate)) return;
+
+                if (lDate.toDateString() === now.toDateString()) dCount++;
+                if ((now - lDate) <= 7 * 24 * 60 * 60 * 1000) wCount++;
+                if (lDate.getMonth() === now.getMonth() && lDate.getFullYear() === now.getFullYear()) mCount++;
+                if (lDate.getFullYear() === now.getFullYear()) yCount++;
+            });
+
+            document.getElementById('loginsDay').innerText = dCount;
+            document.getElementById('loginsWeek').innerText = wCount;
+            document.getElementById('loginsMonth').innerText = mCount;
+            document.getElementById('loginsYear').innerText = yCount;
+
+            const ACTION_LABELS = {
+                session_start: '<span class="px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs">Session</span>',
+                quiz_completed: '<span class="px-2 py-1 bg-emerald-100 text-emerald-700 rounded text-xs">Quiz</span>',
+                card_stashed: '<span class="px-2 py-1 bg-fuchsia-100 text-fuchsia-700 rounded text-xs">Stashed Idea</span>',
+            };
+
+            const tbody = document.getElementById('logTableBody');
+            const tableEmptyState = document.getElementById('tableEmptyState');
+            const rows = filtered.slice(-50).reverse();
+
+            if (rows.length === 0) {
+                tbody.innerHTML = '';
+                tableEmptyState.classList.remove('hidden');
+            } else {
+                tableEmptyState.classList.add('hidden');
+                tbody.innerHTML = rows.map(r => {
+                    const subjectLesson = r.subject ? (r.lesson ? `${r.subject} — ${r.lesson}` : r.subject) : '-';
+                    let scoreDisplay = '-';
+                    if (r.scoreText) {
+                        scoreDisplay = r.pct !== null ? `${r.scoreText} (${Math.round(r.pct)}%)` : r.scoreText;
+                    }
+                    const levelBadge = r.levelCleared
+                        ? `<span class="ml-2 px-2 py-0.5 rounded-full text-xs ${LEVEL_BADGE_CLASS[r.levelCleared] || ''}">${escapeHtml(r.levelCleared)}</span>`
+                        : '';
+                    const actionBadge = ACTION_LABELS[r.action] || `<span class="px-2 py-1 bg-slate-100 rounded text-xs">${escapeHtml(r.action)}</span>`;
+
+                    return `
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="px-6 py-4 text-xs text-slate-500">${escapeHtml(r.timestamp || 'N/A')}</td>
+                            <td class="px-6 py-4 font-medium text-slate-900">${escapeHtml(r.name)}</td>
+                            <td class="px-6 py-4">${actionBadge}</td>
+                            <td class="px-6 py-4">${escapeHtml(subjectLesson)}</td>
+                            <td class="px-6 py-4 font-semibold text-indigo-600">${escapeHtml(scoreDisplay)}${levelBadge}</td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+        }
+
+        loadTelemetry();
+    </script>
+</body>
+</html>

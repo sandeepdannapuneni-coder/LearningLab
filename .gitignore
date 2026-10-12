@@ -1,0 +1,14 @@
+# Local runtime data — student activity log, not meant for the public repo
+scores_dashboard.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Claude Code project settings (local-machine specific)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Cloudflare Worker local state
+access-worker/.wrangler/
+access-worker/node_modules/

@@ -1,0 +1,18 @@
+{
+  "defaultGrade": 7,
+  "grades": [
+    {
+      "grade": 7,
+      "label": "Class 7",
+      "subjects": [
+        "physics",
+        "mathematics",
+        "chemistry",
+        "biology",
+        "gk",
+        "adaptability",
+        "sat"
+      ]
+    }
+  ]
+}
