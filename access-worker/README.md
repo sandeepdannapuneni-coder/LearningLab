@@ -1,9 +1,17 @@
 # ICSE Arena — Access Code Worker
 
-A tiny Cloudflare Worker that validates the student access code server-side,
-so the real code never ships to the browser. Free tier, no sleep/cold-start
-delay (unlike Render-style hosts), works alongside the static GitHub Pages
-site.
+A tiny Cloudflare Worker that validates a weekly, auto-rotating passcode
+server-side, so the real passcode never ships to the browser. Free tier, no
+sleep/cold-start delay (unlike Render-style hosts), works alongside the
+static GitHub Pages site.
+
+**How rotation works:** there's no stored passcode to update by hand. The
+Worker derives this week's valid passcode as `HMAC(PASSCODE_SEED, weekIndex)`
+— a fixed secret plus the current week number, both fed through a one-way
+hash. Every Monday 00:00 UTC, `weekIndex` ticks forward and a brand-new
+passcode becomes valid automatically, with the previous week's code still
+accepted for one extra week as a grace window (so nobody already mid-login
+right at the Monday rollover gets locked out).
 
 ## One-time setup (you need to do this part — it needs your own accounts/login)
 
@@ -17,19 +25,25 @@ site.
    ```
    This opens a browser window to authorize — approve it there.
 
-3. **Set your two secrets** (you'll be prompted to type each value; nothing
-   is echoed to the terminal and neither value is ever committed to git):
+3. **Set your three secrets** (you'll be prompted to type each value;
+   nothing is echoed to the terminal and none of them are ever committed
+   to git):
    ```
-   npx wrangler secret put ACCESS_CODE
+   npx wrangler secret put PASSCODE_SEED
    ```
-   Type the actual code you want to give students, e.g. `ICSE2026` — pick
-   whatever you like.
+   Type any long random string (mash the keyboard, 30+ characters). This is
+   never shown to anyone, including students — it's what the weekly
+   passcode is mathematically derived from.
    ```
    npx wrangler secret put TOKEN_SECRET
    ```
-   Type any long random string (e.g. mash the keyboard for 30+ characters).
-   This one is never shown to anyone, including students — it's just what
-   signs the session tokens.
+   Another long random string, different from the one above — this one
+   signs student session tokens.
+   ```
+   npx wrangler secret put ADMIN_KEY
+   ```
+   A password only YOU know — this is what you'll type into `admin.html`
+   each week to look up the current passcode.
 
 4. **Deploy:**
    ```
@@ -40,28 +54,27 @@ site.
    https://icse-arena-access.<your-subdomain>.workers.dev
    ```
 
-5. **Plug that URL into the site.** Open `../index.html`, find the line:
-   ```js
-   const ACCESS_WORKER_URL = "REPLACE_WITH_YOUR_WORKER_URL";
-   ```
-   and replace it with the URL from step 4. Commit and push that change.
+5. **Plug that URL into both files that need it:**
+   - `../index.html` — find `const ACCESS_WORKER_URL = "REPLACE_WITH_YOUR_WORKER_URL";`
+   - `../admin.html` — find the same line
+   Replace both with the URL from step 4, then commit and push.
 
-## Changing the access code later
+## Getting this week's passcode
 
-Just re-run `npx wrangler secret put ACCESS_CODE` with the new value and
-`npx wrangler deploy` again — no site changes needed. Anyone already logged
-in stays logged in until their session token expires (currently 7 days —
-see `TOKEN_TTL_MS` in `src/index.js`), at which point they're prompted for
-the access code again. You can't instantly revoke one specific student's
-still-active session without extra work — not expected to matter for this
-use case, since the longest anyone can be using a now-changed code for is
-one week.
+Open `admin.html` (on the live site, e.g.
+`https://sandeepdannapuneni-coder.github.io/LearningLab/admin.html`), type
+your admin key, and it shows the current passcode plus exactly when it next
+rotates. Nothing to configure weekly — it's just a lookup.
 
 ## Why this approach
 
 - The site itself stays 100% static (GitHub Pages, free, no backend to run).
-- The actual access code lives only as a Cloudflare secret — never in a
-  committed file, never sent to the browser, never visible via "View Source."
+- The passcode is never stored anywhere, committed, or sent to the browser
+  except at the moment a student actually submits it for checking — it's
+  recomputed fresh from the seed on every request.
 - A logged-in session is a signed token the browser can't forge (it doesn't
   know `TOKEN_SECRET`), so someone can't bypass the gate by just setting a
   flag in `localStorage` via devtools.
+- `admin-passcode` lookups are gated by a separate `ADMIN_KEY` that only you
+  know, so a student finding `admin.html` can't use it to read the passcode
+  for themselves.
