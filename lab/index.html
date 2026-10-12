@@ -4045,7 +4045,10 @@
     id: "heartrate", subject: "Biology", title: "Heart Rate Simulator", icon: "❤️",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { bpm: 70, t: 0 };
+      var state = { bpm: 70, strokeVolume: 70, age: 12, t: 0 };
+
+      function cardiacOutput() { return (state.bpm * state.strokeVolume / 1000); }
+      function maxHR() { return 220 - state.age; }
 
       function draw(dt) {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -4076,20 +4079,29 @@
 
         document.getElementById("ro-bpm").textContent = state.bpm + " bpm";
         document.getElementById("ro-daily").textContent = (state.bpm * 60 * 24).toLocaleString() + " beats/day";
+        document.getElementById("ro-output").textContent = cardiacOutput().toFixed(1) + " L/min";
+        document.getElementById("ro-maxhr").textContent = "~" + maxHR() + " bpm (estimate)";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "bpm", "Heart rate");
       LabKit.readout(readoutsEl, "daily", "Beats per day");
+      LabKit.readout(readoutsEl, "output", "Cardiac output");
+      LabKit.readout(readoutsEl, "maxhr", "Estimated max heart rate");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "hr-b", label: "Heart rate", min: 40, max: 180, step: 1, value: 70, unit: " bpm", onInput: function (v) { state.bpm = v; } });
+      LabKit.slider(controlsEl, { key: "hr-sv", label: "Stroke volume (blood per beat)", min: 40, max: 120, step: 1, value: 70, unit: " mL", onInput: function (v) { state.strokeVolume = v; } });
+      LabKit.slider(controlsEl, { key: "hr-age", label: "Age", min: 5, max: 80, step: 1, value: 12, unit: " yrs", onInput: function (v) { state.age = v; } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Heart rate", text: "how many times the heart beats per minute, pumping blood through the body." },
-        { term: "Heart rate slider", text: "exercise and excitement raise it; rest and fitness training lower the resting rate." },
+        { kind: "term", term: "Stroke volume", text: "how much blood the heart pumps out with each single beat." },
+        { kind: "term", term: "Cardiac output", text: "the total blood pumped per minute — heart rate × stroke volume. A trained athlete can match an untrained person's cardiac output using a slower rate but a bigger stroke volume." },
+        { term: "Stroke volume slider", text: "this is exactly why trained athletes can have a LOWER resting heart rate — their stronger heart pushes more blood per beat, so it doesn't need to beat as often." },
+        { term: "Age slider", text: "a commonly used estimate for maximum heart rate is 220 minus age — it's a rough guide used in fitness training, not an exact medical measurement." },
       ]);
 
-      setConcept("Your heart beats roughly <strong>100,000 times a day</strong> without you ever thinking about it — and just like any muscle, regular exercise trains it to pump more efficiently, often lowering your resting rate over time.");
+      setConcept("Your heart beats roughly <strong>100,000 times a day</strong> without you ever thinking about it. What actually matters for delivering oxygen is <strong>cardiac output</strong> — heart rate multiplied by stroke volume — which is why a fit heart can pump the same amount of blood per minute using fewer, stronger beats.");
 
       var raf = null, lastT = null;
       function loop(ts) {
