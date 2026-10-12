@@ -2360,20 +2360,23 @@
     id: "heattransfer", subject: "Physics", title: "Heat Transfer Modes", icon: "🔥",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { heat: 50, t: 0 };
+      var CONDUCTIVITY = { Copper: 400, Iron: 80, Water: 0.6, Wood: 0.15, Air: 0.025 };
+      var state = { heat: 50, t: 0, material: "Copper" };
 
       function draw(dt) {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
         ctx.clearRect(0, 0, W, H);
         var colW = W / 3;
 
-        // Conduction: a rod with color gradient
+        // Conduction: a rod with color gradient, spreading faster for more conductive materials
         var rodY = H * 0.5;
+        var k = CONDUCTIVITY[state.material];
+        var spreadFrac = Math.min(1, 0.15 + (state.heat / 100) * Math.min(1, Math.log(k + 1) / Math.log(401)));
         var grad = ctx.createLinearGradient(colW * 0.15, rodY, colW * 0.85, rodY);
-        grad.addColorStop(0, "#ff8aa8"); grad.addColorStop(Math.min(1, state.heat / 100 + 0.1), "#ffd166"); grad.addColorStop(1, "#4fd1e8");
+        grad.addColorStop(0, "#ff8aa8"); grad.addColorStop(Math.min(0.97, spreadFrac), "#ffd166"); grad.addColorStop(1, "#4fd1e8");
         ctx.fillStyle = grad; ctx.fillRect(colW * 0.15, rodY - 10 * dpr, colW * 0.7, 20 * dpr);
         ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
-        ctx.fillText("Conduction (solid)", colW * 0.5, H * 0.75);
+        ctx.fillText("Conduction (" + state.material + ")", colW * 0.5, H * 0.75);
 
         // Convection: circulating dots in a box
         ctx.strokeStyle = "rgba(255,255,255,0.2)"; ctx.strokeRect(colW * 1.15, H * 0.25, colW * 0.7, H * 0.45);
@@ -2394,9 +2397,16 @@
         ctx.fillStyle = "#e7ecf4"; ctx.fillText("Radiation (no medium)", colW * 2.5, H * 0.75);
       }
 
+      function updateReadouts() {
+        var k = CONDUCTIVITY[state.material];
+        var category = k >= 50 ? "Excellent conductor" : k >= 1 ? "Moderate conductor" : k >= 0.1 ? "Poor conductor (insulator)" : "Very poor conductor (insulator)";
+        document.getElementById("ro-cond").textContent = k + " W/m·K";
+        document.getElementById("ro-category").textContent = category;
+      }
+
       clearPanel(readoutsEl);
-      LabKit.readout(readoutsEl, "note1", "Fastest in");
-      document.getElementById("ro-note1").textContent = "Metals (conduction)";
+      LabKit.readout(readoutsEl, "cond", "Thermal conductivity");
+      LabKit.readout(readoutsEl, "category", "Material category");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ht-h", label: "Heat intensity", min: 0, max: 100, step: 1, value: 50, onInput: function (v) { state.heat = v; } });
@@ -2404,10 +2414,22 @@
         { kind: "term", term: "Conduction", text: "heat passing directly between touching particles — fastest through solids, especially metals." },
         { kind: "term", term: "Convection", text: "heat carried by the bulk movement of a heated liquid or gas." },
         { kind: "term", term: "Radiation", text: "heat travelling as electromagnetic waves — the only mode that needs no medium at all." },
+        { kind: "term", term: "Thermal conductivity", text: "a number describing how well a specific material conducts heat — metals like copper rate far higher than wood or air." },
+        { term: "Material buttons", text: "swap the rod's material to see conduction speed change dramatically — copper spreads heat over 2,500 times faster than still air." },
       ]);
 
+      clearPanel(globalControlsEl);
+      Object.keys(CONDUCTIVITY).forEach(function (m, i) {
+        var btn = LabKit.button(globalControlsEl, m, function () {
+          state.material = m;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); updateReadouts();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
       setFormula("Conduction needs contact. Convection needs a moving fluid. Radiation needs neither — it's how the Sun's heat crosses empty space to Earth.");
-      setConcept("All three modes move heat from <strong>hot to cold</strong>, but by completely different mechanisms — which is why a metal spoon in hot soup burns your hand (conduction) while the Sun warms you without any air to carry the heat across space (radiation).");
+      setConcept("All three modes move heat from <strong>hot to cold</strong>, but by completely different mechanisms — which is why a metal spoon in hot soup burns your hand (conduction) while the Sun warms you without any air to carry the heat across space (radiation). How FAST conduction happens also depends entirely on the material's thermal conductivity.");
+      updateReadouts();
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -2540,17 +2562,17 @@
     id: "echo", subject: "Physics", title: "Echo Distance Calculator", icon: "🗣️",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var soundSpeed = 340;
-      var state = { time: 0.6, pulse: 0 };
+      var MEDIUM_SPEED = { Air: 340, Water: 1480, Steel: 5960 };
+      var state = { time: 0.6, pulse: 0, medium: "Air" };
 
-      function distance() { return (soundSpeed * state.time) / 2; }
+      function distance() { return (MEDIUM_SPEED[state.medium] * state.time) / 2; }
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
         ctx.clearRect(0, 0, W, H);
         var y = H / 2;
         var d = distance();
-        var maxD = (soundSpeed * 3) / 2;
+        var maxD = (MEDIUM_SPEED[state.medium] * 3) / 2;
         var wallX = 30 * dpr + (W - 90 * dpr) * Math.min(1, d / maxD);
 
         ctx.fillStyle = "#9aa0c7"; ctx.fillRect(wallX, y - 60 * dpr, 14 * dpr, 120 * dpr);
@@ -2566,20 +2588,32 @@
         ctx.fillText(d.toFixed(1) + " m", (20 * dpr + wallX) / 2, y - 80 * dpr);
 
         document.getElementById("ro-dist").textContent = d.toFixed(1) + " m";
-        setFormula("Distance = (Speed × Time) ÷ 2 = (340 × " + state.time.toFixed(2) + ") ÷ 2 = <span class=\"hi\">" + d.toFixed(1) + "</span> m");
+        document.getElementById("ro-speed").textContent = MEDIUM_SPEED[state.medium] + " m/s";
+        setFormula("Distance = (Speed × Time) ÷ 2 = (" + MEDIUM_SPEED[state.medium] + " × " + state.time.toFixed(2) + ") ÷ 2 = <span class=\"hi\">" + d.toFixed(1) + "</span> m");
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "dist", "Distance to wall");
+      LabKit.readout(readoutsEl, "speed", "Sound speed in medium");
 
       clearPanel(controlsEl);
-      LabKit.slider(controlsEl, { key: "ec-t", label: "Time for echo to return", min: 0.1, max: 3, step: 0.05, value: 0.6, unit: " s", decimals: 2, onInput: function (v) { state.time = v; } });
+      LabKit.slider(controlsEl, { key: "ec-t", label: "Time for echo to return", min: 0.1, max: 3, step: 0.05, value: 0.6, unit: " s", decimals: 2, onInput: function (v) { state.time = v; draw(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Echo", text: "sound reflected off a hard surface, heard again after it travels there and back." },
         { term: "Time slider", text: "the sound makes a round trip, so only HALF the total time×speed gives the actual one-way distance to the wall." },
+        { term: "Medium buttons", text: "sound travels almost 18 times faster through steel than through air — particles packed tightly together pass the vibration along much faster." },
       ]);
 
-      setConcept("The round-trip rule is the whole trick here: sound travels <strong>to the wall and back</strong> in the measured time, so dividing by 2 after multiplying speed × time gives the true one-way distance — exactly how SONAR finds underwater distances.");
+      clearPanel(globalControlsEl);
+      Object.keys(MEDIUM_SPEED).forEach(function (m, i) {
+        var btn = LabKit.button(globalControlsEl, m, function () {
+          state.medium = m;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("The round-trip rule is the whole trick here: sound travels <strong>to the wall and back</strong> in the measured time, so dividing by 2 after multiplying speed × time gives the true one-way distance — exactly how SONAR finds underwater distances. Switch medium and notice the same echo TIME now implies a very different real distance, since sound's speed itself depends on what it's travelling through.");
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -3195,11 +3229,18 @@
     id: "rust", subject: "Chemistry", title: "Rust Formation Timelapse", icon: "🔩",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { humidity: 60, time: 0 };
+      var METALS = {
+        Iron: { rateMul: 1, cap: 1, note: "rusts continuously and never stops on its own — the iron oxide flakes off, exposing fresh iron underneath." },
+        Aluminium: { rateMul: 0.9, cap: 0.08, note: "forms a thin oxide layer almost instantly, but that layer then protects the metal underneath from further corrosion." },
+        "Stainless Steel": { rateMul: 0.05, cap: 0.05, note: "contains chromium, which forms an invisible protective layer that resists rusting almost entirely." },
+        Gold: { rateMul: 0, cap: 0, note: "is so unreactive it doesn't corrode at all — which is exactly why ancient gold artifacts still shine today." },
+      };
+      var state = { humidity: 60, time: 0, metal: "Iron" };
 
       function rustFraction() {
-        var rate = (state.humidity / 100) * 0.0004;
-        return Math.min(1, state.time * rate);
+        var m = METALS[state.metal];
+        var rate = (state.humidity / 100) * 0.0004 * m.rateMul;
+        return Math.min(m.cap, state.time * rate);
       }
 
       function draw() {
@@ -3211,22 +3252,34 @@
         ctx.fillStyle = "#9aa0c7"; ctx.fillRect(nailX, nailY, nailW, nailH);
         ctx.fillStyle = "rgba(224,106,61,0.85)"; ctx.fillRect(nailX, nailY + nailH * (1 - frac), nailW, nailH * frac);
 
-        document.getElementById("ro-rust").textContent = (frac * 100).toFixed(0) + "%";
-        setFormula("Iron + Oxygen + Water (moisture) → Iron oxide (rust) — a slow oxidation reaction, not instant like burning.");
+        document.getElementById("ro-rust").textContent = (frac * 100).toFixed(1) + "%";
+        document.getElementById("ro-note").textContent = METALS[state.metal].note;
+        setFormula("Iron + Oxygen + Water (moisture) → Iron oxide (rust) — a slow oxidation reaction, not instant like burning. Other metals corrode by similar reactions, but at very different rates.");
       }
 
       clearPanel(readoutsEl);
-      LabKit.readout(readoutsEl, "rust", "Rusted so far");
+      LabKit.readout(readoutsEl, "rust", "Corroded so far");
+      LabKit.readout(readoutsEl, "note", "Why");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ru-h", label: "Humidity", min: 10, max: 100, step: 1, value: 60, unit: "%", onInput: function (v) { state.humidity = v; } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Rusting", text: "a chemical change where iron reacts slowly with oxygen and moisture to form iron oxide." },
         { kind: "term", term: "Oxidation", text: "any reaction where a substance combines with oxygen — rusting and burning are both oxidation, just at very different speeds." },
-        { term: "Humidity slider", text: "more moisture in the air speeds up rusting dramatically — that's why dry climates see far less rust." },
+        { kind: "term", term: "Reactivity", text: "how readily a metal reacts with oxygen, water or acids — gold is among the least reactive metals known, iron is far more reactive." },
+        { term: "Metal buttons", text: "rusting is specifically an IRON problem — other metals either resist it, self-protect, or don't react at all." },
       ]);
 
-      setConcept("Rusting <strong>gains</strong> mass rather than losing it — the iron is chemically combining with oxygen from the air, not wearing away. It's the exact same basic reaction as burning, just stretched out over months instead of seconds.");
+      clearPanel(globalControlsEl);
+      Object.keys(METALS).forEach(function (m, i) {
+        var btn = LabKit.button(globalControlsEl, m, function () {
+          state.metal = m; state.time = 0;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("Rusting <strong>gains</strong> mass rather than losing it — the iron is chemically combining with oxygen from the air, not wearing away. It's the exact same basic reaction as burning, just stretched out over months instead of seconds. Not every metal behaves this way: some form a protective layer, and the least reactive metals barely react at all.");
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -3247,13 +3300,19 @@
     id: "combustion", subject: "Chemistry", title: "Combustion & Products", icon: "🕯️",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { o2: 70, t: 0 };
+      var FUELS = {
+        "Candle wax": { colors: ["#ff8aa8", "#ffd166", "rgba(255,209,102,0.2)"], use: "Lighting, before electricity was common" },
+        "Natural gas": { colors: ["#4fd1e8", "#8be8fa", "rgba(139,232,250,0.2)"], use: "Stoves and home heating" },
+        "Magnesium ribbon": { colors: ["#ffffff", "#f4f2ff", "rgba(244,242,255,0.3)"], use: "Fireworks, flares, and old photography flashes" },
+      };
+      var state = { o2: 70, t: 0, fuel: "Candle wax" };
 
       function draw(dt) {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
         ctx.clearRect(0, 0, W, H);
         var cx = W / 2, baseY = H * 0.75;
         var flameSize = (20 + (state.o2 / 100) * 50) * dpr;
+        var colors = FUELS[state.fuel].colors;
 
         ctx.fillStyle = "#9aa0c7"; ctx.fillRect(cx - 4 * dpr, baseY, 8 * dpr, 40 * dpr);
 
@@ -3263,7 +3322,7 @@
         ctx.quadraticCurveTo(cx + flameSize * 0.6, baseY - flameSize * 0.4, cx, baseY);
         ctx.quadraticCurveTo(cx - flameSize * 0.6, baseY - flameSize * 0.4, cx, baseY - flameSize - flicker);
         var grad = ctx.createLinearGradient(cx, baseY, cx, baseY - flameSize);
-        grad.addColorStop(0, "#ff8aa8"); grad.addColorStop(0.6, "#ffd166"); grad.addColorStop(1, "rgba(255,209,102,0.2)");
+        grad.addColorStop(0, colors[0]); grad.addColorStop(0.6, colors[1]); grad.addColorStop(1, colors[2]);
         ctx.fillStyle = grad; ctx.fill();
 
         if (state.o2 < 40) {
@@ -3274,10 +3333,12 @@
         }
 
         document.getElementById("ro-flame").textContent = state.o2 > 60 ? "Complete combustion" : "Incomplete (soot forms)";
+        document.getElementById("ro-use").textContent = FUELS[state.fuel].use;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "flame", "Combustion type");
+      LabKit.readout(readoutsEl, "use", "Common use of this fuel");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "co-o2", label: "Oxygen supply", min: 10, max: 100, step: 1, value: 70, unit: "%", onInput: function (v) { state.o2 = v; } });
@@ -3285,10 +3346,20 @@
         { kind: "term", term: "Combustion", text: "a chemical change that releases heat and light, producing new substances like CO₂ and water vapour." },
         { kind: "term", term: "Incomplete combustion", text: "happens with too little oxygen — produces soot (carbon) and dangerous carbon monoxide instead of clean CO₂." },
         { term: "Oxygen slider", text: "below a threshold, the flame starts producing visible black soot — a sign the fuel isn't fully burning." },
+        { term: "Fuel buttons", text: "flame colour depends on what's actually burning — magnesium burns dazzling white hot enough to be used in flares and fireworks." },
       ]);
 
+      clearPanel(globalControlsEl);
+      Object.keys(FUELS).forEach(function (f, i) {
+        var btn = LabKit.button(globalControlsEl, f, function () {
+          state.fuel = f;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw(0);
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
       setFormula("Complete: Fuel + plenty O₂ → CO₂ + H₂O + heat + light. Incomplete: Fuel + too little O₂ → soot (C) + CO + heat.");
-      setConcept("A candle flame needs <strong>enough oxygen</strong> to burn completely and cleanly — starve it of oxygen and it still burns, but produces soot and carbon monoxide instead, which is exactly why poorly ventilated fires are dangerous.");
+      setConcept("A candle flame needs <strong>enough oxygen</strong> to burn completely and cleanly — starve it of oxygen and it still burns, but produces soot and carbon monoxide instead, which is exactly why poorly ventilated fires are dangerous. Different fuels also burn with very different flame colours and intensities.");
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -3751,9 +3822,16 @@
     id: "neuronspeed", subject: "Biology", title: "Neuron Signal Speed", icon: "⚡",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { myelin: 50, t: 0 };
+      var state = { myelin: 50, diameter: 5, t: 0 };
 
-      function speed() { return 2 + (state.myelin / 100) * 118; }
+      function speed() { return 2 + (state.myelin / 100) * 98 + (state.diameter / 20) * 20; }
+      function nerveExample() {
+        var s = speed();
+        if (s > 90) return "Like a fast motor/touch fibre (reflexes)";
+        if (s > 30) return "Like a typical sensory/motor fibre";
+        if (s > 10) return "Like a thin, lightly-myelinated fibre";
+        return "Like a pain/temperature fibre (deliberately slow)";
+      }
 
       function draw(dt) {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -3774,19 +3852,23 @@
         ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.arc(px, y, 7 * dpr, 0, Math.PI * 2); ctx.fill();
 
         document.getElementById("ro-speed").textContent = speed().toFixed(0) + " m/s";
+        document.getElementById("ro-example").textContent = nerveExample();
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "speed", "Signal speed");
+      LabKit.readout(readoutsEl, "example", "Closest real nerve type");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ns-m", label: "Myelin insulation", min: 0, max: 100, step: 1, value: 50, unit: "%", onInput: function (v) { state.myelin = v; } });
+      LabKit.slider(controlsEl, { key: "ns-d", label: "Axon diameter", min: 1, max: 20, step: 1, value: 5, unit: " µm", onInput: function (v) { state.diameter = v; } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Myelin sheath", text: "an insulating layer wrapped around a nerve fibre, letting signals jump between gaps instead of travelling the whole length." },
-        { term: "Myelin slider", text: "more insulation means dramatically faster signals — some myelinated fibres exceed 100 m/s." },
+        { kind: "term", term: "Axon diameter", text: "a thicker nerve fibre carries a signal faster too — both thickness and myelin independently speed things up." },
+        { term: "Diameter slider", text: "the body's fastest fibres (controlling reflexes and touch) are both thickly myelinated AND wide — both tricks are used together for maximum speed." },
       ]);
 
-      setConcept("The myelin sheath isn't just protective padding — it's the reason some nerve signals in your body can travel <strong>over 100 metres per second</strong>, letting reflexes feel essentially instant.");
+      setConcept("The myelin sheath isn't just protective padding — it's the reason some nerve signals in your body can travel <strong>over 100 metres per second</strong>, letting reflexes feel essentially instant. A thicker axon adds to that speed too, which is why your body uses both tricks on its most urgent nerve fibres.");
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -3808,9 +3890,17 @@
     id: "allergysim", subject: "Biology", title: "Allergy Reaction Simulator", icon: "🤧",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { exposure: 30 };
+      var ALLERGENS = {
+        Pollen: { sensitivity: 1, typical: "Sneezing, itchy/watery eyes, runny nose (hay fever)", risk: "Rarely life-threatening" },
+        "Dust mites": { sensitivity: 1, typical: "Sneezing, congestion, worse indoors", risk: "Rarely life-threatening" },
+        "Pet dander": { sensitivity: 1.1, typical: "Sneezing, itchy skin, watery eyes", risk: "Rarely life-threatening" },
+        Peanuts: { sensitivity: 1.8, typical: "Rash, swelling, difficulty breathing", risk: "Can be life-threatening (anaphylaxis)" },
+        Shellfish: { sensitivity: 1.8, typical: "Rash, swelling, difficulty breathing", risk: "Can be life-threatening (anaphylaxis)" },
+        "Bee stings": { sensitivity: 1.9, typical: "Swelling, hives, difficulty breathing", risk: "Can be life-threatening (anaphylaxis)" },
+      };
+      var state = { exposure: 30, allergen: "Pollen" };
 
-      function symptomLevel() { return state.exposure; }
+      function symptomLevel() { return Math.min(100, state.exposure * ALLERGENS[state.allergen].sensitivity); }
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -3824,20 +3914,32 @@
         var level = symptomLevel();
         var symptom = level < 25 ? "No reaction" : level < 50 ? "Mild sneezing/itching" : level < 80 ? "Rash, watery eyes" : "Severe — seek urgent care";
         document.getElementById("ro-symptom").textContent = symptom;
+        document.getElementById("ro-risk").textContent = ALLERGENS[state.allergen].risk;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "symptom", "Reaction level");
+      LabKit.readout(readoutsEl, "risk", "Typical risk level");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "al-exp", label: "Allergen exposure", min: 0, max: 100, step: 1, value: 30, unit: "%", onInput: function (v) { state.exposure = v; draw(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Allergen", text: "a normally harmless substance that triggers an exaggerated immune response in some people." },
+        { kind: "term", term: "Anaphylaxis", text: "a severe, rapid, whole-body allergic reaction that can be life-threatening and needs urgent medical treatment." },
         { kind: "term", term: "Antihistamine", text: "a medicine that counteracts the body's exaggerated histamine response, relieving mild symptoms." },
-        { term: "Exposure slider", text: "higher allergen exposure generally means a stronger reaction, up to a severe, medically urgent level." },
+        { term: "Allergen buttons", text: "not all allergens carry equal risk — food and insect-sting allergies are far more likely to trigger a dangerous reaction than pollen or dust." },
       ]);
 
-      setConcept("An allergy is the immune system <strong>overreacting</strong> to something that's harmless to most people — the severity scales with exposure, which is exactly why avoiding a known allergen is the most effective prevention.");
+      clearPanel(globalControlsEl);
+      Object.keys(ALLERGENS).forEach(function (a, i) {
+        var btn = LabKit.button(globalControlsEl, a, function () {
+          state.allergen = a;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("An allergy is the immune system <strong>overreacting</strong> to something that's harmless to most people — the severity scales with exposure, which is exactly why avoiding a known allergen is the most effective prevention. Some allergens (like peanuts or bee stings) also carry a much higher risk of a dangerous reaction than others (like pollen).");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -3848,12 +3950,18 @@
     id: "foodchain", subject: "Biology", title: "Food Chain Energy Flow", icon: "🌿",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { producerEnergy: 10000 };
-      var levels = ["Producer (grass)", "Herbivore (rabbit)", "Carnivore (fox)", "Apex predator (eagle)"];
+      var ECOSYSTEMS = {
+        Grassland: ["Producer (grass)", "Herbivore (rabbit)", "Carnivore (fox)", "Apex predator (eagle)", "Scavenger (vulture)"],
+        Pond: ["Producer (algae)", "Herbivore (tadpole)", "Carnivore (fish)", "Apex predator (heron)", "Decomposer (bacteria)"],
+        Ocean: ["Producer (phytoplankton)", "Herbivore (krill)", "Carnivore (small fish)", "Apex predator (shark)", "Decomposer (bacteria)"],
+        Forest: ["Producer (oak tree)", "Herbivore (deer)", "Carnivore (wolf)", "Apex predator (large wolf pack)", "Decomposer (fungi)"],
+      };
+      var state = { producerEnergy: 10000, ecosystem: "Grassland", numLevels: 4 };
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
         ctx.clearRect(0, 0, W, H);
+        var levels = ECOSYSTEMS[state.ecosystem].slice(0, state.numLevels);
         var energies = [state.producerEnergy];
         for (var i = 1; i < levels.length; i++) energies.push(energies[i - 1] * 0.1);
 
@@ -3862,28 +3970,41 @@
         levels.forEach(function (l, i) {
           var h = Math.max(4 * dpr, (energies[i] / maxE) * H * 0.6);
           var x = i * barW + barW * 0.15, w = barW * 0.7;
-          ctx.fillStyle = ["#68e7a0", "#4fd1e8", "#ffd166", "#ff8aa8"][i];
+          ctx.fillStyle = ["#68e7a0", "#4fd1e8", "#ffd166", "#ff8aa8", "#b794f6"][i];
           ctx.fillRect(x, H * 0.75 - h, w, h);
           ctx.fillStyle = "#e7ecf4"; ctx.font = (10 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
           ctx.fillText(l, x + w / 2, H * 0.75 + 18 * dpr);
           ctx.fillText(energies[i].toFixed(0), x + w / 2, H * 0.75 - h - 8 * dpr);
         });
 
-        document.getElementById("ro-top").textContent = energies[energies.length - 1].toFixed(0) + " units";
+        document.getElementById("ro-top").textContent = energies[energies.length - 1].toFixed(2) + " units";
+        document.getElementById("ro-pct").textContent = (Math.pow(0.1, levels.length - 1) * 100).toFixed(4) + "%";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "top", "Energy reaching top level");
+      LabKit.readout(readoutsEl, "pct", "% of original energy left");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "fc-e", label: "Producer energy", min: 1000, max: 20000, step: 500, value: 10000, onInput: function (v) { state.producerEnergy = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "fc-n", label: "Number of trophic levels", min: 3, max: 5, step: 1, value: 4, onInput: function (v) { state.numLevels = v; draw(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Food chain", text: "a sequence showing how energy passes from one organism to the next by feeding." },
+        { kind: "term", term: "Trophic level", text: "an organism's position in the food chain — producer, herbivore, carnivore, and so on." },
         { kind: "term", term: "10% rule", text: "only about 10% of the energy at one level is passed on to the next — the rest is lost as heat and used up living." },
-        { term: "Producer energy slider", text: "no matter how much energy starts at the bottom, each step up loses about 90% of it." },
+        { term: "Ecosystem buttons", text: "a pond, a forest and the ocean all run on completely different species — but every single one obeys the same 10% energy rule." },
       ]);
 
-      setConcept("That's why food chains rarely have more than 4-5 levels, and why there are always <strong>far fewer</strong> top predators than plants — so little energy survives all the way to the top.");
+      clearPanel(globalControlsEl);
+      Object.keys(ECOSYSTEMS).forEach(function (e, i) {
+        var btn = LabKit.button(globalControlsEl, e, function () {
+          state.ecosystem = e;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("That's why food chains rarely have more than 4-5 levels, and why there are always <strong>far fewer</strong> top predators than plants — so little energy survives all the way to the top. Add one more trophic level and watch how little energy is left — this 10% rule holds true in every ecosystem, from a pond to the open ocean.");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -4020,7 +4141,9 @@
     id: "climatezone", subject: "Geography", title: "Climate Zone Explorer", icon: "☀️",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { lat: 20 };
+      var state = { lat: 20, altitude: 0 };
+
+      function estTemp() { return (30 - (state.lat / 90) * 55) - (state.altitude / 1000) * 6.5; }
 
       function zone() {
         var a = Math.abs(state.lat);
@@ -4046,22 +4169,26 @@
 
         var z = zone();
         document.getElementById("ro-zone").textContent = z.name;
+        document.getElementById("ro-temp").textContent = estTemp().toFixed(1) + "°C (estimated)";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "zone", "Climate zone");
+      LabKit.readout(readoutsEl, "temp", "Estimated temperature");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "cz-lat", label: "Latitude", min: 0, max: 90, step: 1, value: 20, unit: "°", onInput: function (v) { state.lat = v; draw(); document.getElementById("concept-zone").textContent = zone().desc; } });
+      LabKit.slider(controlsEl, { key: "cz-alt", label: "Altitude", min: 0, max: 6000, step: 100, value: 0, unit: " m", onInput: function (v) { state.altitude = v; draw(); } });
       var zoneDesc = LabKit.el("p", "concept-text", zone().desc);
       zoneDesc.id = "concept-zone";
       controlsEl.appendChild(zoneDesc);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Latitude", text: "distance north or south of the Equator, measured in degrees (0° to 90°)." },
-        { term: "Latitude slider", text: "climate zones are mainly decided by latitude — how directly the Sun's rays hit that part of Earth." },
+        { kind: "term", term: "Lapse rate", text: "temperature drops roughly 6.5°C for every 1,000 m gained in altitude, since the air is thinner and holds less heat." },
+        { term: "Altitude slider", text: "push altitude high enough even at the Equator and you reach freezing — exactly why equatorial mountains like Kilimanjaro are snow-capped." },
       ]);
 
-      setConcept("Latitude alone predicts a lot about climate: near the <strong>Equator</strong> (low latitude), sunlight hits almost straight-on all year; near the <strong>poles</strong> (high latitude), it arrives at a steep slant, spreading the same energy over a much larger area and making it colder.");
+      setConcept("Latitude alone predicts a lot about climate: near the <strong>Equator</strong> (low latitude), sunlight hits almost straight-on all year; near the <strong>poles</strong> (high latitude), it arrives at a steep slant, spreading the same energy over a much larger area and making it colder. <strong>Altitude</strong> is the other major factor — it cools things down regardless of latitude, which is why a tropical mountain can still have snow at its peak.");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -4312,12 +4439,15 @@
           if (s.dir !== 0) { ctx.beginPath(); ctx.moveTo(x + s.dir * 30 * dpr, y); ctx.lineTo(x + s.dir * 22 * dpr, y - 5 * dpr); ctx.lineTo(x + s.dir * 22 * dpr, y + 5 * dpr); ctx.fillStyle = "rgba(79,209,232,0.5)"; ctx.fill(); }
         }
         document.getElementById("ro-season").textContent = s.name;
+        var rainfall = s.dir === 1 ? Math.round(60 + 40 * Math.exp(-Math.pow(state.month - 7.5, 2) / 4)) : s.dir === -1 ? 25 : 5;
+        document.getElementById("ro-rain").textContent = rainfall + "% of peak intensity";
       }
 
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "season", "Wind pattern");
+      LabKit.readout(readoutsEl, "rain", "Rainfall intensity");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "mo-m", label: "Month", min: 1, max: 12, step: 1, value: 7, onInput: function (v) {
@@ -4390,10 +4520,13 @@
         ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc((x0 + x1) / 2, markerY, 6 * dpr, 0, Math.PI * 2); ctx.fill();
 
         document.getElementById("ro-layer").textContent = currentLayer().name;
+        var pressure = 100 * Math.exp(-state.altitude / 8.5);
+        document.getElementById("ro-pressure").textContent = pressure.toFixed(pressure < 1 ? 3 : 1) + " kPa (vs. ~100 kPa at sea level)";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "layer", "Current layer");
+      LabKit.readout(readoutsEl, "pressure", "Approx. air pressure");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "at-alt", label: "Altitude", min: 0, max: 600, step: 1, value: 10, unit: " km", onInput: function (v) { state.altitude = v; draw(); document.getElementById("concept-atmo").textContent = currentLayer().desc; } });
@@ -4402,10 +4535,11 @@
       controlsEl.appendChild(atmoDesc);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Atmosphere", text: "the layers of gas surrounding Earth, held in place by gravity." },
-        { term: "Altitude slider", text: "climb high enough and you pass through four distinct layers, each with very different conditions." },
+        { kind: "term", term: "Air pressure", text: "the weight of air pressing down from above — highest at sea level, dropping fast as you climb since there's less air left above you." },
+        { term: "Altitude slider", text: "climb high enough and you pass through four distinct layers, each with very different conditions — and pressure keeps dropping the whole way up." },
       ]);
 
-      setConcept("All the weather you'll ever experience happens in the <strong>troposphere</strong> — just the bottom 12 km or so of an atmosphere that actually extends hundreds of kilometres upward.");
+      setConcept("All the weather you'll ever experience happens in the <strong>troposphere</strong> — just the bottom 12 km or so of an atmosphere that actually extends hundreds of kilometres upward. Air pressure drops the entire way up too, which is exactly why mountaineers need extra oxygen at high altitude.");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -4416,33 +4550,45 @@
     id: "contourmap", subject: "Geography", title: "Contour Map & Elevation", icon: "⛰️",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { steepness: 50 };
+      var state = { steepness: 50, peakHeight: 1000 };
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
         ctx.clearRect(0, 0, W, H);
         var cx = W / 2, cy = H / 2;
         var spacing = Math.max(6 * dpr, 40 * dpr - (state.steepness / 100) * 32 * dpr);
-        for (var r = spacing; r < Math.max(W, H); r += spacing) {
+        var numRings = Math.floor(Math.max(W, H) / spacing);
+        var contourInterval = Math.round(state.peakHeight / numRings / 10) * 10 || 10;
+        var ringIdx = 0;
+        for (var r = spacing; r < Math.max(W, H); r += spacing, ringIdx++) {
           ctx.strokeStyle = "rgba(104,231,160," + Math.max(0.15, 0.6 - r / 500) + ")"; ctx.lineWidth = 1.5 * dpr;
           ctx.beginPath(); ctx.ellipse(cx, cy, r, r * 0.65, 0, 0, Math.PI * 2); ctx.stroke();
+          var elevHere = Math.max(0, state.peakHeight - ringIdx * contourInterval);
+          if (ringIdx % 2 === 0 && r < Math.max(W, H) * 0.9) {
+            ctx.fillStyle = "#e7ecf4"; ctx.font = (9 * dpr) + "px 'IBM Plex Mono', monospace"; ctx.textAlign = "left";
+            ctx.fillText(elevHere + "m", cx + Math.cos(-Math.PI / 4) * r, cy + Math.sin(-Math.PI / 4) * r * 0.65);
+          }
         }
         ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.arc(cx, cy, 6 * dpr, 0, Math.PI * 2); ctx.fill();
 
         document.getElementById("ro-terrain").textContent = state.steepness > 66 ? "Steep slope / cliff" : state.steepness > 33 ? "Moderate slope / hill" : "Gentle slope / plain";
+        document.getElementById("ro-interval").textContent = contourInterval + " m between lines";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "terrain", "Terrain type");
+      LabKit.readout(readoutsEl, "interval", "Contour interval");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "cm-s", label: "Slope steepness", min: 0, max: 100, step: 1, value: 50, onInput: function (v) { state.steepness = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "cm-h", label: "Peak height", min: 100, max: 3000, step: 100, value: 1000, unit: " m", onInput: function (v) { state.peakHeight = v; draw(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Contour line", text: "a line on a map connecting points of equal elevation." },
+        { kind: "term", term: "Contour interval", text: "the fixed elevation difference between one contour line and the next — maps always state this interval somewhere." },
         { term: "Steepness slider", text: "contour lines packed close together mean a steep slope; widely spaced lines mean gently rising land." },
       ]);
 
-      setConcept("You can read a mountain's <strong>steepness</strong> straight off a map without ever visiting it — tightly packed contour lines mean elevation is changing fast over a short distance, which is exactly what a cliff or steep hillside looks like.");
+      setConcept("You can read a mountain's <strong>steepness</strong> straight off a map without ever visiting it — tightly packed contour lines mean elevation is changing fast over a short distance, which is exactly what a cliff or steep hillside looks like. The actual numbers on each line always increase by the same fixed contour interval, letting you read off real elevation anywhere on the map.");
       draw();
       return function () { c2d.dispose(); };
     },
