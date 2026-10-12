@@ -2224,6 +2224,628 @@
     },
   });
 
+  // ---------- MATH 15: Circumference & Area Explorer ----------
+  SIMULATIONS.push({
+    id: "circlearea", subject: "Math", title: "Circumference & Area Explorer", icon: "⭕",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { outerR: 8, innerR: 0 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        var pxPerUnit = Math.min(W, H) * 0.4 / 12;
+        var R = state.outerR * pxPerUnit, r = state.innerR * pxPerUnit;
+
+        ctx.fillStyle = "rgba(79,209,232,0.35)";
+        ctx.strokeStyle = "#4fd1e8"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        if (r > 0) {
+          ctx.fillStyle = "#14162a";
+          ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        }
+
+        ctx.strokeStyle = "rgba(255,255,255,0.5)"; ctx.lineWidth = 1.5 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R, cy); ctx.stroke();
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("R = " + state.outerR, cx + R / 2, cy - 8 * dpr);
+
+        var circumference = 2 * Math.PI * state.outerR;
+        var area = Math.PI * (state.outerR * state.outerR - state.innerR * state.innerR);
+        document.getElementById("ro-circ").textContent = circumference.toFixed(2) + " units";
+        document.getElementById("ro-area").textContent = area.toFixed(2) + " units²";
+        var label = state.innerR > 0 ? "Ring (annulus) area" : "Circle area";
+        document.getElementById("ro-arealabel").textContent = label;
+        setFormula(state.innerR > 0
+          ? "Ring area = π(R² − r²) = π(" + (state.outerR * state.outerR) + " − " + (state.innerR * state.innerR) + ") = <span class=\"hi\">" + area.toFixed(2) + "</span>"
+          : "Circumference = 2πR = <span class=\"hi\">" + circumference.toFixed(2) + "</span> &nbsp;|&nbsp; Area = πR² = <span class=\"hi\">" + area.toFixed(2) + "</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "circ", "Outer circumference");
+      LabKit.readout(readoutsEl, "arealabel", "Shape");
+      LabKit.readout(readoutsEl, "area", "Area");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "ca-r", label: "Outer radius (R)", min: 2, max: 12, step: 0.5, value: 8, decimals: 1, onInput: function (v) { state.outerR = v; if (state.innerR >= v) state.innerR = v - 0.5; draw(); } });
+      LabKit.slider(controlsEl, { key: "ca-ir", label: "Inner radius (r) — makes a ring", min: 0, max: 11, step: 0.5, value: 0, decimals: 1, onInput: function (v) { state.innerR = Math.min(v, state.outerR - 0.5); draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "π (pi)", text: "the fixed ratio of any circle's circumference to its diameter, approximately 3.14159." },
+        { kind: "term", term: "Circumference", text: "the distance all the way around a circle's edge." },
+        { kind: "term", term: "Annulus", text: "a ring shape — the flat space between two circles that share the same center." },
+        { term: "Inner radius slider", text: "pull a hole out of the middle and the shape becomes a washer/ring — its area is just the big circle's area minus the hole's." },
+      ]);
+
+      setConcept("Every circle, no matter its size, has the exact same ratio between its circumference and diameter — that fixed number is <strong>π (pi)</strong>. A ring's area is simply one circle's area with a smaller circle's area subtracted out — the same idea used to compute a washer, a bangle, or a running track's lane area.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 16: Straight Line Graph ----------
+  SIMULATIONS.push({
+    id: "linegraph", subject: "Math", title: "Straight Line Graph (y = mx + c)", icon: "📈",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { m: 1, c: 0 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        var scale = Math.min(W, H) / 22;
+        function toPx(x, y) { return [cx + x * scale, cy - y * scale]; }
+
+        ctx.strokeStyle = "rgba(255,255,255,0.12)"; ctx.lineWidth = 1 * dpr;
+        for (var g = -10; g <= 10; g++) {
+          var p1 = toPx(g, -10), p2 = toPx(g, 10);
+          ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
+          var p3 = toPx(-10, g), p4 = toPx(10, g);
+          ctx.beginPath(); ctx.moveTo(p3[0], p3[1]); ctx.lineTo(p4[0], p4[1]); ctx.stroke();
+        }
+        ctx.strokeStyle = "#9aa0c7"; ctx.lineWidth = 2 * dpr;
+        var ax1 = toPx(-10, 0), ax2 = toPx(10, 0), ay1 = toPx(0, -10), ay2 = toPx(0, 10);
+        ctx.beginPath(); ctx.moveTo(ax1[0], ax1[1]); ctx.lineTo(ax2[0], ax2[1]); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ay1[0], ay1[1]); ctx.lineTo(ay2[0], ay2[1]); ctx.stroke();
+
+        var m = state.m, c = state.c;
+        var yAtNeg10 = m * -10 + c, yAt10 = m * 10 + c;
+        var start = toPx(-10, yAtNeg10), end = toPx(10, yAt10);
+        ctx.strokeStyle = "#4fd1e8"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(start[0], start[1]); ctx.lineTo(end[0], end[1]); ctx.stroke();
+
+        var yIntP = toPx(0, c);
+        ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.arc(yIntP[0], yIntP[1], 5 * dpr, 0, Math.PI * 2); ctx.fill();
+
+        if (m !== 0) {
+          var xInt = -c / m;
+          if (xInt >= -10 && xInt <= 10) {
+            var xIntP = toPx(xInt, 0);
+            ctx.fillStyle = "#68e7a0"; ctx.beginPath(); ctx.arc(xIntP[0], xIntP[1], 5 * dpr, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        document.getElementById("ro-slope").textContent = m.toFixed(1);
+        document.getElementById("ro-yint").textContent = "(0, " + c.toFixed(1) + ")";
+        document.getElementById("ro-xint").textContent = m !== 0 ? "(" + (-c / m).toFixed(2) + ", 0)" : "none (horizontal line)";
+        document.getElementById("ro-direction").textContent = m > 0 ? "Rises left to right" : m < 0 ? "Falls left to right" : "Flat (horizontal)";
+        setFormula("y = <span class=\"hi\">" + m.toFixed(1) + "</span>x + <span class=\"hi\">" + c.toFixed(1) + "</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "slope", "Slope (m)");
+      LabKit.readout(readoutsEl, "yint", "y-intercept");
+      LabKit.readout(readoutsEl, "xint", "x-intercept");
+      LabKit.readout(readoutsEl, "direction", "Line direction");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "lg-m", label: "Slope (m)", min: -3, max: 3, step: 0.5, value: 1, decimals: 1, onInput: function (v) { state.m = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "lg-c", label: "y-intercept (c)", min: -8, max: 8, step: 1, value: 0, onInput: function (v) { state.c = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Slope / gradient (m)", text: "how steeply the line rises or falls — the amount y changes for every 1 unit x increases." },
+        { kind: "term", term: "y-intercept (c)", text: "the point where the line crosses the y-axis, when x = 0." },
+        { kind: "term", term: "x-intercept", text: "the point where the line crosses the x-axis, when y = 0." },
+        { term: "Slope slider", text: "a negative slope flips the line's direction completely — it now falls as you move right instead of rising." },
+      ]);
+
+      setConcept("Every straight line can be written as <strong>y = mx + c</strong> — only two numbers, the slope and the y-intercept, completely describe it. Change the sign of m and the whole line flips direction; change c and the whole line slides up or down without changing its steepness at all.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 17: Profit, Loss & Discount Calculator ----------
+  SIMULATIONS.push({
+    id: "profitloss", subject: "Math", title: "Profit, Loss & Discount Calculator", icon: "🏷️",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { cp: 500, mp: 700, discount: 10 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var sp = state.mp * (1 - state.discount / 100);
+        var diff = sp - state.cp;
+        var pct = (diff / state.cp) * 100;
+
+        var maxV = Math.max(state.cp, state.mp, sp) * 1.15;
+        var bars = [
+          { label: "Cost Price", value: state.cp, color: "#9aa0c7" },
+          { label: "Marked Price", value: state.mp, color: "#4fd1e8" },
+          { label: "Selling Price", value: sp, color: diff >= 0 ? "#68e7a0" : "#ff8aa8" },
+        ];
+        var barW = W / 5, gap = W / 12, x0 = W * 0.18, base = H * 0.82;
+        bars.forEach(function (b, i) {
+          var h = (b.value / maxV) * (base - H * 0.12);
+          var x = x0 + i * (barW + gap);
+          ctx.fillStyle = b.color;
+          ctx.fillRect(x, base - h, barW, h);
+          ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+          ctx.fillText(b.label, x + barW / 2, base + 20 * dpr);
+          ctx.fillText("₹" + b.value.toFixed(0), x + barW / 2, base - h - 10 * dpr);
+        });
+
+        document.getElementById("ro-sp").textContent = "₹" + sp.toFixed(0);
+        document.getElementById("ro-discamt").textContent = "₹" + (state.mp - sp).toFixed(0);
+        document.getElementById("ro-result").textContent = (diff >= 0 ? "Profit of ₹" : "Loss of ₹") + Math.abs(diff).toFixed(0);
+        document.getElementById("ro-pct").textContent = (diff >= 0 ? "+" : "") + pct.toFixed(1) + "%";
+        setFormula("SP = MP × (1 − discount/100) = <span class=\"hi\">₹" + sp.toFixed(0) + "</span> &nbsp;|&nbsp; Profit/Loss % = (SP−CP)/CP × 100 = <span class=\"hi\">" + pct.toFixed(1) + "%</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "sp", "Selling Price");
+      LabKit.readout(readoutsEl, "discamt", "Discount amount");
+      LabKit.readout(readoutsEl, "result", "Result");
+      LabKit.readout(readoutsEl, "pct", "Profit/Loss %");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "pl-cp", label: "Cost Price (CP)", min: 100, max: 2000, step: 50, value: 500, unit: " ₹", onInput: function (v) { state.cp = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pl-mp", label: "Marked Price (MP)", min: 100, max: 3000, step: 50, value: 700, unit: " ₹", onInput: function (v) { state.mp = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pl-d", label: "Discount", min: 0, max: 50, step: 1, value: 10, unit: "%", onInput: function (v) { state.discount = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Cost Price (CP)", text: "what the seller originally paid to get or make the item." },
+        { kind: "term", term: "Marked Price (MP)", text: "the price labeled before any discount — also called the list price." },
+        { kind: "term", term: "Selling Price (SP)", text: "the actual price the customer pays, after any discount is subtracted from MP." },
+        { term: "Discount slider", text: "a high enough discount can push the selling price below cost price — turning a profit into a loss even though MP looks high." },
+      ]);
+
+      setConcept("A shop can mark an item's price <strong>high</strong> specifically so a 'big discount' still leaves a profit — always compare the final Selling Price to the Cost Price, not to the Marked Price, to know if it's actually a good deal.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 18: Speed, Distance & Time Race ----------
+  SIMULATIONS.push({
+    id: "speedrace", subject: "Math", title: "Speed, Distance & Time Race", icon: "🏃",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { speedA: 5, speedB: 7, distance: 100, t: 0, running: false };
+
+      function timeFor(speed) { return state.distance / speed; }
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var x0 = 40 * dpr, x1 = W - 40 * dpr;
+        var lanes = [{ y: H * 0.35, color: "#4fd1e8", speed: state.speedA, label: "Runner A" }, { y: H * 0.65, color: "#ff8aa8", speed: state.speedB, label: "Runner B" }];
+
+        lanes.forEach(function (lane) {
+          ctx.strokeStyle = "rgba(255,255,255,0.15)"; ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.moveTo(x0, lane.y); ctx.lineTo(x1, lane.y); ctx.stroke();
+          var distCovered = Math.min(state.distance, lane.speed * state.t);
+          var frac = distCovered / state.distance;
+          var px = x0 + frac * (x1 - x0);
+          ctx.fillStyle = lane.color; ctx.beginPath(); ctx.arc(px, lane.y, 8 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "left";
+          ctx.fillText(lane.label + " (" + lane.speed.toFixed(1) + " m/s)", x0, lane.y - 14 * dpr);
+        });
+        ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(x1, H * 0.2); ctx.lineTo(x1, H * 0.8); ctx.stroke();
+
+        var tA = timeFor(state.speedA), tB = timeFor(state.speedB);
+        document.getElementById("ro-ta").textContent = tA.toFixed(1) + " s";
+        document.getElementById("ro-tb").textContent = tB.toFixed(1) + " s";
+        document.getElementById("ro-winner").textContent = tA < tB ? "Runner A" : tA > tB ? "Runner B" : "Tie!";
+        document.getElementById("ro-relspeed").textContent = Math.abs(state.speedA - state.speedB).toFixed(1) + " m/s";
+        setFormula("Time = Distance / Speed &nbsp;→&nbsp; A: " + state.distance + "/" + state.speedA.toFixed(1) + " = <span class=\"hi\">" + tA.toFixed(1) + "s</span> &nbsp;|&nbsp; B: " + state.distance + "/" + state.speedB.toFixed(1) + " = <span class=\"hi\">" + tB.toFixed(1) + "s</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "ta", "Runner A's time");
+      LabKit.readout(readoutsEl, "tb", "Runner B's time");
+      LabKit.readout(readoutsEl, "winner", "Winner");
+      LabKit.readout(readoutsEl, "relspeed", "Relative speed (gap)");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "sr-a", label: "Runner A speed", min: 2, max: 12, step: 0.5, value: 5, decimals: 1, unit: " m/s", onInput: function (v) { state.speedA = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "sr-b", label: "Runner B speed", min: 2, max: 12, step: 0.5, value: 7, decimals: 1, unit: " m/s", onInput: function (v) { state.speedB = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "sr-d", label: "Race distance", min: 50, max: 400, step: 10, value: 100, unit: " m", onInput: function (v) { state.distance = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Speed", text: "distance covered per unit time — speed = distance ÷ time." },
+        { kind: "term", term: "Relative speed", text: "the difference between two speeds — how quickly a faster runner's lead grows over a slower one." },
+        { term: "Race distance slider", text: "stretch the race longer and the faster runner's winning margin (in time) grows too — the gap compounds with distance." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      LabKit.button(globalControlsEl, "Race!", function () {
+        if (state.running) return;
+        state.running = true; state.t = 0;
+        var start = performance.now();
+        var maxT = Math.max(timeFor(state.speedA), timeFor(state.speedB));
+        function step() {
+          state.t = Math.min(maxT, (performance.now() - start) / 1000);
+          draw();
+          if (state.t < maxT) requestAnimationFrame(step); else state.running = false;
+        }
+        step();
+      }, "primary");
+
+      setConcept("The real racing insight isn't just who's faster — it's that <strong>time = distance ÷ speed</strong>, so doubling the distance exactly doubles both runners' times, but the faster runner's final GAP in seconds grows too, not just their lead in meters.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 19: Bar Graph & Mode Explorer ----------
+  SIMULATIONS.push({
+    id: "bargraph", subject: "Math", title: "Bar Graph & Mode Explorer", icon: "📊",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var cats = ["Cricket", "Football", "Badminton", "Chess"];
+      var state = { counts: [12, 8, 5, 3] };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var total = state.counts.reduce(function (a, b) { return a + b; }, 0) || 1;
+        var maxV = Math.max.apply(null, state.counts) || 1;
+        var barW = W / (cats.length * 2), gap = barW, x0 = (W - (barW + gap) * cats.length + gap) / 2, base = H * 0.82;
+        var colors = ["#4fd1e8", "#68e7a0", "#ffd166", "#ff8aa8"];
+        var maxIdx = state.counts.indexOf(maxV);
+
+        cats.forEach(function (name, i) {
+          var h = (state.counts[i] / maxV) * (base - H * 0.15);
+          var x = x0 + i * (barW + gap);
+          ctx.fillStyle = colors[i % colors.length];
+          ctx.fillRect(x, base - h, barW, h);
+          if (i === maxIdx) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2 * dpr; ctx.strokeRect(x, base - h, barW, h); }
+          ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+          ctx.fillText(name, x + barW / 2, base + 18 * dpr);
+          ctx.fillText(state.counts[i], x + barW / 2, base - h - 8 * dpr);
+        });
+
+        document.getElementById("ro-total").textContent = total;
+        document.getElementById("ro-mode").textContent = cats[maxIdx] + " (" + maxV + " votes)";
+        document.getElementById("ro-modepct").textContent = ((maxV / total) * 100).toFixed(0) + "%";
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "total", "Total responses");
+      LabKit.readout(readoutsEl, "mode", "Mode (most frequent)");
+      LabKit.readout(readoutsEl, "modepct", "Mode's share of total");
+
+      clearPanel(controlsEl);
+      cats.forEach(function (name, i) {
+        LabKit.slider(controlsEl, { key: "bg-" + i, label: name + " votes", min: 0, max: 30, step: 1, value: state.counts[i], onInput: function (v) { state.counts[i] = v; draw(); } });
+      });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Frequency", text: "how many times a particular value or category appears in the data." },
+        { kind: "term", term: "Mode", text: "the single most frequently occurring value or category in a data set." },
+        { kind: "term", term: "Bar graph", text: "a chart where bar height (or length) shows the frequency of each category, making comparisons easy at a glance." },
+        { term: "Vote sliders", text: "ties are possible — if two categories have the same highest count, a data set can have more than one mode." },
+      ]);
+
+      setConcept("A bar graph turns a table of numbers into a <strong>shape</strong> you can compare instantly — the tallest bar is the mode, the single most common response in the whole survey.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 20: Integers on a Number Line ----------
+  SIMULATIONS.push({
+    id: "integerline", subject: "Math", title: "Integers on a Number Line", icon: "➕",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { start: 2, move: -5 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var result = state.start + state.move;
+        var minV = -20, maxV = 20;
+        var x0 = 30 * dpr, x1 = W - 30 * dpr, y = H / 2;
+        function toX(v) { return x0 + ((v - minV) / (maxV - minV)) * (x1 - x0); }
+
+        ctx.strokeStyle = "#9aa0c7"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+        for (var v = minV; v <= maxV; v += 5) {
+          ctx.beginPath(); ctx.moveTo(toX(v), y - 6 * dpr); ctx.lineTo(toX(v), y + 6 * dpr); ctx.stroke();
+          ctx.fillStyle = "#9aa0c7"; ctx.font = (10 * dpr) + "px 'IBM Plex Mono', monospace"; ctx.textAlign = "center";
+          ctx.fillText(v, toX(v), y + 22 * dpr);
+        }
+        ctx.beginPath(); ctx.moveTo(toX(0), y - 10 * dpr); ctx.lineTo(toX(0), y + 10 * dpr); ctx.stroke();
+
+        ctx.strokeStyle = state.move >= 0 ? "#68e7a0" : "#ff8aa8"; ctx.lineWidth = 3 * dpr;
+        var hopH = 40 * dpr;
+        ctx.beginPath();
+        ctx.moveTo(toX(state.start), y);
+        ctx.quadraticCurveTo(toX((state.start + result) / 2), y - hopH, toX(result), y);
+        ctx.stroke();
+
+        ctx.fillStyle = "#4fd1e8"; ctx.beginPath(); ctx.arc(toX(state.start), y, 7 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.arc(toX(result), y, 7 * dpr, 0, Math.PI * 2); ctx.fill();
+
+        document.getElementById("ro-result").textContent = result;
+        document.getElementById("ro-direction").textContent = state.move >= 0 ? "Hops right (adding)" : "Hops left (subtracting effect)";
+        setFormula(state.start + " " + (state.move >= 0 ? "+ " + state.move : "− " + Math.abs(state.move)) + " = <span class=\"hi\">" + result + "</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "result", "Result");
+      LabKit.readout(readoutsEl, "direction", "Direction of hop");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "il-s", label: "Starting integer", min: -15, max: 15, step: 1, value: 2, onInput: function (v) { state.start = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "il-m", label: "Integer to add (negative = subtract)", min: -15, max: 15, step: 1, value: -5, onInput: function (v) { state.move = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Integer", text: "a whole number that can be positive, negative, or zero — no fractions." },
+        { kind: "term", term: "Number line", text: "a straight line showing numbers in order, used to visualize distance and direction between them." },
+        { term: "Move slider", text: "adding a negative number is exactly the same as hopping LEFT — it has the same effect as subtracting its positive value." },
+      ]);
+
+      setConcept("Adding a negative integer isn't a special rule to memorize — it's just a <strong>hop in the opposite direction</strong> on the number line. That's why adding -5 lands you in exactly the same place as subtracting 5.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 21: Scale Factor & Similar Shapes ----------
+  SIMULATIONS.push({
+    id: "scalefactor", subject: "Math", title: "Scale Factor & Similar Shapes", icon: "🔎",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { scale: 1.5, shape: "square" };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        var baseSize = Math.min(W, H) * 0.18;
+        var scaledSize = baseSize * state.scale;
+
+        if (state.shape === "square") {
+          ctx.strokeStyle = "#9aa0c7"; ctx.lineWidth = 2 * dpr;
+          ctx.strokeRect(cx - baseSize, cy - baseSize, baseSize * 2, baseSize * 2);
+          ctx.strokeStyle = "#4fd1e8"; ctx.lineWidth = 3 * dpr;
+          ctx.strokeRect(cx - scaledSize, cy - scaledSize, scaledSize * 2, scaledSize * 2);
+        } else {
+          function tri(size, color, lw) {
+            ctx.strokeStyle = color; ctx.lineWidth = lw;
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - size); ctx.lineTo(cx + size * 0.9, cy + size * 0.7); ctx.lineTo(cx - size * 0.9, cy + size * 0.7); ctx.closePath();
+            ctx.stroke();
+          }
+          tri(baseSize, "#9aa0c7", 2 * dpr);
+          tri(scaledSize, "#4fd1e8", 3 * dpr);
+        }
+
+        var baseSide = 4;
+        var newSide = baseSide * state.scale;
+        var perimeterRatio = state.scale;
+        var areaRatio = state.scale * state.scale;
+        document.getElementById("ro-newside").textContent = newSide.toFixed(2) + " units (was " + baseSide + ")";
+        document.getElementById("ro-perimratio").textContent = "×" + perimeterRatio.toFixed(2);
+        document.getElementById("ro-arearatio").textContent = "×" + areaRatio.toFixed(2);
+        setFormula("Side scales by ×" + state.scale.toFixed(2) + " &nbsp;|&nbsp; Area scales by ×<span class=\"hi\">" + areaRatio.toFixed(2) + "</span> (scale factor squared)");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "newside", "New side length");
+      LabKit.readout(readoutsEl, "perimratio", "Perimeter scales by");
+      LabKit.readout(readoutsEl, "arearatio", "Area scales by");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "sf-s", label: "Scale factor", min: 0.25, max: 3, step: 0.25, value: 1.5, decimals: 2, onInput: function (v) { state.scale = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Similar shapes", text: "shapes with exactly the same angles and proportions, just different overall sizes — one is a scaled copy of the other." },
+        { kind: "term", term: "Scale factor", text: "the number every length gets multiplied by to turn one similar shape into the other." },
+        { term: "Scale factor slider", text: "lengths scale by the factor itself, but area scales by the factor SQUARED — double every side and the area doesn't just double, it quadruples." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      ["square", "triangle"].forEach(function (s, i) {
+        var btn = LabKit.button(globalControlsEl, s.charAt(0).toUpperCase() + s.slice(1), function () {
+          state.shape = s;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("This is why a photo enlarged to double its width needs <strong>four times</strong> the paper, not twice — and why a giant ant the size of a dog, if simply scaled up, would need legs far thicker than real proportions to support a body whose weight grew by the cube of the scale factor.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- MATH 22: Volume & Surface Area Explorer ----------
+  SIMULATIONS.push({
+    id: "cuboid3d", subject: "Math", title: "Volume & Surface Area Explorer", icon: "🧱",
+    uses3D: true,
+    mount: function () {
+      var three = LabKit.threeBoot(viewportEl);
+      three.setRadius(14);
+      dragHintEl.style.display = "block";
+
+      var state = { l: 4, w: 3, h: 2 };
+      var mesh = null, edges = null;
+      var group = new THREE.Group();
+      three.scene.add(group);
+
+      function rebuild() {
+        if (mesh) { group.remove(mesh); mesh.geometry.dispose(); }
+        var geo = new THREE.BoxGeometry(state.l, state.h, state.w);
+        var mat = new THREE.MeshStandardMaterial({ color: 0x4fd1e8, transparent: true, opacity: 0.75 });
+        mesh = new THREE.Mesh(geo, mat);
+        var edgeGeo = new THREE.EdgesGeometry(geo);
+        mesh.add(new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({ color: 0xffffff })));
+        group.add(mesh);
+
+        var volume = state.l * state.w * state.h;
+        var surfaceArea = 2 * (state.l * state.w + state.w * state.h + state.h * state.l);
+        document.getElementById("ro-vol").textContent = volume.toFixed(1) + " units³";
+        document.getElementById("ro-sa").textContent = surfaceArea.toFixed(1) + " units²";
+        setFormula("V = l×w×h = " + state.l + "×" + state.w + "×" + state.h + " = <span class=\"hi\">" + volume.toFixed(1) + "</span> &nbsp;|&nbsp; SA = 2(lw+wh+hl) = <span class=\"hi\">" + surfaceArea.toFixed(1) + "</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "vol", "Volume");
+      LabKit.readout(readoutsEl, "sa", "Surface area");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "cb-l", label: "Length", min: 1, max: 10, step: 0.5, value: 4, decimals: 1, onInput: function (v) { state.l = v; rebuild(); } });
+      LabKit.slider(controlsEl, { key: "cb-w", label: "Width", min: 1, max: 10, step: 0.5, value: 3, decimals: 1, onInput: function (v) { state.w = v; rebuild(); } });
+      LabKit.slider(controlsEl, { key: "cb-h", label: "Height", min: 1, max: 10, step: 0.5, value: 2, decimals: 1, onInput: function (v) { state.h = v; rebuild(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Volume", text: "how much 3D space a solid takes up — for a cuboid, length × width × height." },
+        { kind: "term", term: "Surface area", text: "the total area of all of a solid's outer faces added together — how much wrapping paper you'd need to cover it exactly." },
+        { term: "Drag to rotate", text: "drag the shape to see all six rectangular faces that make up its surface area." },
+      ]);
+
+      setConcept("A cuboid has exactly <strong>6 rectangular faces</strong> in 3 matching pairs — top/bottom, front/back, left/right — which is why surface area adds up three different face-areas, each counted twice.");
+      rebuild();
+
+      function loop() {
+        three.tickIdleRotate();
+        three.renderer.render(three.scene, three.camera);
+        three.setRafId(requestAnimationFrame(loop));
+      }
+      loop();
+
+      return function () { three.dispose(); dragHintEl.style.display = "none"; };
+    },
+  });
+
+  // ---------- MATH 23: Prime Factors, HCF & LCM ----------
+  SIMULATIONS.push({
+    id: "primefactor", subject: "Math", title: "Prime Factors, HCF & LCM", icon: "🌳",
+    mount: function () {
+      viewportEl.innerHTML = "";
+      var state = { a: 24, b: 36 };
+      var card = LabKit.el("div", null);
+      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
+      viewportEl.appendChild(card);
+
+      function primeFactors(n) {
+        var factors = [], d = 2;
+        while (n > 1) {
+          while (n % d === 0) { factors.push(d); n /= d; }
+          d++;
+          if (d * d > n && n > 1) { factors.push(n); break; }
+        }
+        return factors;
+      }
+      function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+
+      function render() {
+        var fa = primeFactors(state.a), fb = primeFactors(state.b);
+        var hcf = gcd(state.a, state.b);
+        var lcm = (state.a * state.b) / hcf;
+        card.innerHTML =
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.05rem;font-weight:700;">' + state.a + ' = ' + fa.join(' × ') + '</div>' +
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.05rem;font-weight:700;">' + state.b + ' = ' + fb.join(' × ') + '</div>' +
+          '<div style="font-size:0.85rem;max-width:26rem;color:var(--muted);">Common prime factors give the HCF; every prime factor from both (at highest power needed) gives the LCM.</div>';
+        document.getElementById("ro-hcf").textContent = hcf;
+        document.getElementById("ro-lcm").textContent = lcm;
+        document.getElementById("ro-check").textContent = hcf + " × " + lcm + " = " + (hcf * lcm) + " &nbsp;(" + state.a + " × " + state.b + " = " + (state.a * state.b) + ")";
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "hcf", "HCF (Highest Common Factor)");
+      LabKit.readout(readoutsEl, "lcm", "LCM (Lowest Common Multiple)");
+      LabKit.readout(readoutsEl, "check", "HCF × LCM check");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "pf-a", label: "Number A", min: 2, max: 100, step: 1, value: 24, onInput: function (v) { state.a = v; render(); } });
+      LabKit.slider(controlsEl, { key: "pf-b", label: "Number B", min: 2, max: 100, step: 1, value: 36, onInput: function (v) { state.b = v; render(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Prime factor", text: "a prime number that divides exactly into another number, with no remainder." },
+        { kind: "term", term: "HCF", text: "the Highest Common Factor — the biggest number that divides exactly into both numbers." },
+        { kind: "term", term: "LCM", text: "the Lowest Common Multiple — the smallest number that both numbers divide into exactly." },
+        { term: "Number sliders", text: "there's a neat shortcut: HCF × LCM of two numbers always equals the two numbers multiplied together." },
+      ]);
+
+      setConcept("Breaking a number down into its <strong>prime factors</strong> is like finding its true ingredients — once you have both numbers' ingredient lists, the shared ingredients give the HCF, and all the ingredients combined (without double-counting shared ones) give the LCM.");
+      render();
+      return function () { viewportEl.innerHTML = ""; };
+    },
+  });
+
+  // ---------- MATH 24: Fraction Wall & Comparing Fractions ----------
+  SIMULATIONS.push({
+    id: "fractionwall", subject: "Math", title: "Fraction Wall & Comparing Fractions", icon: "🍕",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { numA: 2, denA: 3, numB: 3, denB: 4 };
+
+      function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+      function simplify(n, d) { var g = gcd(n, d); return [n / g, d / g]; }
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var barW = W * 0.8, x0 = W * 0.1, barH = H * 0.18;
+
+        function drawBar(y, num, den, color) {
+          var cellW = barW / den;
+          for (var i = 0; i < den; i++) {
+            ctx.fillStyle = i < num ? color : "rgba(255,255,255,0.06)";
+            ctx.fillRect(x0 + i * cellW, y, cellW - 2 * dpr, barH);
+            ctx.strokeStyle = "rgba(255,255,255,0.3)"; ctx.lineWidth = 1 * dpr;
+            ctx.strokeRect(x0 + i * cellW, y, cellW - 2 * dpr, barH);
+          }
+          ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "left";
+          ctx.fillText(num + "/" + den, x0, y - 8 * dpr);
+        }
+        drawBar(H * 0.3, state.numA, state.denA, "#4fd1e8");
+        drawBar(H * 0.62, state.numB, state.denB, "#ff8aa8");
+
+        var decA = state.numA / state.denA, decB = state.numB / state.denB;
+        var simpA = simplify(state.numA, state.denA), simpB = simplify(state.numB, state.denB);
+        document.getElementById("ro-deca").textContent = decA.toFixed(3);
+        document.getElementById("ro-decb").textContent = decB.toFixed(3);
+        document.getElementById("ro-simp").textContent = simpA[0] + "/" + simpA[1] + " and " + simpB[0] + "/" + simpB[1];
+        document.getElementById("ro-compare").textContent = decA > decB ? "A is bigger" : decA < decB ? "B is bigger" : "A and B are equal!";
+        setFormula(state.numA + "/" + state.denA + " = <span class=\"hi\">" + decA.toFixed(3) + "</span> &nbsp;|&nbsp; " + state.numB + "/" + state.denB + " = <span class=\"hi\">" + decB.toFixed(3) + "</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "deca", "Fraction A as decimal");
+      LabKit.readout(readoutsEl, "decb", "Fraction B as decimal");
+      LabKit.readout(readoutsEl, "simp", "Simplest form");
+      LabKit.readout(readoutsEl, "compare", "Comparison");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "fw-na", label: "Fraction A numerator", min: 0, max: 12, step: 1, value: 2, onInput: function (v) { state.numA = Math.min(v, state.denA); draw(); } });
+      LabKit.slider(controlsEl, { key: "fw-da", label: "Fraction A denominator", min: 1, max: 12, step: 1, value: 3, onInput: function (v) { state.denA = v; if (state.numA > v) state.numA = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "fw-nb", label: "Fraction B numerator", min: 0, max: 12, step: 1, value: 3, onInput: function (v) { state.numB = Math.min(v, state.denB); draw(); } });
+      LabKit.slider(controlsEl, { key: "fw-db", label: "Fraction B denominator", min: 1, max: 12, step: 1, value: 4, onInput: function (v) { state.denB = v; if (state.numB > v) state.numB = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Numerator", text: "the top number in a fraction — how many equal parts you have." },
+        { kind: "term", term: "Denominator", text: "the bottom number in a fraction — how many equal parts the whole is divided into." },
+        { kind: "term", term: "Equivalent fractions", text: "different-looking fractions that represent exactly the same value, like 1/2 and 2/4." },
+        { term: "Fraction wall", text: "two fractions are easiest to compare when their bars are the same length — that's exactly why a common denominator is so useful." },
+      ]);
+
+      setConcept("Two fractions can look completely different and still be <strong>equal</strong> — the fraction wall makes this visible instantly, since equal fractions always shade the exact same total length of the bar, no matter how many pieces it's cut into.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
   // ---------- PHYSICS 5: Projectile Motion ----------
   SIMULATIONS.push({
     id: "projectile", subject: "Physics", title: "Projectile Motion", icon: "🏀",
