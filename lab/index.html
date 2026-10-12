@@ -3399,16 +3399,18 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var tissues = {
-        Xylem: { group: "Plant", fn: "Transports water and minerals upward from roots to leaves." },
-        Phloem: { group: "Plant", fn: "Transports food (made by photosynthesis) throughout the plant." },
-        Epithelial: { group: "Animal", fn: "Covers and lines body surfaces and organs, protecting what's underneath." },
-        Muscular: { group: "Animal", fn: "Contracts to produce movement — skeletal, smooth, or cardiac." },
-        Nervous: { group: "Animal", fn: "Carries electrical signals for control and communication around the body." },
-        Connective: { group: "Animal", fn: "Binds and supports other tissues and organs together." },
+        Xylem: { group: "Plant", fn: "Transports water and minerals upward from roots to leaves.", location: "Vascular bundles, throughout the plant", example: "Wood is mostly old xylem tissue" },
+        Phloem: { group: "Plant", fn: "Transports food (made by photosynthesis) throughout the plant.", location: "Vascular bundles, alongside xylem", example: "Carries sugar from leaves to roots" },
+        Parenchyma: { group: "Plant", fn: "Simple, loosely-packed living cells that fill most of a plant's soft tissue, often storing food.", location: "Fruit pulp, leaf interior, storage roots", example: "The soft flesh of an apple" },
+        Sclerenchyma: { group: "Plant", fn: "Dead cells with thick, hardened walls that give rigid mechanical support.", location: "Seed coats, nut shells, fibrous stems", example: "The hard shell of a coconut" },
+        Epithelial: { group: "Animal", fn: "Covers and lines body surfaces and organs, protecting what's underneath.", location: "Skin surface, lining of gut and blood vessels", example: "The outer layer of your skin" },
+        Muscular: { group: "Animal", fn: "Contracts to produce movement — skeletal, smooth, or cardiac.", location: "Limbs (skeletal), gut walls (smooth), heart (cardiac)", example: "Biceps contracting to lift your arm" },
+        Nervous: { group: "Animal", fn: "Carries electrical signals for control and communication around the body.", location: "Brain, spinal cord, and nerves throughout the body", example: "A signal travelling down your arm" },
+        Connective: { group: "Animal", fn: "Binds and supports other tissues and organs together.", location: "Tendons, ligaments, and beneath the skin", example: "A tendon connecting muscle to bone" },
       };
       var state = { t: "Xylem" };
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;text-align:center;padding:20px;";
+      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
       function render() {
@@ -3418,15 +3420,20 @@
           '<div style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;">' + t.group + ' tissue</div>' +
           '<div style="font-size:0.88rem;max-width:24rem;">' + t.fn + '</div>';
         document.getElementById("ro-group").textContent = t.group;
+        document.getElementById("ro-location").textContent = t.location;
+        document.getElementById("ro-example").textContent = t.example;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "group", "Tissue group");
+      LabKit.readout(readoutsEl, "location", "Found in");
+      LabKit.readout(readoutsEl, "example", "Everyday example");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Tissue", text: "a group of similar cells working together to perform one specific function." },
-        { term: "Tissue buttons", text: "plant tissues (xylem, phloem) and animal tissues (epithelial, muscular, nervous, connective) each specialize for completely different jobs." },
+        { kind: "term", term: "Living vs. dead tissue", text: "sclerenchyma cells are actually dead once mature — their thick walls alone provide strength, with no living contents needed." },
+        { term: "Tissue buttons", text: "plant tissues (xylem, phloem, parenchyma, sclerenchyma) and animal tissues (epithelial, muscular, nervous, connective) each specialize for completely different jobs." },
       ]);
 
       clearPanel(globalControlsEl);
@@ -3879,34 +3886,43 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var data = {
-        Asia: { fact: "The largest and most populous continent, home to Mount Everest, the world's highest peak.", oceans: "Pacific, Indian, Arctic" },
-        Africa: { fact: "The second-largest continent, home to the Sahara, the world's largest hot desert.", oceans: "Atlantic, Indian" },
-        "North America": { fact: "Home to the Rocky Mountains and the Great Lakes, the largest group of freshwater lakes on Earth.", oceans: "Pacific, Atlantic, Arctic" },
-        "South America": { fact: "Home to the Amazon, the largest rainforest and river by volume on Earth.", oceans: "Pacific, Atlantic" },
-        Antarctica: { fact: "The coldest continent, almost entirely covered by ice, with no permanent population.", oceans: "Southern (Antarctic)" },
-        Europe: { fact: "The second-smallest continent by area, but one of the most densely populated.", oceans: "Atlantic, Arctic" },
-        Australia: { fact: "The smallest continent, and the only one that is also a single country.", oceans: "Pacific, Indian" },
+        Asia: { fact: "The largest and most populous continent, home to Mount Everest, the world's highest peak.", oceans: "Pacific, Indian, Arctic", areaKm2: 44500000, popRank: 1 },
+        Africa: { fact: "The second-largest continent, home to the Sahara, the world's largest hot desert.", oceans: "Atlantic, Indian", areaKm2: 30300000, popRank: 2 },
+        "North America": { fact: "Home to the Rocky Mountains and the Great Lakes, the largest group of freshwater lakes on Earth.", oceans: "Pacific, Atlantic, Arctic", areaKm2: 24700000, popRank: 4 },
+        "South America": { fact: "Home to the Amazon, the largest rainforest and river by volume on Earth.", oceans: "Pacific, Atlantic", areaKm2: 17800000, popRank: 5 },
+        Antarctica: { fact: "The coldest continent, almost entirely covered by ice, with no permanent population.", oceans: "Southern (Antarctic)", areaKm2: 14200000, popRank: 7 },
+        Europe: { fact: "The second-smallest continent by area, but one of the most densely populated.", oceans: "Atlantic, Arctic", areaKm2: 10500000, popRank: 3 },
+        Australia: { fact: "The smallest continent, and the only one that is also a single country.", oceans: "Pacific, Indian", areaKm2: 7700000, popRank: 6 },
       };
+      var maxArea = 44500000;
       var state = { c: "Asia" };
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;text-align:center;padding:20px;";
+      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
       function render() {
         var d = data[state.c];
+        var barPct = Math.round((d.areaKm2 / maxArea) * 100);
         card.innerHTML =
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.3rem;font-weight:700;">' + state.c + '</div>' +
-          '<div style="font-size:0.88rem;max-width:26rem;">' + d.fact + '</div>';
+          '<div style="font-size:0.88rem;max-width:26rem;">' + d.fact + '</div>' +
+          '<div style="width:80%;max-width:20rem;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;height:14px;overflow:hidden;margin-top:4px;">' +
+          '<div style="width:' + barPct + '%;height:100%;background:var(--geo);"></div></div>' +
+          '<div style="font-size:0.7rem;color:var(--muted);">Area relative to Asia (the largest)</div>';
         document.getElementById("ro-oceans").textContent = d.oceans;
+        document.getElementById("ro-area").textContent = (d.areaKm2 / 1000000).toFixed(1) + " million km²";
+        document.getElementById("ro-poprank").textContent = "#" + d.popRank + " by population";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "oceans", "Bordering oceans");
+      LabKit.readout(readoutsEl, "area", "Approx. area");
+      LabKit.readout(readoutsEl, "poprank", "Population rank");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Continent", text: "one of Earth's seven huge, continuous landmasses." },
-        { term: "Continent buttons", text: "each continent borders a different combination of the world's oceans, shaping its climate and trade routes." },
+        { term: "Continent buttons", text: "Asia is both the largest AND the most populous continent — but size and population rank don't always line up the same way (Australia is small but not the least populated)." },
       ]);
 
       clearPanel(globalControlsEl);
@@ -4152,11 +4168,12 @@
       viewportEl.innerHTML = "";
       var stages = [
         { name: "Evaporation", desc: "The Sun heats water in oceans, rivers and lakes, turning it into water vapour that rises into the air." },
+        { name: "Transpiration", desc: "Plants also release water vapour from their leaves into the air — a plant-powered companion process to evaporation." },
         { name: "Condensation", desc: "Rising vapour cools in the atmosphere and condenses into tiny droplets, forming clouds." },
         { name: "Precipitation", desc: "Water droplets in clouds grow heavy enough to fall back down as rain, snow, or hail." },
-        { name: "Collection", desc: "Fallen water collects in rivers, lakes and oceans, or soaks into the ground — ready to evaporate again." },
+        { name: "Collection & Runoff", desc: "Fallen water collects in rivers, lakes and oceans, or soaks into the ground as groundwater — ready to evaporate again." },
       ];
-      var state = { stage: 0 };
+      var state = { stage: 0, temp: 25 };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:12px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
@@ -4164,19 +4181,24 @@
       function render() {
         var s = stages[state.stage];
         card.innerHTML =
-          '<div style="font-size:2rem;">' + ["☀️", "☁️", "🌧️", "🌊"][state.stage] + '</div>' +
+          '<div style="font-size:2rem;">' + ["☀️", "🌱", "☁️", "🌧️", "🌊"][state.stage] + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.15rem;font-weight:700;">' + s.name + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + s.desc + '</div>';
         document.getElementById("ro-stage").textContent = (state.stage + 1) + " / " + stages.length;
+        var relRate = Math.round((state.temp / 25) * (state.temp / 25) * 100);
+        document.getElementById("ro-rate").textContent = relRate + "% (vs. 25°C baseline)";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "stage", "Cycle stage");
+      LabKit.readout(readoutsEl, "rate", "Relative evaporation rate");
 
       clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "wc-t", label: "Water temperature", min: 0, max: 50, step: 1, value: 25, unit: "°C", onInput: function (v) { state.temp = v; render(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Water cycle", text: "the continuous natural movement of water between the oceans, atmosphere and land." },
-        { term: "Next button", text: "the cycle has no real starting point — after collection, evaporation simply begins again." },
+        { kind: "term", term: "Transpiration", text: "water vapour released into the air by plants, through tiny pores in their leaves." },
+        { term: "Temperature slider", text: "warmer water evaporates noticeably faster — that's why puddles disappear quickly on a hot day but linger on a cool one." },
       ]);
 
       clearPanel(globalControlsEl);
@@ -4443,42 +4465,62 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var wonders = [
-        { name: "Great Pyramid of Giza", loc: "Egypt", fact: "The only one of the seven that still stands largely intact today." },
-        { name: "Hanging Gardens of Babylon", loc: "Mesopotamia", fact: "Described as terraced gardens, though no archaeological proof of their exact location survives." },
-        { name: "Statue of Zeus at Olympia", loc: "Greece", fact: "A giant statue of the god Zeus, built for the original Olympic Games' temple." },
-        { name: "Temple of Artemis at Ephesus", loc: "Turkey (Anatolia)", fact: "A grand marble temple dedicated to the goddess Artemis." },
-        { name: "Mausoleum at Halicarnassus", loc: "Turkey (Anatolia)", fact: "An elaborate tomb; the word 'mausoleum' comes from this very structure." },
-        { name: "Colossus of Rhodes", loc: "Greece (Rhodes)", fact: "A giant bronze statue that once stood near the harbour entrance." },
-        { name: "Lighthouse of Alexandria", loc: "Egypt", fact: "One of the tallest structures of the ancient world, guiding ships into the harbour." },
+        { name: "Great Pyramid of Giza", loc: "Egypt", era: "~2560 BCE", builder: "Pharaoh Khufu", status: "Still standing", fact: "The only one of the seven that still stands largely intact today — originally about 146 m tall, it was the world's tallest man-made structure for almost 4,000 years." },
+        { name: "Hanging Gardens of Babylon", loc: "Mesopotamia", era: "Disputed", builder: "Traditionally King Nebuchadnezzar II", status: "Uncertain — never confirmed", fact: "Described as spectacular terraced gardens, but no archaeological proof of their exact location (or even firm existence) has ever been found." },
+        { name: "Statue of Zeus at Olympia", loc: "Greece", era: "~435 BCE", builder: "Sculptor Phidias", status: "Lost (destroyed by fire)", fact: "A giant seated statue of the god Zeus, roughly 12 m tall, housed inside the temple at the original Olympic Games' home." },
+        { name: "Temple of Artemis at Ephesus", loc: "Turkey (Anatolia)", era: "~550 BCE (rebuilt several times)", builder: "Various Ionian Greek builders", status: "Lost", fact: "A grand marble temple dedicated to the goddess Artemis, rebuilt more than once after fires and raids before its final destruction." },
+        { name: "Mausoleum at Halicarnassus", loc: "Turkey (Anatolia)", era: "~350 BCE", builder: "For King Mausolus of Caria", status: "Lost (earthquake damage over centuries)", fact: "An elaborate decorated tomb; the word 'mausoleum' used for grand tombs everywhere today comes directly from this one structure." },
+        { name: "Colossus of Rhodes", loc: "Greece (Rhodes)", era: "~280 BCE", builder: "Sculptor Chares of Lindos", status: "Lost (fell in an earthquake, 226 BCE)", fact: "A giant bronze statue of the sun-god Helios that once stood near the harbour entrance — it stood for only about 54 years before toppling." },
+        { name: "Lighthouse of Alexandria", loc: "Egypt", era: "~280 BCE", builder: "Commissioned by Ptolemy I/II", status: "Lost (collapsed after repeated earthquakes)", fact: "One of the tallest structures of the ancient world, guiding ships into Alexandria's harbour for over 1,500 years before finally collapsing." },
       ];
-      var state = { i: 0 };
+      var state = { i: 0, filter: "All" };
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
+      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      function visible() {
+        if (state.filter === "All") return wonders;
+        if (state.filter === "Standing") return wonders.filter(function (w) { return w.status.indexOf("Still standing") === 0; });
+        return wonders.filter(function (w) { return w.status.indexOf("Still standing") !== 0; });
+      }
+
       function render() {
-        var w = wonders[state.i];
+        var list = visible();
+        if (state.i >= list.length) state.i = 0;
+        var w = list[state.i];
         card.innerHTML =
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + w.name + '</div>' +
-          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + w.loc + '</div>' +
+          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + w.loc + ' &nbsp;·&nbsp; ' + w.era + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + w.fact + '</div>';
-        document.getElementById("ro-wonder").textContent = (state.i + 1) + " / 7";
+        document.getElementById("ro-wonder").textContent = (state.i + 1) + " / " + list.length;
+        document.getElementById("ro-builder").textContent = w.builder;
+        document.getElementById("ro-status").textContent = w.status;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "wonder", "Wonder");
+      LabKit.readout(readoutsEl, "builder", "Built by");
+      LabKit.readout(readoutsEl, "status", "Status today");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Seven Wonders of the Ancient World", text: "a classic list of remarkable structures, first compiled by ancient Greek writers." },
-        { term: "Next button", text: "six of the seven no longer exist — lost to earthquakes, fire, or time." },
+        { kind: "term", term: "Hanging Gardens' special case", text: "unlike the others, historians still debate whether it even existed as described — it's the one wonder with no confirmed archaeological trace at all." },
+        { term: "Filter buttons", text: "narrow the list down to only the wonder still standing, or only the ones that were eventually lost." },
       ]);
 
       clearPanel(globalControlsEl);
-      LabKit.button(globalControlsEl, "← Prev", function () { state.i = (state.i + wonders.length - 1) % wonders.length; render(); });
-      LabKit.button(globalControlsEl, "Next →", function () { state.i = (state.i + 1) % wonders.length; render(); }, "primary");
+      ["All", "Standing", "Lost"].forEach(function (f, i) {
+        var btn = LabKit.button(globalControlsEl, f === "All" ? "All 7" : f, function () {
+          state.filter = f; state.i = 0;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { if (c.textContent === "All 7" || c.textContent === "Standing" || c.textContent === "Lost") c.classList.remove("active"); });
+          btn.classList.add("active"); render();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+      LabKit.button(globalControlsEl, "← Prev", function () { var list = visible(); state.i = (state.i + list.length - 1) % list.length; render(); });
+      LabKit.button(globalControlsEl, "Next →", function () { var list = visible(); state.i = (state.i + 1) % list.length; render(); }, "primary");
 
-      setConcept("The <strong>Great Pyramid</strong> is the only wonder on this ancient list still standing today — the rest survive only through descriptions written by ancient travelers and historians.");
+      setConcept("The <strong>Great Pyramid</strong> is the only wonder on this ancient list still standing today — the rest survive only through descriptions written by ancient travelers and historians, and one (the Hanging Gardens) may not have existed exactly as described at all.");
       render();
       return function () { viewportEl.innerHTML = ""; };
     },
@@ -4490,36 +4532,67 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var facts = [
-        { title: "Mohenjo-daro & Harappa", text: "Two of the largest Indus Valley cities, both remarkably well-planned with grid-pattern streets." },
-        { title: "Advanced drainage", text: "Houses connected to covered drains running beneath the streets — remarkably advanced urban planning for its time." },
-        { title: "Standardized weights", text: "Uniform weights and measures suggest organized, large-scale trade across the region." },
-        { title: "Undeciphered script", text: "The Indus script appears on seals and pottery, but it still hasn't been fully deciphered by historians." },
+        { title: "Mohenjo-daro & Harappa", text: "Two of the largest Indus Valley cities, both remarkably well-planned with grid-pattern streets dividing the city into neat blocks." },
+        { title: "Advanced drainage", text: "Houses connected to covered drains running beneath the streets — remarkably advanced urban sanitation for its time, not matched again in the region for centuries." },
+        { title: "Standardized weights", text: "Uniform cube-shaped stone weights, following a consistent ratio system, suggest organized, large-scale trade across the whole region." },
+        { title: "Undeciphered script", text: "The Indus script appears on thousands of seals and pottery pieces, but despite many attempts, it still hasn't been fully deciphered by historians." },
+        { title: "Trade with Mesopotamia", text: "Indus seals and goods found in Mesopotamian sites suggest active long-distance trade between the two civilizations." },
+        { title: "The Great Bath", text: "A large, carefully waterproofed public bathing structure at Mohenjo-daro, likely used for ritual bathing rather than everyday washing." },
+        { title: "Gradual decline", text: "Historians debate the cause — theories include river course changes, climate shifts, and declining trade, rather than one single dramatic event." },
       ];
-      var state = { i: 0 };
+      var state = { i: 0, compare: "None" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      var compareData = {
+        "Indus Valley": { river: "Indus", writingDeciphered: "No", drainage: "Yes — covered street drains", peak: "~3300-1300 BCE" },
+        Egypt: { river: "Nile", writingDeciphered: "Yes (hieroglyphics)", drainage: "Limited, mainly in palaces", peak: "~3100-30 BCE" },
+        Mesopotamia: { river: "Tigris & Euphrates", writingDeciphered: "Yes (cuneiform)", drainage: "Basic, varied by city", peak: "~3500-539 BCE" },
+      };
+
       function render() {
-        var f = facts[state.i];
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + f.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + f.text + '</div>';
-        document.getElementById("ro-fact").textContent = (state.i + 1) + " / " + facts.length;
+        if (state.compare === "None") {
+          var f = facts[state.i];
+          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + f.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + f.text + '</div>';
+          document.getElementById("ro-fact").textContent = (state.i + 1) + " / " + facts.length;
+          document.getElementById("ro-mode").textContent = "Browsing facts";
+        } else {
+          var a = compareData["Indus Valley"], b = compareData[state.compare];
+          card.innerHTML =
+            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:26rem;font-size:0.8rem;">' +
+            '<div style="font-family:\'Baloo 2\',sans-serif;font-weight:700;">Indus Valley</div><div style="font-family:\'Baloo 2\',sans-serif;font-weight:700;">' + state.compare + '</div>' +
+            '<div>River: ' + a.river + '</div><div>River: ' + b.river + '</div>' +
+            '<div>Writing deciphered: ' + a.writingDeciphered + '</div><div>Writing deciphered: ' + b.writingDeciphered + '</div>' +
+            '<div>Drainage: ' + a.drainage + '</div><div>Drainage: ' + b.drainage + '</div>' +
+            '</div>';
+          document.getElementById("ro-fact").textContent = "Comparing";
+          document.getElementById("ro-mode").textContent = "vs. " + state.compare;
+        }
       }
 
       clearPanel(readoutsEl);
-      LabKit.readout(readoutsEl, "fact", "Fact");
+      LabKit.readout(readoutsEl, "fact", "Position");
+      LabKit.readout(readoutsEl, "mode", "Mode");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Indus Valley Civilization", text: "one of the world's earliest urban civilizations, flourishing roughly 3300-1300 BCE in the Indus river region." },
-        { term: "Next button", text: "its advanced city planning rivaled or exceeded many civilizations that came much later." },
+        { term: "Compare buttons", text: "the Indus Valley's writing is the one major early script still undeciphered — Egypt and Mesopotamia's scripts have both been read for nearly two centuries." },
       ]);
 
       clearPanel(globalControlsEl);
-      LabKit.button(globalControlsEl, "← Prev", function () { state.i = (state.i + facts.length - 1) % facts.length; render(); });
-      LabKit.button(globalControlsEl, "Next →", function () { state.i = (state.i + 1) % facts.length; render(); }, "primary");
+      LabKit.button(globalControlsEl, "← Prev", function () { if (state.compare !== "None") return; state.i = (state.i + facts.length - 1) % facts.length; render(); });
+      LabKit.button(globalControlsEl, "Next →", function () { if (state.compare !== "None") return; state.i = (state.i + 1) % facts.length; render(); }, "primary");
+      ["None", "Egypt", "Mesopotamia"].forEach(function (c) {
+        var btn = LabKit.button(globalControlsEl, c === "None" ? "Browse facts" : "vs. " + c, function () {
+          state.compare = c;
+          Array.prototype.forEach.call(globalControlsEl.children, function (el) { el.classList.remove("active"); });
+          btn.classList.add("active"); render();
+        }, "chip" + (c === "None" ? " active" : ""));
+      });
 
-      setConcept("What stands out most about the Indus Valley Civilization is just how <strong>organized</strong> it was — planned streets, covered drains, and standard weights, thousands of years before most of the world had anything comparable.");
+      setConcept("What stands out most about the Indus Valley Civilization is just how <strong>organized</strong> it was — planned streets, covered drains, and standard weights, thousands of years before most of the world had anything comparable. Its one unsolved mystery is its own writing, still undeciphered despite a century of attempts.");
       render();
       return function () { viewportEl.innerHTML = ""; };
     },
@@ -4531,10 +4604,11 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var scripts = {
-        Cuneiform: { origin: "Mesopotamia (Sumer)", fact: "Wedge-shaped marks pressed into wet clay tablets using a reed stylus — among the earliest writing systems known." },
-        Hieroglyphics: { origin: "Ancient Egypt", fact: "Picture-based symbols used for religious texts and monuments, famously deciphered using the Rosetta Stone." },
-        "Indus Script": { origin: "Indus Valley Civilization", fact: "Found on seals and pottery, this script has still not been fully deciphered by historians today." },
-        "Oracle Bone Script": { origin: "Ancient China", fact: "Early Chinese characters carved into bone and shell, the ancestor of modern Chinese writing." },
+        Cuneiform: { origin: "Mesopotamia (Sumer)", era: "~3200 BCE", deciphered: "Yes (19th century CE)", fact: "Wedge-shaped marks pressed into wet clay tablets using a reed stylus — among the earliest writing systems known." },
+        Hieroglyphics: { origin: "Ancient Egypt", era: "~3200 BCE", deciphered: "Yes (1822, via the Rosetta Stone)", fact: "Picture-based symbols used for religious texts and monuments, famously deciphered using the Rosetta Stone." },
+        "Indus Script": { origin: "Indus Valley Civilization", era: "~2600 BCE", deciphered: "No — still unsolved", fact: "Found on thousands of seals and pottery pieces, this script has still not been fully deciphered by historians today." },
+        "Oracle Bone Script": { origin: "Ancient China", era: "~1250 BCE", deciphered: "Yes — ancestor of modern Chinese", fact: "Early Chinese characters carved into bone and shell, used for divination, and the direct ancestor of modern Chinese writing." },
+        "Phoenician Alphabet": { origin: "Phoenicia (eastern Mediterranean)", era: "~1050 BCE", deciphered: "Yes — widely read", fact: "One of the first true alphabets, using symbols for individual sounds rather than whole words or ideas — the ancestor of the Greek, and eventually Latin, alphabets." },
       };
       var state = { s: "Cuneiform" };
       var card = LabKit.el("div", null);
@@ -4545,13 +4619,15 @@
         var s = scripts[state.s];
         card.innerHTML =
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.15rem;font-weight:700;">' + state.s + '</div>' +
-          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + s.origin + '</div>' +
+          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + s.origin + ' &nbsp;·&nbsp; ' + s.era + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + s.fact + '</div>';
         document.getElementById("ro-origin").textContent = s.origin;
+        document.getElementById("ro-deciphered").textContent = s.deciphered;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "origin", "Origin");
+      LabKit.readout(readoutsEl, "deciphered", "Deciphered?");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
@@ -4580,11 +4656,14 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var voyages = [
-        { year: 1492, name: "Christopher Columbus", fact: "Sailed west across the Atlantic aiming for Asia, reaching the Caribbean instead." },
-        { year: 1498, name: "Vasco da Gama", fact: "Found a sea route from Europe around Africa to India, opening direct sea trade." },
-        { year: 1519, name: "Ferdinand Magellan's expedition", fact: "Began the first voyage to sail all the way around the world, completed in 1522." },
+        { year: 1405, name: "Zheng He's first voyage", nation: "Ming China", fact: "Commanded a massive treasure fleet across the Indian Ocean to Southeast Asia, India, Arabia and East Africa — decades before any European voyage of similar scale." },
+        { year: 1492, name: "Christopher Columbus", nation: "Spain", fact: "Sailed west across the Atlantic aiming for Asia, reaching the Caribbean instead — and never realized it wasn't Asia." },
+        { year: 1497, name: "John Cabot", nation: "England", fact: "Reached the coast of North America (likely Newfoundland), also originally searching for a route to Asia." },
+        { year: 1498, name: "Vasco da Gama", nation: "Portugal", fact: "Found a sea route from Europe around Africa to Calicut, India, opening direct sea trade between the two regions." },
+        { year: 1513, name: "Vasco Núñez de Balboa", nation: "Spain", fact: "Crossed the Isthmus of Panama on foot, becoming the first European to see the Pacific Ocean from the Americas." },
+        { year: 1519, name: "Ferdinand Magellan's expedition", nation: "Spain", fact: "Began the first voyage to sail all the way around the world; Magellan died in the Philippines in 1521, but survivors completed the circumnavigation in 1522." },
       ];
-      var state = { i: 0 };
+      var state = { i: 0, timelineYear: 1525 };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
@@ -4594,24 +4673,31 @@
         card.innerHTML =
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.3rem;color:var(--accent);">' + v.year + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + v.name + '</div>' +
+          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + v.nation + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + v.fact + '</div>';
+        var completedByYear = voyages.filter(function (x) { return x.year <= state.timelineYear; }).length;
         document.getElementById("ro-voyage").textContent = (state.i + 1) + " / " + voyages.length;
+        document.getElementById("ro-nation").textContent = v.nation;
+        document.getElementById("ro-timeline").textContent = completedByYear + " of " + voyages.length + " begun";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "voyage", "Voyage");
+      LabKit.readout(readoutsEl, "nation", "Sponsoring nation");
+      LabKit.readout(readoutsEl, "timeline", "Voyages begun by slider year");
 
       clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "vg-y", label: "Timeline year", min: 1400, max: 1525, step: 1, value: 1525, onInput: function (v) { state.timelineYear = v; render(); } });
       LabKit.glossary(controlsEl, [
-        { kind: "term", term: "Age of Exploration", text: "a period starting in the late 1400s when European sailors charted new sea routes connecting continents." },
-        { term: "Next button", text: "better ships and navigation tools (like the compass) made these long ocean voyages possible for the first time." },
+        { kind: "term", term: "Age of Exploration", text: "a period when sailors from several nations charted new sea routes connecting continents, using better ships and navigation tools like the compass." },
+        { term: "Timeline slider", text: "exploration wasn't only a European story — Zheng He's Chinese fleets sailed decades before Columbus, on a far larger scale." },
       ]);
 
       clearPanel(globalControlsEl);
       LabKit.button(globalControlsEl, "← Prev", function () { state.i = (state.i + voyages.length - 1) % voyages.length; render(); });
       LabKit.button(globalControlsEl, "Next →", function () { state.i = (state.i + 1) % voyages.length; render(); }, "primary");
 
-      setConcept("These voyages permanently connected parts of the world that had previously had <strong>little or no direct contact</strong> — reshaping global trade, and the exchange of crops, animals, and ideas, for centuries afterward.");
+      setConcept("These voyages permanently connected parts of the world that had previously had <strong>little or no direct contact</strong> — reshaping global trade and the exchange of crops, animals, and ideas for centuries afterward. Notice exploration on this scale started in China, not Europe.");
       render();
       return function () { viewportEl.innerHTML = ""; };
     },
@@ -4623,13 +4709,16 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var items = [
-        { year: "~3500 BCE", name: "The Wheel", fact: "Revolutionized transport and pottery-making across ancient civilizations." },
-        { year: "~1040 CE", name: "Printing (movable type)", fact: "First developed in China, later reinvented in Europe — made books far cheaper to produce." },
-        { year: "1712 CE", name: "Steam Engine", fact: "Powered the Industrial Revolution's factories, trains, and ships." },
-        { year: "1876 CE", name: "Telephone", fact: "Allowed voices to travel instantly across long distances for the first time." },
-        { year: "1903 CE", name: "Powered Flight", fact: "The Wright brothers achieved the first sustained, controlled flight of a powered aircraft." },
+        { yearNum: -3500, year: "~3500 BCE", name: "The Wheel", fact: "Revolutionized transport and pottery-making across ancient civilizations — one of the oldest mechanical inventions still in daily use." },
+        { yearNum: -1200, year: "~1200 BCE", name: "Iron smelting", fact: "Produced tools and weapons far tougher than bronze, eventually giving the Iron Age its name." },
+        { yearNum: 105, year: "~105 CE", name: "Paper", fact: "Developed in Han dynasty China, replacing heavier, more expensive writing surfaces like bamboo and silk." },
+        { yearNum: 1040, year: "~1040 CE", name: "Printing (movable type)", fact: "First developed in China, later reinvented in Europe — made books far cheaper to produce and own." },
+        { yearNum: 1712, year: "1712 CE", name: "Steam Engine", fact: "Powered the Industrial Revolution's factories, trains, and ships, turning heat directly into useful mechanical work." },
+        { yearNum: 1876, year: "1876 CE", name: "Telephone", fact: "Allowed voices to travel instantly across long distances for the first time, over wires." },
+        { yearNum: 1903, year: "1903 CE", name: "Powered Flight", fact: "The Wright brothers achieved the first sustained, controlled flight of a powered aircraft." },
+        { yearNum: 1989, year: "1989 CE", name: "World Wide Web", fact: "Proposed by Tim Berners-Lee, turning the existing internet into the linked, browsable web most people actually use." },
       ];
-      var state = { i: 0 };
+      var state = { i: 0, timelineYear: 2000 };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
@@ -4640,23 +4729,27 @@
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.1rem;color:var(--accent);">' + v.year + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + v.name + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + v.fact + '</div>';
+        var count = items.filter(function (x) { return x.yearNum <= state.timelineYear; }).length;
         document.getElementById("ro-item").textContent = (state.i + 1) + " / " + items.length;
+        document.getElementById("ro-count").textContent = count + " of " + items.length + " invented";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "item", "Invention");
+      LabKit.readout(readoutsEl, "count", "Invented by slider year");
 
       clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "iv-y", label: "Timeline year", min: -3500, max: 2000, step: 50, value: 2000, onInput: function (v) { state.timelineYear = v; render(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Invention", text: "a new device or method, created to solve a problem that didn't have a solution before." },
-        { term: "Next button", text: "each invention here enabled the next wave of inventions — technology builds directly on what came before it." },
+        { term: "Timeline slider", text: "drag it back and watch the 'invented so far' count drop — notice how much longer the gaps are in ancient history than in the last 200 years." },
       ]);
 
       clearPanel(globalControlsEl);
       LabKit.button(globalControlsEl, "← Prev", function () { state.i = (state.i + items.length - 1) % items.length; render(); });
       LabKit.button(globalControlsEl, "Next →", function () { state.i = (state.i + 1) % items.length; render(); }, "primary");
 
-      setConcept("Notice the gaps getting <strong>shorter</strong> between major inventions — from thousands of years apart in ancient times to mere decades by the 1900s, as each new invention made the next one easier to create.");
+      setConcept("Notice the gaps getting <strong>shorter</strong> between major inventions — thousands of years apart in ancient times, then mere decades by the 1900s, as each new invention made the next one easier to create.");
       render();
       return function () { viewportEl.innerHTML = ""; };
     },
@@ -4670,32 +4763,50 @@
       var facts = [
         { title: "Held at Olympia, Greece", text: "The games were held every four years at the sacred site of Olympia, starting around 776 BCE." },
         { title: "Honoring Zeus", text: "The games were a religious festival dedicated to the god Zeus, not just a sporting event." },
-        { title: "Olympic Truce", text: "Wars between Greek city-states were supposed to pause during the games, so athletes could travel safely." },
-        { title: "Only men competed", text: "In the ancient games, only men competed, often performing completely unclothed." },
+        { title: "Olympic Truce", text: "Wars between Greek city-states were supposed to pause during the games, so athletes could travel safely to and from Olympia." },
+        { title: "Only men competed", text: "In the ancient games, only men competed, often performing completely unclothed, and married women were not even allowed to watch." },
+        { title: "Winners' prize", text: "There were no medals — winners received a simple olive wreath, though they often gained fame and rewards back in their home city." },
+        { title: "Over 1,000 years of games", text: "The ancient games ran for well over a thousand years before finally being banned around 393 CE under Roman rule." },
       ];
-      var state = { i: 0 };
+      var events = [
+        { name: "Stadion (sprint)", desc: "A short sprint race, roughly the length of the Olympia stadium — the oldest and most prestigious event." },
+        { name: "Wrestling", desc: "Competitors tried to throw their opponent to the ground three times to win." },
+        { name: "Discus throw", desc: "Athletes threw a heavy stone or bronze disc for distance." },
+        { name: "Javelin throw", desc: "A spear-like weapon was thrown for distance, testing both strength and technique." },
+        { name: "Chariot racing", desc: "A fast, dangerous, and hugely popular event — the chariot owner, not the driver, was officially the winner." },
+      ];
+      var state = { view: "facts", i: 0 };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
       function render() {
-        var f = facts[state.i];
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + f.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + f.text + '</div>';
-        document.getElementById("ro-oly").textContent = (state.i + 1) + " / " + facts.length;
+        var list = state.view === "facts" ? facts : events;
+        var item = list[state.i];
+        if (state.view === "facts") {
+          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + item.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + item.text + '</div>';
+        } else {
+          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + item.name + '</div><div style="font-size:0.85rem;max-width:26rem;">' + item.desc + '</div>';
+        }
+        document.getElementById("ro-oly").textContent = (state.i + 1) + " / " + list.length;
+        document.getElementById("ro-view").textContent = state.view === "facts" ? "Facts" : "Events";
       }
 
       clearPanel(readoutsEl);
-      LabKit.readout(readoutsEl, "oly", "Fact");
+      LabKit.readout(readoutsEl, "oly", "Position");
+      LabKit.readout(readoutsEl, "view", "Viewing");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Ancient Olympic Games", text: "an athletic festival held in ancient Greece roughly every four years, starting around 776 BCE." },
-        { term: "Next button", text: "the modern Olympics (from 1896) deliberately revived this ancient tradition, though in a very different form." },
+        { term: "Facts / Events toggle", text: "the ancient games ran events quite different from modern track and field — chariot racing had no modern equivalent." },
       ]);
 
       clearPanel(globalControlsEl);
-      LabKit.button(globalControlsEl, "← Prev", function () { state.i = (state.i + facts.length - 1) % facts.length; render(); });
-      LabKit.button(globalControlsEl, "Next →", function () { state.i = (state.i + 1) % facts.length; render(); }, "primary");
+      var factsBtn = LabKit.button(globalControlsEl, "Facts", function () { state.view = "facts"; state.i = 0; factsBtn.classList.add("active"); eventsBtn.classList.remove("active"); render(); }, "chip active");
+      var eventsBtn = LabKit.button(globalControlsEl, "Events", function () { state.view = "events"; state.i = 0; eventsBtn.classList.add("active"); factsBtn.classList.remove("active"); render(); }, "chip");
+      LabKit.button(globalControlsEl, "← Prev", function () { var list = state.view === "facts" ? facts : events; state.i = (state.i + list.length - 1) % list.length; render(); });
+      LabKit.button(globalControlsEl, "Next →", function () { var list = state.view === "facts" ? facts : events; state.i = (state.i + 1) % list.length; render(); }, "primary");
 
       setConcept("The ancient games were as much a <strong>religious festival</strong> as a sporting contest — a reminder that in many ancient cultures, sport, faith and community celebration were closely woven together.");
       render();
@@ -4709,10 +4820,12 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var items = {
-        "Great Wall of China": "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications.",
-        "Pyramids of Giza": "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone.",
-        "Roman Colosseum": "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events.",
-        "Great Stupa at Sanchi": "One of the oldest Buddhist monuments in India, built to house sacred relics.",
+        "Great Wall of China": { era: "7th century BCE onward", purpose: "Defense", fact: "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications." },
+        "Pyramids of Giza": { era: "~2560 BCE", purpose: "Royal tombs", fact: "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone." },
+        "Roman Colosseum": { era: "~80 CE", purpose: "Public entertainment", fact: "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events." },
+        "Great Stupa at Sanchi": { era: "~3rd century BCE onward", purpose: "Religious (Buddhist)", fact: "One of the oldest surviving Buddhist monuments in India, built to house sacred relics." },
+        "Petra (Jordan)": { era: "~4th century BCE onward", purpose: "City / trade hub", fact: "An entire city carved directly into rose-coloured rock cliffs, thriving as a hub on ancient caravan trade routes." },
+        "Angkor Wat (Cambodia)": { era: "Early 12th century CE", purpose: "Religious (Hindu, later Buddhist)", fact: "The largest religious monument in the world, originally built for a Hindu god and later repurposed as a Buddhist site." },
       };
       var state = { k: "Great Wall of China" };
       var card = LabKit.el("div", null);
@@ -4720,13 +4833,19 @@
       viewportEl.appendChild(card);
 
       function render() {
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.k + '</div><div style="font-size:0.85rem;max-width:26rem;">' + items[state.k] + '</div>';
+        var it = items[state.k];
+        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.k + '</div><div style="font-size:0.85rem;max-width:26rem;">' + it.fact + '</div>';
+        document.getElementById("ro-era").textContent = it.era;
+        document.getElementById("ro-purpose").textContent = it.purpose;
       }
 
-      clearPanel(readoutsEl); clearPanel(controlsEl);
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "era", "Era built");
+      LabKit.readout(readoutsEl, "purpose", "Primary purpose");
+      clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Monument", text: "a large structure built to last, usually commemorating a person, event, or belief." },
-        { term: "Buttons", text: "each structure reflects what mattered most to the civilization that built it — defense, religion, leisure, or memory." },
+        { term: "Buttons", text: "each structure reflects what mattered most to the civilization that built it — defense, religion, leisure, trade, or memory." },
       ]);
 
       clearPanel(globalControlsEl);
@@ -4750,10 +4869,11 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var civs = {
-        Egypt: { river: "Nile", writing: "Hieroglyphics", structure: "Pyramids of Giza" },
-        "Indus Valley": { river: "Indus", writing: "Indus script (undeciphered)", structure: "Mohenjo-daro's drainage system" },
-        Mesopotamia: { river: "Tigris & Euphrates", writing: "Cuneiform", structure: "Ziggurats" },
-        China: { river: "Yellow River (Huang He)", writing: "Oracle bone script", structure: "Early Great Wall sections" },
+        Egypt: { river: "Nile", writing: "Hieroglyphics", structure: "Pyramids of Giza", knownFor: "Mummification and the pharaohs" },
+        "Indus Valley": { river: "Indus", writing: "Indus script (undeciphered)", structure: "Mohenjo-daro's drainage system", knownFor: "Advanced city planning and sanitation" },
+        Mesopotamia: { river: "Tigris & Euphrates", writing: "Cuneiform", structure: "Ziggurats", knownFor: "Some of the earliest law codes and cities" },
+        China: { river: "Yellow River (Huang He)", writing: "Oracle bone script", structure: "Early Great Wall sections", knownFor: "Silk production and early bureaucracy" },
+        Maya: { river: "No single major river (relied on reservoirs)", writing: "Maya hieroglyphs", structure: "Step pyramids (e.g. Chichen Itza)", knownFor: "An advanced calendar and astronomy" },
       };
       var state = { a: "Egypt", b: "Indus Valley" };
       var card = LabKit.el("div", null);
@@ -4769,7 +4889,7 @@
         var a = civs[state.a], b = civs[state.b];
         card.innerHTML =
           '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:26rem;font-family:\'Baloo 2\',sans-serif;font-weight:700;"><div>' + state.a + '</div><div>' + state.b + '</div></div>' +
-          row("River", a.river, b.river) + row("Writing system", a.writing, b.writing) + row("Famous structure", a.structure, b.structure);
+          row("River", a.river, b.river) + row("Writing system", a.writing, b.writing) + row("Famous structure", a.structure, b.structure) + row("Known for", a.knownFor, b.knownFor);
       }
 
       clearPanel(readoutsEl); clearPanel(controlsEl);
