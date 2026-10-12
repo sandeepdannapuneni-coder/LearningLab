@@ -50,10 +50,12 @@ site.
 
 Just re-run `npx wrangler secret put ACCESS_CODE` with the new value and
 `npx wrangler deploy` again — no site changes needed. Anyone already logged
-in stays logged in until their 90-day token expires (students who no longer
-need access will naturally lose it, but you can't instantly revoke a
-specific student's existing session without extra work — not expected to
-matter for this use case).
+in stays logged in until their session token expires (currently 7 days —
+see `TOKEN_TTL_MS` in `src/index.js`), at which point they're prompted for
+the access code again. You can't instantly revoke one specific student's
+still-active session without extra work — not expected to matter for this
+use case, since the longest anyone can be using a now-changed code for is
+one week.
 
 ## Why this approach
 

@@ -14,7 +14,7 @@
 //   ACCESS_CODE  — the code you give to students
 //   TOKEN_SECRET — a random signing key (not shared with anyone)
 
-const TOKEN_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
+const TOKEN_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days — students re-enter the access code weekly
 
 function corsHeaders(origin) {
   return {
