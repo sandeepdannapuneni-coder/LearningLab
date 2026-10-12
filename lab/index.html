@@ -3707,7 +3707,8 @@
     id: "nephronsim", subject: "Biology", title: "Nephron Filtration", icon: "🫘",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { bloodFlow: 50, waterIntake: 50, t: 0 };
+      var RENAL_THRESHOLD = 180; // mg/dL -- glucose above this spills into urine
+      var state = { bloodFlow: 50, waterIntake: 50, glucose: 100, t: 0 };
 
       function draw(dt) {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -3725,22 +3726,27 @@
         var urineConc = Math.max(10, 100 - state.waterIntake);
         document.getElementById("ro-rate").textContent = (state.bloodFlow * 1.2).toFixed(0) + " mL/min (relative)";
         document.getElementById("ro-conc").textContent = urineConc.toFixed(0) + "% (relative)";
+        var glucoseInUrine = state.glucose > RENAL_THRESHOLD;
+        document.getElementById("ro-glucose").textContent = glucoseInUrine ? "Yes — above renal threshold" : "No — fully reabsorbed";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "rate", "Filtration rate");
       LabKit.readout(readoutsEl, "conc", "Urine concentration");
+      LabKit.readout(readoutsEl, "glucose", "Glucose in urine?");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ne-flow", label: "Blood flow to kidney", min: 10, max: 100, step: 1, value: 50, unit: "%", onInput: function (v) { state.bloodFlow = v; } });
       LabKit.slider(controlsEl, { key: "ne-water", label: "Water intake", min: 0, max: 100, step: 1, value: 50, unit: "%", onInput: function (v) { state.waterIntake = v; } });
+      LabKit.slider(controlsEl, { key: "ne-glu", label: "Blood glucose level", min: 60, max: 300, step: 5, value: 100, unit: " mg/dL", onInput: function (v) { state.glucose = v; } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Nephron", text: "the microscopic filtering unit inside a kidney — each kidney has about a million of them." },
         { kind: "term", term: "Osmoregulation", text: "the body's control of how much water it keeps versus excretes, to stay balanced." },
-        { term: "Water intake slider", text: "drink less, and the kidneys reabsorb more water — producing darker, more concentrated urine." },
+        { kind: "term", term: "Renal threshold", text: "the blood glucose level above which the nephron can no longer reabsorb all the filtered glucose, so some spills into the urine." },
+        { term: "Glucose slider", text: "healthy kidneys normally reabsorb ALL filtered glucose back into the blood — glucose in urine is a classic warning sign of diabetes." },
       ]);
 
-      setConcept("The kidneys constantly adjust how much water to <strong>reabsorb</strong> versus excrete — that's why urine gets noticeably darker and more concentrated when you haven't had much to drink.");
+      setConcept("The kidneys constantly adjust how much water to <strong>reabsorb</strong> versus excrete — that's why urine gets noticeably darker and more concentrated when you haven't had much to drink. They normally reabsorb glucose too, completely — glucose only appears in urine once blood sugar rises above the renal threshold, which is exactly why a simple urine test can hint at diabetes.");
 
       var raf = null, lastT = null;
       function loop(ts) {
@@ -3763,7 +3769,19 @@
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
       var stages = ["Receptor", "Sensory neuron", "Spinal cord", "Motor neuron", "Muscle"];
-      var state = { progress: 0, running: false, lastTime: null };
+      var LOCATIONS = { Fingertip: 0.75, Toe: 1.05 };
+      var PAIN_FIBER_SPEED = 25; // m/s -- thin, lightly-myelinated A-delta fibres that carry the sharp "hot!" signal
+      var SYNAPSE_DELAY = 0.05; // s -- combined delay across the 2-3 synapses in this polysynaptic withdrawal reflex
+      var state = { progress: 0, running: false, lastTime: null, location: "Fingertip" };
+
+      function reflexTime() {
+        var distance = LOCATIONS[state.location];
+        return distance / PAIN_FIBER_SPEED + SYNAPSE_DELAY + (Math.random() * 0.02 - 0.01);
+      }
+
+      function updateReadouts() {
+        document.getElementById("ro-dist").textContent = LOCATIONS[state.location].toFixed(2) + " m to spinal cord";
+      }
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -3787,15 +3805,26 @@
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "timer", "Reflex time (simulated)");
+      LabKit.readout(readoutsEl, "dist", "Signal travel distance");
 
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Reflex action", text: "a rapid, automatic, involuntary response that doesn't wait for conscious thought from the brain." },
         { kind: "term", term: "Reflex arc", text: "the exact signal path: receptor → sensory neuron → spinal cord → motor neuron → muscle." },
+        { kind: "term", term: "Nerve conduction distance", text: "a reflex starting further from the spinal cord has further to travel both ways, so it takes slightly longer." },
+        { term: "Location buttons", text: "a toe is roughly 30 cm further from the spinal cord than a fingertip — enough to measurably lengthen the reflex." },
         { term: "Trigger button", text: "watch the signal travel the full arc — notice the brain itself is never part of the path." },
       ]);
 
       clearPanel(globalControlsEl);
+      Object.keys(LOCATIONS).forEach(function (loc, i) {
+        var btn = LabKit.button(globalControlsEl, loc, function () {
+          if (state.running) return;
+          state.location = loc;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { if (c.classList.contains("chip")) c.classList.remove("active"); });
+          btn.classList.add("active"); updateReadouts();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
       LabKit.button(globalControlsEl, "Touch hot stove!", function () {
         if (state.running) return;
         state.running = true; state.progress = 0; state.lastTime = null;
@@ -3806,12 +3835,13 @@
           state.progress = Math.min(1, elapsed / dur);
           draw();
           if (state.progress < 1) requestAnimationFrame(step);
-          else { state.running = false; state.lastTime = 0.15 + Math.random() * 0.05; draw(); }
+          else { state.running = false; state.lastTime = reflexTime(); draw(); }
         }
         step();
       }, "primary");
 
-      setConcept("A reflex skips the usual route through the brain's thinking regions — the <strong>spinal cord</strong> itself sends the response straight back out, which is why pulling your hand off something hot feels instant, happening before you've even consciously registered pain.");
+      setConcept("A reflex skips the usual route through the brain's thinking regions — the <strong>spinal cord</strong> itself sends the response straight back out, which is why pulling your hand off something hot feels instant, happening before you've even consciously registered pain. The further the stimulus is from the spinal cord, the longer the signal takes to travel each way — which is why a toe's reflex is very slightly slower than a fingertip's.");
+      updateReadouts();
       draw();
       return function () {};
     },
@@ -5020,105 +5050,105 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var items = [
-        { yearNum: -2600000, year: "~2,600,000 BCE", name: "Stone tools", cat: "Tools", fact: "The earliest deliberately shaped tools known, used for cutting and scraping — tool use may even predate our own species." },
-        { yearNum: -400000, year: "~400,000 BCE", name: "Controlled use of fire", cat: "Energy", fact: "Let early humans cook food, stay warm, and keep predators away — one of the most transformative discoveries in human history." },
-        { yearNum: -40000, year: "~40,000 BCE", name: "Sewn clothing", cat: "Domestic", fact: "Bone needles from this period show humans were sewing fitted clothing, not just draping skins — essential for surviving cold climates." },
-        { yearNum: -10000, year: "~10,000 BCE", name: "Agriculture (farming)", cat: "Agriculture", fact: "Deliberately planting and harvesting crops let humans settle in one place instead of constantly following food — the foundation of all later civilization." },
-        { yearNum: -7000, year: "~7000 BCE", name: "Pottery", cat: "Domestic", fact: "Fired clay vessels let early farmers store grain, water and food safely for the first time." },
-        { yearNum: -6000, year: "~6000 BCE", name: "Irrigation canals", cat: "Agriculture", fact: "Mesopotamian farmers dug channels to bring river water to fields, enabling farming even in dry seasons." },
-        { yearNum: -3500, year: "~3500 BCE", name: "The Wheel", cat: "Transport", fact: "Revolutionized transport and pottery-making across ancient civilizations — one of the oldest mechanical inventions still in daily use." },
-        { yearNum: -3500, year: "~3500 BCE", name: "Bronze metallurgy", cat: "Tools", fact: "Mixing copper and tin produced a metal far harder than either alone, giving the Bronze Age its name." },
-        { yearNum: -3200, year: "~3200 BCE", name: "Writing", cat: "Communication", fact: "Let information outlast living memory for the first time — invented independently by several early civilizations." },
-        { yearNum: -3100, year: "~3100 BCE", name: "Papyrus", cat: "Communication", fact: "Made from a Nile reed plant, it gave ancient Egyptians a lightweight, portable writing surface centuries before paper." },
-        { yearNum: -3000, year: "~3000 BCE", name: "The Plow", cat: "Agriculture", fact: "Let one farmer and an animal till far more land than digging by hand, dramatically increasing food production." },
-        { yearNum: -3000, year: "~3000 BCE", name: "Sailboats", cat: "Transport", fact: "Harnessing wind power let ancient Egyptians move heavy cargo along the Nile with far less human effort than rowing alone." },
-        { yearNum: -3000, year: "~3000 BCE", name: "Early solar calendar", cat: "Science", fact: "Tracking the Sun's yearly cycle let ancient Egyptians predict the Nile's flooding season and plan farming around it." },
-        { yearNum: -2700, year: "~2700 BCE", name: "The abacus", cat: "Science", fact: "One of the earliest calculating tools, letting merchants and officials add and subtract large numbers quickly." },
-        { yearNum: -2700, year: "~2700 BCE", name: "Silk production", cat: "Trade", fact: "Chinese artisans learned to unwind silkworm cocoons into thread, creating a fabric so prized it later gave the Silk Road its name." },
-        { yearNum: -1200, year: "~1200 BCE", name: "Iron smelting", cat: "Tools", fact: "Produced tools and weapons far tougher than bronze, eventually giving the Iron Age its name." },
-        { yearNum: -600, year: "~600 BCE", name: "Coinage", cat: "Trade", fact: "Standardized metal coins, first used in Lydia (modern Turkey), made trade far simpler than bartering goods directly." },
-        { yearNum: -400, year: "~400 BCE", name: "Crossbow", cat: "Military", fact: "Let a single soldier fire a powerful bolt with far less training than a traditional bow required." },
-        { yearNum: -400, year: "~400 BCE", name: "Catapult", cat: "Military", fact: "Used mechanical tension to hurl projectiles at enemy walls and troops, reshaping ancient siege warfare." },
-        { yearNum: -312, year: "~312 BCE", name: "Aqueducts", cat: "Engineering", fact: "Roman engineering carried fresh water across huge distances using gravity alone, supplying cities far from any river." },
-        { yearNum: -300, year: "~300 BCE", name: "Concrete", cat: "Tools", fact: "Roman concrete let builders create massive, durable domes and structures — some Roman concrete structures still stand today." },
-        { yearNum: -300, year: "~300 BCE", name: "Water wheel", cat: "Energy", fact: "Harnessed flowing water to grind grain and power machinery, long before steam or electricity existed." },
-        { yearNum: -200, year: "~200 BCE", name: "Early magnetic compass", cat: "Transport", fact: "Chinese inventors discovered that a naturally magnetized stone always pointed the same direction, eventually revolutionizing navigation." },
-        { yearNum: -150, year: "~150 BCE", name: "Astrolabe", cat: "Science", fact: "Let ancient astronomers and sailors calculate the position of stars and the time of day or night." },
-        { yearNum: 105, year: "~105 CE", name: "Paper", cat: "Communication", fact: "Developed in Han dynasty China, replacing heavier, more expensive writing surfaces like bamboo and silk." },
-        { yearNum: 300, year: "~300 CE", name: "Stirrup", cat: "Transport", fact: "Let riders stay far more stable on horseback, transforming both travel and mounted warfare." },
-        { yearNum: 850, year: "~850 CE", name: "Gunpowder", cat: "Military", fact: "Discovered in Tang dynasty China, reportedly while searching for a life-prolonging elixir." },
-        { yearNum: 900, year: "~900 CE", name: "Windmill", cat: "Energy", fact: "First widely used in Persia to grind grain and pump water, harnessing wind power on land." },
-        { yearNum: 1000, year: "~1000 CE", name: "Spinning wheel", cat: "Trade", fact: "Dramatically sped up thread-making compared to hand-spinning, boosting textile production for centuries." },
-        { yearNum: 1040, year: "~1040 CE", name: "Movable type printing", cat: "Communication", fact: "First developed in China, centuries before Gutenberg's famous European press." },
-        { yearNum: 1200, year: "~1200s CE", name: "Gunpowder rockets", cat: "Military", fact: "Early Chinese rockets used gunpowder for propulsion, the distant ancestor of all modern rocketry." },
-        { yearNum: 1280, year: "~1280s CE", name: "Eyeglasses", cat: "Medicine", fact: "Appeared in Italy, letting people with poor eyesight read and work clearly for the first time." },
-        { yearNum: 1300, year: "~1300 CE", name: "Mechanical clock", cat: "Science", fact: "Let people track time independent of the Sun's position for the first time, reshaping how daily life was organized." },
-        { yearNum: 1440, year: "~1440 CE", name: "Printing press (Gutenberg)", cat: "Communication", fact: "Made books dramatically cheaper and faster to produce in Europe, fueling a huge rise in literacy." },
-        { yearNum: 1590, year: "~1590 CE", name: "Microscope", cat: "Medicine", fact: "Revealed a world of living things far too small to see with the naked eye." },
-        { yearNum: 1608, year: "1608 CE", name: "Telescope", cat: "Science", fact: "Let humans see details of the Moon and planets for the first time, reshaping our understanding of the universe." },
-        { yearNum: 1642, year: "1642 CE", name: "Mechanical calculator", cat: "Computing", fact: "Pascal's 'Pascaline' could add and subtract automatically using gears — a distant ancestor of the modern calculator." },
-        { yearNum: 1712, year: "1712 CE", name: "Steam Engine", cat: "Energy", fact: "Powered the Industrial Revolution's factories, trains, and ships, turning heat directly into useful mechanical work." },
-        { yearNum: 1752, year: "1752 CE", name: "Lightning rod", cat: "Engineering", fact: "Benjamin Franklin's invention safely redirected lightning strikes away from buildings and into the ground." },
-        { yearNum: 1764, year: "1764 CE", name: "Spinning jenny", cat: "Trade", fact: "Let one worker spin many threads at once, dramatically speeding up textile production at the start of the Industrial Revolution." },
-        { yearNum: 1796, year: "1796 CE", name: "Vaccination", cat: "Medicine", fact: "Edward Jenner's smallpox vaccine was the first scientifically developed vaccine, eventually leading to smallpox's complete eradication." },
-        { yearNum: 1797, year: "1797 CE", name: "Parachute", cat: "Transport", fact: "André-Jacques Garnerin made the first successful parachute jump from a hot air balloon." },
-        { yearNum: 1800, year: "1800 CE", name: "Electric battery", cat: "Energy", fact: "Volta's invention gave the world its first reliable, portable source of electric current." },
-        { yearNum: 1804, year: "1804 CE", name: "Steam locomotive", cat: "Transport", fact: "Put the stationary steam engine on wheels, launching the railway age." },
-        { yearNum: 1826, year: "1826 CE", name: "Friction match", cat: "Domestic", fact: "Replaced slow, difficult fire-starting methods with an instant, portable flame source." },
-        { yearNum: 1826, year: "1826 CE", name: "Photography", cat: "Communication", fact: "Niépce created the first permanent photographic image, capturing a real scene exactly as it looked." },
-        { yearNum: 1837, year: "1837 CE", name: "Telegraph", cat: "Communication", fact: "Let messages travel across continents in minutes instead of weeks, using electrical signals over wires." },
-        { yearNum: 1839, year: "1839 CE", name: "Vulcanized rubber", cat: "Tools", fact: "Goodyear's process made rubber far more durable and heat-resistant, enabling tires and countless rubber products." },
-        { yearNum: 1846, year: "1846 CE", name: "Surgical anesthesia", cat: "Medicine", fact: "The first public use of ether let surgeons operate on completely pain-free patients for the first time." },
-        { yearNum: 1852, year: "1852 CE", name: "Safety elevator", cat: "Engineering", fact: "Otis's safety brake made elevators trustworthy enough for public use, making tall buildings practical." },
-        { yearNum: 1860, year: "~1860s CE", name: "Bicycle", cat: "Transport", fact: "Gave ordinary people an affordable, human-powered way to travel faster and farther than walking." },
-        { yearNum: 1860, year: "~1860s CE", name: "Internal combustion engine", cat: "Energy", fact: "Burned fuel directly inside the engine for power, eventually replacing steam in most vehicles." },
-        { yearNum: 1864, year: "1864 CE", name: "Pasteurization", cat: "Medicine", fact: "Heating liquids like milk to kill harmful microbes made food and drink dramatically safer to consume." },
-        { yearNum: 1867, year: "1867 CE", name: "Dynamite", cat: "Tools", fact: "Nobel's stabilized explosive was far safer to handle than pure nitroglycerin, transforming mining and construction." },
-        { yearNum: 1876, year: "1876 CE", name: "Telephone", cat: "Communication", fact: "Allowed voices, not just coded signals, to travel instantly across long distances." },
-        { yearNum: 1877, year: "1877 CE", name: "Phonograph", cat: "Communication", fact: "Edison's device was the first to both record and play back sound, capturing voices and music for the first time." },
-        { yearNum: 1879, year: "1879 CE", name: "Practical electric light bulb", cat: "Energy", fact: "Made reliable, affordable indoor lighting practical for ordinary homes for the first time." },
-        { yearNum: 1886, year: "1886 CE", name: "Automobile", cat: "Transport", fact: "Karl Benz's patented motor car was the first vehicle designed from the ground up to run on an internal combustion engine." },
-        { yearNum: 1893, year: "1893 CE", name: "Zipper", cat: "Domestic", fact: "An early version offered a faster alternative to buttons and laces — it took decades more refinement before it caught on widely." },
-        { yearNum: 1895, year: "1895 CE", name: "X-rays", cat: "Medicine", fact: "Röntgen's discovery let doctors see inside the human body without any surgery at all, for the first time in history." },
-        { yearNum: 1900, year: "~1900 CE", name: "Practical submarine", cat: "Transport", fact: "Let vessels travel and fight underwater for extended periods, changing naval warfare completely." },
-        { yearNum: 1902, year: "1902 CE", name: "Air conditioning", cat: "Domestic", fact: "Willis Carrier's invention let indoor spaces stay cool and dry regardless of outside weather." },
-        { yearNum: 1903, year: "1903 CE", name: "Powered Flight", cat: "Transport", fact: "The Wright brothers achieved the first sustained, controlled flight of a powered aircraft." },
-        { yearNum: 1913, year: "1913 CE", name: "Moving assembly line", cat: "Trade", fact: "Ford's production method made manufactured goods, especially cars, dramatically cheaper and faster to build." },
-        { yearNum: 1913, year: "1913 CE", name: "Practical home refrigerator", cat: "Domestic", fact: "Let ordinary households keep food cold and safe for days, instead of relying on daily shopping or ice deliveries." },
-        { yearNum: 1921, year: "1921 CE", name: "Insulin extraction", cat: "Medicine", fact: "Banting and Best's discovery turned type 1 diabetes from a fatal diagnosis into a manageable condition." },
-        { yearNum: 1927, year: "1927 CE", name: "Electronic television", cat: "Communication", fact: "Let moving pictures and sound be broadcast directly into homes, eventually transforming entertainment and news." },
-        { yearNum: 1928, year: "1928 CE", name: "Penicillin", cat: "Medicine", fact: "The first true antibiotic, discovered somewhat by accident, went on to save hundreds of millions of lives." },
-        { yearNum: 1928, year: "1928 CE", name: "Sliced bread (commercial)", cat: "Domestic", fact: "Became so popular so quickly that \"the best thing since sliced bread\" entered everyday language soon after." },
-        { yearNum: 1935, year: "1935 CE", name: "Radar", cat: "Military", fact: "Used reflected radio waves to detect distant aircraft and ships long before they could be seen, reshaping modern warfare." },
-        { yearNum: 1938, year: "1938 CE", name: "Jet engine", cat: "Transport", fact: "Developed independently in Britain and Germany, it let aircraft fly dramatically faster than propeller planes." },
-        { yearNum: 1938, year: "1938 CE", name: "Ballpoint pen", cat: "Domestic", fact: "Used a tiny rolling ball to feed ink smoothly, avoiding the smudging and refilling hassles of older pens." },
-        { yearNum: 1941, year: "1941 CE", name: "Velcro", cat: "Domestic", fact: "Inspired by burrs sticking to clothing and fur, it became a simple, reusable alternative to buttons and laces." },
-        { yearNum: 1942, year: "1942 CE", name: "Nuclear reactor", cat: "Energy", fact: "The first controlled nuclear chain reaction proved that nuclear fission could be a usable, ongoing source of energy." },
-        { yearNum: 1945, year: "1945 CE", name: "Electronic computer", cat: "Computing", fact: "Early computers like ENIAC filled entire rooms but could calculate far faster than any human." },
-        { yearNum: 1945, year: "1945 CE", name: "Microwave oven", cat: "Domestic", fact: "Discovered partly by accident while testing radar equipment, it could cook food dramatically faster than a conventional oven." },
-        { yearNum: 1947, year: "1947 CE", name: "Transistor", cat: "Computing", fact: "A tiny, reliable electronic switch that eventually replaced bulky vacuum tubes in virtually all electronics." },
-        { yearNum: 1950, year: "1950 CE", name: "Credit card", cat: "Trade", fact: "Let people make purchases without carrying cash, fundamentally changing how everyday trade and spending worked." },
-        { yearNum: 1953, year: "1953 CE", name: "DNA double helix structure", cat: "Medicine", fact: "Watson and Crick's model (built on Rosalind Franklin's X-ray data) revealed how genetic information is physically stored and copied." },
-        { yearNum: 1955, year: "1955 CE", name: "Polio vaccine", cat: "Medicine", fact: "Jonas Salk's vaccine helped bring a once-devastating, widespread childhood disease under control worldwide." },
-        { yearNum: 1957, year: "1957 CE", name: "Artificial satellite", cat: "Science", fact: "Sputnik 1 was the first human-made object to orbit Earth, launching the Space Age." },
-        { yearNum: 1958, year: "1958 CE", name: "Integrated circuit (microchip)", cat: "Computing", fact: "Packed many electronic components onto a single tiny chip, making modern compact electronics possible." },
-        { yearNum: 1960, year: "1960 CE", name: "Laser", cat: "Science", fact: "Produced a tightly focused beam of light, later enabling everything from barcode scanners to eye surgery." },
-        { yearNum: 1961, year: "1961 CE", name: "Human spaceflight", cat: "Transport", fact: "Yuri Gagarin became the first human to travel into space and orbit the Earth." },
-        { yearNum: 1969, year: "1969 CE", name: "Moon landing", cat: "Transport", fact: "Apollo 11 put the first humans on the Moon, one of the most watched events in human history." },
-        { yearNum: 1969, year: "1969 CE", name: "Internet (ARPANET)", cat: "Computing", fact: "Connected computers at separate locations into one network for the first time, the direct ancestor of today's internet." },
-        { yearNum: 1971, year: "1971 CE", name: "Microprocessor", cat: "Computing", fact: "Put an entire computer processor onto one chip, paving the way for personal computers." },
-        { yearNum: 1973, year: "1973 CE", name: "Mobile phone", cat: "Communication", fact: "The first handheld cellular call freed phone calls from a fixed wire for the first time." },
-        { yearNum: 1974, year: "1974 CE", name: "Barcode scanning", cat: "Trade", fact: "The first retail barcode scan let stores track inventory and prices automatically instead of by hand." },
-        { yearNum: 1975, year: "1975 CE", name: "Personal computer", cat: "Computing", fact: "Early kits like the Altair 8800 put computing power, once room-sized, within reach of individual hobbyists." },
-        { yearNum: 1977, year: "1977 CE", name: "MRI scanner", cat: "Medicine", fact: "Let doctors see detailed images of soft tissue inside the body without any radiation or surgery." },
-        { yearNum: 1980, year: "1980 CE", name: "Post-it Note", cat: "Domestic", fact: "Came from an adhesive originally considered a failure — too weak to be a permanent glue, perfect for a removable note." },
-        { yearNum: 1989, year: "1989 CE", name: "World Wide Web", cat: "Communication", fact: "Proposed by Tim Berners-Lee, turning the existing internet into the linked, browsable web most people actually use." },
-        { yearNum: 1995, year: "1995 CE", name: "Fully operational GPS", cat: "Science", fact: "A network of satellites let any receiver on Earth calculate its exact location — now built into most phones and cars." },
-        { yearNum: 2004, year: "2004 CE", name: "Mainstream social media", cat: "Communication", fact: "Platforms built around personal profiles and friend networks changed how billions of people communicate daily." },
-        { yearNum: 2007, year: "2007 CE", name: "Smartphone", cat: "Computing", fact: "Combined a phone, a computer, and a camera into one pocket-sized device, changing daily life worldwide." },
-        { yearNum: 2012, year: "2012 CE", name: "CRISPR gene editing", cat: "Medicine", fact: "Gave scientists a precise, relatively simple tool to edit specific genes, opening new paths for treating genetic disease." },
-        { yearNum: 2015, year: "2015 CE", name: "Reusable orbital rocket", cat: "Transport", fact: "Landing a rocket booster back on Earth for reuse dramatically cut the potential cost of reaching space." },
-        { yearNum: 2020, year: "2020 CE", name: "mRNA vaccines", cat: "Medicine", fact: "Rapidly developed during the COVID-19 pandemic, this vaccine technology had been in research for years beforehand." },
+        { yearNum: -2600000, year: "~2,600,000 BCE", name: "Stone tools", cat: "Tools", inventor: "Unknown — early hominins (possibly before Homo sapiens existed)", location: "East Africa (earliest known sites)", fact: "The earliest deliberately shaped tools known, used for cutting and scraping — tool use may even predate our own species." },
+        { yearNum: -400000, year: "~400,000 BCE", name: "Controlled use of fire", cat: "Energy", inventor: "Unknown — early humans, independently at many sites", location: "Africa and Eurasia (multiple sites)", fact: "Let early humans cook food, stay warm, and keep predators away — one of the most transformative discoveries in human history." },
+        { yearNum: -40000, year: "~40,000 BCE", name: "Sewn clothing", cat: "Domestic", inventor: "Unknown — Ice Age humans", location: "Ice Age Eurasia", fact: "Bone needles from this period show humans were sewing fitted clothing, not just draping skins — essential for surviving cold climates." },
+        { yearNum: -10000, year: "~10,000 BCE", name: "Agriculture (farming)", cat: "Agriculture", inventor: "Unknown — developed independently in several regions", location: "Fertile Crescent (Middle East); also independently in China and the Americas", fact: "Deliberately planting and harvesting crops let humans settle in one place instead of constantly following food — the foundation of all later civilization." },
+        { yearNum: -7000, year: "~7000 BCE", name: "Pottery", cat: "Domestic", inventor: "Unknown — early farming communities", location: "East Asia and the Middle East (independent early centers)", fact: "Fired clay vessels let early farmers store grain, water and food safely for the first time." },
+        { yearNum: -6000, year: "~6000 BCE", name: "Irrigation canals", cat: "Agriculture", inventor: "Unknown — early Mesopotamian farmers", location: "Mesopotamia (modern Iraq)", fact: "Mesopotamian farmers dug channels to bring river water to fields, enabling farming even in dry seasons." },
+        { yearNum: -3500, year: "~3500 BCE", name: "The Wheel", cat: "Transport", inventor: "Unknown", location: "Mesopotamia (modern Iraq)", fact: "Revolutionized transport and pottery-making across ancient civilizations — one of the oldest mechanical inventions still in daily use." },
+        { yearNum: -3500, year: "~3500 BCE", name: "Bronze metallurgy", cat: "Tools", inventor: "Unknown", location: "Near East (Mesopotamia/Anatolia region)", fact: "Mixing copper and tin produced a metal far harder than either alone, giving the Bronze Age its name." },
+        { yearNum: -3200, year: "~3200 BCE", name: "Writing", cat: "Communication", inventor: "Unknown — Sumerian scribes (cuneiform)", location: "Sumer, Mesopotamia (modern Iraq)", fact: "Let information outlast living memory for the first time — invented independently by several early civilizations." },
+        { yearNum: -3100, year: "~3100 BCE", name: "Papyrus", cat: "Communication", inventor: "Unknown", location: "Ancient Egypt", fact: "Made from a Nile reed plant, it gave ancient Egyptians a lightweight, portable writing surface centuries before paper." },
+        { yearNum: -3000, year: "~3000 BCE", name: "The Plow", cat: "Agriculture", inventor: "Unknown", location: "Mesopotamia (modern Iraq)", fact: "Let one farmer and an animal till far more land than digging by hand, dramatically increasing food production." },
+        { yearNum: -3000, year: "~3000 BCE", name: "Sailboats", cat: "Transport", inventor: "Unknown", location: "Ancient Egypt (Nile River)", fact: "Harnessing wind power let ancient Egyptians move heavy cargo along the Nile with far less human effort than rowing alone." },
+        { yearNum: -3000, year: "~3000 BCE", name: "Early solar calendar", cat: "Science", inventor: "Unknown — ancient Egyptian astronomers/priests", location: "Ancient Egypt", fact: "Tracking the Sun's yearly cycle let ancient Egyptians predict the Nile's flooding season and plan farming around it." },
+        { yearNum: -2700, year: "~2700 BCE", name: "The abacus", cat: "Science", inventor: "Unknown", location: "Sumer, Mesopotamia (earliest known counting board)", fact: "One of the earliest calculating tools, letting merchants and officials add and subtract large numbers quickly." },
+        { yearNum: -2700, year: "~2700 BCE", name: "Silk production", cat: "Trade", inventor: "Traditionally credited to Empress Leizu (a legendary figure — not historically verified)", location: "Ancient China", fact: "Chinese artisans learned to unwind silkworm cocoons into thread, creating a fabric so prized it later gave the Silk Road its name." },
+        { yearNum: -1200, year: "~1200 BCE", name: "Iron smelting", cat: "Tools", inventor: "Unknown — commonly associated with the Hittites", location: "Anatolia (modern Turkey)", fact: "Produced tools and weapons far tougher than bronze, eventually giving the Iron Age its name." },
+        { yearNum: -600, year: "~600 BCE", name: "Coinage", cat: "Trade", inventor: "Unknown — minted under the Lydian kings", location: "Lydia (modern Turkey)", fact: "Standardized metal coins, first used in Lydia (modern Turkey), made trade far simpler than bartering goods directly." },
+        { yearNum: -400, year: "~400 BCE", name: "Crossbow", cat: "Military", inventor: "Unknown", location: "Ancient China", fact: "Let a single soldier fire a powerful bolt with far less training than a traditional bow required." },
+        { yearNum: -400, year: "~400 BCE", name: "Catapult", cat: "Military", inventor: "Unknown — Greek military engineers", location: "Ancient Greece (notably Syracuse, Sicily)", fact: "Used mechanical tension to hurl projectiles at enemy walls and troops, reshaping ancient siege warfare." },
+        { yearNum: -312, year: "~312 BCE", name: "Aqueducts", cat: "Engineering", inventor: "Unknown Roman engineers (first major one commissioned by censor Appius Claudius Caecus)", location: "Ancient Rome", fact: "Roman engineering carried fresh water across huge distances using gravity alone, supplying cities far from any river." },
+        { yearNum: -300, year: "~300 BCE", name: "Concrete", cat: "Tools", inventor: "Unknown Roman builders", location: "Ancient Rome", fact: "Roman concrete let builders create massive, durable domes and structures — some Roman concrete structures still stand today." },
+        { yearNum: -300, year: "~300 BCE", name: "Water wheel", cat: "Energy", inventor: "Unknown", location: "Ancient Greece / Near East", fact: "Harnessed flowing water to grind grain and power machinery, long before steam or electricity existed." },
+        { yearNum: -200, year: "~200 BCE", name: "Early magnetic compass", cat: "Transport", inventor: "Unknown", location: "Han dynasty China", fact: "Chinese inventors discovered that a naturally magnetized stone always pointed the same direction, eventually revolutionizing navigation." },
+        { yearNum: -150, year: "~150 BCE", name: "Astrolabe", cat: "Science", inventor: "Often credited to Hipparchus; refined by many later astronomers", location: "Ancient Greece", fact: "Let ancient astronomers and sailors calculate the position of stars and the time of day or night." },
+        { yearNum: 105, year: "~105 CE", name: "Paper", cat: "Communication", inventor: "Traditionally credited to Cai Lun, a court official", location: "Han dynasty China", fact: "Developed in Han dynasty China, replacing heavier, more expensive writing surfaces like bamboo and silk." },
+        { yearNum: 300, year: "~300 CE", name: "Stirrup", cat: "Transport", inventor: "Unknown", location: "Central Asia / China", fact: "Let riders stay far more stable on horseback, transforming both travel and mounted warfare." },
+        { yearNum: 850, year: "~850 CE", name: "Gunpowder", cat: "Military", inventor: "Unknown — Taoist alchemists", location: "Tang dynasty China", fact: "Discovered in Tang dynasty China, reportedly while searching for a life-prolonging elixir." },
+        { yearNum: 900, year: "~900 CE", name: "Windmill", cat: "Energy", inventor: "Unknown", location: "Persia (modern Iran)", fact: "First widely used in Persia to grind grain and pump water, harnessing wind power on land." },
+        { yearNum: 1000, year: "~1000 CE", name: "Spinning wheel", cat: "Trade", inventor: "Unknown (origins debated between India and China)", location: "South or East Asia", fact: "Dramatically sped up thread-making compared to hand-spinning, boosting textile production for centuries." },
+        { yearNum: 1040, year: "~1040 CE", name: "Movable type printing", cat: "Communication", inventor: "Bi Sheng", location: "Song dynasty China", fact: "First developed in China, centuries before Gutenberg's famous European press." },
+        { yearNum: 1200, year: "~1200s CE", name: "Gunpowder rockets", cat: "Military", inventor: "Unknown", location: "Song dynasty China", fact: "Early Chinese rockets used gunpowder for propulsion, the distant ancestor of all modern rocketry." },
+        { yearNum: 1280, year: "~1280s CE", name: "Eyeglasses", cat: "Medicine", inventor: "Unknown Italian craftsmen", location: "Italy (likely Pisa or Venice)", fact: "Appeared in Italy, letting people with poor eyesight read and work clearly for the first time." },
+        { yearNum: 1300, year: "~1300 CE", name: "Mechanical clock", cat: "Science", inventor: "Unknown (origin debated among several European monasteries/towns)", location: "Europe", fact: "Let people track time independent of the Sun's position for the first time, reshaping how daily life was organized." },
+        { yearNum: 1440, year: "~1440 CE", name: "Printing press (Gutenberg)", cat: "Communication", inventor: "Johannes Gutenberg", location: "Mainz, Germany", fact: "Made books dramatically cheaper and faster to produce in Europe, fueling a huge rise in literacy." },
+        { yearNum: 1590, year: "~1590 CE", name: "Microscope", cat: "Medicine", inventor: "Credit disputed between Zacharias Janssen and Hans Lippershey", location: "Netherlands", fact: "Revealed a world of living things far too small to see with the naked eye." },
+        { yearNum: 1608, year: "1608 CE", name: "Telescope", cat: "Science", inventor: "Patent filed by Hans Lippershey (Galileo improved the design the next year)", location: "Netherlands", fact: "Let humans see details of the Moon and planets for the first time, reshaping our understanding of the universe." },
+        { yearNum: 1642, year: "1642 CE", name: "Mechanical calculator", cat: "Computing", inventor: "Blaise Pascal", location: "France", fact: "Pascal's 'Pascaline' could add and subtract automatically using gears — a distant ancestor of the modern calculator." },
+        { yearNum: 1712, year: "1712 CE", name: "Steam Engine", cat: "Energy", inventor: "Thomas Newcomen (building on Thomas Savery's earlier design)", location: "England", fact: "Powered the Industrial Revolution's factories, trains, and ships, turning heat directly into useful mechanical work." },
+        { yearNum: 1752, year: "1752 CE", name: "Lightning rod", cat: "Engineering", inventor: "Benjamin Franklin", location: "Philadelphia, USA", fact: "Benjamin Franklin's invention safely redirected lightning strikes away from buildings and into the ground." },
+        { yearNum: 1764, year: "1764 CE", name: "Spinning jenny", cat: "Trade", inventor: "James Hargreaves", location: "England", fact: "Let one worker spin many threads at once, dramatically speeding up textile production at the start of the Industrial Revolution." },
+        { yearNum: 1796, year: "1796 CE", name: "Vaccination", cat: "Medicine", inventor: "Edward Jenner", location: "England", fact: "Edward Jenner's smallpox vaccine was the first scientifically developed vaccine, eventually leading to smallpox's complete eradication." },
+        { yearNum: 1797, year: "1797 CE", name: "Parachute", cat: "Transport", inventor: "André-Jacques Garnerin", location: "Paris, France", fact: "André-Jacques Garnerin made the first successful parachute jump from a hot air balloon." },
+        { yearNum: 1800, year: "1800 CE", name: "Electric battery", cat: "Energy", inventor: "Alessandro Volta", location: "Italy", fact: "Volta's invention gave the world its first reliable, portable source of electric current." },
+        { yearNum: 1804, year: "1804 CE", name: "Steam locomotive", cat: "Transport", inventor: "Richard Trevithick", location: "Wales/England", fact: "Put the stationary steam engine on wheels, launching the railway age." },
+        { yearNum: 1826, year: "1826 CE", name: "Friction match", cat: "Domestic", inventor: "John Walker", location: "England", fact: "Replaced slow, difficult fire-starting methods with an instant, portable flame source." },
+        { yearNum: 1826, year: "1826 CE", name: "Photography", cat: "Communication", inventor: "Joseph Nicéphore Niépce", location: "France", fact: "Niépce created the first permanent photographic image, capturing a real scene exactly as it looked." },
+        { yearNum: 1837, year: "1837 CE", name: "Telegraph", cat: "Communication", inventor: "Samuel Morse (USA); Cooke and Wheatstone independently in Britain", location: "USA / Britain", fact: "Let messages travel across continents in minutes instead of weeks, using electrical signals over wires." },
+        { yearNum: 1839, year: "1839 CE", name: "Vulcanized rubber", cat: "Tools", inventor: "Charles Goodyear", location: "USA", fact: "Goodyear's process made rubber far more durable and heat-resistant, enabling tires and countless rubber products." },
+        { yearNum: 1846, year: "1846 CE", name: "Surgical anesthesia", cat: "Medicine", inventor: "William T. G. Morton (public demonstration)", location: "Boston, USA", fact: "The first public use of ether let surgeons operate on completely pain-free patients for the first time." },
+        { yearNum: 1852, year: "1852 CE", name: "Safety elevator", cat: "Engineering", inventor: "Elisha Otis", location: "USA", fact: "Otis's safety brake made elevators trustworthy enough for public use, making tall buildings practical." },
+        { yearNum: 1860, year: "~1860s CE", name: "Bicycle", cat: "Transport", inventor: "Credit disputed — often linked to Pierre Michaux and Pierre Lallement (pedal-driven version)", location: "France", fact: "Gave ordinary people an affordable, human-powered way to travel faster and farther than walking." },
+        { yearNum: 1860, year: "~1860s CE", name: "Internal combustion engine", cat: "Energy", inventor: "Étienne Lenoir (first practical gas engine)", location: "France", fact: "Burned fuel directly inside the engine for power, eventually replacing steam in most vehicles." },
+        { yearNum: 1864, year: "1864 CE", name: "Pasteurization", cat: "Medicine", inventor: "Louis Pasteur", location: "France", fact: "Heating liquids like milk to kill harmful microbes made food and drink dramatically safer to consume." },
+        { yearNum: 1867, year: "1867 CE", name: "Dynamite", cat: "Tools", inventor: "Alfred Nobel", location: "Sweden", fact: "Nobel's stabilized explosive was far safer to handle than pure nitroglycerin, transforming mining and construction." },
+        { yearNum: 1876, year: "1876 CE", name: "Telephone", cat: "Communication", inventor: "Alexander Graham Bell", location: "USA", fact: "Allowed voices, not just coded signals, to travel instantly across long distances." },
+        { yearNum: 1877, year: "1877 CE", name: "Phonograph", cat: "Communication", inventor: "Thomas Edison", location: "Menlo Park, New Jersey, USA", fact: "Edison's device was the first to both record and play back sound, capturing voices and music for the first time." },
+        { yearNum: 1879, year: "1879 CE", name: "Practical electric light bulb", cat: "Energy", inventor: "Thomas Edison (Joseph Swan developed a similar bulb independently in Britain around the same time)", location: "Menlo Park, New Jersey, USA", fact: "Made reliable, affordable indoor lighting practical for ordinary homes for the first time — Edison's team tested thousands of filament materials before settling on carbonized thread." },
+        { yearNum: 1886, year: "1886 CE", name: "Automobile", cat: "Transport", inventor: "Karl Benz", location: "Mannheim, Germany", fact: "Karl Benz's patented motor car was the first vehicle designed from the ground up to run on an internal combustion engine." },
+        { yearNum: 1893, year: "1893 CE", name: "Zipper", cat: "Domestic", inventor: "Whitcomb Judson (early clasp-locker); Gideon Sundback later perfected the modern design", location: "USA", fact: "An early version offered a faster alternative to buttons and laces — it took decades more refinement before it caught on widely." },
+        { yearNum: 1895, year: "1895 CE", name: "X-rays", cat: "Medicine", inventor: "Wilhelm Röntgen", location: "Germany", fact: "Röntgen's discovery let doctors see inside the human body without any surgery at all, for the first time in history." },
+        { yearNum: 1900, year: "~1900 CE", name: "Practical submarine", cat: "Transport", inventor: "John Philip Holland", location: "USA (Irish-born engineer)", fact: "Let vessels travel and fight underwater for extended periods, changing naval warfare completely." },
+        { yearNum: 1902, year: "1902 CE", name: "Air conditioning", cat: "Domestic", inventor: "Willis Carrier", location: "USA", fact: "Willis Carrier's invention let indoor spaces stay cool and dry regardless of outside weather." },
+        { yearNum: 1903, year: "1903 CE", name: "Powered Flight", cat: "Transport", inventor: "Orville and Wilbur Wright", location: "Kitty Hawk, North Carolina, USA", fact: "The Wright brothers achieved the first sustained, controlled flight of a powered aircraft — their first flight covered just 37 metres, shorter than a modern jumbo jet's wingspan." },
+        { yearNum: 1913, year: "1913 CE", name: "Moving assembly line", cat: "Trade", inventor: "Henry Ford and Ford Motor Company engineers", location: "Highland Park, Michigan, USA", fact: "Ford's production method made manufactured goods, especially cars, dramatically cheaper and faster to build." },
+        { yearNum: 1913, year: "1913 CE", name: "Practical home refrigerator", cat: "Domestic", inventor: "Fred W. Wolf (early domestic model); later commercialized widely by Kelvinator and Frigidaire", location: "USA", fact: "Let ordinary households keep food cold and safe for days, instead of relying on daily shopping or ice deliveries." },
+        { yearNum: 1921, year: "1921 CE", name: "Insulin extraction", cat: "Medicine", inventor: "Frederick Banting and Charles Best", location: "Toronto, Canada", fact: "Banting and Best's discovery turned type 1 diabetes from a fatal diagnosis into a manageable condition." },
+        { yearNum: 1927, year: "1927 CE", name: "Electronic television", cat: "Communication", inventor: "Philo Farnsworth", location: "USA", fact: "Let moving pictures and sound be broadcast directly into homes, eventually transforming entertainment and news." },
+        { yearNum: 1928, year: "1928 CE", name: "Penicillin", cat: "Medicine", inventor: "Alexander Fleming", location: "London, England", fact: "The first true antibiotic, discovered somewhat by accident when mould contaminated a bacterial culture, went on to save hundreds of millions of lives." },
+        { yearNum: 1928, year: "1928 CE", name: "Sliced bread (commercial)", cat: "Domestic", inventor: "Otto Frederick Rohwedder", location: "USA", fact: "Became so popular so quickly that \"the best thing since sliced bread\" entered everyday language soon after." },
+        { yearNum: 1935, year: "1935 CE", name: "Radar", cat: "Military", inventor: "Robert Watson-Watt", location: "Britain", fact: "Used reflected radio waves to detect distant aircraft and ships long before they could be seen, reshaping modern warfare." },
+        { yearNum: 1938, year: "1938 CE", name: "Jet engine", cat: "Transport", inventor: "Frank Whittle (Britain) and Hans von Ohain (Germany), independently", location: "Britain / Germany", fact: "Developed independently in Britain and Germany, it let aircraft fly dramatically faster than propeller planes." },
+        { yearNum: 1938, year: "1938 CE", name: "Ballpoint pen", cat: "Domestic", inventor: "László Bíró", location: "Hungary (patented in Argentina after he emigrated)", fact: "Used a tiny rolling ball to feed ink smoothly, avoiding the smudging and refilling hassles of older pens." },
+        { yearNum: 1941, year: "1941 CE", name: "Velcro", cat: "Domestic", inventor: "George de Mestral", location: "Switzerland", fact: "Inspired by burrs sticking to clothing and fur, it became a simple, reusable alternative to buttons and laces." },
+        { yearNum: 1942, year: "1942 CE", name: "Nuclear reactor", cat: "Energy", inventor: "Enrico Fermi and team", location: "Chicago, USA", fact: "The first controlled nuclear chain reaction proved that nuclear fission could be a usable, ongoing source of energy." },
+        { yearNum: 1945, year: "1945 CE", name: "Electronic computer", cat: "Computing", inventor: "J. Presper Eckert and John Mauchly (ENIAC)", location: "USA", fact: "Early computers like ENIAC filled entire rooms but could calculate far faster than any human." },
+        { yearNum: 1945, year: "1945 CE", name: "Microwave oven", cat: "Domestic", inventor: "Percy Spencer", location: "USA", fact: "Discovered partly by accident while testing radar equipment (a candy bar melted in his pocket), it could cook food dramatically faster than a conventional oven." },
+        { yearNum: 1947, year: "1947 CE", name: "Transistor", cat: "Computing", inventor: "John Bardeen, Walter Brattain, and William Shockley", location: "Bell Labs, USA", fact: "A tiny, reliable electronic switch that eventually replaced bulky vacuum tubes in virtually all electronics." },
+        { yearNum: 1950, year: "1950 CE", name: "Credit card", cat: "Trade", inventor: "Ralph Schneider and Frank McNamara (Diners Club)", location: "USA", fact: "Let people make purchases without carrying cash, fundamentally changing how everyday trade and spending worked." },
+        { yearNum: 1953, year: "1953 CE", name: "DNA double helix structure", cat: "Medicine", inventor: "James Watson and Francis Crick, using Rosalind Franklin's X-ray data", location: "Cambridge, England", fact: "Watson and Crick's model (built on Rosalind Franklin's X-ray data) revealed how genetic information is physically stored and copied." },
+        { yearNum: 1955, year: "1955 CE", name: "Polio vaccine", cat: "Medicine", inventor: "Jonas Salk", location: "USA", fact: "Jonas Salk's vaccine helped bring a once-devastating, widespread childhood disease under control worldwide." },
+        { yearNum: 1957, year: "1957 CE", name: "Artificial satellite", cat: "Science", inventor: "Soviet space program, led by chief designer Sergei Korolev", location: "Soviet Union", fact: "Sputnik 1 was the first human-made object to orbit Earth, launching the Space Age." },
+        { yearNum: 1958, year: "1958 CE", name: "Integrated circuit (microchip)", cat: "Computing", inventor: "Jack Kilby (Texas Instruments); Robert Noyce developed a similar design independently soon after", location: "USA", fact: "Packed many electronic components onto a single tiny chip, making modern compact electronics possible." },
+        { yearNum: 1960, year: "1960 CE", name: "Laser", cat: "Science", inventor: "Theodore Maiman", location: "USA", fact: "Produced a tightly focused beam of light, later enabling everything from barcode scanners to eye surgery." },
+        { yearNum: 1961, year: "1961 CE", name: "Human spaceflight", cat: "Transport", inventor: "Yuri Gagarin (first human in space)", location: "Soviet Union", fact: "Yuri Gagarin became the first human to travel into space and orbit the Earth." },
+        { yearNum: 1969, year: "1969 CE", name: "Moon landing", cat: "Transport", inventor: "NASA's Apollo program; Neil Armstrong and Buzz Aldrin first set foot on the Moon", location: "USA (landing site: the Moon)", fact: "Apollo 11 put the first humans on the Moon, one of the most watched events in human history." },
+        { yearNum: 1969, year: "1969 CE", name: "Internet (ARPANET)", cat: "Computing", inventor: "ARPA-funded research team (U.S. Department of Defense)", location: "USA", fact: "Connected computers at separate locations into one network for the first time, the direct ancestor of today's internet." },
+        { yearNum: 1971, year: "1971 CE", name: "Microprocessor", cat: "Computing", inventor: "Federico Faggin, Ted Hoff, and Stanley Mazor (Intel)", location: "USA", fact: "Put an entire computer processor onto one chip, paving the way for personal computers." },
+        { yearNum: 1973, year: "1973 CE", name: "Mobile phone", cat: "Communication", inventor: "Martin Cooper (Motorola)", location: "USA", fact: "The first handheld cellular call freed phone calls from a fixed wire for the first time." },
+        { yearNum: 1974, year: "1974 CE", name: "Barcode scanning", cat: "Trade", inventor: "Concept by Norman Woodland and Bernard Silver; first retail scan by a store clerk", location: "Troy, Ohio, USA", fact: "The first retail barcode scan let stores track inventory and prices automatically instead of by hand." },
+        { yearNum: 1975, year: "1975 CE", name: "Personal computer", cat: "Computing", inventor: "Ed Roberts (Altair 8800)", location: "USA", fact: "Early kits like the Altair 8800 put computing power, once room-sized, within reach of individual hobbyists." },
+        { yearNum: 1977, year: "1977 CE", name: "MRI scanner", cat: "Medicine", inventor: "Raymond Damadian and Paul Lauterbur (key contributors)", location: "USA", fact: "Let doctors see detailed images of soft tissue inside the body without any radiation or surgery." },
+        { yearNum: 1980, year: "1980 CE", name: "Post-it Note", cat: "Domestic", inventor: "Spencer Silver (adhesive) and Art Fry (the note idea)", location: "3M, USA", fact: "Came from an adhesive originally considered a failure — too weak to be a permanent glue, perfect for a removable note." },
+        { yearNum: 1989, year: "1989 CE", name: "World Wide Web", cat: "Communication", inventor: "Tim Berners-Lee", location: "CERN, Switzerland", fact: "Proposed by Tim Berners-Lee, turning the existing internet into the linked, browsable web most people actually use." },
+        { yearNum: 1995, year: "1995 CE", name: "Fully operational GPS", cat: "Science", inventor: "U.S. Department of Defense engineers", location: "USA", fact: "A network of satellites let any receiver on Earth calculate its exact location — now built into most phones and cars." },
+        { yearNum: 2004, year: "2004 CE", name: "Mainstream social media", cat: "Communication", inventor: "Mark Zuckerberg and co-founders (Facebook)", location: "USA", fact: "Platforms built around personal profiles and friend networks changed how billions of people communicate daily." },
+        { yearNum: 2007, year: "2007 CE", name: "Smartphone", cat: "Computing", inventor: "Apple engineering team, led by Steve Jobs", location: "USA", fact: "Combined a phone, a computer, and a camera into one pocket-sized device, changing daily life worldwide." },
+        { yearNum: 2012, year: "2012 CE", name: "CRISPR gene editing", cat: "Medicine", inventor: "Jennifer Doudna and Emmanuelle Charpentier", location: "USA / Germany", fact: "Gave scientists a precise, relatively simple tool to edit specific genes, opening new paths for treating genetic disease." },
+        { yearNum: 2015, year: "2015 CE", name: "Reusable orbital rocket", cat: "Transport", inventor: "SpaceX engineering team", location: "USA", fact: "Landing a rocket booster back on Earth for reuse dramatically cut the potential cost of reaching space." },
+        { yearNum: 2020, year: "2020 CE", name: "mRNA vaccines", cat: "Medicine", inventor: "BioNTech and Moderna research teams", location: "Germany / USA", fact: "Rapidly developed during the COVID-19 pandemic, this vaccine technology had been in research for years beforehand." },
       ];
       var state = { i: 0, timelineYear: 2010, cat: "All" };
       var card = LabKit.el("div", null);
@@ -5139,10 +5169,14 @@
         var count = items.filter(function (x) { return x.yearNum <= state.timelineYear; }).length;
         document.getElementById("ro-item").textContent = (state.i + 1) + " / " + list.length;
         document.getElementById("ro-count").textContent = count + " of " + items.length + " invented";
+        document.getElementById("ro-inventor").textContent = v.inventor;
+        document.getElementById("ro-location").textContent = v.location;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "item", "Invention");
+      LabKit.readout(readoutsEl, "inventor", "Credited to");
+      LabKit.readout(readoutsEl, "location", "Where");
       LabKit.readout(readoutsEl, "count", "Invented by slider year");
 
       clearPanel(controlsEl);
