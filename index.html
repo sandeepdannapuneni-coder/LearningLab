@@ -196,7 +196,7 @@
   <div class="glass w-full max-w-md rounded-2xl p-8 shadow-2xl text-center">
     <div class="mx-auto mb-4 w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-slate-900 font-black text-2xl">IC</div>
     <h1 class="text-2xl font-bold tracking-tight">Student Login</h1>
-    <p class="text-slate-400 text-sm mt-1 mb-6">Enter your name to enter AV's ICSE Arena</p>
+    <p class="text-slate-400 text-sm mt-1 mb-6">Enter your name and access code to enter AV's ICSE Arena</p>
 
     <div class="space-y-4">
       <input
@@ -204,6 +204,14 @@
         type="text"
         placeholder="Enter Student Name"
         aria-label="Student name"
+        class="w-full rounded-lg bg-slate-800/60 border border-white/10 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition"
+      />
+      <input
+        id="accessCodeInput"
+        type="password"
+        placeholder="Enter Access Code"
+        aria-label="Access code"
+        autocomplete="off"
         class="w-full rounded-lg bg-slate-800/60 border border-white/10 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition"
       />
       <button
@@ -505,6 +513,14 @@
   const STORAGE_HISTORY_KEY = "icse_quiz_history";
   const STORAGE_STASH_KEY = "icse_my_stash";
   const STORAGE_GRADE_KEY = "icse_current_grade";
+  const STORAGE_ACCESS_TOKEN_KEY = "icse_access_token";
+  const STORAGE_ACCESS_EXPIRES_KEY = "icse_access_expires";
+
+  // Set this to your deployed Worker's URL after running `npx wrangler deploy`
+  // in access-worker/ (see access-worker/README.md). Access-code checks fail
+  // closed (no entry) until this is a real URL, rather than silently letting
+  // everyone in.
+  const ACCESS_WORKER_URL = "REPLACE_WITH_YOUR_WORKER_URL";
 
   const engine = window.icseEngine || {};
 
@@ -536,6 +552,7 @@
   const loginScreen = el("loginScreen");
   const dashboard = el("dashboard");
   const studentNameInput = el("studentNameInput");
+  const accessCodeInput = el("accessCodeInput");
   const launchArenaBtn = el("launchArenaBtn");
   const loginError = el("loginError");
   const loadStatus = el("loadStatus");
@@ -777,12 +794,46 @@
   };
 
   // ---------- Auth ----------
+  // Gated by a server-verified access code rather than just a name, since
+  // this app is hosted as a public static site. The Worker issues a signed
+  // token on a correct code; because the browser can't compute that
+  // signature itself (it doesn't know the signing secret), a student can't
+  // bypass the gate by writing a fake "logged in" flag into localStorage —
+  // every return visit re-verifies the stored token against the Worker.
 
-  function checkLogin() {
+  async function verifyAccessToken(token, expiresAt) {
+    if (!token || !expiresAt) return false;
+    if (ACCESS_WORKER_URL.indexOf("REPLACE_WITH") === 0) return false;
+    try {
+      const res = await fetch(ACCESS_WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "verify", token, expiresAt: Number(expiresAt) }),
+      });
+      if (!res.ok) return false;
+      const data = await res.json();
+      return !!data.ok;
+    } catch (err) {
+      // Network/Worker unreachable — fail closed (no access), not open.
+      return false;
+    }
+  }
+
+  function clearStoredAccess() {
+    localStorage.removeItem(STORAGE_NAME_KEY);
+    localStorage.removeItem(STORAGE_ACCESS_TOKEN_KEY);
+    localStorage.removeItem(STORAGE_ACCESS_EXPIRES_KEY);
+  }
+
+  async function checkLogin() {
     const savedName = localStorage.getItem(STORAGE_NAME_KEY);
-    if (savedName) {
+    const token = localStorage.getItem(STORAGE_ACCESS_TOKEN_KEY);
+    const expiresAt = localStorage.getItem(STORAGE_ACCESS_EXPIRES_KEY);
+
+    if (savedName && (await verifyAccessToken(token, expiresAt))) {
       showDashboard(savedName);
     } else {
+      if (savedName) clearStoredAccess(); // had a name but no valid session — re-prompt for the code
       loginScreen.classList.remove("hidden");
       dashboard.classList.add("hidden");
     }
@@ -936,25 +987,73 @@
     switchTab("quiz");
   });
 
-  launchArenaBtn.addEventListener("click", () => {
-    const name = studentNameInput.value.trim();
-    if (!name) {
-      loginError.classList.remove("hidden");
+  function setLoginError(message) {
+    if (!message) {
+      loginError.classList.add("hidden");
       return;
     }
-    loginError.classList.add("hidden");
-    localStorage.setItem(STORAGE_NAME_KEY, name);
-    showDashboard(name);
+    loginError.textContent = message;
+    loginError.classList.remove("hidden");
+  }
+
+  launchArenaBtn.addEventListener("click", async () => {
+    const name = studentNameInput.value.trim();
+    const code = accessCodeInput.value.trim();
+
+    if (!name) {
+      setLoginError("Please enter your name to continue.");
+      return;
+    }
+    if (!code) {
+      setLoginError("Please enter your access code to continue.");
+      return;
+    }
+    if (ACCESS_WORKER_URL.indexOf("REPLACE_WITH") === 0) {
+      setLoginError("Access code checking isn't set up yet (see access-worker/README.md).");
+      return;
+    }
+
+    setLoginError("");
+    launchArenaBtn.disabled = true;
+    launchArenaBtn.textContent = "Checking access code…";
+
+    try {
+      const res = await fetch(ACCESS_WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "login", code: code }),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+
+      if (data.ok) {
+        localStorage.setItem(STORAGE_NAME_KEY, name);
+        localStorage.setItem(STORAGE_ACCESS_TOKEN_KEY, data.token);
+        localStorage.setItem(STORAGE_ACCESS_EXPIRES_KEY, String(data.expiresAt));
+        accessCodeInput.value = "";
+        showDashboard(name);
+      } else {
+        setLoginError(data.error === "Invalid access code" ? "That access code isn't valid." : "Couldn't verify the access code — please try again.");
+      }
+    } catch (err) {
+      setLoginError("Couldn't reach the access server — check your internet connection and try again.");
+    } finally {
+      launchArenaBtn.disabled = false;
+      launchArenaBtn.textContent = "Launch Arena";
+    }
   });
 
   studentNameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") accessCodeInput.focus();
+  });
+  accessCodeInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") launchArenaBtn.click();
   });
 
   logoutBtn.addEventListener("click", () => {
     stopSpeedRunTimer();
-    localStorage.removeItem(STORAGE_NAME_KEY);
+    clearStoredAccess();
     studentNameInput.value = "";
+    accessCodeInput.value = "";
     checkLogin();
   });
 
