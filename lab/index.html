@@ -4693,18 +4693,18 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var civs = [
-        { name: "Mesopotamia (Sumer/Babylon)", start: -3500, end: -539, region: "Modern-day Iraq", continent: "Asia" },
-        { name: "Ancient Egypt", start: -3100, end: -30, region: "Nile Valley", continent: "Africa" },
-        { name: "Indus Valley Civilization", start: -3300, end: -1300, region: "Pakistan/NW India", continent: "Asia" },
-        { name: "Olmec Civilization", start: -1500, end: -400, region: "Gulf Coast, Mexico", continent: "North America" },
-        { name: "Ancient China (Shang/Zhou)", start: -1600, end: -256, region: "Yellow River Valley", continent: "Asia" },
-        { name: "Kingdom of Kush (Nubia)", start: -1070, end: 350, region: "Modern-day Sudan", continent: "Africa" },
-        { name: "Ancient Greece (Classical)", start: -800, end: -146, region: "Greek peninsula & Aegean", continent: "Europe" },
-        { name: "Persian Empire (Achaemenid)", start: -550, end: -330, region: "Iranian Plateau", continent: "Asia" },
-        { name: "Maurya Empire", start: -322, end: -185, region: "Indian subcontinent", continent: "Asia" },
-        { name: "Roman Empire", start: -27, end: 476, region: "Mediterranean & Europe", continent: "Europe" },
-        { name: "Gupta Empire", start: 320, end: 550, region: "Indian subcontinent", continent: "Asia" },
-        { name: "Maya Civilization (Classic period)", start: 250, end: 900, region: "Central America", continent: "North America" },
+        { name: "Mesopotamia (Sumer/Babylon)", start: -3500, end: -539, region: "Modern-day Iraq", continent: "Asia", fact: "Home to the world's earliest known writing (cuneiform) and the Code of Hammurabi, one of the earliest written law codes." },
+        { name: "Ancient Egypt", start: -3100, end: -30, region: "Nile Valley", continent: "Africa", fact: "Unified under a single pharaoh for most of its 3,000-year history, longer than any other civilization on this list lasted." },
+        { name: "Indus Valley Civilization", start: -3300, end: -1300, region: "Pakistan/NW India", continent: "Asia", fact: "Its cities, like Mohenjo-daro, had planned street grids and covered drains — advanced urban sanitation for the time." },
+        { name: "Olmec Civilization", start: -1500, end: -400, region: "Gulf Coast, Mexico", continent: "North America", fact: "Carved the giant stone Olmec heads and are considered Mesoamerica's earliest major civilization, influencing the later Maya and Aztec." },
+        { name: "Ancient China (Shang/Zhou)", start: -1600, end: -256, region: "Yellow River Valley", continent: "Asia", fact: "The Shang dynasty left behind oracle bone script, the direct ancestor of modern Chinese characters." },
+        { name: "Kingdom of Kush (Nubia)", start: -1070, end: 350, region: "Modern-day Sudan", continent: "Africa", fact: "Built more pyramids than Egypt overall, and at one point its pharaohs ruled Egypt itself as the 25th dynasty." },
+        { name: "Ancient Greece (Classical)", start: -800, end: -146, region: "Greek peninsula & Aegean", continent: "Europe", fact: "A collection of independent city-states, not one nation — Athens and Sparta, for example, were often rivals." },
+        { name: "Persian Empire (Achaemenid)", start: -550, end: -330, region: "Iranian Plateau", continent: "Asia", fact: "At its height, it was the largest empire the ancient world had yet seen, linked by the long Royal Road." },
+        { name: "Maurya Empire", start: -322, end: -185, region: "Indian subcontinent", continent: "Asia", fact: "Under Emperor Ashoka, it unified most of the Indian subcontinent and spread Buddhist teachings through carved stone edicts." },
+        { name: "Roman Empire", start: -27, end: 476, region: "Mediterranean & Europe", continent: "Europe", fact: "Its road network, some sections still visible today, connected an empire stretching from Britain to the Middle East." },
+        { name: "Gupta Empire", start: 320, end: 550, region: "Indian subcontinent", continent: "Asia", fact: "Often called a 'Golden Age' of Indian science and mathematics — the concept of zero as a number was refined during this period." },
+        { name: "Maya Civilization (Classic period)", start: 250, end: 900, region: "Central America", continent: "North America", fact: "Developed one of the most advanced writing systems and calendar systems anywhere in the ancient world, independent of Old World contact." },
       ];
       var state = { year: -2500, continent: "All" };
       var card = LabKit.el("div", null);
@@ -4719,7 +4719,7 @@
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.3rem;color:var(--accent);">' + yearLabel + '</div>' +
           '<div style="display:flex;flex-direction:column;gap:8px;max-width:28rem;">' +
           (active.length
-            ? active.map(function (c) { return '<div style="background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:0.85rem;"><strong>' + c.name + '</strong><br><span style="color:var(--muted);">' + c.region + ' · ' + c.continent + '</span></div>'; }).join("")
+            ? active.map(function (c) { return '<div style="background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:0.85rem;"><strong>' + c.name + '</strong><br><span style="color:var(--muted);">' + c.region + ' · ' + c.continent + '</span><br><span style="font-size:0.78rem;">' + c.fact + '</span></div>'; }).join("")
             : '<div style="color:var(--muted);font-size:0.85rem;">No civilization from this list existed at this exact point.</div>') +
           '</div>';
         document.getElementById("ro-active").textContent = active.length;
@@ -4993,16 +4993,16 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var voyages = [
-        { year: 1271, name: "Marco Polo's journey", nation: "Republic of Venice", fact: "Travelled overland across Asia to China and back over 24 years — not a sea voyage, but his widely-read account inspired generations of later explorers." },
-        { year: 1405, name: "Zheng He's first voyage", nation: "Ming China", fact: "Commanded a massive treasure fleet across the Indian Ocean to Southeast Asia, India, Arabia and East Africa — decades before any European voyage of similar scale." },
-        { year: 1488, name: "Bartolomeu Dias", nation: "Portugal", fact: "Became the first European known to sail around the southern tip of Africa, proving a sea route to Asia was possible." },
-        { year: 1492, name: "Christopher Columbus", nation: "Spain", fact: "Sailed west across the Atlantic aiming for Asia, reaching the Caribbean instead — and never realized it wasn't Asia." },
-        { year: 1497, name: "John Cabot", nation: "England", fact: "Reached the coast of North America (likely Newfoundland), also originally searching for a route to Asia." },
-        { year: 1498, name: "Vasco da Gama", nation: "Portugal", fact: "Found a sea route from Europe around Africa to Calicut, India, opening direct sea trade between the two regions." },
-        { year: 1513, name: "Vasco Núñez de Balboa", nation: "Spain", fact: "Crossed the Isthmus of Panama on foot, becoming the first European to see the Pacific Ocean from the Americas." },
-        { year: 1519, name: "Ferdinand Magellan's expedition", nation: "Spain", fact: "Began the first voyage to sail all the way around the world; Magellan died in the Philippines in 1521, but survivors completed the circumnavigation in 1522." },
-        { year: 1534, name: "Jacques Cartier", nation: "France", fact: "Explored the Gulf of St. Lawrence and claimed the land for France, laying groundwork for what became New France (Canada)." },
-        { year: 1768, name: "James Cook's first voyage", nation: "Great Britain", fact: "Mapped huge stretches of the Pacific coastline, including New Zealand and eastern Australia, over three major voyages." },
+        { year: 1271, name: "Marco Polo's journey", nation: "Republic of Venice", route: "Venice, Italy → overland through Central Asia to China, and back", fact: "Travelled overland across Asia to China and back over 24 years — not a sea voyage, but his widely-read account inspired generations of later explorers." },
+        { year: 1405, name: "Zheng He's first voyage", nation: "Ming China", route: "Nanjing, China → Southeast Asia, India, Arabia, and East Africa", fact: "Commanded a massive treasure fleet across the Indian Ocean to Southeast Asia, India, Arabia and East Africa — decades before any European voyage of similar scale." },
+        { year: 1488, name: "Bartolomeu Dias", nation: "Portugal", route: "Lisbon, Portugal → around the Cape of Good Hope, southern tip of Africa", fact: "Became the first European known to sail around the southern tip of Africa, proving a sea route to Asia was possible." },
+        { year: 1492, name: "Christopher Columbus", nation: "Spain", route: "Palos, Spain → across the Atlantic to the Bahamas/Caribbean", fact: "Sailed west across the Atlantic aiming for Asia, reaching the Caribbean instead — and never realized it wasn't Asia." },
+        { year: 1497, name: "John Cabot", nation: "England", route: "Bristol, England → North Atlantic to Newfoundland, eastern Canada", fact: "Reached the coast of North America (likely Newfoundland), also originally searching for a route to Asia." },
+        { year: 1498, name: "Vasco da Gama", nation: "Portugal", route: "Lisbon, Portugal → around Africa to Calicut, India", fact: "Found a sea route from Europe around Africa to Calicut, India, opening direct sea trade between the two regions." },
+        { year: 1513, name: "Vasco Núñez de Balboa", nation: "Spain", route: "Santa María la Antigua (Panama colony) → overland across the Isthmus of Panama to the Pacific coast", fact: "Crossed the Isthmus of Panama on foot, becoming the first European to see the Pacific Ocean from the Americas." },
+        { year: 1519, name: "Ferdinand Magellan's expedition", nation: "Spain", route: "Seville, Spain → across the Atlantic, around South America, across the Pacific, circling the globe", fact: "Began the first voyage to sail all the way around the world; Magellan died in the Philippines in 1521, but survivors completed the circumnavigation in 1522." },
+        { year: 1534, name: "Jacques Cartier", nation: "France", route: "Saint-Malo, France → across the Atlantic to the Gulf of St. Lawrence, Canada", fact: "Explored the Gulf of St. Lawrence and claimed the land for France, laying groundwork for what became New France (Canada)." },
+        { year: 1768, name: "James Cook's first voyage", nation: "Great Britain", route: "Plymouth, England → Pacific Ocean, New Zealand, eastern Australia", fact: "Mapped huge stretches of the Pacific coastline, including New Zealand and eastern Australia, over three major voyages." },
       ];
       var state = { i: 0, timelineYear: 1780 };
       var card = LabKit.el("div", null);
@@ -5019,12 +5019,14 @@
         var completedByYear = voyages.filter(function (x) { return x.year <= state.timelineYear; }).length;
         document.getElementById("ro-voyage").textContent = (state.i + 1) + " / " + voyages.length;
         document.getElementById("ro-nation").textContent = v.nation;
+        document.getElementById("ro-route").textContent = v.route;
         document.getElementById("ro-timeline").textContent = completedByYear + " of " + voyages.length + " begun";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "voyage", "Voyage");
       LabKit.readout(readoutsEl, "nation", "Sponsoring nation");
+      LabKit.readout(readoutsEl, "route", "Route");
       LabKit.readout(readoutsEl, "timeline", "Voyages begun by slider year");
 
       clearPanel(controlsEl);
@@ -5270,16 +5272,16 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var items = {
-        "Great Wall of China": { era: "7th century BCE onward", purpose: "Defense", fact: "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications." },
-        "Pyramids of Giza": { era: "~2560 BCE", purpose: "Royal tombs", fact: "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone." },
-        "Roman Colosseum": { era: "~80 CE", purpose: "Public entertainment", fact: "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events." },
-        "Great Stupa at Sanchi": { era: "~3rd century BCE onward", purpose: "Religious (Buddhist)", fact: "One of the oldest surviving Buddhist monuments in India, built to house sacred relics." },
-        "Petra (Jordan)": { era: "~4th century BCE onward", purpose: "City / trade hub", fact: "An entire city carved directly into rose-coloured rock cliffs, thriving as a hub on ancient caravan trade routes." },
-        "Angkor Wat (Cambodia)": { era: "Early 12th century CE", purpose: "Religious (Hindu, later Buddhist)", fact: "The largest religious monument in the world, originally built for a Hindu god and later repurposed as a Buddhist site." },
-        "Hagia Sophia (Istanbul)": { era: "537 CE", purpose: "Religious (Christian, later mosque)", fact: "Famous for its massive dome, it served as a cathedral, then a mosque, and today is a museum/mosque reflecting centuries of changing rule." },
-        "Chichen Itza (Mexico)": { era: "~600-1200 CE", purpose: "Religious / astronomical", fact: "A major Maya city whose step pyramid, El Castillo, aligns precisely with the Sun on the equinoxes." },
-        "Machu Picchu (Peru)": { era: "~1450 CE", purpose: "City / religious retreat", fact: "An Inca mountain city built with such precise stonework that many walls still stand without any mortar at all." },
-        "Taj Mahal (India)": { era: "Completed 1653 CE", purpose: "Mausoleum (tomb)", fact: "Built by Mughal emperor Shah Jahan as a tomb for his wife Mumtaz Mahal — one of the most famous buildings in the world today." },
+        "Great Wall of China": { era: "7th century BCE onward", purpose: "Defense", country: "China", builder: "Multiple Chinese dynasties — the first unified sections joined under Emperor Qin Shi Huang", fact: "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications." },
+        "Pyramids of Giza": { era: "~2560 BCE", purpose: "Royal tombs", country: "Egypt", builder: "Built for Pharaoh Khufu (Great Pyramid), by skilled laborers and seasonal farm-worker crews", fact: "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone." },
+        "Roman Colosseum": { era: "~80 CE", purpose: "Public entertainment", country: "Italy", builder: "Commissioned by Emperor Vespasian; completed under Emperor Titus", fact: "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events." },
+        "Great Stupa at Sanchi": { era: "~3rd century BCE onward", purpose: "Religious (Buddhist)", country: "India", builder: "Commissioned by Emperor Ashoka of the Mauryan Empire; enlarged by later rulers", fact: "One of the oldest surviving Buddhist monuments in India, built to house sacred relics." },
+        "Petra (Jordan)": { era: "~4th century BCE onward", purpose: "City / trade hub", country: "Jordan", builder: "Built by the Nabataean people", fact: "An entire city carved directly into rose-coloured rock cliffs, thriving as a hub on ancient caravan trade routes." },
+        "Angkor Wat (Cambodia)": { era: "Early 12th century CE", purpose: "Religious (Hindu, later Buddhist)", country: "Cambodia", builder: "Commissioned by King Suryavarman II of the Khmer Empire", fact: "The largest religious monument in the world, originally built for a Hindu god and later repurposed as a Buddhist site." },
+        "Hagia Sophia (Istanbul)": { era: "537 CE", purpose: "Religious (Christian, later mosque)", country: "Turkey", builder: "Commissioned by Byzantine Emperor Justinian I", fact: "Famous for its massive dome, it served as a cathedral, then a mosque, and today is a museum/mosque reflecting centuries of changing rule." },
+        "Chichen Itza (Mexico)": { era: "~600-1200 CE", purpose: "Religious / astronomical", country: "Mexico", builder: "Built by the Maya civilization", fact: "A major Maya city whose step pyramid, El Castillo, aligns precisely with the Sun on the equinoxes." },
+        "Machu Picchu (Peru)": { era: "~1450 CE", purpose: "City / religious retreat", country: "Peru", builder: "Built under Inca emperor Pachacuti", fact: "An Inca mountain city built with such precise stonework that many walls still stand without any mortar at all." },
+        "Taj Mahal (India)": { era: "Completed 1653 CE", purpose: "Mausoleum (tomb)", country: "India", builder: "Commissioned by Mughal emperor Shah Jahan", fact: "Built by Mughal emperor Shah Jahan as a tomb for his wife Mumtaz Mahal — one of the most famous buildings in the world today." },
       };
       var state = { k: "Great Wall of China" };
       var card = LabKit.el("div", null);
@@ -5291,11 +5293,15 @@
         card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.k + '</div><div style="font-size:0.85rem;max-width:26rem;">' + it.fact + '</div>';
         document.getElementById("ro-era").textContent = it.era;
         document.getElementById("ro-purpose").textContent = it.purpose;
+        document.getElementById("ro-country").textContent = it.country;
+        document.getElementById("ro-builder").textContent = it.builder;
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "era", "Era built");
       LabKit.readout(readoutsEl, "purpose", "Primary purpose");
+      LabKit.readout(readoutsEl, "country", "Country today");
+      LabKit.readout(readoutsEl, "builder", "Commissioned / built by");
       clearPanel(controlsEl);
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Monument", text: "a large structure built to last, usually commemorating a person, event, or belief." },
