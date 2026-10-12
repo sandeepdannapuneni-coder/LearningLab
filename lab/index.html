@@ -4199,7 +4199,8 @@
     id: "timezone", subject: "Geography", title: "Time Zone Calculator", icon: "🕛",
     mount: function () {
       viewportEl.innerHTML = "";
-      var state = { lon: 77 };
+      var CITIES = { "New Delhi": 77, London: 0, "New York": -74, Tokyo: 140, Sydney: 151, "Los Angeles": -118 };
+      var state = { lon: 77, compareCity: "London" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;";
       viewportEl.appendChild(card);
@@ -4207,18 +4208,22 @@
       function render() {
         var offsetHours = state.lon / 15;
         var sign = offsetHours >= 0 ? "+" : "";
+        var compareLon = CITIES[state.compareCity];
+        var diffHours = (state.lon - compareLon) / 15;
         card.innerHTML =
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:2rem;color:var(--accent);">GMT ' + sign + offsetHours.toFixed(1) + '</div>' +
           '<div style="font-size:0.85rem;color:var(--muted);">at longitude ' + state.lon + '° ' + (state.lon >= 0 ? "East" : "West") + '</div>';
         document.getElementById("ro-offset").textContent = sign + offsetHours.toFixed(1) + " hrs";
         var noonGMTHour = (12 + offsetHours + 24) % 24;
         document.getElementById("ro-localtime").textContent = Math.floor(noonGMTHour) + ":" + String(Math.round((noonGMTHour % 1) * 60)).padStart(2, "0");
+        document.getElementById("ro-diff").textContent = (diffHours >= 0 ? "+" : "") + diffHours.toFixed(1) + " hrs vs. " + state.compareCity;
         setFormula("Time offset (hours) = Longitude ÷ 15 &nbsp;—&nbsp; Earth rotates 360° in 24 hours, so each 15° of longitude = 1 hour.");
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "offset", "Offset from GMT");
       LabKit.readout(readoutsEl, "localtime", "Local time when GMT is noon");
+      LabKit.readout(readoutsEl, "diff", "Time difference");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "tz-lon", label: "Longitude", min: -180, max: 180, step: 1, value: 77, unit: "°", onInput: function (v) { state.lon = v; render(); } });
@@ -4226,9 +4231,21 @@
         { kind: "term", term: "Longitude", text: "distance east or west of the Prime Meridian (0°), measured in degrees." },
         { kind: "term", term: "GMT (Greenwich Mean Time)", text: "the reference time at longitude 0°, used as the baseline for every time zone." },
         { term: "Longitude slider", text: "every 15° you move east adds roughly one hour; moving west subtracts one." },
+        { term: "City buttons", text: "real cities don't always sit on a neat multiple of 15°, which is why some real time zones are offset by 30 or 45 minutes." },
       ]);
 
-      setConcept("Time zones exist because Earth <strong>rotates</strong> — as you move east, the Sun reaches you earlier in the day, so clocks have to be set ahead to keep local noon lined up with the Sun overhead.");
+      clearPanel(globalControlsEl);
+      Object.keys(CITIES).forEach(function (c, i) {
+        var btn = LabKit.button(globalControlsEl, c, function () {
+          state.lon = CITIES[c];
+          document.getElementById("tz-lon").value = state.lon;
+          document.getElementById("tz-lon").dispatchEvent(new Event("input"));
+          Array.prototype.forEach.call(globalControlsEl.children, function (el) { el.classList.remove("active"); });
+          btn.classList.add("active"); render();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("Time zones exist because Earth <strong>rotates</strong> — as you move east, the Sun reaches you earlier in the day, so clocks have to be set ahead to keep local noon lined up with the Sun overhead. That's also exactly why long-haul flights feel so disorienting — you're crossing many of these zones in just a few hours.");
       render();
       return function () { viewportEl.innerHTML = ""; };
     },
@@ -4262,10 +4279,16 @@
         ctx.fillStyle = "#ff8aa8"; ctx.beginPath(); ctx.arc(toX(state.lon), toY(state.lat), 8 * dpr, 0, Math.PI * 2); ctx.fill();
 
         document.getElementById("ro-coords").textContent = state.lat + "° " + (state.lat >= 0 ? "N" : "S") + ", " + state.lon + "° " + (state.lon >= 0 ? "E" : "W");
+        var kmFromEquator = Math.abs(state.lat) * 111;
+        var kmPerDegreeLon = 111 * Math.cos((state.lat * Math.PI) / 180);
+        document.getElementById("ro-distEq").textContent = kmFromEquator.toFixed(0) + " km";
+        document.getElementById("ro-lonwidth").textContent = kmPerDegreeLon.toFixed(0) + " km per degree here";
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "coords", "Coordinates");
+      LabKit.readout(readoutsEl, "distEq", "Distance from Equator");
+      LabKit.readout(readoutsEl, "lonwidth", "Longitude line spacing");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ll-lat", label: "Latitude", min: -90, max: 90, step: 1, value: 20, unit: "°", onInput: function (v) { state.lat = v; draw(); } });
@@ -4274,9 +4297,10 @@
         { kind: "term", term: "Equator", text: "the imaginary line at 0° latitude, equally distant from both poles." },
         { kind: "term", term: "Prime Meridian", text: "the imaginary line at 0° longitude, running through Greenwich, England." },
         { term: "Lat/Long sliders", text: "together, exactly one pair of coordinates pins down any single point on Earth's entire surface." },
+        { term: "Longitude line spacing", text: "unlike latitude lines (always ~111 km apart), longitude lines squeeze closer together toward the poles, until they all meet at a single point." },
       ]);
 
-      setConcept("Latitude and longitude form a <strong>grid</strong> that can pinpoint any location on Earth with just two numbers — the same idea as rows and columns on a spreadsheet, just wrapped around a sphere.");
+      setConcept("Latitude and longitude form a <strong>grid</strong> that can pinpoint any location on Earth with just two numbers — the same idea as rows and columns on a spreadsheet, just wrapped around a sphere. One subtlety: latitude lines are always evenly spaced, but longitude lines converge toward the poles, so the real distance a degree of longitude covers shrinks the further you get from the Equator.");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -4287,6 +4311,13 @@
     id: "popdensity", subject: "Geography", title: "Population Density Calculator", icon: "👥",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
+      var PRESETS = {
+        Mumbai: { population: 12400000, area: 603 },
+        Singapore: { population: 5900000, area: 735 },
+        "India (average)": { population: 1400000000, area: 3287000 },
+        "USA (average)": { population: 335000000, area: 9834000 },
+        Mongolia: { population: 3400000, area: 1564000 },
+      };
       var state = { population: 1000000, area: 1000 };
 
       function draw() {
@@ -4303,21 +4334,33 @@
         }
 
         document.getElementById("ro-density").textContent = density.toFixed(1) + " /km²";
-        setFormula("Density = Population ÷ Area = " + state.population.toLocaleString() + " ÷ " + state.area + " = <span class=\"hi\">" + density.toFixed(1) + "</span> people/km²");
+        setFormula("Density = Population ÷ Area = " + state.population.toLocaleString() + " ÷ " + state.area.toLocaleString() + " = <span class=\"hi\">" + density.toFixed(1) + "</span> people/km²");
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "density", "Population density");
 
       clearPanel(controlsEl);
-      LabKit.slider(controlsEl, { key: "pd-pop", label: "Population", min: 10000, max: 20000000, step: 10000, value: 1000000, onInput: function (v) { state.population = v; draw(); } });
-      LabKit.slider(controlsEl, { key: "pd-area", label: "Area", min: 10, max: 10000, step: 10, value: 1000, unit: " km²", onInput: function (v) { state.area = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pd-pop", label: "Population", min: 10000, max: 1500000000, step: 10000, value: 1000000, onInput: function (v) { state.population = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pd-area", label: "Area", min: 10, max: 10000000, step: 10, value: 1000, unit: " km²", onInput: function (v) { state.area = v; draw(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Population density", text: "the average number of people living in each unit of area — Density = Population ÷ Area." },
         { term: "Area slider", text: "the same population packed into a smaller area always means a much higher density — that's why cities feel so much more crowded than countryside." },
+        { term: "Preset buttons", text: "real places span an enormous range — Mumbai is roughly 10,000 times denser than Mongolia." },
       ]);
 
-      setConcept("Two places can have the <strong>same total population</strong> but feel completely different — one spread over a huge area (low density, rural) and one packed into a small area (high density, urban).");
+      clearPanel(globalControlsEl);
+      Object.keys(PRESETS).forEach(function (p, i) {
+        var btn = LabKit.button(globalControlsEl, p, function () {
+          state.population = PRESETS[p].population; state.area = PRESETS[p].area;
+          document.getElementById("pd-pop").value = Math.min(state.population, 1500000000);
+          document.getElementById("pd-area").value = Math.min(state.area, 10000000);
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("Two places can have the <strong>same total population</strong> but feel completely different — one spread over a huge area (low density, rural) and one packed into a small area (high density, urban). Compare the presets: Mumbai packs roughly as many people into one city as the whole of Mongolia's land area holds at barely 2 people per km².");
       draw();
       return function () { c2d.dispose(); };
     },
@@ -4328,7 +4371,14 @@
     id: "mapscale", subject: "Geography", title: "Map Scale & Distance", icon: "📏",
     mount: function () {
       var c2d = LabKit.canvas2d(viewportEl);
-      var state = { mapCm: 5, scaleDenom: 100000 };
+      var TRANSPORT_SPEED = { Walking: 5, Car: 60, Train: 120, Airplane: 800 };
+      var state = { mapCm: 5, scaleDenom: 100000, transport: "Car" };
+
+      function formatTime(hours) {
+        if (hours < 1 / 60) return Math.round(hours * 3600) + " sec";
+        if (hours < 1) return Math.round(hours * 60) + " min";
+        return hours.toFixed(1) + " hrs";
+      }
 
       function draw() {
         var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
@@ -4343,11 +4393,14 @@
         ctx.fillText("= " + realKm.toFixed(1) + " km in reality", (x0 + x1) / 2, y + 26 * dpr);
 
         document.getElementById("ro-real").textContent = realKm.toFixed(1) + " km";
+        var travelHours = realKm / TRANSPORT_SPEED[state.transport];
+        document.getElementById("ro-time").textContent = formatTime(travelHours) + " by " + state.transport.toLowerCase();
         setFormula("Real distance = map distance × scale &nbsp;=&nbsp; " + state.mapCm + " cm × 1:" + state.scaleDenom.toLocaleString() + " = <span class=\"hi\">" + realKm.toFixed(1) + "</span> km");
       }
 
       clearPanel(readoutsEl);
       LabKit.readout(readoutsEl, "real", "Real-world distance");
+      LabKit.readout(readoutsEl, "time", "Estimated travel time");
 
       clearPanel(controlsEl);
       LabKit.slider(controlsEl, { key: "ms-cm", label: "Distance measured on map", min: 0.5, max: 20, step: 0.5, value: 5, unit: " cm", decimals: 1, onInput: function (v) { state.mapCm = v; draw(); } });
@@ -4355,9 +4408,19 @@
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Map scale", text: "the ratio between a distance on the map and the real distance it represents, e.g. 1:100,000." },
         { term: "Scale slider", text: "a bigger scale number means each centimetre on the map represents a much larger real distance." },
+        { term: "Transport buttons", text: "once you know the real distance, dividing by a travel speed gives a genuinely useful estimated journey time." },
       ]);
 
-      setConcept("A map scale of 1:100,000 means every <strong>1 cm on the map equals 1 km in reality</strong> — ruler-measure any distance on a map and the scale converts it straight to a real-world distance.");
+      clearPanel(globalControlsEl);
+      Object.keys(TRANSPORT_SPEED).forEach(function (t, i) {
+        var btn = LabKit.button(globalControlsEl, t, function () {
+          state.transport = t;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 1 ? " active" : ""));
+      });
+
+      setConcept("A map scale of 1:100,000 means every <strong>1 cm on the map equals 1 km in reality</strong> — ruler-measure any distance on a map and the scale converts it straight to a real-world distance. Once you have that real distance, dividing by a travel speed (Time = Distance ÷ Speed) estimates how long the journey would actually take.");
       draw();
       return function () { c2d.dispose(); };
     },
