@@ -134,6 +134,14 @@ export default {
       return json({ ok: constantTimeEqual(expected, token) }, 200, origin);
     }
 
+    if (body.action === "admin-verify") {
+      // Used to gate Parent Analytics — same ADMIN_KEY as admin.html's
+      // passcode lookup, but this one never returns anything secret, just
+      // a yes/no, so it's safe to call from the main app's own pages.
+      const ok = !!body.adminKey && constantTimeEqual(String(body.adminKey), String(env.ADMIN_KEY));
+      return json({ ok }, ok ? 200 : 401, origin);
+    }
+
     if (body.action === "admin-passcode") {
       if (!body.adminKey || !constantTimeEqual(String(body.adminKey), String(env.ADMIN_KEY))) {
         return json({ ok: false, error: "Invalid admin key" }, 401, origin);
