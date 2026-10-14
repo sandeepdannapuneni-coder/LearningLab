@@ -5954,6 +5954,7 @@
     id: "ancientciv", subject: "History", title: "Ancient Civilizations Timeline", icon: "🏺",
     mount: function () {
       viewportEl.innerHTML = "";
+      var CONTINENT_COLORS = { Asia: "#4fd1e8", Africa: "#ffd166", Europe: "#9aa0c7", "North America": "#ff8aa8" };
       var civs = [
         { name: "Mesopotamia (Sumer/Babylon)", start: -3500, end: -539, region: "Modern-day Iraq", continent: "Asia", fact: "Home to the world's earliest known writing (cuneiform) and the Code of Hammurabi, one of the earliest written law codes." },
         { name: "Ancient Egypt", start: -3100, end: -30, region: "Nile Valley", continent: "Africa", fact: "Unified under a single pharaoh for most of its 3,000-year history, longer than any other civilization on this list lasted." },
@@ -5969,9 +5970,53 @@
         { name: "Maya Civilization (Classic period)", start: 250, end: 900, region: "Central America", continent: "North America", fact: "Developed one of the most advanced writing systems and calendar systems anywhere in the ancient world, independent of Old World contact." },
       ];
       var state = { year: -2500, continent: "All" };
+      var wrap = LabKit.el("div", null);
+      wrap.style.cssText = "display:flex;flex-direction:column;height:100%;";
+      var timelineHost = LabKit.el("div", null);
+      timelineHost.style.cssText = "flex:0 0 170px;";
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;padding:16px;overflow-y:auto;";
-      viewportEl.appendChild(card);
+      card.style.cssText = "flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px;overflow-y:auto;";
+      wrap.appendChild(timelineHost); wrap.appendChild(card);
+      viewportEl.appendChild(wrap);
+      var c2d = LabKit.canvas2d(timelineHost);
+
+      var MIN_YEAR = -3500, MAX_YEAR = 900;
+      function yearToX(y, x0, x1) { return x0 + ((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (x1 - x0); }
+      function xToYear(x, x0, x1) { return MIN_YEAR + ((x - x0) / (x1 - x0)) * (MAX_YEAR - MIN_YEAR); }
+
+      function drawTimeline() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var x0 = 14 * dpr, x1 = W - 14 * dpr;
+        var topPad = 8 * dpr, rowH = (H - topPad - 20 * dpr) / civs.length;
+        civs.forEach(function (c, i) {
+          var inFilter = state.continent === "All" || c.continent === state.continent;
+          var isActive = state.year >= c.start && state.year <= c.end;
+          var y = topPad + i * rowH + rowH * 0.5;
+          var bx0 = yearToX(c.start, x0, x1), bx1 = yearToX(c.end, x0, x1);
+          ctx.globalAlpha = inFilter ? (isActive ? 1 : 0.55) : 0.12;
+          ctx.strokeStyle = CONTINENT_COLORS[c.continent] || "#9aa0c7";
+          ctx.lineWidth = (isActive ? 5 : 3) * dpr;
+          ctx.lineCap = "round";
+          ctx.beginPath(); ctx.moveTo(bx0, y); ctx.lineTo(bx1, y); ctx.stroke();
+        });
+        ctx.globalAlpha = 1;
+        var nowX = yearToX(state.year, x0, x1);
+        ctx.strokeStyle = "#fff"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(nowX, 0); ctx.lineTo(nowX, H - 16 * dpr); ctx.stroke();
+        ctx.fillStyle = "#9aa0c7"; ctx.font = (10 * dpr) + "px 'IBM Plex Mono', monospace"; ctx.textAlign = "left";
+        ctx.fillText("3500 BCE", x0, H - 4 * dpr);
+        ctx.textAlign = "right"; ctx.fillText("900 CE", x1, H - 4 * dpr);
+      }
+      c2d.canvas.addEventListener("click", function (e) {
+        var rect = c2d.canvas.getBoundingClientRect(), dpr = c2d.dpr();
+        var clickX = (e.clientX - rect.left) * dpr;
+        var x0 = 14 * dpr, x1 = c2d.canvas.width - 14 * dpr;
+        var y = Math.max(MIN_YEAR, Math.min(MAX_YEAR, Math.round(xToYear(clickX, x0, x1) / 25) * 25));
+        var slider = document.getElementById("ac-y");
+        slider.value = y;
+        slider.dispatchEvent(new Event("input"));
+      });
 
       function render() {
         var pool = state.continent === "All" ? civs : civs.filter(function (c) { return c.continent === state.continent; });
@@ -5979,13 +6024,14 @@
         var yearLabel = state.year < 0 ? Math.abs(state.year) + " BCE" : state.year + " CE";
         card.innerHTML =
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.3rem;color:var(--accent);">' + yearLabel + '</div>' +
-          '<div style="display:flex;flex-direction:column;gap:8px;max-width:28rem;">' +
+          '<div style="display:flex;flex-direction:column;gap:8px;max-width:28rem;width:100%;">' +
           (active.length
-            ? active.map(function (c) { return '<div style="background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:0.85rem;"><strong>' + c.name + '</strong><br><span style="color:var(--muted);">' + c.region + ' · ' + c.continent + '</span><br><span style="font-size:0.78rem;">' + c.fact + '</span></div>'; }).join("")
+            ? active.map(function (c) { return '<div style="background:var(--panel-2);border:1px solid var(--line);border-left:4px solid ' + (CONTINENT_COLORS[c.continent] || "#9aa0c7") + ';border-radius:8px;padding:8px 12px;font-size:0.85rem;"><strong>' + c.name + '</strong><br><span style="color:var(--muted);">' + c.region + ' · ' + c.continent + '</span><br><span style="font-size:0.78rem;">' + c.fact + '</span></div>'; }).join("")
             : '<div style="color:var(--muted);font-size:0.85rem;">No civilization from this list existed at this exact point.</div>') +
           '</div>';
         document.getElementById("ro-active").textContent = active.length;
         document.getElementById("ro-total").textContent = civs.length;
+        drawTimeline();
       }
 
       clearPanel(readoutsEl);
@@ -5996,6 +6042,7 @@
       LabKit.slider(controlsEl, { key: "ac-y", label: "Year", min: -3500, max: 900, step: 25, value: -2500, onInput: function (v) { state.year = v; render(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "BCE / CE", text: "BCE ('Before Common Era') counts backward from year 0; CE counts forward — the same split as BC/AD." },
+        { term: "Timeline strip", text: "each horizontal bar is one civilization's lifespan, colored by continent — tap anywhere on the strip to jump the year slider there, and watch which bars the white 'now' line crosses." },
         { term: "Year slider", text: "several of these civilizations overlapped in time, even though they developed independently, far apart — on three different continents at once by the classical era." },
       ]);
 
@@ -6010,7 +6057,7 @@
 
       setConcept("Civilizations developed <strong>independently</strong> on several continents at once — not just clustered around the Nile and Tigris-Euphrates, but also in Mesoamerica and East Asia — since reliable water and farmland, not contact with each other, was the real requirement.");
       render();
-      return function () { viewportEl.innerHTML = ""; };
+      return function () { c2d.dispose(); viewportEl.innerHTML = ""; };
     },
   });
 
@@ -6272,6 +6319,7 @@
     id: "voyages", subject: "History", title: "Great Voyages of Exploration", icon: "⛵",
     mount: function () {
       viewportEl.innerHTML = "";
+      var NATION_COLORS = { "Republic of Venice": "#f78c6c", "Ming China": "#ff8aa8", Portugal: "#68e7a0", Spain: "#4fd1e8", England: "#9aa0c7", France: "#ffd166", "Great Britain": "#c792ea" };
       var voyages = [
         { year: 1271, name: "Marco Polo's journey", nation: "Republic of Venice", route: "Venice, Italy → overland through Central Asia to China, and back", fact: "Travelled overland across Asia to China and back over 24 years — not a sea voyage, but his widely-read account inspired generations of later explorers." },
         { year: 1405, name: "Zheng He's first voyage", nation: "Ming China", route: "Nanjing, China → Southeast Asia, India, Arabia, and East Africa", fact: "Commanded a massive treasure fleet across the Indian Ocean to Southeast Asia, India, Arabia and East Africa — decades before any European voyage of similar scale." },
@@ -6285,22 +6333,68 @@
         { year: 1768, name: "James Cook's first voyage", nation: "Great Britain", route: "Plymouth, England → Pacific Ocean, New Zealand, eastern Australia", fact: "Mapped huge stretches of the Pacific coastline, including New Zealand and eastern Australia, over three major voyages." },
       ];
       var state = { i: 0, timelineYear: 1780 };
+      var wrap = LabKit.el("div", null);
+      wrap.style.cssText = "display:flex;flex-direction:column;height:100%;";
+      var timelineHost = LabKit.el("div", null);
+      timelineHost.style.cssText = "flex:0 0 86px;";
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
-      viewportEl.appendChild(card);
+      card.style.cssText = "flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px;overflow:auto;";
+      wrap.appendChild(timelineHost); wrap.appendChild(card);
+      viewportEl.appendChild(wrap);
+      var c2d = LabKit.canvas2d(timelineHost);
+
+      var MIN_YEAR = 1260, MAX_YEAR = 1780;
+      function yearToX(y, x0, x1) { return x0 + ((y - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * (x1 - x0); }
+
+      function drawTimeline() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var x0 = 14 * dpr, x1 = W - 14 * dpr, midY = H * 0.55;
+        ctx.strokeStyle = "rgba(255,255,255,0.15)"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(x0, midY); ctx.lineTo(x1, midY); ctx.stroke();
+
+        var current = voyages[state.i];
+        voyages.forEach(function (v) {
+          var x = yearToX(v.year, x0, x1);
+          var isCurrent = v === current;
+          ctx.globalAlpha = isCurrent ? 1 : 0.65;
+          ctx.fillStyle = NATION_COLORS[v.nation] || "#9aa0c7";
+          ctx.beginPath(); ctx.arc(x, midY, (isCurrent ? 8 : 3.5) * dpr, 0, Math.PI * 2); ctx.fill();
+          if (isCurrent) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2 * dpr; ctx.stroke(); }
+        });
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#9aa0c7"; ctx.font = (10 * dpr) + "px 'IBM Plex Mono', monospace"; ctx.textAlign = "left";
+        ctx.fillText("1260 CE", x0, midY + 22 * dpr);
+        ctx.textAlign = "right"; ctx.fillText("1780 CE", x1, midY + 22 * dpr);
+        ctx.textAlign = "center"; ctx.fillStyle = "#e7ecf4";
+        ctx.fillText(current ? current.year : "", yearToX(current ? current.year : MIN_YEAR, x0, x1), midY - 16 * dpr);
+      }
+      c2d.canvas.addEventListener("click", function (e) {
+        var rect = c2d.canvas.getBoundingClientRect(), dpr = c2d.dpr();
+        var clickX = (e.clientX - rect.left) * dpr;
+        var x0 = 14 * dpr, x1 = c2d.canvas.width - 14 * dpr;
+        var bestIdx = 0, bestDist = Infinity;
+        voyages.forEach(function (v, idx) {
+          var d = Math.abs(yearToX(v.year, x0, x1) - clickX);
+          if (d < bestDist) { bestDist = d; bestIdx = idx; }
+        });
+        state.i = bestIdx; render();
+      });
 
       function render() {
         var v = voyages[state.i];
+        var nc = NATION_COLORS[v.nation] || "#9aa0c7";
         card.innerHTML =
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.3rem;color:var(--accent);">' + v.year + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + v.name + '</div>' +
-          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + v.nation + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + nc + ';border-radius:10px;padding:2px 10px;text-transform:uppercase;letter-spacing:0.04em;font-weight:700;">' + v.nation + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + v.fact + '</div>';
         var completedByYear = voyages.filter(function (x) { return x.year <= state.timelineYear; }).length;
         document.getElementById("ro-voyage").textContent = (state.i + 1) + " / " + voyages.length;
         document.getElementById("ro-nation").textContent = v.nation;
         document.getElementById("ro-route").textContent = v.route;
         document.getElementById("ro-timeline").textContent = completedByYear + " of " + voyages.length + " begun";
+        drawTimeline();
       }
 
       clearPanel(readoutsEl);
@@ -6313,6 +6407,7 @@
       LabKit.slider(controlsEl, { key: "vg-y", label: "Timeline year", min: 1260, max: 1780, step: 1, value: 1780, onInput: function (v) { state.timelineYear = v; render(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Age of Exploration", text: "a period when sailors from several nations charted new sea routes connecting continents, using better ships and navigation tools like the compass." },
+        { term: "Timeline strip", text: "tap any dot to jump straight to that voyage — dot color shows the sponsoring nation." },
         { term: "Timeline slider", text: "exploration wasn't only a European story — Zheng He's Chinese fleets sailed decades before Columbus, on a far larger scale." },
       ]);
 
@@ -6322,7 +6417,7 @@
 
       setConcept("These voyages permanently connected parts of the world that had previously had <strong>little or no direct contact</strong> — reshaping global trade and the exchange of crops, animals, and ideas for centuries afterward. Notice exploration on this scale started in China, not Europe.");
       render();
-      return function () { viewportEl.innerHTML = ""; };
+      return function () { c2d.dispose(); viewportEl.innerHTML = ""; };
     },
   });
 
