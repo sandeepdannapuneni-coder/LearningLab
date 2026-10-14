@@ -4093,11 +4093,11 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var methods = {
-        Filtration: { good: "Sand in water", visual: "A filter paper traps solid sand grains while water passes through." },
-        Evaporation: { good: "Salt in water", visual: "Heating boils off the water, leaving dissolved salt crystals behind." },
-        Distillation: { good: "Two mixed liquids", visual: "Heating separates liquids by their different boiling points, collecting each separately." },
-        "Magnetic separation": { good: "Iron filings in sand", visual: "A magnet pulls out only the magnetic material, leaving the rest untouched." },
-        Sublimation: { good: "Camphor in sand", visual: "Gentle heating turns the camphor directly into gas, skipping the liquid stage, leaving sand behind." },
+        Filtration: { icon: "🧻", basis: "Particle size", color: "#68e7a0", good: "Sand in water", visual: "A filter paper traps solid sand grains while water passes through." },
+        Evaporation: { icon: "💨", basis: "Boiling point", color: "#ffd166", good: "Salt in water", visual: "Heating boils off the water, leaving dissolved salt crystals behind." },
+        Distillation: { icon: "🌡️", basis: "Boiling point", color: "#ffd166", good: "Two mixed liquids", visual: "Heating separates liquids by their different boiling points, collecting each separately." },
+        "Magnetic separation": { icon: "🧲", basis: "Magnetism", color: "#4fd1e8", good: "Iron filings in sand", visual: "A magnet pulls out only the magnetic material, leaving the rest untouched." },
+        Sublimation: { icon: "❄️", basis: "Sublimation point", color: "#b794f6", good: "Camphor in sand", visual: "Gentle heating turns the camphor directly into gas, skipping the liquid stage, leaving sand behind." },
       };
       var state = { method: "Filtration" };
 
@@ -4108,8 +4108,10 @@
       function render() {
         var m = methods[state.method];
         card.innerHTML =
-          '<div style="font-size:2.4rem;">🧪</div>' +
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + m.color + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + m.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.method + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + m.color + ';border-radius:10px;padding:2px 10px;font-weight:700;">' + m.basis + '</div>' +
+          '<div style="font-size:0.78rem;color:var(--muted);">🧪 ' + m.good + '</div>' +
           '<div style="color:var(--muted);font-size:0.85rem;max-width:26rem;">' + m.visual + '</div>';
         document.getElementById("ro-example").textContent = m.good;
       }
@@ -4239,20 +4241,22 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var elements = {
-        Iron: { metal: true, conduct: true, malleable: true, sonorous: true },
-        Copper: { metal: true, conduct: true, malleable: true, sonorous: true },
-        Aluminium: { metal: true, conduct: true, malleable: true, sonorous: true, note: "lightweight for a metal, which is exactly why it's used for aircraft bodies and foil." },
-        Gold: { metal: true, conduct: true, malleable: true, sonorous: true, note: "one of the most malleable metals known — it can be hammered into sheets thin enough to see through." },
-        Sodium: { metal: true, conduct: true, malleable: true, sonorous: false, note: "so reactive it's stored under oil and reacts violently (even explosively) with water." },
-        Sulfur: { metal: false, conduct: false, malleable: false, sonorous: false },
-        Phosphorus: { metal: false, conduct: false, malleable: false, sonorous: false, note: "highly reactive — white phosphorus even ignites spontaneously in air, which is why matches use a safer form of it." },
-        Graphite: { metal: false, conduct: true, malleable: false, sonorous: false, note: "a famous exception — a non-metal that still conducts electricity." },
-        Iodine: { metal: false, conduct: false, malleable: false, sonorous: false, note: "a famous exception — a non-metal with a surprising metallic lustre." },
+        Iron: { icon: "🔨", metal: true, conduct: true, malleable: true, sonorous: true },
+        Copper: { icon: "🔌", metal: true, conduct: true, malleable: true, sonorous: true },
+        Aluminium: { icon: "✈️", metal: true, conduct: true, malleable: true, sonorous: true, note: "lightweight for a metal, which is exactly why it's used for aircraft bodies and foil." },
+        Gold: { icon: "👑", metal: true, conduct: true, malleable: true, sonorous: true, note: "one of the most malleable metals known — it can be hammered into sheets thin enough to see through." },
+        Sodium: { icon: "🌊", metal: true, conduct: true, malleable: true, sonorous: false, note: "so reactive it's stored under oil and reacts violently (even explosively) with water." },
+        Sulfur: { icon: "🌋", metal: false, conduct: false, malleable: false, sonorous: false },
+        Phosphorus: { icon: "🔥", metal: false, conduct: false, malleable: false, sonorous: false, note: "highly reactive — white phosphorus even ignites spontaneously in air, which is why matches use a safer form of it." },
+        Graphite: { icon: "✏️", metal: false, conduct: true, malleable: false, sonorous: false, note: "a famous exception — a non-metal that still conducts electricity." },
+        Iodine: { icon: "🟣", metal: false, conduct: false, malleable: false, sonorous: false, note: "a famous exception — a non-metal with a surprising metallic lustre." },
       };
       var state = { el: "Iron" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;padding:20px;text-align:center;";
       viewportEl.appendChild(card);
+
+      function classColor(isMetal) { return isMetal ? "#9aa0c7" : "#f78c6c"; }
 
       function row(label, pass) {
         return '<div style="display:flex;align-items:center;gap:8px;"><span style="width:16px;">' + (pass ? "✅" : "❌") + '</span><span style="font-size:0.85rem;">' + label + '</span></div>';
@@ -4260,8 +4264,11 @@
 
       function render() {
         var e = elements[state.el];
+        var cc = classColor(e.metal);
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + cc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + e.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + state.el + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + cc + ';border-radius:10px;padding:2px 10px;font-weight:700;">' + (e.metal ? "Metal" : "Non-metal") + '</div>' +
           row("Conducts electricity", e.conduct) + row("Malleable (bends without breaking)", e.malleable) + row("Sonorous (rings when struck)", e.sonorous) +
           (e.note ? '<div style="color:var(--accent);font-size:0.78rem;max-width:22rem;margin-top:6px;">⚠️ ' + e.note + '</div>' : '');
         document.getElementById("ro-class").textContent = e.metal ? "Metal" : "Non-metal";
@@ -5374,13 +5381,13 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var data = {
-        Asia: { fact: "The largest and most populous continent, home to Mount Everest, the world's highest peak.", oceans: "Pacific, Indian, Arctic", areaKm2: 44500000, popRank: 1 },
-        Africa: { fact: "The second-largest continent, home to the Sahara, the world's largest hot desert.", oceans: "Atlantic, Indian", areaKm2: 30300000, popRank: 2 },
-        "North America": { fact: "Home to the Rocky Mountains and the Great Lakes, the largest group of freshwater lakes on Earth.", oceans: "Pacific, Atlantic, Arctic", areaKm2: 24700000, popRank: 4 },
-        "South America": { fact: "Home to the Amazon, the largest rainforest and river by volume on Earth.", oceans: "Pacific, Atlantic", areaKm2: 17800000, popRank: 5 },
-        Antarctica: { fact: "The coldest continent, almost entirely covered by ice, with no permanent population.", oceans: "Southern (Antarctic)", areaKm2: 14200000, popRank: 7 },
-        Europe: { fact: "The second-smallest continent by area, but one of the most densely populated.", oceans: "Atlantic, Arctic", areaKm2: 10500000, popRank: 3 },
-        Australia: { fact: "The smallest continent, and the only one that is also a single country.", oceans: "Pacific, Indian", areaKm2: 7700000, popRank: 6 },
+        Asia: { icon: "🗻", fact: "The largest and most populous continent, home to Mount Everest, the world's highest peak.", oceans: "Pacific, Indian, Arctic", areaKm2: 44500000, popRank: 1 },
+        Africa: { icon: "🦁", fact: "The second-largest continent, home to the Sahara, the world's largest hot desert.", oceans: "Atlantic, Indian", areaKm2: 30300000, popRank: 2 },
+        "North America": { icon: "🦅", fact: "Home to the Rocky Mountains and the Great Lakes, the largest group of freshwater lakes on Earth.", oceans: "Pacific, Atlantic, Arctic", areaKm2: 24700000, popRank: 4 },
+        "South America": { icon: "🌴", fact: "Home to the Amazon, the largest rainforest and river by volume on Earth.", oceans: "Pacific, Atlantic", areaKm2: 17800000, popRank: 5 },
+        Antarctica: { icon: "🧊", fact: "The coldest continent, almost entirely covered by ice, with no permanent population.", oceans: "Southern (Antarctic)", areaKm2: 14200000, popRank: 7 },
+        Europe: { icon: "🏰", fact: "The second-smallest continent by area, but one of the most densely populated.", oceans: "Atlantic, Arctic", areaKm2: 10500000, popRank: 3 },
+        Australia: { icon: "🦘", fact: "The smallest continent, and the only one that is also a single country.", oceans: "Pacific, Indian", areaKm2: 7700000, popRank: 6 },
       };
       var maxArea = 44500000;
       var state = { c: "Asia" };
@@ -5388,11 +5395,18 @@
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      function rankColor(r) { return r <= 2 ? "#ff8aa8" : r <= 4 ? "#ffd166" : r <= 6 ? "#68e7a0" : "#4fd1e8"; }
+
       function render() {
         var d = data[state.c];
         var barPct = Math.round((d.areaKm2 / maxArea) * 100);
+        var rc = rankColor(d.popRank);
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + rc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + d.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.3rem;font-weight:700;">' + state.c + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + rc + ';border-radius:10px;padding:2px 10px;font-weight:700;">#' + d.popRank + ' by population</div>' +
+          '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:var(--muted);">' +
+          '<span>🌊 ' + d.oceans + '</span><span>📐 ' + (d.areaKm2 / 1000000).toFixed(1) + 'M km²</span></div>' +
           '<div style="font-size:0.88rem;max-width:26rem;">' + d.fact + '</div>' +
           '<div style="width:80%;max-width:20rem;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;height:14px;overflow:hidden;margin-top:4px;">' +
           '<div style="width:' + barPct + '%;height:100%;background:var(--geo);"></div></div>' +
@@ -5723,12 +5737,13 @@
     id: "watercycle", subject: "Geography", title: "Water Cycle Explorer", icon: "💧",
     mount: function () {
       viewportEl.innerHTML = "";
+      var STAGE_COLORS = ["#ffd166", "#68e7a0", "#9aa0c7", "#4fd1e8", "#2bb3a3"];
       var stages = [
-        { name: "Evaporation", desc: "The Sun heats water in oceans, rivers and lakes, turning it into water vapour that rises into the air." },
-        { name: "Transpiration", desc: "Plants also release water vapour from their leaves into the air — a plant-powered companion process to evaporation." },
-        { name: "Condensation", desc: "Rising vapour cools in the atmosphere and condenses into tiny droplets, forming clouds." },
-        { name: "Precipitation", desc: "Water droplets in clouds grow heavy enough to fall back down as rain, snow, or hail." },
-        { name: "Collection & Runoff", desc: "Fallen water collects in rivers, lakes and oceans, or soaks into the ground as groundwater — ready to evaporate again." },
+        { icon: "☀️", name: "Evaporation", desc: "The Sun heats water in oceans, rivers and lakes, turning it into water vapour that rises into the air." },
+        { icon: "🌱", name: "Transpiration", desc: "Plants also release water vapour from their leaves into the air — a plant-powered companion process to evaporation." },
+        { icon: "☁️", name: "Condensation", desc: "Rising vapour cools in the atmosphere and condenses into tiny droplets, forming clouds." },
+        { icon: "🌧️", name: "Precipitation", desc: "Water droplets in clouds grow heavy enough to fall back down as rain, snow, or hail." },
+        { icon: "🌊", name: "Collection & Runoff", desc: "Fallen water collects in rivers, lakes and oceans, or soaks into the ground as groundwater — ready to evaporate again." },
       ];
       var state = { stage: 0, temp: 25 };
       var card = LabKit.el("div", null);
@@ -5737,9 +5752,11 @@
 
       function render() {
         var s = stages[state.stage];
+        var sc = STAGE_COLORS[state.stage];
         card.innerHTML =
-          '<div style="font-size:2rem;">' + ["☀️", "🌱", "☁️", "🌧️", "🌊"][state.stage] + '</div>' +
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + sc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + s.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.15rem;font-weight:700;">' + s.name + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + sc + ';border-radius:10px;padding:2px 10px;font-weight:700;">Stage ' + (state.stage + 1) + ' of ' + stages.length + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + s.desc + '</div>';
         document.getElementById("ro-stage").textContent = (state.stage + 1) + " / " + stages.length;
         var relRate = Math.round((state.temp / 25) * (state.temp / 25) * 100);
