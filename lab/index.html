@@ -3473,6 +3473,620 @@
     },
   });
 
+  // ---------- PHYSICS 15: Pulley System & Mechanical Advantage ----------
+  SIMULATIONS.push({
+    id: "pulley", subject: "Physics", title: "Pulley System & Mechanical Advantage", icon: "🪝",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { load: 100, pulleys: 1 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var ma = state.pulleys;
+        var effort = state.load / ma;
+        var topY = H * 0.15, cx = W / 2;
+
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 4 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx - 60 * dpr, topY); ctx.lineTo(cx + 60 * dpr, topY); ctx.stroke();
+
+        for (var i = 0; i < ma; i++) {
+          var px = cx - 50 * dpr + i * (100 * dpr / Math.max(1, ma - 1 || 1));
+          if (ma === 1) px = cx;
+          ctx.strokeStyle = "rgba(255,255,255,0.3)"; ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.moveTo(px, topY); ctx.lineTo(px, H * 0.55); ctx.stroke();
+          ctx.fillStyle = "#9aa0c7"; ctx.beginPath(); ctx.arc(px, topY, 10 * dpr, 0, Math.PI * 2); ctx.fill();
+        }
+
+        var loadY = H * 0.6, loadSize = 24 * dpr;
+        ctx.fillStyle = "#ff8aa8"; ctx.fillRect(cx - loadSize, loadY, loadSize * 2, loadSize);
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("Load: " + state.load + " N", cx, loadY + loadSize + 20 * dpr);
+
+        ctx.fillStyle = "#4fd1e8";
+        ctx.fillText("You pull with: " + effort.toFixed(1) + " N", cx, H * 0.85);
+        ctx.fillText("(" + ma + " rope segment" + (ma > 1 ? "s" : "") + " sharing the load)", cx, H * 0.92);
+
+        document.getElementById("ro-ma").textContent = "×" + ma;
+        document.getElementById("ro-effort").textContent = effort.toFixed(1) + " N";
+        setFormula("Effort = Load / Mechanical Advantage = " + state.load + " / " + ma + " = <span class=\"hi\">" + effort.toFixed(1) + " N</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "ma", "Mechanical advantage");
+      LabKit.readout(readoutsEl, "effort", "Effort force needed");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "pu-l", label: "Load weight", min: 20, max: 300, step: 10, value: 100, unit: " N", onInput: function (v) { state.load = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pu-n", label: "Supporting rope segments", min: 1, max: 4, step: 1, value: 1, onInput: function (v) { state.pulleys = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Pulley", text: "a wheel with a grooved rim that a rope runs over, used to lift loads by redirecting or sharing the pulling force." },
+        { kind: "term", term: "Mechanical advantage", text: "how many times a machine multiplies your effort force — more rope segments sharing the load means less effort needed per segment." },
+        { term: "Rope segments slider", text: "a single fixed pulley only changes direction (effort = load) — adding more rope segments that share the load is what actually reduces the effort needed." },
+      ]);
+
+      setConcept("A pulley system doesn't create energy from nothing — it trades <strong>force for distance</strong>. Using 4 rope segments means you pull with only 1/4 the force, but you must pull the rope 4 times as far to lift the load the same height.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 16: Friction Explorer ----------
+  SIMULATIONS.push({
+    id: "friction", subject: "Physics", title: "Friction Explorer", icon: "🛷",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var MU = { Ice: 0.05, Wood: 0.3, Rubber: 0.7, Sandpaper: 1.0 };
+      var state = { weight: 50, surface: "Wood" };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var groundY = H * 0.7, cx = W * 0.4;
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(W * 0.1, groundY); ctx.lineTo(W * 0.9, groundY); ctx.stroke();
+
+        var mu = MU[state.surface];
+        var frictionForce = mu * state.weight;
+        var blockSize = 40 * dpr;
+        ctx.fillStyle = "#4fd1e8"; ctx.fillRect(cx - blockSize, groundY - blockSize, blockSize * 2, blockSize);
+
+        var arrowLen = Math.min(150, frictionForce) * dpr;
+        ctx.strokeStyle = "#ff8aa8"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx - blockSize, groundY - blockSize / 2); ctx.lineTo(cx - blockSize - arrowLen, groundY - blockSize / 2); ctx.stroke();
+        ctx.fillStyle = "#ff8aa8"; ctx.beginPath(); ctx.moveTo(cx - blockSize - arrowLen, groundY - blockSize / 2); ctx.lineTo(cx - blockSize - arrowLen + 10 * dpr, groundY - blockSize / 2 - 6 * dpr); ctx.lineTo(cx - blockSize - arrowLen + 10 * dpr, groundY - blockSize / 2 + 6 * dpr); ctx.fill();
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("friction opposes sliding", cx - blockSize - arrowLen / 2, groundY - blockSize - 10 * dpr);
+
+        document.getElementById("ro-mu").textContent = mu.toFixed(2);
+        document.getElementById("ro-friction").textContent = frictionForce.toFixed(1) + " N";
+        setFormula("Friction = μ × Normal force = " + mu.toFixed(2) + " × " + state.weight + " = <span class=\"hi\">" + frictionForce.toFixed(1) + " N</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "mu", "Coefficient of friction (μ)");
+      LabKit.readout(readoutsEl, "friction", "Friction force");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "fr-w", label: "Weight pressing down (Normal force)", min: 10, max: 150, step: 5, value: 50, unit: " N", onInput: function (v) { state.weight = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Friction", text: "a force that opposes motion between two surfaces in contact." },
+        { kind: "term", term: "Normal force", text: "the surface pushing back up against an object's weight — more weight means more normal force, and more friction." },
+        { kind: "term", term: "Coefficient of friction (μ)", text: "a number describing how 'grippy' two surfaces are together — higher means more friction for the same weight." },
+        { term: "Surface buttons", text: "ice has a tiny μ, which is exactly why it's so hard to get any grip walking or braking on it." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      Object.keys(MU).forEach(function (s, i) {
+        var btn = LabKit.button(globalControlsEl, s, function () {
+          state.surface = s;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 1 ? " active" : ""));
+      });
+
+      setConcept("Friction depends on <strong>two things only</strong>: how hard the surfaces press together, and how grippy they are. It does NOT depend on how large the contact area looks — a big flat block and a thin edge of the same weight experience the same friction force on the same surface.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 17: Ohm's Law Explorer ----------
+  SIMULATIONS.push({
+    id: "ohmslaw", subject: "Physics", title: "Ohm's Law: Voltage, Current & Resistance", icon: "🔋",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { voltage: 12, resistance: 4 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var current = state.voltage / state.resistance;
+        var power = state.voltage * current;
+
+        var cx = W / 2, cy = H / 2, rw = W * 0.5, rh = H * 0.3;
+        ctx.strokeStyle = "#9aa0c7"; ctx.lineWidth = 3 * dpr;
+        ctx.strokeRect(cx - rw / 2, cy - rh / 2, rw, rh);
+        ctx.fillStyle = "#ffd166"; ctx.fillRect(cx - rw / 2 + rw * 0.35, cy - rh / 2, rw * 0.3, 8 * dpr);
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("resistor (" + state.resistance + " Ω)", cx, cy - rh / 2 - 12 * dpr);
+        ctx.fillText("battery (" + state.voltage + " V)", cx, cy + rh / 2 + 24 * dpr);
+
+        var dotCount = Math.min(20, Math.round(current * 3));
+        for (var i = 0; i < dotCount; i++) {
+          var frac = (i / dotCount + (state.t || 0)) % 1;
+          var px = cx - rw / 2 + frac * rw;
+          ctx.fillStyle = "#4fd1e8"; ctx.beginPath(); ctx.arc(px, cy - rh / 2 - 20 * dpr, 3 * dpr, 0, Math.PI * 2); ctx.fill();
+        }
+
+        document.getElementById("ro-current").textContent = current.toFixed(2) + " A";
+        document.getElementById("ro-power").textContent = power.toFixed(1) + " W";
+        setFormula("I = V/R = " + state.voltage + "/" + state.resistance + " = <span class=\"hi\">" + current.toFixed(2) + " A</span> &nbsp;|&nbsp; P = VI = <span class=\"hi\">" + power.toFixed(1) + " W</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "current", "Current (I)");
+      LabKit.readout(readoutsEl, "power", "Power dissipated");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "oh-v", label: "Voltage", min: 1, max: 24, step: 1, value: 12, unit: " V", onInput: function (v) { state.voltage = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "oh-r", label: "Resistance", min: 1, max: 20, step: 1, value: 4, unit: " Ω", onInput: function (v) { state.resistance = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Voltage (V)", text: "the electrical 'push' supplied by a battery or power source, measured in volts." },
+        { kind: "term", term: "Current (I)", text: "the flow rate of electric charge through a circuit, measured in amperes (A)." },
+        { kind: "term", term: "Resistance (R)", text: "how strongly a component resists the flow of current, measured in ohms (Ω)." },
+        { term: "Resistance slider", text: "for the same voltage, doubling resistance exactly halves the current — resistance and current are inversely related." },
+      ]);
+
+      setConcept("<strong>Ohm's Law</strong> (I = V/R) links all three electrical quantities together — push up the voltage and more current flows; add more resistance and current is squeezed back down, just like a narrower pipe slows down water flow for the same pump pressure.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 18: Refraction of Light Explorer ----------
+  SIMULATIONS.push({
+    id: "refraction", subject: "Physics", title: "Refraction of Light Explorer", icon: "🌈",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var MEDIA = { Water: 1.33, Glass: 1.5, Diamond: 2.42 };
+      var state = { angleIn: 30, medium: "Water" };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        var n2 = MEDIA[state.medium];
+        var thetaIn = state.angleIn * Math.PI / 180;
+        var sinOut = Math.sin(thetaIn) / n2;
+        var thetaOut = Math.asin(Math.min(1, sinOut));
+
+        ctx.strokeStyle = "rgba(255,255,255,0.3)"; ctx.lineWidth = 1.5 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx, cy - H * 0.35); ctx.lineTo(cx, cy + H * 0.35); ctx.stroke();
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx - W * 0.4, cy); ctx.lineTo(cx + W * 0.4, cy); ctx.stroke();
+        ctx.fillStyle = "rgba(79,209,232,0.08)"; ctx.fillRect(cx - W * 0.4, cy, W * 0.8, H * 0.35);
+
+        var rayLen = Math.min(W, H) * 0.3;
+        var inX = cx - Math.sin(thetaIn) * rayLen, inY = cy - Math.cos(thetaIn) * rayLen;
+        ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(inX, inY); ctx.lineTo(cx, cy); ctx.stroke();
+
+        var outX = cx + Math.sin(thetaOut) * rayLen, outY = cy + Math.cos(thetaOut) * rayLen;
+        ctx.strokeStyle = "#4fd1e8"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(outX, outY); ctx.stroke();
+
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("Air", cx + W * 0.3, cy - H * 0.25);
+        ctx.fillText(state.medium, cx + W * 0.3, cy + H * 0.28);
+
+        var angleOutDeg = thetaOut * 180 / Math.PI;
+        document.getElementById("ro-angleout").textContent = angleOutDeg.toFixed(1) + "°";
+        document.getElementById("ro-index").textContent = "n = " + n2;
+        document.getElementById("ro-speed").textContent = (100 / n2).toFixed(1) + "% of light's speed in vacuum";
+        setFormula("sin(θ₁) = n × sin(θ₂) &nbsp;→&nbsp; sin(" + state.angleIn + "°) = " + n2 + " × sin(θ₂) &nbsp;→&nbsp; θ₂ = <span class=\"hi\">" + angleOutDeg.toFixed(1) + "°</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "angleout", "Angle of refraction");
+      LabKit.readout(readoutsEl, "index", "Refractive index");
+      LabKit.readout(readoutsEl, "speed", "Light's relative speed inside");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "rf-a", label: "Angle of incidence", min: 5, max: 80, step: 1, value: 30, unit: "°", onInput: function (v) { state.angleIn = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Refraction", text: "light bending as it crosses into a different transparent medium, because its speed changes there." },
+        { kind: "term", term: "Refractive index (n)", text: "a number describing how much a medium slows light down, and therefore how much it bends — higher n means more bending." },
+        { kind: "term", term: "Normal", text: "an imaginary line drawn exactly perpendicular to the surface at the point light crosses it — angles are always measured from this line." },
+        { term: "Medium buttons", text: "diamond's very high refractive index is exactly why it bends (and sparkles with) light so much more dramatically than water or glass." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      Object.keys(MEDIA).forEach(function (m, i) {
+        var btn = LabKit.button(globalControlsEl, m, function () {
+          state.medium = m;
+          Array.prototype.forEach.call(globalControlsEl.children, function (c) { c.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 0 ? " active" : ""));
+      });
+
+      setConcept("Light bends at a boundary because it <strong>changes speed</strong> there, not because something physically pushes it sideways — think of a car's wheels dipping from road onto sand at an angle, where one side slows before the other and the car's path curves.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 19: Convex & Concave Lens Explorer ----------
+  SIMULATIONS.push({
+    id: "lens", subject: "Physics", title: "Convex & Concave Lens Explorer", icon: "👓",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var F = 15;
+      var state = { kind: "convex", u: 35 };
+
+      function classify() {
+        if (state.kind === "concave") return { nature: "Virtual", orient: "Erect", size: "Diminished", use: "Spectacles for short-sightedness (myopia)" };
+        var u = state.u;
+        if (u > 2 * F) return { nature: "Real", orient: "Inverted", size: "Diminished", use: "Camera lens" };
+        if (Math.abs(u - 2 * F) < 0.6) return { nature: "Real", orient: "Inverted", size: "Same size", use: "(special case, rarely used alone)" };
+        if (u > F) return { nature: "Real", orient: "Inverted", size: "Magnified", use: "Projector lens" };
+        if (Math.abs(u - F) < 0.6) return { nature: "At infinity", orient: "—", size: "—", use: "(image forms infinitely far away)" };
+        return { nature: "Virtual", orient: "Erect", size: "Magnified", use: "Magnifying glass" };
+      }
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        ctx.strokeStyle = "rgba(255,255,255,0.2)"; ctx.lineWidth = 1.5 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx - W * 0.4, cy); ctx.lineTo(cx + W * 0.4, cy); ctx.stroke();
+
+        ctx.strokeStyle = state.kind === "convex" ? "#4fd1e8" : "#ff8aa8"; ctx.lineWidth = 4 * dpr;
+        ctx.beginPath();
+        if (state.kind === "convex") {
+          ctx.ellipse(cx, cy, 18 * dpr, H * 0.3, 0, 0, Math.PI * 2);
+        } else {
+          ctx.moveTo(cx - 10 * dpr, cy - H * 0.3); ctx.quadraticCurveTo(cx + 15 * dpr, cy, cx - 10 * dpr, cy + H * 0.3);
+          ctx.moveTo(cx + 10 * dpr, cy - H * 0.3); ctx.quadraticCurveTo(cx - 15 * dpr, cy, cx + 10 * dpr, cy + H * 0.3);
+        }
+        ctx.stroke();
+
+        var objX = cx - Math.min(W * 0.35, state.u * 5 * dpr);
+        ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.arc(objX, cy - 40 * dpr, 7 * dpr, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("object", objX, cy - 54 * dpr);
+
+        var c = classify();
+        document.getElementById("ro-nature").textContent = c.nature;
+        document.getElementById("ro-orient").textContent = c.orient;
+        document.getElementById("ro-size").textContent = c.size;
+        document.getElementById("ro-use").textContent = c.use;
+        setFormula(state.kind === "convex"
+          ? "Object distance (u = " + state.u + ") vs focal length (F = " + F + "): " + (state.u > 2 * F ? "u &gt; 2F" : state.u > F ? "F &lt; u &lt; 2F" : "u &lt; F") + " &nbsp;→&nbsp; <span class=\"hi\">" + c.nature + ", " + c.orient + ", " + c.size + "</span>"
+          : "A concave lens always produces a <span class=\"hi\">Virtual, Erect, Diminished</span> image, no matter the object distance.");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "nature", "Image: Real or Virtual?");
+      LabKit.readout(readoutsEl, "orient", "Orientation");
+      LabKit.readout(readoutsEl, "size", "Size");
+      LabKit.readout(readoutsEl, "use", "Real-world use");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "ln-u", label: "Object distance (u) — convex lens only", min: 2, max: 45, step: 1, value: 35, onInput: function (v) { state.u = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Convex lens", text: "thicker in the middle than at the edges — converges light, able to form both real and virtual images depending on distance." },
+        { kind: "term", term: "Concave lens", text: "thinner in the middle than at the edges — always diverges light, producing only virtual, smaller images." },
+        { kind: "term", term: "Focal length (F)", text: "the distance from the lens at which parallel rays converge to a point." },
+        { term: "Object distance slider", text: "move the object inside the focal length and the SAME convex lens suddenly acts like a magnifying glass instead of a camera lens." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      var convexBtn = LabKit.button(globalControlsEl, "Convex", function () { state.kind = "convex"; convexBtn.classList.add("active"); concaveBtn.classList.remove("active"); draw(); }, "chip active");
+      var concaveBtn = LabKit.button(globalControlsEl, "Concave", function () { state.kind = "concave"; concaveBtn.classList.add("active"); convexBtn.classList.remove("active"); draw(); }, "chip");
+
+      setConcept("A single convex lens can act as a <strong>camera lens, a projector lens, or a magnifying glass</strong> — the exact same piece of glass, just used at a different distance from the object. A concave lens never gets this flexibility; it only ever spreads light out.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 20: Electromagnet Strength Explorer ----------
+  SIMULATIONS.push({
+    id: "electromagnet", subject: "Physics", title: "Electromagnet Strength Explorer", icon: "🌀",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var CORE_FACTOR = { Air: 1, "Soft Iron": 1000, Steel: 500 };
+      var state = { current: 2, turns: 50, core: "Soft Iron" };
+
+      function relativeStrength() { return state.current * state.turns * CORE_FACTOR[state.core]; }
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cx = W / 2, cy = H / 2;
+        var coilTurns = Math.min(14, Math.round(2 + state.turns / 16));
+        var coilW = W * 0.5;
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 10 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx - coilW / 2, cy); ctx.lineTo(cx + coilW / 2, cy); ctx.stroke();
+        for (var i = 0; i < coilTurns; i++) {
+          var px = cx - coilW / 2 + (i + 0.5) * (coilW / coilTurns);
+          ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 2.5 * dpr;
+          ctx.beginPath(); ctx.ellipse(px, cy, 8 * dpr, 26 * dpr, 0, 0, Math.PI * 2); ctx.stroke();
+        }
+
+        var strength = relativeStrength();
+        var fieldLines = Math.min(10, Math.round(2 + Math.log2(strength + 1)));
+        for (var j = 1; j <= fieldLines; j++) {
+          ctx.strokeStyle = "rgba(79,209,232," + (0.5 - j * 0.03) + ")"; ctx.lineWidth = 1.5 * dpr;
+          ctx.beginPath(); ctx.ellipse(cx, cy, coilW / 2 + j * 12 * dpr, 40 * dpr + j * 10 * dpr, 0, 0, Math.PI * 2); ctx.stroke();
+        }
+
+        document.getElementById("ro-strength").textContent = strength.toLocaleString() + " (relative units)";
+        document.getElementById("ro-core").textContent = state.core + " core (×" + CORE_FACTOR[state.core] + " factor)";
+        setFormula("Field strength ∝ turns × current × core factor = " + state.turns + " × " + state.current + " × " + CORE_FACTOR[state.core] + " = <span class=\"hi\">" + strength.toLocaleString() + "</span> (relative units)");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "strength", "Relative field strength");
+      LabKit.readout(readoutsEl, "core", "Core material");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "em-c", label: "Current", min: 0.5, max: 5, step: 0.5, value: 2, decimals: 1, unit: " A", onInput: function (v) { state.current = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "em-t", label: "Number of coil turns", min: 10, max: 200, step: 10, value: 50, onInput: function (v) { state.turns = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Electromagnet", text: "a magnet created by electric current flowing through a coiled wire — unlike a permanent magnet, it can be switched on and off." },
+        { kind: "term", term: "Solenoid", text: "the coil of wire itself, wound in loops to concentrate the magnetic field along its axis." },
+        { kind: "term", term: "Magnetic core", text: "a material placed inside the coil — a material like soft iron can boost the field by hundreds to thousands of times versus an air core (figures here are illustrative, not an exact physical constant)." },
+        { term: "Core buttons", text: "this is exactly why real electromagnets (in cranes, doorbells, and electric motors) are wound around an iron core instead of just air." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      Object.keys(CORE_FACTOR).forEach(function (c, i) {
+        var btn = LabKit.button(globalControlsEl, c, function () {
+          state.core = c;
+          Array.prototype.forEach.call(globalControlsEl.children, function (el) { el.classList.remove("active"); });
+          btn.classList.add("active"); draw();
+        }, "chip" + (i === 1 ? " active" : ""));
+      });
+
+      setConcept("An electromagnet's strength depends on <strong>three independent things</strong> you can control: more current, more coil turns, or a core material that concentrates the field — which is exactly why real-world electromagnets stack all three rather than relying on just one.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 21: Pressure & Force Explorer ----------
+  SIMULATIONS.push({
+    id: "pressure", subject: "Physics", title: "Pressure & Force Explorer", icon: "📌",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { force: 500, areaCm2: 100 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var areaM2 = state.areaCm2 / 10000;
+        var pressure = state.force / areaM2;
+
+        var cx = W / 2, groundY = H * 0.75;
+        var sidePx = Math.max(6, Math.sqrt(state.areaCm2) * 3 * dpr);
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(W * 0.1, groundY); ctx.lineTo(W * 0.9, groundY); ctx.stroke();
+        ctx.fillStyle = "#4fd1e8"; ctx.fillRect(cx - sidePx / 2, groundY - sidePx, sidePx, sidePx);
+
+        ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(cx, groundY - sidePx - 60 * dpr); ctx.lineTo(cx, groundY - sidePx - 5 * dpr); ctx.stroke();
+        ctx.fillStyle = "#ffd166"; ctx.beginPath(); ctx.moveTo(cx, groundY - sidePx - 5 * dpr); ctx.lineTo(cx - 6 * dpr, groundY - sidePx - 18 * dpr); ctx.lineTo(cx + 6 * dpr, groundY - sidePx - 18 * dpr); ctx.fill();
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText(state.force + " N", cx, groundY - sidePx - 70 * dpr);
+        ctx.fillText("contact area: " + state.areaCm2 + " cm²", cx, groundY + 24 * dpr);
+
+        document.getElementById("ro-pressure").textContent = pressure.toFixed(0) + " Pa";
+        document.getElementById("ro-compare").textContent = pressure > 101325 ? (pressure / 101325).toFixed(1) + "× atmospheric pressure" : (pressure / 101325 * 100).toFixed(2) + "% of atmospheric pressure";
+        setFormula("Pressure = Force / Area = " + state.force + " / " + areaM2.toFixed(4) + " m² = <span class=\"hi\">" + pressure.toFixed(0) + " Pa</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "pressure", "Pressure");
+      LabKit.readout(readoutsEl, "compare", "Compared to atmosphere");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "pr-f", label: "Force", min: 10, max: 2000, step: 10, value: 500, unit: " N", onInput: function (v) { state.force = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "pr-a", label: "Contact area", min: 1, max: 500, step: 1, value: 100, unit: " cm²", onInput: function (v) { state.areaCm2 = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Pressure", text: "how concentrated a force is — the same force spread over a smaller area creates much higher pressure." },
+        { kind: "term", term: "Pascal (Pa)", text: "the unit of pressure — one newton of force spread over one square metre." },
+        { term: "Area slider", text: "shrink the area while keeping force fixed and pressure shoots up — exactly why a nail's sharp point, not a hammer's flat face, is what pierces wood." },
+      ]);
+
+      setConcept("The SAME force can feel completely different depending on area — a person's full weight spread across snowshoes barely dents soft snow, but that same weight on a narrow heel sinks right in, because <strong>pressure</strong> depends on area, not just force.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 22: Work, Power & Energy Calculator ----------
+  SIMULATIONS.push({
+    id: "workpower", subject: "Physics", title: "Work, Power & Energy Calculator", icon: "🏋️",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { force: 100, distance: 5, time: 10 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var work = state.force * state.distance;
+        var power = work / state.time;
+
+        var groundY = H * 0.7, x0 = W * 0.15, x1 = W * 0.85;
+        ctx.strokeStyle = "#5d6391"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath(); ctx.moveTo(x0, groundY); ctx.lineTo(x1, groundY); ctx.stroke();
+        ctx.fillStyle = "#4fd1e8"; ctx.fillRect(x0, groundY - 30 * dpr, 30 * dpr, 30 * dpr);
+        ctx.strokeStyle = "rgba(255,255,255,0.3)"; ctx.setLineDash([6 * dpr, 6 * dpr]);
+        ctx.beginPath(); ctx.moveTo(x0 + 30 * dpr, groundY - 15 * dpr); ctx.lineTo(x1, groundY - 15 * dpr); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (12 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText(state.distance + " m", (x0 + x1) / 2, groundY - 24 * dpr);
+        ctx.fillText(state.force + " N pushing force, over " + state.time + " s", (x0 + x1) / 2, groundY + 30 * dpr);
+
+        document.getElementById("ro-work").textContent = work.toLocaleString() + " J";
+        document.getElementById("ro-power").textContent = power.toFixed(1) + " W";
+        document.getElementById("ro-compare").textContent = (power / 746).toFixed(2) + " horsepower (1 hp ≈ 746 W)";
+        setFormula("Work = Force × Distance = " + state.force + " × " + state.distance + " = <span class=\"hi\">" + work.toLocaleString() + " J</span> &nbsp;|&nbsp; Power = Work / Time = <span class=\"hi\">" + power.toFixed(1) + " W</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "work", "Work done");
+      LabKit.readout(readoutsEl, "power", "Power");
+      LabKit.readout(readoutsEl, "compare", "In horsepower");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "wp-f", label: "Force applied", min: 10, max: 500, step: 10, value: 100, unit: " N", onInput: function (v) { state.force = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "wp-d", label: "Distance moved", min: 1, max: 20, step: 1, value: 5, unit: " m", onInput: function (v) { state.distance = v; draw(); } });
+      LabKit.slider(controlsEl, { key: "wp-t", label: "Time taken", min: 1, max: 30, step: 1, value: 10, unit: " s", onInput: function (v) { state.time = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Work", text: "energy transferred when a force moves something — work = force × distance moved in the force's direction." },
+        { kind: "term", term: "Power", text: "how quickly work gets done — the same work done faster means higher power." },
+        { kind: "term", term: "Joule (J)", text: "the unit of work and energy — one newton of force acting over one metre." },
+        { term: "Time slider", text: "doing the exact same work in half the time doubles the power — power is about speed of doing work, not the total amount." },
+      ]);
+
+      setConcept("Two people can do the <strong>exact same amount of work</strong> lifting the same load the same height, but the one who does it faster has a higher power output — work tells you how much energy was transferred; power tells you how quickly.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 23: Static Electricity & Charge Explorer ----------
+  SIMULATIONS.push({
+    id: "staticcharge", subject: "Physics", title: "Static Electricity & Charge Explorer", icon: "🎈",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { chargeA: "+", chargeB: "-", distance: 5 };
+
+      function draw() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cy = H / 2;
+        var gap = (state.distance / 10) * W * 0.6;
+        var cx1 = W / 2 - gap / 2, cx2 = W / 2 + gap / 2;
+        var attract = state.chargeA !== state.chargeB;
+        var relForce = 1 / (state.distance * state.distance);
+
+        [[cx1, state.chargeA, "#4fd1e8"], [cx2, state.chargeB, "#ff8aa8"]].forEach(function (c) {
+          ctx.fillStyle = c[2]; ctx.beginPath(); ctx.arc(c[0], cy, 26 * dpr, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = "#14162a"; ctx.font = "bold " + (20 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText(c[1], c[0], cy);
+        });
+        ctx.textBaseline = "alphabetic";
+
+        var arrowLen = Math.min(60, relForce * 200) * dpr;
+        ctx.strokeStyle = "#ffd166"; ctx.lineWidth = 3 * dpr;
+        if (attract) {
+          ctx.beginPath(); ctx.moveTo(cx1 + 30 * dpr, cy - 40 * dpr); ctx.lineTo(cx1 + 30 * dpr + arrowLen, cy - 40 * dpr); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx2 - 30 * dpr, cy - 40 * dpr); ctx.lineTo(cx2 - 30 * dpr - arrowLen, cy - 40 * dpr); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(cx1 - 30 * dpr, cy - 40 * dpr); ctx.lineTo(cx1 - 30 * dpr - arrowLen, cy - 40 * dpr); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx2 + 30 * dpr, cy - 40 * dpr); ctx.lineTo(cx2 + 30 * dpr + arrowLen, cy - 40 * dpr); ctx.stroke();
+        }
+
+        document.getElementById("ro-interaction").textContent = attract ? "Attract" : "Repel";
+        document.getElementById("ro-relforce").textContent = "relative force ∝ 1/d² = " + relForce.toFixed(3);
+        setFormula(attract ? "Opposite charges (+ and −) <span class=\"hi\">attract</span>" : "Like charges (both " + state.chargeA + ") <span class=\"hi\">repel</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "interaction", "Interaction");
+      LabKit.readout(readoutsEl, "relforce", "Relative force strength");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "sc-d", label: "Distance apart", min: 1, max: 10, step: 0.5, value: 5, decimals: 1, onInput: function (v) { state.distance = v; draw(); } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Static electricity", text: "a buildup of electric charge on an object's surface, often from rubbing two materials together (like a balloon on hair)." },
+        { kind: "term", term: "Like charges / unlike charges", text: "two positives or two negatives are 'like' and repel; a positive and a negative are 'unlike' and attract." },
+        { term: "Distance slider", text: "double the distance between two charges and the force between them drops to just a quarter — this inverse-square pattern also governs gravity." },
+      ]);
+
+      clearPanel(globalControlsEl);
+      ["+", "-"].forEach(function (sign) {
+        LabKit.button(globalControlsEl, "Charge A: " + sign, function () { state.chargeA = sign; draw(); }, "chip");
+      });
+      ["+", "-"].forEach(function (sign) {
+        LabKit.button(globalControlsEl, "Charge B: " + sign, function () { state.chargeB = sign; draw(); }, "chip");
+      });
+
+      setConcept("The rule is simple to state but easy to forget under pressure: <strong>like charges repel, unlike charges attract</strong> — and the force fades fast with distance, dropping to a quarter of its strength every time the distance doubles.");
+      draw();
+      return function () { c2d.dispose(); };
+    },
+  });
+
+  // ---------- PHYSICS 24: Wave Speed Explorer ----------
+  SIMULATIONS.push({
+    id: "wavespeed", subject: "Physics", title: "Wave Speed Explorer", icon: "🌊",
+    mount: function () {
+      var c2d = LabKit.canvas2d(viewportEl);
+      var state = { frequency: 5, wavelength: 2, t: 0 };
+
+      function draw(dt) {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var cy = H / 2, amp = H * 0.2;
+        var pxPerM = W / 10;
+        var speed = state.frequency * state.wavelength;
+
+        ctx.strokeStyle = "#4fd1e8"; ctx.lineWidth = 3 * dpr;
+        ctx.beginPath();
+        for (var x = 0; x <= W; x += 2 * dpr) {
+          var xm = x / pxPerM;
+          var y = cy + Math.sin((2 * Math.PI / state.wavelength) * xm - 2 * Math.PI * state.frequency * state.t) * amp;
+          if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        var waveLenPx = state.wavelength * pxPerM;
+        ctx.strokeStyle = "rgba(255,255,255,0.4)"; ctx.lineWidth = 1.5 * dpr;
+        ctx.beginPath(); ctx.moveTo(20 * dpr, cy - amp - 16 * dpr); ctx.lineTo(20 * dpr + waveLenPx, cy - amp - 16 * dpr); ctx.stroke();
+        ctx.fillStyle = "#e7ecf4"; ctx.font = (11 * dpr) + "px 'Nunito', sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("1 wavelength (λ = " + state.wavelength + " m)", 20 * dpr + waveLenPx / 2, cy - amp - 24 * dpr);
+
+        document.getElementById("ro-speed").textContent = speed.toFixed(1) + " m/s";
+        document.getElementById("ro-period").textContent = (1 / state.frequency).toFixed(3) + " s";
+        setFormula("v = f × λ = " + state.frequency + " × " + state.wavelength + " = <span class=\"hi\">" + speed.toFixed(1) + " m/s</span>");
+      }
+
+      clearPanel(readoutsEl);
+      LabKit.readout(readoutsEl, "speed", "Wave speed");
+      LabKit.readout(readoutsEl, "period", "Period (time for 1 cycle)");
+
+      clearPanel(controlsEl);
+      LabKit.slider(controlsEl, { key: "wv-f", label: "Frequency", min: 1, max: 20, step: 0.5, value: 5, decimals: 1, unit: " Hz", onInput: function (v) { state.frequency = v; } });
+      LabKit.slider(controlsEl, { key: "wv-l", label: "Wavelength", min: 0.5, max: 5, step: 0.1, value: 2, decimals: 1, unit: " m", onInput: function (v) { state.wavelength = v; } });
+      LabKit.glossary(controlsEl, [
+        { kind: "term", term: "Wavelength (λ)", text: "the distance between one point on a wave and the next identical point — like crest to crest." },
+        { kind: "term", term: "Frequency (f)", text: "how many complete wave cycles pass a point every second, measured in hertz (Hz)." },
+        { kind: "term", term: "Period", text: "the time taken for one complete wave cycle — the inverse of frequency." },
+        { term: "Frequency slider", text: "raise the frequency while keeping wavelength fixed and the wave speed itself increases — frequency and wavelength both independently control speed." },
+      ]);
+
+      setConcept("Every wave obeys <strong>v = fλ</strong> — speed equals frequency times wavelength. This single relationship works for sound, light, water ripples, and radio waves alike, even though those waves are physically completely different.");
+
+      var raf = null, lastT = null;
+      function loop(ts) {
+        if (lastT === null) lastT = ts;
+        var dt = Math.min((ts - lastT) / 1000, 0.05);
+        lastT = ts;
+        state.t += reducedMotion ? 0 : dt;
+        draw(dt);
+        raf = requestAnimationFrame(loop);
+      }
+      raf = requestAnimationFrame(loop);
+
+      return function () { if (raf) cancelAnimationFrame(raf); c2d.dispose(); };
+    },
+  });
+
   // ---------- CHEMISTRY 4: Mixture Separation Lab ----------
   SIMULATIONS.push({
     id: "separation", subject: "Chemistry", title: "Mixture Separation Lab", icon: "🧪",
