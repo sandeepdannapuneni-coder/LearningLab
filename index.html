@@ -1171,7 +1171,7 @@
     if (tabName === "stash") renderFeed();
     if (tabName === "memoryboost") renderMemoryBoost();
     if (tabName === "flashcards") renderFlashcardsForLesson(false);
-    if (tabName === "lab" && !labFrame.src) labFrame.src = "lab/index.html";
+    if (tabName === "lab" && !labFrame.src) labFrame.src = "lab/index.html?v=" + Date.now();
   }
 
   tabButtons.forEach((btn) => {
