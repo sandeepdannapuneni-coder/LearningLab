@@ -6135,13 +6135,13 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var facts = [
-        { title: "Mohenjo-daro & Harappa", text: "Two of the largest Indus Valley cities, both remarkably well-planned with grid-pattern streets dividing the city into neat blocks." },
-        { title: "Advanced drainage", text: "Houses connected to covered drains running beneath the streets — remarkably advanced urban sanitation for its time, not matched again in the region for centuries." },
-        { title: "Standardized weights", text: "Uniform cube-shaped stone weights, following a consistent ratio system, suggest organized, large-scale trade across the whole region." },
-        { title: "Undeciphered script", text: "The Indus script appears on thousands of seals and pottery pieces, but despite many attempts, it still hasn't been fully deciphered by historians." },
-        { title: "Trade with Mesopotamia", text: "Indus seals and goods found in Mesopotamian sites suggest active long-distance trade between the two civilizations." },
-        { title: "The Great Bath", text: "A large, carefully waterproofed public bathing structure at Mohenjo-daro, likely used for ritual bathing rather than everyday washing." },
-        { title: "Gradual decline", text: "Historians debate the cause — theories include river course changes, climate shifts, and declining trade, rather than one single dramatic event." },
+        { icon: "🏙️", topic: "Urban Planning", color: "#4fd1e8", title: "Mohenjo-daro & Harappa", text: "Two of the largest Indus Valley cities, both remarkably well-planned with grid-pattern streets dividing the city into neat blocks." },
+        { icon: "🚰", topic: "Urban Planning", color: "#4fd1e8", title: "Advanced drainage", text: "Houses connected to covered drains running beneath the streets — remarkably advanced urban sanitation for its time, not matched again in the region for centuries." },
+        { icon: "⚖️", topic: "Trade", color: "#68e7a0", title: "Standardized weights", text: "Uniform cube-shaped stone weights, following a consistent ratio system, suggest organized, large-scale trade across the whole region." },
+        { icon: "📜", topic: "Writing", color: "#b794f6", title: "Undeciphered script", text: "The Indus script appears on thousands of seals and pottery pieces, but despite many attempts, it still hasn't been fully deciphered by historians." },
+        { icon: "🔁", topic: "Trade", color: "#68e7a0", title: "Trade with Mesopotamia", text: "Indus seals and goods found in Mesopotamian sites suggest active long-distance trade between the two civilizations." },
+        { icon: "🛁", topic: "Religion", color: "#ff8aa8", title: "The Great Bath", text: "A large, carefully waterproofed public bathing structure at Mohenjo-daro, likely used for ritual bathing rather than everyday washing." },
+        { icon: "📉", topic: "Mystery", color: "#9aa0c7", title: "Gradual decline", text: "Historians debate the cause — theories include river course changes, climate shifts, and declining trade, rather than one single dramatic event." },
       ];
       var state = { i: 0, compare: "None" };
       var card = LabKit.el("div", null);
@@ -6157,7 +6157,11 @@
       function render() {
         if (state.compare === "None") {
           var f = facts[state.i];
-          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + f.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + f.text + '</div>';
+          card.innerHTML =
+            '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + f.color + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + f.icon + '</div>' +
+            '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + f.title + '</div>' +
+            '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + f.color + ';border-radius:10px;padding:2px 10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">' + f.topic + '</div>' +
+            '<div style="font-size:0.85rem;max-width:26rem;">' + f.text + '</div>';
           document.getElementById("ro-fact").textContent = (state.i + 1) + " / " + facts.length;
           document.getElementById("ro-mode").textContent = "Browsing facts";
         } else {
@@ -6676,16 +6680,20 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var civs = {
-        Egypt: { era: "~3100-30 BCE", river: "Nile", writing: "Hieroglyphics", structure: "Pyramids of Giza", knownFor: "Mummification and the pharaohs" },
-        "Indus Valley": { era: "~3300-1300 BCE", river: "Indus", writing: "Indus script (undeciphered)", structure: "Mohenjo-daro's drainage system", knownFor: "Advanced city planning and sanitation" },
-        Mesopotamia: { era: "~3500-539 BCE", river: "Tigris & Euphrates", writing: "Cuneiform", structure: "Ziggurats", knownFor: "Some of the earliest law codes and cities" },
-        China: { era: "~1600-256 BCE (Shang/Zhou)", river: "Yellow River (Huang He)", writing: "Oracle bone script", structure: "Early Great Wall sections", knownFor: "Silk production and early bureaucracy" },
-        Maya: { era: "~250-900 CE (Classic period)", river: "No single major river (relied on reservoirs)", writing: "Maya hieroglyphs", structure: "Step pyramids (e.g. Chichen Itza)", knownFor: "An advanced calendar and astronomy" },
+        Egypt: { icon: "🏺", color: "#ffd166", era: "~3100-30 BCE", river: "Nile", writing: "Hieroglyphics", structure: "Pyramids of Giza", knownFor: "Mummification and the pharaohs" },
+        "Indus Valley": { icon: "🏙️", color: "#4fd1e8", era: "~3300-1300 BCE", river: "Indus", writing: "Indus script (undeciphered)", structure: "Mohenjo-daro's drainage system", knownFor: "Advanced city planning and sanitation" },
+        Mesopotamia: { icon: "🏛️", color: "#9aa0c7", era: "~3500-539 BCE", river: "Tigris & Euphrates", writing: "Cuneiform", structure: "Ziggurats", knownFor: "Some of the earliest law codes and cities" },
+        China: { icon: "🏯", color: "#ff8aa8", era: "~1600-256 BCE (Shang/Zhou)", river: "Yellow River (Huang He)", writing: "Oracle bone script", structure: "Early Great Wall sections", knownFor: "Silk production and early bureaucracy" },
+        Maya: { icon: "🗿", color: "#68e7a0", era: "~250-900 CE (Classic period)", river: "No single major river (relied on reservoirs)", writing: "Maya hieroglyphs", structure: "Step pyramids (e.g. Chichen Itza)", knownFor: "An advanced calendar and astronomy" },
       };
       var state = { a: "Egypt", b: "Indus Valley" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;padding:16px;";
       viewportEl.appendChild(card);
+
+      function avatar(name, c) {
+        return '<div style="display:flex;flex-direction:column;align-items:center;gap:6px;"><div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + c.color + ';display:flex;align-items:center;justify-content:center;font-size:1.5rem;">' + c.icon + '</div><div style="font-family:\'Baloo 2\',sans-serif;font-size:0.85rem;font-weight:700;">' + name + '</div></div>';
+      }
 
       function row(label, va, vb) {
         return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:26rem;font-size:0.82rem;"><div><strong>' + va + '</strong></div><div><strong>' + vb + '</strong></div></div>' +
@@ -6695,7 +6703,7 @@
       function render() {
         var a = civs[state.a], b = civs[state.b];
         card.innerHTML =
-          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:26rem;font-family:\'Baloo 2\',sans-serif;font-weight:700;"><div>' + state.a + '</div><div>' + state.b + '</div></div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:26rem;">' + avatar(state.a, a) + avatar(state.b, b) + '</div>' +
           row("Era", a.era, b.era) + row("River", a.river, b.river) + row("Writing system", a.writing, b.writing) + row("Famous structure", a.structure, b.structure) + row("Known for", a.knownFor, b.knownFor);
         document.getElementById("ro-eraA").textContent = a.era;
         document.getElementById("ro-eraB").textContent = b.era;
