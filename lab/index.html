@@ -6020,10 +6020,10 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var ages = [
-        { name: "Paleolithic (Old Stone Age)", desc: "Humans used simple chipped-stone tools and were hunter-gatherers, with no farming yet." },
-        { name: "Neolithic (New Stone Age)", desc: "Humans began farming and settling in permanent villages, with polished stone tools." },
-        { name: "Bronze Age", desc: "Humans learned to combine copper and tin to make bronze — a harder, more durable metal for tools and weapons." },
-        { name: "Iron Age", desc: "Iron tools and weapons, stronger and more available than bronze, became widespread." },
+        { name: "Paleolithic (Old Stone Age)", icon: "🦴", color: "#9aa0c7", material: "Chipped stone", desc: "Humans used simple chipped-stone tools and were hunter-gatherers, with no farming yet." },
+        { name: "Neolithic (New Stone Age)", icon: "🌾", color: "#68e7a0", material: "Polished stone", desc: "Humans began farming and settling in permanent villages, with polished stone tools." },
+        { name: "Bronze Age", icon: "🥉", color: "#f78c6c", material: "Bronze (copper + tin)", desc: "Humans learned to combine copper and tin to make bronze — a harder, more durable metal for tools and weapons." },
+        { name: "Iron Age", icon: "⚔️", color: "#4fd1e8", material: "Iron", desc: "Iron tools and weapons, stronger and more available than bronze, became widespread." },
       ];
       var state = { idx: 0 };
       var card = LabKit.el("div", null);
@@ -6033,7 +6033,9 @@
       function render() {
         var a = ages[state.idx];
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + a.color + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + a.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.15rem;font-weight:700;">' + a.name + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + a.color + ';border-radius:10px;padding:2px 10px;font-weight:700;">🔨 ' + a.material + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + a.desc + '</div>';
         document.getElementById("ro-age").textContent = (state.idx + 1) + " / " + ages.length;
       }
@@ -6205,26 +6207,32 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var scripts = {
-        Cuneiform: { origin: "Mesopotamia (Sumer)", era: "~3200 BCE", deciphered: "Yes (19th century CE)", fact: "Wedge-shaped marks pressed into wet clay tablets using a reed stylus — among the earliest writing systems known." },
-        Hieroglyphics: { origin: "Ancient Egypt", era: "~3200 BCE", deciphered: "Yes (1822, via the Rosetta Stone)", fact: "Picture-based symbols used for religious texts and monuments, famously deciphered using the Rosetta Stone." },
-        "Indus Script": { origin: "Indus Valley Civilization", era: "~2600 BCE", deciphered: "No — still unsolved", fact: "Found on thousands of seals and pottery pieces, this script has still not been fully deciphered by historians today." },
-        "Oracle Bone Script": { origin: "Ancient China", era: "~1250 BCE", deciphered: "Yes — ancestor of modern Chinese", fact: "Early Chinese characters carved into bone and shell, used for divination, and the direct ancestor of modern Chinese writing." },
-        "Phoenician Alphabet": { origin: "Phoenicia (eastern Mediterranean)", era: "~1050 BCE", deciphered: "Yes — widely read", fact: "One of the first true alphabets, using symbols for individual sounds rather than whole words or ideas — the ancestor of the Greek, and eventually Latin, alphabets." },
-        "Greek Alphabet": { origin: "Ancient Greece", era: "~800 BCE", deciphered: "Yes — widely read", fact: "Adapted from the Phoenician alphabet, but added letters for vowel sounds — a major improvement that later shaped the Latin alphabet too." },
-        "Brahmi Script": { origin: "Ancient India", era: "~3rd century BCE", deciphered: "Yes (19th century CE)", fact: "Famously used in Emperor Ashoka's stone edicts, and the ancestor of most modern Indian scripts, including Devanagari." },
-        "Maya Script": { origin: "Maya Civilization", era: "~300 BCE onward", deciphered: "Mostly, as of the late 20th century", fact: "A complex script combining both whole-word symbols and sound symbols, used to record history, astronomy, and religion." },
-        Rongorongo: { origin: "Easter Island (Rapa Nui)", era: "Uncertain, possibly 18th-19th century CE", deciphered: "No — still unsolved", fact: "A mysterious script found on wooden tablets, with no confirmed decipherment and very few surviving examples — much like the Indus script's unsolved mystery." },
+        Cuneiform: { icon: "🧱", origin: "Mesopotamia (Sumer)", era: "~3200 BCE", deciphered: "Yes (19th century CE)", fact: "Wedge-shaped marks pressed into wet clay tablets using a reed stylus — among the earliest writing systems known." },
+        Hieroglyphics: { icon: "📜", origin: "Ancient Egypt", era: "~3200 BCE", deciphered: "Yes (1822, via the Rosetta Stone)", fact: "Picture-based symbols used for religious texts and monuments, famously deciphered using the Rosetta Stone." },
+        "Indus Script": { icon: "❓", origin: "Indus Valley Civilization", era: "~2600 BCE", deciphered: "No — still unsolved", fact: "Found on thousands of seals and pottery pieces, this script has still not been fully deciphered by historians today." },
+        "Oracle Bone Script": { icon: "🦴", origin: "Ancient China", era: "~1250 BCE", deciphered: "Yes — ancestor of modern Chinese", fact: "Early Chinese characters carved into bone and shell, used for divination, and the direct ancestor of modern Chinese writing." },
+        "Phoenician Alphabet": { icon: "🔤", origin: "Phoenicia (eastern Mediterranean)", era: "~1050 BCE", deciphered: "Yes — widely read", fact: "One of the first true alphabets, using symbols for individual sounds rather than whole words or ideas — the ancestor of the Greek, and eventually Latin, alphabets." },
+        "Greek Alphabet": { icon: "🏛️", origin: "Ancient Greece", era: "~800 BCE", deciphered: "Yes — widely read", fact: "Adapted from the Phoenician alphabet, but added letters for vowel sounds — a major improvement that later shaped the Latin alphabet too." },
+        "Brahmi Script": { icon: "🪨", origin: "Ancient India", era: "~3rd century BCE", deciphered: "Yes (19th century CE)", fact: "Famously used in Emperor Ashoka's stone edicts, and the ancestor of most modern Indian scripts, including Devanagari." },
+        "Maya Script": { icon: "🗿", origin: "Maya Civilization", era: "~300 BCE onward", deciphered: "Mostly, as of the late 20th century", fact: "A complex script combining both whole-word symbols and sound symbols, used to record history, astronomy, and religion." },
+        Rongorongo: { icon: "🪵", origin: "Easter Island (Rapa Nui)", era: "Uncertain, possibly 18th-19th century CE", deciphered: "No — still unsolved", fact: "A mysterious script found on wooden tablets, with no confirmed decipherment and very few surviving examples — much like the Indus script's unsolved mystery." },
       };
       var state = { s: "Cuneiform" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      function decipherColor(d) { return d.indexOf("No") === 0 ? "#ff8aa8" : d.indexOf("Mostly") === 0 ? "#ffd166" : "#68e7a0"; }
+
       function render() {
         var s = scripts[state.s];
+        var dc = decipherColor(s.deciphered);
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + dc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + s.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.15rem;font-weight:700;">' + state.s + '</div>' +
-          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + s.origin + ' &nbsp;·&nbsp; ' + s.era + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + dc + ';border-radius:10px;padding:2px 10px;font-weight:700;">' + s.deciphered + '</div>' +
+          '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:var(--muted);">' +
+          '<span>🌍 ' + s.origin + '</span><span>📅 ' + s.era + '</span></div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + s.fact + '</div>';
         document.getElementById("ro-origin").textContent = s.origin;
         document.getElementById("ro-deciphered").textContent = s.deciphered;
@@ -6534,19 +6542,19 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var facts = [
-        { title: "Held at Olympia, Greece", text: "The games were held every four years at the sacred site of Olympia, starting around 776 BCE." },
-        { title: "Honoring Zeus", text: "The games were a religious festival dedicated to the god Zeus, not just a sporting event." },
-        { title: "Olympic Truce", text: "Wars between Greek city-states were supposed to pause during the games, so athletes could travel safely to and from Olympia." },
-        { title: "Only men competed", text: "In the ancient games, only men competed, often performing completely unclothed, and married women were not even allowed to watch." },
-        { title: "Winners' prize", text: "There were no medals — winners received a simple olive wreath, though they often gained fame and rewards back in their home city." },
-        { title: "Over 1,000 years of games", text: "The ancient games ran for well over a thousand years before finally being banned around 393 CE under Roman rule." },
+        { icon: "🏛️", title: "Held at Olympia, Greece", text: "The games were held every four years at the sacred site of Olympia, starting around 776 BCE." },
+        { icon: "⚡", title: "Honoring Zeus", text: "The games were a religious festival dedicated to the god Zeus, not just a sporting event." },
+        { icon: "🕊️", title: "Olympic Truce", text: "Wars between Greek city-states were supposed to pause during the games, so athletes could travel safely to and from Olympia." },
+        { icon: "🚫", title: "Only men competed", text: "In the ancient games, only men competed, often performing completely unclothed, and married women were not even allowed to watch." },
+        { icon: "🌿", title: "Winners' prize", text: "There were no medals — winners received a simple olive wreath, though they often gained fame and rewards back in their home city." },
+        { icon: "📜", title: "Over 1,000 years of games", text: "The ancient games ran for well over a thousand years before finally being banned around 393 CE under Roman rule." },
       ];
       var events = [
-        { name: "Stadion (sprint)", desc: "A short sprint race, roughly the length of the Olympia stadium — the oldest and most prestigious event." },
-        { name: "Wrestling", desc: "Competitors tried to throw their opponent to the ground three times to win." },
-        { name: "Discus throw", desc: "Athletes threw a heavy stone or bronze disc for distance." },
-        { name: "Javelin throw", desc: "A spear-like weapon was thrown for distance, testing both strength and technique." },
-        { name: "Chariot racing", desc: "A fast, dangerous, and hugely popular event — the chariot owner, not the driver, was officially the winner." },
+        { icon: "🏃", name: "Stadion (sprint)", desc: "A short sprint race, roughly the length of the Olympia stadium — the oldest and most prestigious event." },
+        { icon: "🤼", name: "Wrestling", desc: "Competitors tried to throw their opponent to the ground three times to win." },
+        { icon: "🥏", name: "Discus throw", desc: "Athletes threw a heavy stone or bronze disc for distance." },
+        { icon: "🎯", name: "Javelin throw", desc: "A spear-like weapon was thrown for distance, testing both strength and technique." },
+        { icon: "🐎", name: "Chariot racing", desc: "A fast, dangerous, and hugely popular event — the chariot owner, not the driver, was officially the winner." },
       ];
       var state = { view: "facts", i: 0 };
       var card = LabKit.el("div", null);
@@ -6556,11 +6564,14 @@
       function render() {
         var list = state.view === "facts" ? facts : events;
         var item = list[state.i];
-        if (state.view === "facts") {
-          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + item.title + '</div><div style="font-size:0.85rem;max-width:26rem;">' + item.text + '</div>';
-        } else {
-          card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + item.name + '</div><div style="font-size:0.85rem;max-width:26rem;">' + item.desc + '</div>';
-        }
+        var vc = state.view === "facts" ? "#4fd1e8" : "#ffd166";
+        var title = state.view === "facts" ? item.title : item.name;
+        var text = state.view === "facts" ? item.text : item.desc;
+        card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + vc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + item.icon + '</div>' +
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + title + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + vc + ';border-radius:10px;padding:2px 10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">' + (state.view === "facts" ? "Fact" : "Event") + ' ' + (state.i + 1) + '</div>' +
+          '<div style="font-size:0.85rem;max-width:26rem;">' + text + '</div>';
         document.getElementById("ro-oly").textContent = (state.i + 1) + " / " + list.length;
         document.getElementById("ro-view").textContent = state.view === "facts" ? "Facts" : "Events";
       }
