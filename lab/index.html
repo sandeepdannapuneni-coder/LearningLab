@@ -6046,18 +6046,20 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var wonders = [
-        { name: "Great Pyramid of Giza", loc: "Egypt", era: "~2560 BCE", builder: "Pharaoh Khufu", status: "Still standing", fact: "The only one of the seven that still stands largely intact today — originally about 146 m tall, it was the world's tallest man-made structure for almost 4,000 years." },
-        { name: "Hanging Gardens of Babylon", loc: "Mesopotamia", era: "Disputed", builder: "Traditionally King Nebuchadnezzar II", status: "Uncertain — never confirmed", fact: "Described as spectacular terraced gardens, but no archaeological proof of their exact location (or even firm existence) has ever been found." },
-        { name: "Statue of Zeus at Olympia", loc: "Greece", era: "~435 BCE", builder: "Sculptor Phidias", status: "Lost (destroyed by fire)", fact: "A giant seated statue of the god Zeus, roughly 12 m tall, housed inside the temple at the original Olympic Games' home." },
-        { name: "Temple of Artemis at Ephesus", loc: "Turkey (Anatolia)", era: "~550 BCE (rebuilt several times)", builder: "Various Ionian Greek builders", status: "Lost", fact: "A grand marble temple dedicated to the goddess Artemis, rebuilt more than once after fires and raids before its final destruction." },
-        { name: "Mausoleum at Halicarnassus", loc: "Turkey (Anatolia)", era: "~350 BCE", builder: "For King Mausolus of Caria", status: "Lost (earthquake damage over centuries)", fact: "An elaborate decorated tomb; the word 'mausoleum' used for grand tombs everywhere today comes directly from this one structure." },
-        { name: "Colossus of Rhodes", loc: "Greece (Rhodes)", era: "~280 BCE", builder: "Sculptor Chares of Lindos", status: "Lost (fell in an earthquake, 226 BCE)", fact: "A giant bronze statue of the sun-god Helios that once stood near the harbour entrance — it stood for only about 54 years before toppling." },
-        { name: "Lighthouse of Alexandria", loc: "Egypt", era: "~280 BCE", builder: "Commissioned by Ptolemy I/II", status: "Lost (collapsed after repeated earthquakes)", fact: "One of the tallest structures of the ancient world, guiding ships into Alexandria's harbour for over 1,500 years before finally collapsing." },
+        { name: "Great Pyramid of Giza", icon: "🔺", loc: "Egypt", era: "~2560 BCE", builder: "Pharaoh Khufu", status: "Still standing", fact: "The only one of the seven that still stands largely intact today — originally about 146 m tall, it was the world's tallest man-made structure for almost 4,000 years." },
+        { name: "Hanging Gardens of Babylon", icon: "🌿", loc: "Mesopotamia", era: "Disputed", builder: "Traditionally King Nebuchadnezzar II", status: "Uncertain — never confirmed", fact: "Described as spectacular terraced gardens, but no archaeological proof of their exact location (or even firm existence) has ever been found." },
+        { name: "Statue of Zeus at Olympia", icon: "🗿", loc: "Greece", era: "~435 BCE", builder: "Sculptor Phidias", status: "Lost (destroyed by fire)", fact: "A giant seated statue of the god Zeus, roughly 12 m tall, housed inside the temple at the original Olympic Games' home." },
+        { name: "Temple of Artemis at Ephesus", icon: "🏛️", loc: "Turkey (Anatolia)", era: "~550 BCE (rebuilt several times)", builder: "Various Ionian Greek builders", status: "Lost", fact: "A grand marble temple dedicated to the goddess Artemis, rebuilt more than once after fires and raids before its final destruction." },
+        { name: "Mausoleum at Halicarnassus", icon: "⚰️", loc: "Turkey (Anatolia)", era: "~350 BCE", builder: "For King Mausolus of Caria", status: "Lost (earthquake damage over centuries)", fact: "An elaborate decorated tomb; the word 'mausoleum' used for grand tombs everywhere today comes directly from this one structure." },
+        { name: "Colossus of Rhodes", icon: "🗽", loc: "Greece (Rhodes)", era: "~280 BCE", builder: "Sculptor Chares of Lindos", status: "Lost (fell in an earthquake, 226 BCE)", fact: "A giant bronze statue of the sun-god Helios that once stood near the harbour entrance — it stood for only about 54 years before toppling." },
+        { name: "Lighthouse of Alexandria", icon: "🗼", loc: "Egypt", era: "~280 BCE", builder: "Commissioned by Ptolemy I/II", status: "Lost (collapsed after repeated earthquakes)", fact: "One of the tallest structures of the ancient world, guiding ships into Alexandria's harbour for over 1,500 years before finally collapsing." },
       ];
       var state = { i: 0, filter: "All" };
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;text-align:center;padding:20px;";
+      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
+
+      function statusColor(w) { return w.status.indexOf("Still standing") === 0 ? "#68e7a0" : w.status.indexOf("Uncertain") === 0 ? "#ffd166" : "#ff8aa8"; }
 
       function visible() {
         if (state.filter === "All") return wonders;
@@ -6069,9 +6071,13 @@
         var list = visible();
         if (state.i >= list.length) state.i = 0;
         var w = list[state.i];
+        var sc = statusColor(w);
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + sc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + w.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + w.name + '</div>' +
-          '<div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + w.loc + ' &nbsp;·&nbsp; ' + w.era + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + sc + ';border-radius:10px;padding:2px 10px;font-weight:700;">' + w.status + '</div>' +
+          '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:var(--muted);">' +
+          '<span>📍 ' + w.loc + '</span><span>📅 ' + w.era + '</span><span>🔨 ' + w.builder + '</span></div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + w.fact + '</div>';
         document.getElementById("ro-wonder").textContent = (state.i + 1) + " / " + list.length;
         document.getElementById("ro-builder").textContent = w.builder;
@@ -6401,11 +6407,62 @@
         { yearNum: 2020, year: "2020 CE", name: "mRNA vaccines", cat: "Medicine", inventor: "BioNTech and Moderna research teams", location: "Germany / USA", fact: "Rapidly developed during the COVID-19 pandemic, this vaccine technology had been in research for years beforehand." },
       ];
       var state = { i: 0, timelineYear: 2010, cat: "All" };
+      var CAT_COLORS = { Tools: "#9aa0c7", Communication: "#4fd1e8", Transport: "#68e7a0", Medicine: "#ff8aa8", Energy: "#ffd166", Computing: "#c792ea", Trade: "#f78c6c", Domestic: "#82aaff", Agriculture: "#89ca78", Science: "#89ddff", Military: "#f07178", Engineering: "#ffcb6b" };
+
+      var wrap = LabKit.el("div", null);
+      wrap.style.cssText = "display:flex;flex-direction:column;height:100%;";
+      var timelineHost = LabKit.el("div", null);
+      timelineHost.style.cssText = "flex:0 0 86px;";
       var card = LabKit.el("div", null);
-      card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
-      viewportEl.appendChild(card);
+      card.style.cssText = "flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px;overflow:auto;";
+      wrap.appendChild(timelineHost); wrap.appendChild(card);
+      viewportEl.appendChild(wrap);
+      var c2d = LabKit.canvas2d(timelineHost);
+
+      var MIN_YEAR = -2600000, MAX_YEAR = 2020;
+      function scaleOf(y) { return (y < 0 ? -1 : 1) * Math.log10(Math.abs(y) + 1); }
+      var S_MIN = scaleOf(MIN_YEAR), S_MAX = scaleOf(MAX_YEAR);
+      function yearToX(y, x0, x1) { return x0 + ((scaleOf(y) - S_MIN) / (S_MAX - S_MIN)) * (x1 - x0); }
 
       function visible() { return state.cat === "All" ? items : items.filter(function (x) { return x.cat === state.cat; }); }
+
+      function drawTimeline() {
+        var ctx = c2d.ctx, dpr = c2d.dpr(), W = c2d.canvas.width, H = c2d.canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        var x0 = 14 * dpr, x1 = W - 14 * dpr, midY = H * 0.55;
+        ctx.strokeStyle = "rgba(255,255,255,0.15)"; ctx.lineWidth = 2 * dpr;
+        ctx.beginPath(); ctx.moveTo(x0, midY); ctx.lineTo(x1, midY); ctx.stroke();
+
+        var list = visible();
+        var current = list[state.i];
+        items.forEach(function (it) {
+          var inFiltered = list.indexOf(it) >= 0;
+          var x = yearToX(it.yearNum, x0, x1);
+          var isCurrent = it === current;
+          ctx.globalAlpha = inFiltered ? (isCurrent ? 1 : 0.65) : 0.12;
+          ctx.fillStyle = CAT_COLORS[it.cat] || "#9aa0c7";
+          ctx.beginPath(); ctx.arc(x, midY, (isCurrent ? 8 : 3.5) * dpr, 0, Math.PI * 2); ctx.fill();
+          if (isCurrent) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2 * dpr; ctx.stroke(); }
+        });
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#9aa0c7"; ctx.font = (10 * dpr) + "px 'IBM Plex Mono', monospace"; ctx.textAlign = "left";
+        ctx.fillText("2.6 million BCE", x0, midY + 22 * dpr);
+        ctx.textAlign = "right"; ctx.fillText("2020 CE", x1, midY + 22 * dpr);
+        ctx.textAlign = "center"; ctx.fillStyle = "#e7ecf4";
+        ctx.fillText(current ? current.year : "", yearToX(current ? current.yearNum : 0, x0, x1), midY - 16 * dpr);
+      }
+      c2d.canvas.addEventListener("click", function (e) {
+        var rect = c2d.canvas.getBoundingClientRect(), dpr = c2d.dpr();
+        var clickX = (e.clientX - rect.left) * dpr;
+        var x0 = 14 * dpr, x1 = c2d.canvas.width - 14 * dpr;
+        var list = visible();
+        var bestIdx = 0, bestDist = Infinity;
+        list.forEach(function (it, idx) {
+          var d = Math.abs(yearToX(it.yearNum, x0, x1) - clickX);
+          if (d < bestDist) { bestDist = d; bestIdx = idx; }
+        });
+        state.i = bestIdx; render();
+      });
 
       function render() {
         var list = visible();
@@ -6414,13 +6471,14 @@
         card.innerHTML =
           '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:1.1rem;color:var(--accent);">' + v.year + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + v.name + '</div>' +
-          '<div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;">' + v.cat + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + (CAT_COLORS[v.cat] || "#9aa0c7") + ';border-radius:10px;padding:2px 10px;text-transform:uppercase;letter-spacing:0.04em;font-weight:700;">' + v.cat + '</div>' +
           '<div style="font-size:0.85rem;max-width:26rem;">' + v.fact + '</div>';
         var count = items.filter(function (x) { return x.yearNum <= state.timelineYear; }).length;
         document.getElementById("ro-item").textContent = (state.i + 1) + " / " + list.length;
         document.getElementById("ro-count").textContent = count + " of " + items.length + " invented";
         document.getElementById("ro-inventor").textContent = v.inventor;
         document.getElementById("ro-location").textContent = v.location;
+        drawTimeline();
       }
 
       clearPanel(readoutsEl);
@@ -6433,6 +6491,7 @@
       LabKit.slider(controlsEl, { key: "iv-y", label: "Timeline year", min: -3500, max: 2010, step: 25, value: 2010, onInput: function (v) { state.timelineYear = v; render(); } });
       LabKit.glossary(controlsEl, [
         { kind: "term", term: "Invention", text: "a new device or method, created to solve a problem that didn't have a solution before." },
+        { term: "Timeline strip", text: "tap any dot directly to jump straight to that invention — dot color shows its category, and the strip is squeezed using a logarithmic scale so both ancient and modern history fit on one screen." },
         { term: "Timeline slider", text: "drag it back and watch the 'invented so far' count drop — notice how much longer the gaps are in ancient history than in the last 200 years." },
         { term: "Category filter", text: "nearly 100 inventions span ten broad categories — filter down to just one category to trace its story on its own." },
       ]);
@@ -6451,7 +6510,7 @@
 
       setConcept("Notice the gaps getting <strong>shorter</strong> between major inventions — hundreds of thousands of years apart before writing existed, then mere decades apart by the 1900s, as each new invention made the next one easier to create.");
       render();
-      return function () { viewportEl.innerHTML = ""; };
+      return function () { c2d.dispose(); viewportEl.innerHTML = ""; };
     },
   });
 
@@ -6520,25 +6579,40 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var items = {
-        "Great Wall of China": { era: "7th century BCE onward", purpose: "Defense", country: "China", builder: "Multiple Chinese dynasties — the first unified sections joined under Emperor Qin Shi Huang", fact: "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications." },
-        "Pyramids of Giza": { era: "~2560 BCE", purpose: "Royal tombs", country: "Egypt", builder: "Built for Pharaoh Khufu (Great Pyramid), by skilled laborers and seasonal farm-worker crews", fact: "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone." },
-        "Roman Colosseum": { era: "~80 CE", purpose: "Public entertainment", country: "Italy", builder: "Commissioned by Emperor Vespasian; completed under Emperor Titus", fact: "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events." },
-        "Great Stupa at Sanchi": { era: "~3rd century BCE onward", purpose: "Religious (Buddhist)", country: "India", builder: "Commissioned by Emperor Ashoka of the Mauryan Empire; enlarged by later rulers", fact: "One of the oldest surviving Buddhist monuments in India, built to house sacred relics." },
-        "Petra (Jordan)": { era: "~4th century BCE onward", purpose: "City / trade hub", country: "Jordan", builder: "Built by the Nabataean people", fact: "An entire city carved directly into rose-coloured rock cliffs, thriving as a hub on ancient caravan trade routes." },
-        "Angkor Wat (Cambodia)": { era: "Early 12th century CE", purpose: "Religious (Hindu, later Buddhist)", country: "Cambodia", builder: "Commissioned by King Suryavarman II of the Khmer Empire", fact: "The largest religious monument in the world, originally built for a Hindu god and later repurposed as a Buddhist site." },
-        "Hagia Sophia (Istanbul)": { era: "537 CE", purpose: "Religious (Christian, later mosque)", country: "Turkey", builder: "Commissioned by Byzantine Emperor Justinian I", fact: "Famous for its massive dome, it served as a cathedral, then a mosque, and today is a museum/mosque reflecting centuries of changing rule." },
-        "Chichen Itza (Mexico)": { era: "~600-1200 CE", purpose: "Religious / astronomical", country: "Mexico", builder: "Built by the Maya civilization", fact: "A major Maya city whose step pyramid, El Castillo, aligns precisely with the Sun on the equinoxes." },
-        "Machu Picchu (Peru)": { era: "~1450 CE", purpose: "City / religious retreat", country: "Peru", builder: "Built under Inca emperor Pachacuti", fact: "An Inca mountain city built with such precise stonework that many walls still stand without any mortar at all." },
-        "Taj Mahal (India)": { era: "Completed 1653 CE", purpose: "Mausoleum (tomb)", country: "India", builder: "Commissioned by Mughal emperor Shah Jahan", fact: "Built by Mughal emperor Shah Jahan as a tomb for his wife Mumtaz Mahal — one of the most famous buildings in the world today." },
+        "Great Wall of China": { icon: "🛡️", era: "7th century BCE onward", purpose: "Defense", country: "China", builder: "Multiple Chinese dynasties — the first unified sections joined under Emperor Qin Shi Huang", fact: "Built and extended over centuries to defend against northern invasions — not one single wall, but a connected series of fortifications." },
+        "Pyramids of Giza": { icon: "🔺", era: "~2560 BCE", purpose: "Royal tombs", country: "Egypt", builder: "Built for Pharaoh Khufu (Great Pyramid), by skilled laborers and seasonal farm-worker crews", fact: "Built as tombs for Egyptian pharaohs, using an estimated 2 million+ limestone blocks for the largest pyramid alone." },
+        "Roman Colosseum": { icon: "🏟️", era: "~80 CE", purpose: "Public entertainment", country: "Italy", builder: "Commissioned by Emperor Vespasian; completed under Emperor Titus", fact: "A massive amphitheatre in Rome that could seat tens of thousands of spectators for public events." },
+        "Great Stupa at Sanchi": { icon: "🛕", era: "~3rd century BCE onward", purpose: "Religious (Buddhist)", country: "India", builder: "Commissioned by Emperor Ashoka of the Mauryan Empire; enlarged by later rulers", fact: "One of the oldest surviving Buddhist monuments in India, built to house sacred relics." },
+        "Petra (Jordan)": { icon: "🏜️", era: "~4th century BCE onward", purpose: "City / trade hub", country: "Jordan", builder: "Built by the Nabataean people", fact: "An entire city carved directly into rose-coloured rock cliffs, thriving as a hub on ancient caravan trade routes." },
+        "Angkor Wat (Cambodia)": { icon: "🕉️", era: "Early 12th century CE", purpose: "Religious (Hindu, later Buddhist)", country: "Cambodia", builder: "Commissioned by King Suryavarman II of the Khmer Empire", fact: "The largest religious monument in the world, originally built for a Hindu god and later repurposed as a Buddhist site." },
+        "Hagia Sophia (Istanbul)": { icon: "⛪", era: "537 CE", purpose: "Religious (Christian, later mosque)", country: "Turkey", builder: "Commissioned by Byzantine Emperor Justinian I", fact: "Famous for its massive dome, it served as a cathedral, then a mosque, and today is a museum/mosque reflecting centuries of changing rule." },
+        "Chichen Itza (Mexico)": { icon: "☀️", era: "~600-1200 CE", purpose: "Religious / astronomical", country: "Mexico", builder: "Built by the Maya civilization", fact: "A major Maya city whose step pyramid, El Castillo, aligns precisely with the Sun on the equinoxes." },
+        "Machu Picchu (Peru)": { icon: "⛰️", era: "~1450 CE", purpose: "City / religious retreat", country: "Peru", builder: "Built under Inca emperor Pachacuti", fact: "An Inca mountain city built with such precise stonework that many walls still stand without any mortar at all." },
+        "Taj Mahal (India)": { icon: "🕌", era: "Completed 1653 CE", purpose: "Mausoleum (tomb)", country: "India", builder: "Commissioned by Mughal emperor Shah Jahan", fact: "Built by Mughal emperor Shah Jahan as a tomb for his wife Mumtaz Mahal — one of the most famous buildings in the world today." },
       };
       var state = { k: "Great Wall of China" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      function colorForPurpose(p) {
+        if (p.indexOf("Defense") === 0) return "#9aa0c7";
+        if (p.indexOf("tomb") >= 0 || p.indexOf("Mausoleum") === 0) return "#ff8aa8";
+        if (p.indexOf("entertainment") >= 0) return "#ffd166";
+        if (p.indexOf("trade") >= 0) return "#68e7a0";
+        return "#4fd1e8";
+      }
+
       function render() {
         var it = items[state.k];
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.k + '</div><div style="font-size:0.85rem;max-width:26rem;">' + it.fact + '</div>';
+        var sc = colorForPurpose(it.purpose);
+        card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + sc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + it.icon + '</div>' +
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.1rem;font-weight:700;">' + state.k + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + sc + ';border-radius:10px;padding:2px 10px;font-weight:700;">' + it.purpose + '</div>' +
+          '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:var(--muted);">' +
+          '<span>🌍 ' + it.country + '</span><span>📅 ' + it.era + '</span></div>' +
+          '<div style="font-size:0.85rem;max-width:26rem;">' + it.fact + '</div>';
         document.getElementById("ro-era").textContent = it.era;
         document.getElementById("ro-purpose").textContent = it.purpose;
         document.getElementById("ro-country").textContent = it.country;
