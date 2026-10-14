@@ -4763,25 +4763,31 @@
     mount: function () {
       viewportEl.innerHTML = "";
       var tissues = {
-        Xylem: { group: "Plant", fn: "Transports water and minerals upward from roots to leaves.", location: "Vascular bundles, throughout the plant", example: "Wood is mostly old xylem tissue" },
-        Phloem: { group: "Plant", fn: "Transports food (made by photosynthesis) throughout the plant.", location: "Vascular bundles, alongside xylem", example: "Carries sugar from leaves to roots" },
-        Parenchyma: { group: "Plant", fn: "Simple, loosely-packed living cells that fill most of a plant's soft tissue, often storing food.", location: "Fruit pulp, leaf interior, storage roots", example: "The soft flesh of an apple" },
-        Sclerenchyma: { group: "Plant", fn: "Dead cells with thick, hardened walls that give rigid mechanical support.", location: "Seed coats, nut shells, fibrous stems", example: "The hard shell of a coconut" },
-        Epithelial: { group: "Animal", fn: "Covers and lines body surfaces and organs, protecting what's underneath.", location: "Skin surface, lining of gut and blood vessels", example: "The outer layer of your skin" },
-        Muscular: { group: "Animal", fn: "Contracts to produce movement — skeletal, smooth, or cardiac.", location: "Limbs (skeletal), gut walls (smooth), heart (cardiac)", example: "Biceps contracting to lift your arm" },
-        Nervous: { group: "Animal", fn: "Carries electrical signals for control and communication around the body.", location: "Brain, spinal cord, and nerves throughout the body", example: "A signal travelling down your arm" },
-        Connective: { group: "Animal", fn: "Binds and supports other tissues and organs together.", location: "Tendons, ligaments, and beneath the skin", example: "A tendon connecting muscle to bone" },
+        Xylem: { group: "Plant", icon: "💧", fn: "Transports water and minerals upward from roots to leaves.", location: "Vascular bundles, throughout the plant", example: "Wood is mostly old xylem tissue" },
+        Phloem: { group: "Plant", icon: "🌿", fn: "Transports food (made by photosynthesis) throughout the plant.", location: "Vascular bundles, alongside xylem", example: "Carries sugar from leaves to roots" },
+        Parenchyma: { group: "Plant", icon: "🍏", fn: "Simple, loosely-packed living cells that fill most of a plant's soft tissue, often storing food.", location: "Fruit pulp, leaf interior, storage roots", example: "The soft flesh of an apple" },
+        Sclerenchyma: { group: "Plant", icon: "🥥", fn: "Dead cells with thick, hardened walls that give rigid mechanical support.", location: "Seed coats, nut shells, fibrous stems", example: "The hard shell of a coconut" },
+        Epithelial: { group: "Animal", icon: "🛡️", fn: "Covers and lines body surfaces and organs, protecting what's underneath.", location: "Skin surface, lining of gut and blood vessels", example: "The outer layer of your skin" },
+        Muscular: { group: "Animal", icon: "💪", fn: "Contracts to produce movement — skeletal, smooth, or cardiac.", location: "Limbs (skeletal), gut walls (smooth), heart (cardiac)", example: "Biceps contracting to lift your arm" },
+        Nervous: { group: "Animal", icon: "⚡", fn: "Carries electrical signals for control and communication around the body.", location: "Brain, spinal cord, and nerves throughout the body", example: "A signal travelling down your arm" },
+        Connective: { group: "Animal", icon: "🪢", fn: "Binds and supports other tissues and organs together.", location: "Tendons, ligaments, and beneath the skin", example: "A tendon connecting muscle to bone" },
       };
       var state = { t: "Xylem" };
       var card = LabKit.el("div", null);
       card.style.cssText = "display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;text-align:center;padding:20px;";
       viewportEl.appendChild(card);
 
+      function groupColor(g) { return g === "Plant" ? "#68e7a0" : "#ff8aa8"; }
+
       function render() {
         var t = tissues[state.t];
+        var gc = groupColor(t.group);
         card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + gc + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + t.icon + '</div>' +
           '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + state.t + ' tissue</div>' +
-          '<div style="font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;">' + t.group + ' tissue</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + gc + ';border-radius:10px;padding:2px 10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">' + t.group + ' tissue</div>' +
+          '<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:var(--muted);">' +
+          '<span>📍 ' + t.location + '</span><span>💡 ' + t.example + '</span></div>' +
           '<div style="font-size:0.88rem;max-width:24rem;">' + t.fn + '</div>';
         document.getElementById("ro-group").textContent = t.group;
         document.getElementById("ro-location").textContent = t.location;
@@ -4826,15 +4832,19 @@
       viewportEl.appendChild(card);
 
       function classify() {
-        if (!state.hasRoots) return { group: "Thallophyta", example: "Algae", desc: "no true roots, stems or leaves." };
-        if (!state.hasSeeds) return { group: "Pteridophyta", example: "Ferns", desc: "true roots/stems/leaves, reproduces by spores." };
-        if (!state.seedsInFruit) return { group: "Gymnosperm", example: "Pine", desc: "seeds, but 'naked', not enclosed in a fruit." };
-        return { group: "Angiosperm", example: "Rose", desc: "seeds enclosed within a fruit." };
+        if (!state.hasRoots) return { group: "Thallophyta", icon: "🌊", color: "#4fd1e8", example: "Algae", desc: "no true roots, stems or leaves." };
+        if (!state.hasSeeds) return { group: "Pteridophyta", icon: "🌿", color: "#68e7a0", example: "Ferns", desc: "true roots/stems/leaves, reproduces by spores." };
+        if (!state.seedsInFruit) return { group: "Gymnosperm", icon: "🌲", color: "#9aa0c7", example: "Pine", desc: "seeds, but 'naked', not enclosed in a fruit." };
+        return { group: "Angiosperm", icon: "🌹", color: "#ff8aa8", example: "Rose", desc: "seeds enclosed within a fruit." };
       }
 
       function render() {
         var c = classify();
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + c.group + '</div><div style="font-size:0.85rem;max-width:24rem;">' + c.desc + '</div>';
+        card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + c.color + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + c.icon + '</div>' +
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + c.group + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + c.color + ';border-radius:10px;padding:2px 10px;font-weight:700;">🌱 ' + c.example + '</div>' +
+          '<div style="font-size:0.85rem;max-width:24rem;">' + c.desc + '</div>';
         document.getElementById("ro-group").textContent = c.group;
         document.getElementById("ro-example").textContent = c.example;
       }
@@ -4886,18 +4896,22 @@
       viewportEl.appendChild(card);
 
       function classify() {
-        if (!state.hasBackbone) return { group: "Invertebrate", example: "Insect, snail, jellyfish", desc: "no backbone at all." };
+        if (!state.hasBackbone) return { group: "Invertebrate", icon: "🐌", color: "#9aa0c7", example: "Insect, snail, jellyfish", desc: "no backbone at all." };
         if (!state.warmBlooded) return state.breathesGills
-          ? { group: "Pisces (fish)", example: "Salmon, shark", desc: "cold-blooded, breathes with gills." }
-          : { group: "Reptile or Amphibian", example: "Lizard, frog", desc: "cold-blooded, no gills as an adult." };
+          ? { group: "Pisces (fish)", icon: "🐟", color: "#4fd1e8", example: "Salmon, shark", desc: "cold-blooded, breathes with gills." }
+          : { group: "Reptile or Amphibian", icon: "🦎", color: "#68e7a0", example: "Lizard, frog", desc: "cold-blooded, no gills as an adult." };
         return state.hasFur
-          ? { group: "Mammal", example: "Dog, human", desc: "warm-blooded, has fur, nurses young with milk." }
-          : { group: "Bird (Aves)", example: "Sparrow, eagle", desc: "warm-blooded, has feathers instead of fur." };
+          ? { group: "Mammal", icon: "🐶", color: "#ff8aa8", example: "Dog, human", desc: "warm-blooded, has fur, nurses young with milk." }
+          : { group: "Bird (Aves)", icon: "🐦", color: "#ffd166", example: "Sparrow, eagle", desc: "warm-blooded, has feathers instead of fur." };
       }
 
       function render() {
         var c = classify();
-        card.innerHTML = '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + c.group + '</div><div style="font-size:0.85rem;max-width:24rem;">' + c.desc + '</div>';
+        card.innerHTML =
+          '<div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);border:3px solid ' + c.color + ';display:flex;align-items:center;justify-content:center;font-size:2rem;">' + c.icon + '</div>' +
+          '<div style="font-family:\'Baloo 2\',sans-serif;font-size:1.2rem;font-weight:700;">' + c.group + '</div>' +
+          '<div style="display:inline-block;font-size:0.68rem;color:#14162a;background:' + c.color + ';border-radius:10px;padding:2px 10px;font-weight:700;">🐾 ' + c.example + '</div>' +
+          '<div style="font-size:0.85rem;max-width:24rem;">' + c.desc + '</div>';
         document.getElementById("ro-group").textContent = c.group;
         document.getElementById("ro-example").textContent = c.example;
       }
