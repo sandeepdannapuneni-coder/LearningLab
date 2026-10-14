@@ -249,7 +249,6 @@
       <select id="lessonSelect" aria-label="Select lesson" class="bg-slate-800/70 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed">
         <option value="">Select Lesson</option>
       </select>
-      <a href="lab/index.html" target="_blank" rel="noopener" class="text-xs font-semibold text-cyan-300 hover:text-cyan-200 border border-cyan-400/30 hover:border-cyan-400/60 rounded-lg px-3 py-2 transition bg-cyan-500/10">🧪 Simulation Lab</a>
       <button id="logoutBtn" class="text-xs text-slate-400 hover:text-rose-400 border border-white/10 hover:border-rose-400/40 rounded-lg px-3 py-2 transition">Logout</button>
     </div>
   </nav>
@@ -263,6 +262,7 @@
       <button data-tab="flashcards" role="tab" aria-selected="false" aria-controls="panel-flashcards" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Flashcards</button>
       <button data-tab="stash" role="tab" aria-selected="false" aria-controls="panel-stash" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Idea Stash Feed</button>
       <button data-tab="memoryboost" role="tab" aria-selected="false" aria-controls="panel-memoryboost" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Memory Boost</button>
+      <button data-tab="lab" role="tab" aria-selected="false" aria-controls="panel-lab" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">🧪 Simulation Lab</button>
       <button data-tab="analytics" role="tab" aria-selected="false" aria-controls="panel-analytics" class="tab-btn border-b-2 border-transparent text-slate-400 pb-3 text-sm font-semibold transition">Parent Analytics</button>
     </div>
 
@@ -463,6 +463,11 @@
       <div id="memoryBoostEmptyState" class="hidden glass rounded-2xl p-8 text-center text-slate-400 text-sm max-w-2xl mx-auto"></div>
     </section>
 
+    <!-- ---- Simulation Lab (embedded, same session — see lab/index.html's own auth check) ---- -->
+    <section id="panel-lab" class="tab-panel hidden" role="tabpanel">
+      <iframe id="labFrame" title="Simulation Lab" class="w-full rounded-2xl border border-white/10" style="height:85vh;" loading="lazy"></iframe>
+    </section>
+
     <!-- ---- Parent Analytics ---- -->
     <section id="panel-analytics" class="tab-panel hidden" role="tabpanel">
 
@@ -592,8 +597,10 @@
     flashcards: el("panel-flashcards"),
     stash: el("panel-stash"),
     memoryboost: el("panel-memoryboost"),
+    lab: el("panel-lab"),
     analytics: el("panel-analytics"),
   };
+  const labFrame = el("labFrame");
   const streakBadge = el("streakBadge");
   const continueQuestBanner = el("continueQuestBanner");
   const continueQuestText = el("continueQuestText");
@@ -1164,6 +1171,7 @@
     if (tabName === "stash") renderFeed();
     if (tabName === "memoryboost") renderMemoryBoost();
     if (tabName === "flashcards") renderFlashcardsForLesson(false);
+    if (tabName === "lab" && !labFrame.src) labFrame.src = "lab/index.html";
   }
 
   tabButtons.forEach((btn) => {

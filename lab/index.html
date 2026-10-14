@@ -4,6 +4,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Simulation Lab &mdash; AV's ICSE Arena</title>
+<script>
+// Access gate: the Lab is served as a static file, reachable by direct URL
+// regardless of how it's linked, so it must check the same session the main
+// app checks rather than relying on obscurity. Same verification model as
+// index.html's checkLogin() — a locally-forged token can't pass the Worker's
+// signature check, and any failure (missing session, invalid token, network
+// error) fails closed by bouncing to the login screen.
+(function () {
+  "use strict";
+  var NAME_KEY = "icse_student_name", TOKEN_KEY = "icse_access_token", EXPIRES_KEY = "icse_access_expires";
+  var WORKER_URL = "https://icse-arena-access.sandeepdannapuneni.workers.dev";
+  function bounce() { (window.top || window).location.href = "../index.html"; }
+
+  var name = localStorage.getItem(NAME_KEY);
+  var token = localStorage.getItem(TOKEN_KEY);
+  var expiresAt = localStorage.getItem(EXPIRES_KEY);
+  if (!name || !token || !expiresAt) { bounce(); return; }
+
+  fetch(WORKER_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "verify", token: token, expiresAt: Number(expiresAt) }),
+  }).then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (data) { if (!data || !data.ok) bounce(); })
+    .catch(function () { bounce(); });
+})();
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <script src="../vendor/three.min.js"></script>
 <style>
